@@ -1,10 +1,10 @@
 basic_settings:
-  site_title: Argon Jekyll Theme
-  favicon_image: /assets/img/favicon.png
+  site_title: PROTEUS Framework
+  favicon_image: /assets/img/brand/PROTEUS_black_on_white_logo_only.png
 
 header_settings:
-  logo_image: /assets/img/brand/white.png
-  mobile_logo_image: /assets/img/brand/blue.png
+  logo_image: /assets/img/brand/PROTEUS_white_on_black.png
+  mobile_logo_image: /assets/img/brand/PROTEUS_black_on_white.png
   # Choose a color for your header [blue, dark, light].
   theme: dark
   # If the page has a featured image, it turns transparent if allow_transparent is set to "yes".
@@ -63,7 +63,7 @@ menu_settings:
       url: '/contact'
 
 footer_settings:
-  footer_tagline: Argon & Jekyll, together at last.
+  footer_tagline: PROTEUS framework for planetary evolution
 
 contact_settings:
   form_action: 'https://formspree.io/hello@jekyllthemes.io'
@@ -72,16 +72,16 @@ contact_settings:
   send_button_text: 'Send Message'
 
 social_settings:
-  facebook_url: 'https://www.facebook.com/jekyllthemes/'
-  twitter_url: 'https://twitter.com/jekyllthemesio'
-  instagram_url: 'https://twitter.com/jekyllthemesio'
+  facebook_url: ''
+  twitter_url: ''
+  instagram_url: ''
   youtube_url: ''
   vimeo_url: ''
   pinterest_url: ''
   tumblr_url: ''
   dribbble_url: ''
   behance_url: ''
-  github_url: 'https://twitter.com/jekyllthemesio'
+  github_url: 'https://github.com/FormingWorlds/PROTEUS'
   reddit_url: ''
   linkedin_url: ''
 
