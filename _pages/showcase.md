@@ -1,13 +1,13 @@
 ---
-title: Features
-subtitle: Everything you need to show off your product features.
+title: Showcase
+subtitle: Capabilities of the PROTEUS framework.
 description: Use the Argon Jekyll theme to build a landing page, blog or complete website.
 featured_image: /assets/img/sections/unsplashs.jpg
 ---
 
 --- 
 
-#### Getting Started
+#### Demonstration
 You'll find some helpful samples on this page of what is possible with this theme below. 
 
 Any component or section present in the [Argon Pro docs](https://demos.creative-tim.com/argon-design-system-pro/docs/1.0/getting-started/overview.html) can be used.

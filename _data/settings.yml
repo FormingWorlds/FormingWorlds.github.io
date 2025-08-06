@@ -32,17 +32,11 @@ blog_settings:
 menu_settings:
   menu_items:
     - title: 'Home'
-      submenu_items:
-      - title: Landing Page
-        url: /
-        icon: ni-spaceship text-success    
-      - title: Blog
-        url: /blog
-        icon: ni-books text-primary
-    - title: 'Features'
-      url: '/features'     
-    - title: Pricing
-      url: /pricing        
+      url: '/index'     
+    - title: 'Showcase'
+      url: '/showcase'     
+    - title: Docs
+      url: /docs        
     - title: 'Blog'
       submenu_items:
       - title: Blog
