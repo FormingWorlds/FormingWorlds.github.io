@@ -18,6 +18,6 @@ Navigate to the repository folder in your terminal
 bundle install
 bundle exec jekyll serve
 ````
-Open `http://127.0.0.1:400` in your browser.
+Open `http://127.0.0.1:4000` in your browser.
 
 
