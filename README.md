@@ -11,4 +11,13 @@ The order of making changes to the website is as follows:
 - Create a pull request
 - Upon acceptance the website will be updated automatically
 
+## How to test the page locally
+
+Navigate to the repository folder in your terminal
+```
+bundle install
+bundle exec jekyll serve
+````
+Open `http://127.0.0.1:400` in your browser.
+
 
