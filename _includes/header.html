@@ -68,9 +68,15 @@
                   </li>
                 {% else %}
                   <li class="nav-item">
-                    <a href="{{ item.url | relative_url }}" class="nav-link">
-                      <span class="nav-link-inner--text">{{ item.title }}</span>
-                    </a>
+                    {% if item.url contains 'http' %}
+                      <a href="{{ item.url }}" class="nav-link" target="_blank" rel="noopener noreferrer">
+                        <span class="nav-link-inner--text">{{ item.title }}</span>
+                      </a>
+                    {% else %}
+                      <a href="{{ item.url | relative_url }}" class="nav-link">
+                        <span class="nav-link-inner--text">{{ item.title }}</span>
+                      </a>
+                    {% endif %}
                   </li>
                 {% endif %}
               {% endfor %}
