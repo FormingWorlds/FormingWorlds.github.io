@@ -3,9 +3,9 @@
     <div class="page-header-image" data-bg="{{ '/assets/img/illustrations/two_face_planet.jpg' | relative_url }}" style="width: 100vw; margin-left: calc(50% - 50vw); background-size: cover; background-position: center; background-repeat: no-repeat;">
 
     </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-12 col-md-10 col-lg-8 ml-auto text-right d-flex justify-content-center flex-column">
+    <div class="container-fluid">
+      <div class="row justify-content-end">
+        <div class="col-12 col-md-8 col-lg-6 text-right d-flex justify-content-center flex-column hero-text-position">
           <h3 class="display-3" style="color: white;">PROTEUS framework</h3>
           <p class="lead mt-0">
 
@@ -33,6 +33,13 @@
     }
   })();
   </script>
+<style>
+  @media (min-width: 992px) {
+    .hero-text-position {
+      margin-right: 20vw !important;
+    }
+  }
+</style>
 
 <!--   
   <div class="section features-6">
