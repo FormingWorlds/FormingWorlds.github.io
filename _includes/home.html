@@ -1,11 +1,11 @@
 <header class="header-1 fullWidth">
   <div class="page-header">
-    <div class="page-header-image" style="background-image: url('{{ '/assets/img/illustrations/two_face_planet.jpg' | relative_url }}'); width: 100vw; margin-left: calc(50% - 50vw); background-size: cover; background-position: center; background-repeat: no-repeat;">
+    <div class="page-header-image" data-bg="{{ '/assets/img/illustrations/two_face_planet.jpg' | relative_url }}" style="width: 100vw; margin-left: calc(50% - 50vw); background-size: cover; background-position: center; background-repeat: no-repeat;">
 
     </div>
     <div class="container">
       <div class="row">
-        <div class="col-lg-5 col-md-7 ml-auto text-right d-flex justify-content-center flex-column">
+        <div class="col-12 col-md-10 col-lg-8 ml-auto text-right d-flex justify-content-center flex-column">
           <h3 class="display-3" style="color: white;">PROTEUS framework</h3>
           <p class="lead mt-0">
 
@@ -25,6 +25,14 @@
     </div>
   </div>
 </header>
+<script>
+  (function() {
+    var el = document.querySelector('.page-header-image[data-bg]');
+    if (el && el.dataset.bg) {
+      el.style.backgroundImage = 'url(' + el.dataset.bg + ')';
+    }
+  })();
+  </script>
 
 <!--   
   <div class="section features-6">
