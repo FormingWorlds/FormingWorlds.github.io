@@ -32,6 +32,7 @@ blog_settings:
 menu_settings:
   menu_items:
     - title: 'Home'
+      url: '/'
       # submenu_items:
       # - title: Landing Page
       #   url: /
