@@ -21,7 +21,7 @@ blog_settings:
     # basic – a simple list of posts
     # narrow – a masonary grid of posts
     # grid – a full-width square grid of posts
-  theme: narrow
+  theme: basic
   # Should we display a narrow grid of other posts at the bottom of each blog post?
   read_more: "yes"
 
@@ -42,9 +42,6 @@ menu_settings:
     - title: 'Docs'
       url: 'https://fwl-proteus.readthedocs.io/en/latest/'
       icon: ni-book-bookmark text-primary
-    - title: 'Papers'
-      url: '/papers'
-      icon: ni-single-copy-04 text-info
     - title: 'Policy'
       url: '/policy'
       icon: ni-settings-gear-65 text-default
@@ -58,20 +55,9 @@ menu_settings:
       url: '/features'     
     - title: Map
       url: /pricing        
-    - title: 'Blog'
-      submenu_items:
-      - title: Blog
-        url: /blog
-        icon: ni-books text-primary
-      - title: Narrow Grid Example
-        url: /blog-narrow-example
-        icon: ni-align-center text-success
-      - title: Wide Grid Example
-        url: /blog-grid-example
-        icon: ni-image text-info
-      - title: List Example
-        url: /blog-list-example
-        icon: ni-bullet-list-67 text-default    
+    - title: 'Papers'
+      url: '/blog'
+      icon: ni-bullet-list-67 text-default    
     - title: 'About'
       url: '/about'
     - title: 'Contact'
