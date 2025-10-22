@@ -32,13 +32,13 @@ blog_settings:
 menu_settings:
   menu_items:
     - title: 'Home'
-      submenu_items:
-      - title: Landing Page
-        url: /
-        icon: ni-spaceship text-success    
-      - title: Blog
-        url: /blog
-        icon: ni-books text-primary
+      # submenu_items:
+      # - title: Landing Page
+      #   url: /
+      #   icon: ni-spaceship text-success    
+      # - title: Blog
+      #   url: /blog
+      #   icon: ni-books text-primary
     - title: 'Docs'
       url: 'https://fwl-proteus.readthedocs.io/en/latest/'
       icon: ni-book-bookmark text-primary
