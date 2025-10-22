@@ -51,8 +51,6 @@ menu_settings:
     - title: 'Help'
       url: '/help'
       icon: ni-support-16 text-primary
-    - title: 'Features'
-      url: '/features'     
     - title: Map
       url: /pricing        
     - title: 'Papers'
