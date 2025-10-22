@@ -1,7 +1,7 @@
 ---
 title: "Headings"
 subtitle: "Build something great with our products"
-featured_image: assets/img/demo/blog-02.jpg
+featured_image: /assets/img/illustrations/two_face_planet.jpg
 ---
 
 --- 

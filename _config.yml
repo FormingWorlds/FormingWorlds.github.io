@@ -13,7 +13,7 @@ collections:
     permalink: /:name
   posts:
     output: true
-    permalink: /blog/:slug
+    permalink: /papers/:slug
     type: "post"
 
 defaults:
@@ -43,7 +43,8 @@ sass:
 plugins:
   - jekyll-paginate
   - jekyll-sitemap
+  - jekyll-redirect-from
 
 paginate: 6
-paginate_path: "/blog/page:num/"
+paginate_path: "/papers/page:num/"
   

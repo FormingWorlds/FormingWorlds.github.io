@@ -22,6 +22,8 @@ There are more tips and tricks specifically related to the used template in `_RE
 gem install bundler jekyll
 ```
 
+On Macs there is already an outdated ruby version installed, which interferes with this. To solve this, reinstall ruby through `brew` and symlink it in your `.zshrc` (it will print out the required commands for this at the end of the installation). Once that is done and you have `ruby` and `gem` up-to-date on your system (+ `gem install github-pages`), the command above will function as expected.
+
 ### Display the local version of the page
 ```
 cd FormingWorlds.github.io

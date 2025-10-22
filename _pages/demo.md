@@ -2,7 +2,7 @@
 title: Demo
 subtitle: Interactive demonstrations of PROTEUS capabilities
 description: Try PROTEUS simulations and explore planetary evolution interactively
-featured_image: /assets/img/sections/unsplashs.jpg
+featured_image: /assets/img/illustrations/two_face_planet.jpg
 ---
 
 # Interactive Demo

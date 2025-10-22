@@ -2,7 +2,7 @@
 title: Help & Support
 subtitle: Get help with PROTEUS framework
 description: Find answers to common questions and get support for using PROTEUS
-featured_image: /assets/img/sections/unsplashs.jpg
+featured_image: /assets/img/illustrations/two_face_planet.jpg
 ---
 
 # Help & Support

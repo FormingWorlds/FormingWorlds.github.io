@@ -3,7 +3,7 @@
     <div class="container-fluid">
         {% assign psize = site.posts | size %}
         {% if psize == 0 %}
-        <p>No posts...yet.</p>
+    <p>No papers...yet.</p>
         {% endif %}
         <div class="row">
             {% for post in paginator.posts %}
@@ -35,13 +35,13 @@
                         <div class="float-left">
                             <a href="{{ paginator.previous_page_path | relative_url }}"
                                 class="button button--light pagination__prev"><i class="fa fa-angle-left"
-                                    aria-hidden="true"></i> <span>Newer Posts</span></a>
+                                    aria-hidden="true"></i> <span>Newer Papers</span></a>
                         </div>
                         {% endif %}
                         {% if paginator.next_page %}
                         <div class="float-right">
                             <a href="{{ paginator.next_page_path | relative_url }}"
-                                class="button button--light pagination__next"><span>Older Posts</span> <i
+                                class="button button--light pagination__next"><span>Older Papers</span> <i
                                     class="fa fa-angle-right" aria-hidden="true"></i></a>
                         </div>
                         {% endif %}
@@ -60,7 +60,7 @@
     <div class="container">
         {% assign psize = site.posts | size %}
         {% if psize == 0 %}
-        <p>No posts...yet.</p>
+    <p>No papers...yet.</p>
         {% endif %}
         <div class="row align-items-center">
             {% for post in paginator.posts %}
@@ -91,13 +91,13 @@
                         <div class="float-left">
                             <a href="{{ paginator.previous_page_path | relative_url }}"
                                 class="button button--light pagination__prev"><i class="fa fa-angle-left"
-                                    aria-hidden="true"></i> <span>Newer Posts</span></a>
+                                    aria-hidden="true"></i> <span>Newer Papers</span></a>
                         </div>
                         {% endif %}
                         {% if paginator.next_page %}
                         <div class="float-right">
                             <a href="{{ paginator.next_page_path | relative_url }}"
-                                class="button button--light pagination__next"><span>Older Posts</span> <i
+                                class="button button--light pagination__next"><span>Older Papers</span> <i
                                     class="fa fa-angle-right" aria-hidden="true"></i></a>
                         </div>
                         {% endif %}
@@ -115,7 +115,7 @@
     <div class="container">
         {% assign psize = site.posts | size %}
         {% if psize == 0 %}
-        <p>No posts...yet.</p>
+    <p>No papers...yet.</p>
         {% endif %}
         <div class="row">
             <div class="col-lg-10 mx-auto">
@@ -124,34 +124,40 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-4">
                             <div class="card-image shadow">
-                                <a href="{{ post.url | relative_url }}">
-                                    <img class="img rounded" src="{{ post.featured_image | relative_url }}">
-                                </a>
+                                                                <img class="img rounded" src="{{ post.featured_image | relative_url }}">
                             </div>
                         </div>
                         <div class="col-lg-8 col-md-8">
                             <div class="">
                                 <h3 class="card-title">
-                                    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                                                                        {{ post.title }}
                                 </h3>
-                                <p class="card-description">
-                                    {{ post.description }} <a href="{{ post.url | relative_url }}"> Read More </a>
-                                </p>
-                                {% for author in site.data.settings.authors %}
-                                    {% if post.author == author[1].name %}
-                                        <div class="author">
-                                            <img src=" {{author[1].picture}}" alt="..." class="avatar img-raised">
-                                            <div class="text">
-                                            <span class="name"></span>
-                                                
-                                            {{author[1].name}}
-                                        
-                                                </span>
-                                            <div class="meta">{{ post.date | date_to_long_string }}</div>
-                                            </div>
-                                        </div>
-                                    {% endif %}
-                                {% endfor %}
+                                                                {% assign abstract = post.abstract | default: post.description | default: post.excerpt %}
+                                                                <p class="card-description">{{ abstract | strip_html | truncatewords: 120 }}</p>
+
+                                                                {% comment %} Build an author list from either `authors` (array) or `author` (string) {% endcomment %}
+                                                                {% assign authors_list = nil %}
+                                                                {% if post.authors %}
+                                                                    {% assign authors_list = '' %}
+                                                                    {% for a in post.authors %}
+                                                                        {% if forloop.first %}
+                                                                            {% assign authors_list = a %}
+                                                                        {% else %}
+                                                                            {% assign authors_list = authors_list | append: ', ' | append: a %}
+                                                                        {% endif %}
+                                                                    {% endfor %}
+                                                                {% elsif post.author %}
+                                                                    {% assign authors_list = post.author %}
+                                                                {% endif %}
+
+                                                                <div class="d-flex align-items-center justify-content-between mt-2">
+                                                                    <div class="text-muted small">
+                                                                        {% if authors_list %}
+                                                                            <strong>Authors:</strong> {{ authors_list }}
+                                                                        {% endif %}
+                                                                    </div>
+                                                                    <div class="meta">{{ post.date | date_to_long_string }}</div>
+                                                                </div>
     
                             </div>
                         </div>
@@ -172,13 +178,13 @@
                         <div class="float-left">
                             <a href="{{ paginator.previous_page_path | relative_url }}"
                                 class="button button--light pagination__prev"><i class="fa fa-angle-left"
-                                    aria-hidden="true"></i> <span>Newer Posts</span></a>
+                                    aria-hidden="true"></i> <span>Newer Papers</span></a>
                         </div>
                         {% endif %}
                         {% if paginator.next_page %}
                         <div class="float-right">
                             <a href="{{ paginator.next_page_path | relative_url }}"
-                                class="button button--light pagination__next"><span>Older Posts</span> <i
+                                class="button button--light pagination__next"><span>Older Papers</span> <i
                                     class="fa fa-angle-right" aria-hidden="true"></i></a>
                         </div>
                         {% endif %}
