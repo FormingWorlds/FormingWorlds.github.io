@@ -39,6 +39,24 @@ menu_settings:
       - title: Blog
         url: /blog
         icon: ni-books text-primary
+    - title: 'Docs'
+      url: 'https://fwl-proteus.readthedocs.io/en/latest/'
+      icon: ni-book-bookmark text-primary
+    - title: 'Papers'
+      url: '/papers'
+      icon: ni-single-copy-04 text-info
+    - title: 'Map'
+      url: '/map'
+      icon: ni-world text-success
+    - title: 'Policy'
+      url: '/policy'
+      icon: ni-settings-gear-65 text-default
+    - title: 'Demo'
+      url: '/demo'
+      icon: ni-laptop text-danger
+    - title: 'Help'
+      url: '/help'
+      icon: ni-support-16 text-primary
     - title: 'Features'
       url: '/features'     
     - title: Pricing
