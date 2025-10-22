@@ -45,9 +45,6 @@ menu_settings:
     - title: 'Papers'
       url: '/papers'
       icon: ni-single-copy-04 text-info
-    - title: 'Map'
-      url: '/map'
-      icon: ni-world text-success
     - title: 'Policy'
       url: '/policy'
       icon: ni-settings-gear-65 text-default
@@ -59,7 +56,7 @@ menu_settings:
       icon: ni-support-16 text-primary
     - title: 'Features'
       url: '/features'     
-    - title: Pricing
+    - title: Map
       url: /pricing        
     - title: 'Blog'
       submenu_items:
