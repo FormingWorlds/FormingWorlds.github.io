@@ -3,7 +3,7 @@
     <div class="container-fluid">
         {% assign psize = site.posts | size %}
         {% if psize == 0 %}
-        <p>No posts...yet.</p>
+    <p>No papers...yet.</p>
         {% endif %}
         <div class="row">
             {% for post in paginator.posts %}
@@ -35,13 +35,13 @@
                         <div class="float-left">
                             <a href="{{ paginator.previous_page_path | relative_url }}"
                                 class="button button--light pagination__prev"><i class="fa fa-angle-left"
-                                    aria-hidden="true"></i> <span>Newer Posts</span></a>
+                                    aria-hidden="true"></i> <span>Newer Papers</span></a>
                         </div>
                         {% endif %}
                         {% if paginator.next_page %}
                         <div class="float-right">
                             <a href="{{ paginator.next_page_path | relative_url }}"
-                                class="button button--light pagination__next"><span>Older Posts</span> <i
+                                class="button button--light pagination__next"><span>Older Papers</span> <i
                                     class="fa fa-angle-right" aria-hidden="true"></i></a>
                         </div>
                         {% endif %}
@@ -60,7 +60,7 @@
     <div class="container">
         {% assign psize = site.posts | size %}
         {% if psize == 0 %}
-        <p>No posts...yet.</p>
+    <p>No papers...yet.</p>
         {% endif %}
         <div class="row align-items-center">
             {% for post in paginator.posts %}
@@ -91,13 +91,13 @@
                         <div class="float-left">
                             <a href="{{ paginator.previous_page_path | relative_url }}"
                                 class="button button--light pagination__prev"><i class="fa fa-angle-left"
-                                    aria-hidden="true"></i> <span>Newer Posts</span></a>
+                                    aria-hidden="true"></i> <span>Newer Papers</span></a>
                         </div>
                         {% endif %}
                         {% if paginator.next_page %}
                         <div class="float-right">
                             <a href="{{ paginator.next_page_path | relative_url }}"
-                                class="button button--light pagination__next"><span>Older Posts</span> <i
+                                class="button button--light pagination__next"><span>Older Papers</span> <i
                                     class="fa fa-angle-right" aria-hidden="true"></i></a>
                         </div>
                         {% endif %}
@@ -115,7 +115,7 @@
     <div class="container">
         {% assign psize = site.posts | size %}
         {% if psize == 0 %}
-        <p>No posts...yet.</p>
+    <p>No papers...yet.</p>
         {% endif %}
         <div class="row">
             <div class="col-lg-10 mx-auto">
@@ -178,13 +178,13 @@
                         <div class="float-left">
                             <a href="{{ paginator.previous_page_path | relative_url }}"
                                 class="button button--light pagination__prev"><i class="fa fa-angle-left"
-                                    aria-hidden="true"></i> <span>Newer Posts</span></a>
+                                    aria-hidden="true"></i> <span>Newer Papers</span></a>
                         </div>
                         {% endif %}
                         {% if paginator.next_page %}
                         <div class="float-right">
                             <a href="{{ paginator.next_page_path | relative_url }}"
-                                class="button button--light pagination__next"><span>Older Posts</span> <i
+                                class="button button--light pagination__next"><span>Older Papers</span> <i
                                     class="fa fa-angle-right" aria-hidden="true"></i></a>
                         </div>
                         {% endif %}

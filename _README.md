@@ -54,7 +54,7 @@ You'll find this inside the `_data` folder – this is where you can set all of 
 
 **Menu settings**
 
-This allows you to set the links inside your menu. Add each one as a list item with a `title` and `url`. When hosting on GitHub Pages, make sure you leave a trailing `/` at the end of links to category pages (e.g. `/blog/` or `/projects/`).
+This allows you to set the links inside your menu. Add each one as a list item with a `title` and `url`. When hosting on GitHub Pages, make sure you leave a trailing `/` at the end of links to category pages (e.g. `/papers/` or `/projects/`).
 
 **Footer settings**
 
@@ -116,9 +116,9 @@ If you want to add some pre-made sections, such as a pricing table, carousel of 
 1. Find the component you like in `_includes/component`
 2. Add it to index.html by typing `{% include components/pricing/pricing-1.html %}` replacing `/pricing/pricing-1.html` with your desired component
 
-#### Blog – `/blog/index.html`
+#### Papers – `/papers/index.html`
 
-This is the blog listing page, which shows all your blog posts. You can edit the same things as on the home page to customise it for your website.
+This is the papers listing page, which shows all your papers. You can edit the same things as on the home page to customise it for your website.
 
 #### Sample Content and Other Pages
 
