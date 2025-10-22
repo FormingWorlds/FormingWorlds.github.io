@@ -2,7 +2,7 @@
 title: Policy
 subtitle: Usage policies and guidelines for PROTEUS
 description: Learn about our usage policies, licensing, and community guidelines
-featured_image: /assets/img/sections/unsplashs.jpg
+featured_image: /assets/img/illustrations/two_face_planet.jpg
 ---
 
 # Usage Policy & Guidelines
