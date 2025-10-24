@@ -17,17 +17,10 @@ Get help with using the PROTEUS framework. Find answers to common questions, tro
 - **Tutorials**: Step-by-step learning guides
 - **Examples**: Code examples and use cases
 
-### Community Support
+### Support
 - **GitHub Issues**: Report bugs and request features
 - **Discussion Forum**: Ask questions and share experiences
-- **Stack Overflow**: Tag questions with `proteus-framework`
-- **Reddit**: r/planetaryscience community
-
-### Direct Support
 - **Email Support**: help@formingworlds.org
-- **Office Hours**: Weekly virtual office hours
-- **Workshops**: Regular training workshops
-- **Consulting**: Custom support for research projects
 
 ## Frequently Asked Questions
 
@@ -35,18 +28,17 @@ Get help with using the PROTEUS framework. Find answers to common questions, tro
 
 **Q: How do I install PROTEUS?**
 ```bash
-pip install proteus-framework
+pip install fwl-proteus
 ```
 
 **Q: What are the system requirements?**
-- Python 3.8 or higher
+- Python 3.11 or higher
 - 4 GB RAM minimum (8 GB recommended)
-- 1 GB disk space for installation
+- 10 GB disk space for installation
 
 **Q: How do I verify my installation?**
-```python
-import proteus as pr
-print(pr.__version__)
+```bash
+proteus doctor
 ```
 
 ### Basic Usage
