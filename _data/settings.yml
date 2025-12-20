@@ -55,10 +55,10 @@ menu_settings:
     - title: Modules
       url: /modules        
     - title: 'Papers'
-      url: '/papers'
-      icon: ni-bullet-list-67 text-default    
-    - title: 'About'
-      url: '/about'
+      url: 'https://scixplorer.org/public-libraries/EVAJ1UgWTCy2Z7TRoSmjtQ'
+      icon: ni-book-bookmark text-primary
+    - title: 'People'
+      url: '/people'
     - title: 'Contact'
       url: '/contact'
 
@@ -86,15 +86,10 @@ social_settings:
   linkedin_url: ''
 
 authors:
-  tom:
-    name: Tom
-    picture: /assets/img/faces/team-1.jpg
-  jane:
-    name: Jane
-    picture: /assets/img/faces/team-4.jpg
-  michael:
-    name: Michael
-    picture: /assets/img/faces/michael.jpg
+  nicholls:
+    name: Harrison Nicholls
+  lichtenberg:
+    name: Tim Lichtenberg
 
 advanced_settings:
   analytics_code: 
