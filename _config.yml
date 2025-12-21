@@ -44,6 +44,7 @@ plugins:
   - jekyll-paginate
   - jekyll-sitemap
   - jekyll-redirect-from
+  - jekyll-seo-tag
 
 paginate: 6
 paginate_path: "/papers/page:num/"
