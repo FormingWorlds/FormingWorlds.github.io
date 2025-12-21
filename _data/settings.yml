@@ -57,10 +57,8 @@ menu_settings:
     - title: 'Papers'
       url: 'https://scixplorer.org/public-libraries/EVAJ1UgWTCy2Z7TRoSmjtQ'
       icon: ni-book-bookmark text-primary
-    - title: 'People'
+    - title: 'People & Contact'
       url: '/people'
-    - title: 'Contact'
-      url: '/contact'
 
 footer_settings:
   footer_tagline: PROTEUS framework for planetary evolution
