@@ -7,7 +7,7 @@ description: PROTEUS framework for planetary evolution. Simulating coupled inter
 
 featured_image: /assets/img/illustrations/two_face_planet.jpg
 ---
-
+<!-- 
 # Help & Support
 
 Get help with using the PROTEUS framework. Find answers to common questions, troubleshooting guides, and support resources.
@@ -204,4 +204,4 @@ planet.time_step = 0.01  # Smaller time step
 ---
 
 ```components/accordion.html ```
-{% include components/accordion.html %}
+{% include components/accordion.html %} -->

@@ -7,7 +7,7 @@ description: PROTEUS framework for planetary evolution. Simulating coupled inter
 
 featured_image: /assets/img/illustrations/two_face_planet.jpg
 ---
-
+<!-- 
 # Interactive Demo
 
 Experience the power of PROTEUS through interactive demonstrations and live simulations.
@@ -165,4 +165,4 @@ class CustomAtmosphere(proteus.Atmosphere):
 ---
 
 ```components/features/feature-6.html ```
-{% include components/features/feature-6.html %}
+{% include components/features/feature-6.html %} -->
