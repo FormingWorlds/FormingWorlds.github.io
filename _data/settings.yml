@@ -55,10 +55,6 @@ menu_settings:
       url: '/policy'
       icon: ni-settings-gear-65 text-default
 
-    - title: 'Support'
-      url: '/help'
-      icon: ni-support-16 text-primary
-
     - title: 'Publications'
       url: 'https://scixplorer.org/public-libraries/EVAJ1UgWTCy2Z7TRoSmjtQ'
       icon: ni-book-bookmark text-primary
