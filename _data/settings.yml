@@ -4,7 +4,7 @@ basic_settings:
 
 header_settings:
   logo_image: /assets/img/brand/PROTEUS_white_on_black.png
-  mobile_logo_image: /assets/img/brand/PROTEUS_black_on_white.png
+  mobile_logo_image: /assets/img/brand/PROTEUS_white_on_black.png
   # Choose a color for your header [blue, dark, light].
   theme: dark
   # If the page has a featured image, it turns transparent if allow_transparent is set to "yes".
@@ -43,24 +43,24 @@ menu_settings:
     - title: 'Docs'
       url: 'https://fwl-proteus.readthedocs.io/en/latest/'
       icon: ni-book-bookmark text-primary
+
+    - title: 'Demo'
+      url: '/demo'
+
+    - title: Modules
+      url: /modules    
+
+      icon: ni-laptop text-danger
     - title: 'Policy'
       url: '/policy'
       icon: ni-settings-gear-65 text-default
-    - title: 'Demo'
-      url: '/demo'
-      icon: ni-laptop text-danger
-    - title: 'Help'
-      url: '/help'
-      icon: ni-support-16 text-primary
-    - title: Modules
-      url: /modules        
-    - title: 'Papers'
-      url: '/papers'
-      icon: ni-bullet-list-67 text-default    
-    - title: 'About'
-      url: '/about'
-    - title: 'Contact'
-      url: '/contact'
+
+    - title: 'Publications'
+      url: 'https://scixplorer.org/public-libraries/EVAJ1UgWTCy2Z7TRoSmjtQ'
+      icon: ni-book-bookmark text-primary
+
+    - title: 'People & Contact'
+      url: '/people'
 
 footer_settings:
   footer_tagline: PROTEUS framework for planetary evolution
@@ -86,15 +86,10 @@ social_settings:
   linkedin_url: ''
 
 authors:
-  tom:
-    name: Tom
-    picture: /assets/img/faces/team-1.jpg
-  jane:
-    name: Jane
-    picture: /assets/img/faces/team-4.jpg
-  michael:
-    name: Michael
-    picture: /assets/img/faces/michael.jpg
+  nicholls:
+    name: Harrison Nicholls
+  lichtenberg:
+    name: Tim Lichtenberg
 
 advanced_settings:
   analytics_code: 

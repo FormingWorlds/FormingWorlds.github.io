@@ -1,14 +1,17 @@
 ---
 title: PROTEUS Framework Modules
 subtitle: Explore the modular components of the PROTEUS framework
-description: Discover the individual modules that make up the PROTEUS planetary evolution framework
+
+tagline: PROTEUS framework for planetary evolution.
+description: PROTEUS framework for planetary evolution. Simulating coupled interior-atmosphere interactions on exoplanets using advanced numerical methods, to understand observations and the origin of life.
+
 featured_image: /assets/img/illustrations/two_face_planet.jpg
 ---
 
 # PROTEUS Framework Modules
 
 PROTEUS is designed as a modular framework, allowing researchers to use individual components or combine them for comprehensive planetary evolution studies. Each module focuses on specific aspects of planetary physics and can be used independently or integrated with other modules.
-
+<!-- 
 ## Core Modules
 
 ### Atmosphere Climate
@@ -80,4 +83,4 @@ Each module comes with comprehensive documentation including:
 ---
 
 ```components/features/feature-3.html ```
-{% include components/features/feature-3.html %}
+{% include components/features/feature-3.html %} -->

@@ -1,24 +1,26 @@
 <header class="header-1 fullWidth">
   <div class="page-header">
-    <div class="page-header-image" data-bg="{{ '/assets/img/illustrations/two_face_planet.jpg' | relative_url }}" style="width: 100vw; margin-left: calc(50% - 50vw); background-size: cover; background-position: center; background-repeat: no-repeat;">
+    <div class="page-header-image" data-bg="{{ '/assets/img/illustrations/two_face_planet.jpg' | relative_url }}" style="opacity: 0.9;width: 100vw; margin-left: calc(50% - 50vw); background-size: cover; background-position: center; background-repeat: no-repeat;" >
 
     </div>
     <div class="container-fluid">
       <div class="row justify-content-center">
-        <div class="col-12 col-md-8 col-lg-6 d-flex justify-content-center flex-column hero-text-position text-outline text-center">
-          <img src="{{ site.data.settings.header_settings.logo_image | relative_url }}" alt="PROTEUS" class="hero-logo">
+        <div class="col-12 col-md-8 col-lg-6 d-flex justify-content-center flex-column hero-text-position  text-center">
+          <img src="{{ '/assets/img/brand/PROTEUS_transparent.svg' | relative_url }}" alt="PROTEUS" class="hero-logo" width="90%">
+          <br><br>
           <p class="lead mt-0">
-
-            <span style="color: white;">
+            <span style="font-weight: bold; color: #ffa568;  text-shadow: 3px 2px 3px #000000">
               <br><br>
-              PROTEUS (/ˈproʊtiəs, PROH-tee-əs) is a modular Python framework that simulates the coupled evolution of the atmospheres and interiors of rocky planets and exoplanets. 
+              Simulate the coupled interior-atmosphere evolution of rocky planets over deep time. 
               <br><br>
-              Inspired by the Greek god of elusive sea change, who could change his form at will, PROTEUS is designed to be flexible and adaptable to a wide range of planetary environments. It can foretell the future, but answers only to those who are capable of asking the right questions.
-              
+              Named after the Greek god of sea change, PROTEUS is flexible and adaptable; it can foretell the future, but answers only to those who ask the right questions.
             </span>
 
           </p>
           <br>
+          <div class="card-footer text-center bg-transparent">
+            <button class="btn btn-primary mb-3" onclick="location.href='demo.html'">See demo</button>
+          </div>
         </div>
       </div>
     </div>

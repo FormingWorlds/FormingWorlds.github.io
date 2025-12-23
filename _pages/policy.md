@@ -1,10 +1,13 @@
 ---
 title: Policy
-subtitle: Usage policies and guidelines for PROTEUS
-description: Learn about our usage policies, licensing, and community guidelines
+subtitle: Learn about our usage policies, licensing, and community guidelines
+
+tagline: PROTEUS framework for planetary evolution.
+description: PROTEUS framework for planetary evolution. Simulating coupled interior-atmosphere interactions on exoplanets using advanced numerical methods, to understand observations and the origin of life.
+
 featured_image: /assets/img/illustrations/two_face_planet.jpg
 ---
-
+<!-- 
 # Usage Policy & Guidelines
 
 This page outlines the policies, licensing terms, and community guidelines for using the PROTEUS framework.
@@ -273,4 +276,4 @@ The license comes with no warranty or liability.
    See the License for the specific language governing permissions and
    limitations under the License.
 ```
-
+ -->
