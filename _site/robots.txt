@@ -1,7 +1,0 @@
-# robots.txt for PROTEUS Framework Website
-# https://proteus-framework.org
-
-User-agent: *
-Allow: /
-
-Sitemap: https://proteus-framework.org/sitemap.xml
