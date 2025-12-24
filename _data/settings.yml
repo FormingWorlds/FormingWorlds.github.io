@@ -34,12 +34,6 @@ menu_settings:
     - title: 'Home'
       url: '/'
       # submenu_items:
-      # - title: Landing Page
-      #   url: /
-      #   icon: ni-spaceship text-success    
-      # - title: Papers
-      #   url: /papers
-      #   icon: ni-books text-primary
     - title: 'Docs'
       url: 'https://fwl-proteus.readthedocs.io/en/latest/'
       icon: ni-book-bookmark text-primary
@@ -48,9 +42,9 @@ menu_settings:
     #   url: '/demo'
 
     # - title: Modules
-    #   url: /modules    
-
+    #   url: /modules
     #   icon: ni-laptop text-danger
+
     # - title: 'Policy'
     #   url: '/policy'
     #   icon: ni-settings-gear-65 text-default
