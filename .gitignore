@@ -1,7 +1,6 @@
 # .gitignore for Jekyll websites
 
 # Site output
-_site/
 .sass-cache/
 .jekyll-cache/
 .jekyll-metadata
