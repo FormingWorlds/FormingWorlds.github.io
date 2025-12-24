@@ -44,16 +44,16 @@ menu_settings:
       url: 'https://fwl-proteus.readthedocs.io/en/latest/'
       icon: ni-book-bookmark text-primary
 
-    - title: 'Demo'
-      url: '/demo'
+    # - title: 'Demo'
+    #   url: '/demo'
 
-    - title: Modules
-      url: /modules    
+    # - title: Modules
+    #   url: /modules    
 
-      icon: ni-laptop text-danger
-    - title: 'Policy'
-      url: '/policy'
-      icon: ni-settings-gear-65 text-default
+    #   icon: ni-laptop text-danger
+    # - title: 'Policy'
+    #   url: '/policy'
+    #   icon: ni-settings-gear-65 text-default
 
     - title: 'Publications'
       url: 'https://scixplorer.org/public-libraries/EVAJ1UgWTCy2Z7TRoSmjtQ'
