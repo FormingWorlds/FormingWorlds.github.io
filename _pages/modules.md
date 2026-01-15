@@ -8,79 +8,82 @@ description: PROTEUS framework for planetary evolution. Simulating coupled inter
 featured_image: /assets/img/illustrations/two_face_planet.jpg
 ---
 
-<!-- # PROTEUS Framework Modules
+Since PROTEUS is a modular and expansible simulation framework, modelling of different physics is handled by various sub-modules. These are outlined in the tables below.
 
-PROTEUS is designed as a modular framework, allowing researchers to use individual components or combine them for comprehensive planetary evolution studies. Each module focuses on specific aspects of planetary physics and can be used independently or integrated with other modules. -->
-<!-- 
-## Core Modules
+<style>
+        table {
+            border-spacing: 10px; /* Add spacing between cells */
+            width: 100%;
+        }
+        th, td {
+            padding: 10px; /* Add padding inside each cell */
+        }
+    </style>
 
-### Atmosphere Climate
-**Purpose**: Simulates atmospheric evolution, composition changes, and escape processes
+<table>
+  <thead>
+    <tr style="background-color:#eeeeee;">
+      <th>Module</th>
+      <th>Description</th>
+      <th>Docs website</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background-color:#e7f3ff;">
+      <td>AGNI</td>
+      <td>Radiative-convective atmosphere</td>
+      <td><a href="https://h-nicholls.space/AGNI/">h-nicholls.space/agni</a></td>
+    </tr>
+    <tr style="background-color:#e7f3ff;">
+      <td>JANUS</td>
+      <td>Prescribed fully-convective atmosphere</td>
+      <td><a href="https://proteus-framework.org/JANUS/">proteus-framework.org/janus</a></td>
+    </tr>
+    <tr style="background-color:#e8f5e9;">
+      <td>VULCAN</td>
+      <td>Chemical kinetics</td>
+      <td><a href="https://proteus-framework.org/VULCAN/">proteus-framework.org/vulcan</a></td>
+    </tr>
+    <tr style="background-color:#e0f7fa;">
+      <td>ZEPHYRUS</td>
+      <td>Hydrodynamic escape</td>
+      <td><a href="https://proteus-framework.org/ZEPHYRUS/">proteus-framework.org/zephyrus</a></td>
+    </tr>
+    <tr style="background-color:#fff3e0;">
+      <td>CALLIOPE</td>
+      <td>Equilibrium outgassing</td>
+      <td><a href="https://proteus-framework.org/CALLIOPE/">proteus-framework.org/calliope</a></td>
+    </tr>
+    <tr style="background-color:#efebe9;">
+      <td>Zalmoxis</td>
+      <td>Interior structure</td>
+      <td><a href="https://proteus-framework.org/zalmoxis/">proteus-framework.org/zalmoxis</a></td>
+    </tr>
+    <tr style="background-color:#efebe9;">
+      <td>Aragog</td>
+      <td>Mantle dynamics</td>
+      <td><a href="https://proteus-framework.org/Aragog/">proteus-framework.org/aragog</a></td>
+    </tr>
+    <tr style="background-color:#efebe9;">
+      <td>SPIDER</td>
+      <td>Mantle dynamics</td>
+      <td><a href="https://github.com/djbower/spider">github.com/djbower/spider</a></td>
+    </tr>
+    <tr style="background-color:#fff9c4;">
+      <td>MORS</td>
+      <td>Stellar evolution</td>
+      <td><a href="https://proteus-framework.org/MORS/">proteus-framework.org/mors</a></td>
+    </tr>
+    <tr style="background-color:#f3e5f5;">
+      <td>LovePy</td>
+      <td>Solid-phase tides</td>
+      <td><a href="https://github.com/nichollsh/lovepy">github.com/nichollsh/lovepy</a></td>
+    </tr>
+    <tr style="background-color:#f3e5f5;">
+      <td>Obliqua</td>
+      <td>Multi-phase tides</td>
+      <td><a href="https://proteus-framework.org/Obliqua/">proteus-framework.org/obliqua</a></td>
+    </tr>
+  </tbody>
+</table>
 
-**Key Features**:
-- Composition and temperature profiles
-- Radiative transfer, convection, sensible heating
-- Condensation and cloud formation
-
-**Applications**:
-- Controlling planetary evolution through greenhouse effect
-- Comparison with observables from telescopes
-- Climate evolution studies and connections to astrobiology
-
-### Interior Dynamics
-**Purpose**: Models planetary interior structure, thermal evolution, and geodynamics
-
-**Key Features**:
-- Core-mantle interactions
-- Thermal evolution calculations
-- Fractional crystallisation and partitioning
-
-**Applications**:
-- Planetary formation studies
-- Interior structure modeling
-- Geodynamic evolution
-
-### Stellar evolution
-**Purpose**: Sets the energy environment for the planet.
-
-**Key Features**:
-- Spectroscopic and bolometric evolution of the host star
-- Fully self-consistent with planetary evolution
-- Allows calculation of atmospheric mass-loss from photoevaporation
-
-**Applications**:
-- Permits connection with measured age of real systems
-
-
-
-## Module Documentation
-
-Each module comes with comprehensive documentation including:
-- API reference
-- Tutorial notebooks
-- Example simulations
-- Parameter descriptions
-- Validation cases
-
-## Getting Started
-
-1. **Install PROTEUS**: Follow the installation guide
-2. **Choose Modules**: Select modules relevant to your research
-3. **Run Examples**: Start with provided example scripts
-4. **Customize**: Modify parameters for your specific needs
-5. **Extend**: Add custom modules or modify existing ones
-
----
-
-```components/features/feature-1.html ```
-{% include components/features/feature-1.html %}
-
----
-
-```components/features/feature-2.html ```
-{% include components/features/feature-2.html %}
-
----
-
-```components/features/feature-3.html ```
-{% include components/features/feature-3.html %} -->

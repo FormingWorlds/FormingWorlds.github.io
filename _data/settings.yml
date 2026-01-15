@@ -33,13 +33,19 @@ menu_settings:
   menu_items:
     - title: 'Home'
       url: '/'
-      # submenu_items:
-    - title: 'Docs'
-      url: 'https://fwl-proteus.readthedocs.io/en/latest/'
-      icon: ni-book-bookmark text-primary
 
-    # - title: 'Demo'
-    #   url: '/demo'
+      # submenu_items:
+    - title: 'Documentation'
+      submenu_items:
+      - title: PROTEUS
+        url: /PROTEUS/
+        icon: ni-books text-primary    
+      - title: Modules
+        url: /modules
+        icon: ni-bold-right text-primary
+
+    - title: 'Demos'
+      url: '/demos'
 
     # - title: Modules
     #   url: /modules
