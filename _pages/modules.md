@@ -1,5 +1,5 @@
 ---
-title: PROTEUS Framework Modules
+title: Modules within PROTEUS
 subtitle: Explore the modular components of the PROTEUS framework
 
 tagline: PROTEUS framework for planetary evolution.
@@ -8,7 +8,7 @@ description: PROTEUS framework for planetary evolution. Simulating coupled inter
 featured_image: /assets/img/illustrations/two_face_planet.jpg
 ---
 
-Since PROTEUS is a modular and expansible simulation framework, modelling of different physics is handled by various sub-modules. These are outlined in the tables below.
+Since PROTEUS is a modular simulation framework, modelling of physics is handled by various sub-modules. Follow the table below to learn more about each one!
 
 <style>
         table {
@@ -32,7 +32,7 @@ Since PROTEUS is a modular and expansible simulation framework, modelling of dif
     <tr style="background-color:#e7f3ff;">
       <td>AGNI</td>
       <td>Radiative-convective atmosphere</td>
-      <td><a href="https://h-nicholls.space/AGNI/">h-nicholls.space/agni</a></td>
+      <td><a href="https://proteus-framework.org/AGNI/">proteus-framework.org/agni</a></td>
     </tr>
     <tr style="background-color:#e7f3ff;">
       <td>JANUS</td>
@@ -51,8 +51,13 @@ Since PROTEUS is a modular and expansible simulation framework, modelling of dif
     </tr>
     <tr style="background-color:#fff3e0;">
       <td>CALLIOPE</td>
-      <td>Equilibrium outgassing</td>
+      <td>Equilibrium volatile outgassing</td>
       <td><a href="https://proteus-framework.org/CALLIOPE/">proteus-framework.org/calliope</a></td>
+    </tr>
+    <tr style="background-color:#fff3e0;">
+      <td>Atmodeller</td>
+      <td>Equilibrium volatile outgassing</td>
+      <td><a href="https://proteus-framework.org/Atmodeller/">proteus-framework.org/atmodeller</a></td>
     </tr>
     <tr style="background-color:#efebe9;">
       <td>Zalmoxis</td>

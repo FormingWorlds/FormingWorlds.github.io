@@ -38,7 +38,7 @@ menu_settings:
     - title: 'Documentation'
       submenu_items:
       - title: PROTEUS
-        url: /PROTEUS/
+        url: https://proteus-framework.org/PROTEUS/
         icon: ni-books text-primary    
       - title: Modules
         url: /modules
