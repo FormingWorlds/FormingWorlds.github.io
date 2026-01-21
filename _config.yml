@@ -4,6 +4,10 @@
 site: PROTEUS Framework
 domain: formingworlds.github.io
 
+title: PROTEUS Framework
+
+author: Tim Lichtenberg
+
 url: https://proteus-framework.org
 baseurl: 
 
@@ -45,6 +49,7 @@ plugins:
   - jekyll-sitemap
   - jekyll-redirect-from
   - jekyll-seo-tag
+  - jekyll-github-metadata
 
 paginate: 6
 paginate_path: "/papers/page:num/"
