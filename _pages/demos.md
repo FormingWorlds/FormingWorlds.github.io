@@ -59,8 +59,8 @@ We visualise these climatic transitions by plotting atmospheric temperature prof
 
 These profiles change shape because the atmosphere's capacity to cool the planet varies with time. PROTEUS resolves this continuum of climate regimes, which is central to quantifying the cooling timescale and linking model results to telescope observations of exo‑Earths.
 
-In the next demo, we explore the evolution of a highly observable sub‑Neptune exoplanet.
+# Next steps
 
-# Sub-Neptune
+We now refer you to the online documentation pages for [PROTEUS](https://proteus-framework.org/PROTEUS/), which provide tutorials and how-to guides.
 
 

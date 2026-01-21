@@ -48,4 +48,8 @@ plugins:
 
 paginate: 6
 paginate_path: "/papers/page:num/"
-  
+
+github: [metadata]
+
+repository: FormingWorlds/FormingWorlds.github.io
+
