@@ -1,5 +1,5 @@
 <div class="team-2">
-<div class="container">
+<div class="container" id="current-developers-section">
 
   <!-- Start row -->
   <div class="row">
@@ -892,7 +892,9 @@
   <!-- End row -->
   </div>
 
-  
+</div>
+<div class="container" id="past-contributors-section">
+
   <!-- Start row -->
   <div class="row">
     <div class="col-md-8 mx-auto text-center mb-5">
@@ -1261,3 +1263,52 @@
 
 </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  function shuffleSection(containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    
+    const rows = container.querySelectorAll('.row');
+    
+    // Collect all profile card columns (skip header rows)
+    let allCards = [];
+    let cardRows = [];
+    rows.forEach((row) => {
+      const cards = row.querySelectorAll('.col-lg-4.col-md-6');
+      if (cards.length > 0) {
+        cardRows.push(row);
+        cards.forEach(card => allCards.push(card));
+      }
+    });
+    
+    if (allCards.length === 0) return;
+    
+    // Fisher-Yates shuffle
+    for (let i = allCards.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [allCards[i], allCards[j]] = [allCards[j], allCards[i]];
+    }
+    
+    // Clear card rows
+    cardRows.forEach(row => {
+      while (row.firstChild) {
+        row.removeChild(row.firstChild);
+      }
+    });
+    
+    // Redistribute shuffled cards (3 per row)
+    let cardIndex = 0;
+    cardRows.forEach(row => {
+      for (let i = 0; i < 3 && cardIndex < allCards.length; i++) {
+        row.appendChild(allCards[cardIndex]);
+        cardIndex++;
+      }
+    });
+  }
+  
+  shuffleSection('current-developers-section');
+  shuffleSection('past-contributors-section');
+});
+</script>
