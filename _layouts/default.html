@@ -6,7 +6,31 @@
   <meta charset="utf-8">
 
   <!-- Page Info -->
-  <link rel="shortcut icon" href="{{ site.data.settings.basic_settings.favicon_image | relative_url }}">
+  
+  <!-- Favicons (light/dark) -->
+  <link id="favicon" rel="icon" type="image/png"
+      href="{{ site.data.settings.basic_settings.favicon_light | relative_url }}">
+
+  <script>
+    (function () {
+      const light = "{{ site.data.settings.basic_settings.favicon_light | relative_url }}";
+      const dark  = "{{ site.data.settings.basic_settings.favicon_dark  | relative_url }}";
+
+      const link = document.getElementById("favicon");
+      const mq = window.matchMedia("(prefers-color-scheme: dark)");
+
+      function setIcon(e) {
+        link.href = e.matches ? dark : light;
+      }
+
+      setIcon(mq);
+
+      // modern + older listener support
+      if (mq.addEventListener) mq.addEventListener("change", setIcon);
+      else if (mq.addListener) mq.addListener(setIcon);
+    })();
+  </script>
+
   <title>{% if page.url == "/" %}{{ site.data.settings.basic_settings.site_title }} – {{ page.title }}{% else %}{{ page.title }} – {{ site.data.settings.basic_settings.site_title }}{% endif %}</title>
   <meta name="description" content="{{ page.description }}">
 
