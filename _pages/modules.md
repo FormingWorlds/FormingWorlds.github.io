@@ -57,7 +57,7 @@ Since PROTEUS is a modular simulation framework, modelling of physics is handled
     <tr style="background-color:#fff3e0;">
       <td>Atmodeller</td>
       <td>Equilibrium volatile outgassing</td>
-      <td><a href="https://proteus-framework.org/Atmodeller/">proteus-framework.org/atmodeller</a></td>
+      <td><a href="https://atmodeller.readthedocs.io/en/latest/">atmodeller/readthedocs.io</a></td>
     </tr>
     <tr style="background-color:#efebe9;">
       <td>Zalmoxis</td>
