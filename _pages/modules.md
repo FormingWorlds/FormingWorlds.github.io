@@ -62,17 +62,17 @@ Since PROTEUS is a modular simulation framework, modelling of physics is handled
     <tr style="background-color:#efebe9;">
       <td>Zalmoxis</td>
       <td>Interior structure</td>
-      <td><a href="https://proteus-framework.org/zalmoxis/">proteus-framework.org/zalmoxis</a></td>
+      <td><a href="https://proteus-framework.org/Zalmoxis/">proteus-framework.org/zalmoxis</a></td>
     </tr>
     <tr style="background-color:#efebe9;">
       <td>Aragog</td>
       <td>Mantle dynamics</td>
-      <td><a href="https://proteus-framework.org/Aragog/">proteus-framework.org/aragog</a></td>
+      <td><a href="https://proteus-framework.org/aragog/">proteus-framework.org/aragog</a></td>
     </tr>
     <tr style="background-color:#efebe9;">
       <td>SPIDER</td>
       <td>Mantle dynamics</td>
-      <td><a href="https://github.com/djbower/spider">github.com/djbower/spider</a></td>
+      <td><a href="https://proteus-framework.org/SPIDER">proteus-framework.org/spider</a></td>
     </tr>
     <tr style="background-color:#fff9c4;">
       <td>MORS</td>
