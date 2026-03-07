@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row mb-4">
       <div class="col-lg-4 mb-4 mb-lg-0">
-        <img src="{{ '/assets/img/brand/PROTEUS_black_on_white.png' | relative_url }}" alt="PROTEUS" style="max-height: 40px;" class="mb-3">
+        <img src="{{ '/assets/img/brand/PROTEUS_black_on_white.png' | relative_url }}" alt="PROTEUS" style="max-height: 40px;" class="mb-3" loading="lazy">
         <p class="text-muted">{{ site.data.settings.footer_settings.footer_tagline }}</p>
       </div>
       <div class="col-lg-2 col-md-4 col-6">
@@ -47,62 +47,22 @@
 </footer>
 
 <!--   Core JS Files   -->
-<script src="{{ "/assets/js/core/jquery.min.js" | relative_url }}" type="text/javascript"></script>
-<script src="{{ "/assets/js/core/popper.min.js" | relative_url }}" type="text/javascript"></script>
-<script src="{{ "/assets/js/core/bootstrap.min.js" | relative_url }}" type="text/javascript"></script>
-<script src="{{ "/assets/js/plugins/perfect-scrollbar.jquery.min.js" | relative_url }}"></script>
-<script src="{{ "/assets/js/plugins/bootstrap-switch.js" | relative_url }}"></script>
-<script src="{{ "/assets/js/plugins/nouislider.min.js" | relative_url }}" type="text/javascript"></script>
-<script src="{{ "/assets/js/plugins/glide.js" | relative_url }}" type="text/javascript"></script>
-<script src="{{ "/assets/js/plugins/moment.min.js" | relative_url }}"></script>
-<script src="{{ "/assets/js/plugins/choices.min.js" | relative_url }}" type="text/javascript"></script>
-<script src="{{ "/assets/js/plugins/datetimepicker.js" | relative_url }}" type="text/javascript"></script>
-<script src="{{ "/assets/js/plugins/jasny-bootstrap.min.js" | relative_url }}"></script>
-<script src="{{ "/assets/js/plugins/headroom.min.js" | relative_url }}"></script>
+<script>window.flatpickr=function(){};flatpickr.l10ns={};</script>
+<script src="{{ "/assets/js/core/jquery.min.js" | relative_url }}" defer></script>
+<script src="{{ "/assets/js/core/popper.min.js" | relative_url }}" defer></script>
+<script src="{{ "/assets/js/core/bootstrap.min.js" | relative_url }}" defer></script>
+<script src="{{ "/assets/js/plugins/headroom.min.js" | relative_url }}" defer></script>
+<script src="{{ "/assets/js/argon-design-system.min.js?v=1.0.0" | relative_url }}" defer></script>
 
 <script>
-  // Blog Post Carousel
-  if (document.querySelector('.blogGlide') !== null) {
-    new Glide('.blogGlide', {
-      type: 'carousel',
-      startAt: 0,
-      focusAt: 2,
-      perTouch: 1,
-      perView: 4
-    }).mount();
-  }
-
-  if (document.querySelector('.glide') !== null) {
-    new Glide('.glide', {
-      type: 'carousel',
-      startAt: 0,
-      focusAt: 2,
-      perTouch: 1,
-      perView: 4
-    }).mount();
-  }
-
-  if (document.querySelector('.testimonial-glide') !== null) {
-    new Glide('.testimonial-glide', {
-      type: 'carousel',
-      startAt: 0,
-      focusAt: 2,
-      perTouch: 1,
-      perView: 4
-    }).mount();
-  }
-</script>
-
-<script>
-  $(function () {
-    var navOffset = $('#navbar-main').height();
-    $('.contentWrapper').css('padding-top', navOffset * 2 + 'px');
+  document.addEventListener('DOMContentLoaded', function () {
+    var nav = document.getElementById('navbar-main');
+    if (nav) {
+      var offset = nav.offsetHeight;
+      var els = document.querySelectorAll('.contentWrapper');
+      for (var i = 0; i < els.length; i++) {
+        els[i].style.paddingTop = (offset * 2) + 'px';
+      }
+    }
   });
 </script>
-
-{% if site.data.settings.advanced_settings.google_maps_key %}
-<script
-  src='https://maps.googleapis.com/maps/api/js?key={{ site.data.settings.advanced_settings.google_maps_key }}'></script>
-{% endif %}
-
-<script src="{{ "/assets/js/argon-design-system.min.js?v=1.0.0" | relative_url }}" type="text/javascript"></script>

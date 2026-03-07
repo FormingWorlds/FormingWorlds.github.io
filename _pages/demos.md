@@ -37,7 +37,7 @@ In this example, the simulation begins with a modest initial inventory of volati
   <button id="play-video-btn" class="btn btn-primary mb-3">
     <i class="ni ni-button-play mr-1"></i> Simulate the early Earth
   </button>
-  <video id="demo-earth-video" muted playsinline style="width: 100%; max-width: 500px;">
+  <video id="demo-earth-video" muted playsinline preload="none" style="width: 100%; max-width: 500px;">
     <source src="/assets/demos/earth/anim.mp4">
     Your browser does not support MP4 videos.
   </video>
@@ -59,7 +59,7 @@ Under these specific conditions, Earth cools and forms oceans within ~1 billion 
 The image below plots several high-level variables across the course of this simulation. The left column shows thermodynamic variables. Panel (c) shows that this simulated Earth starts fully molten and cools very rapidly; it solidifies within 200&nbsp;000 years, consistent with measurements of the oldest surviving rocks.
 
 <div class="demo-media">
-  <img src="{{ '/assets/demos/earth/global.png' | relative_url }}" alt="Multi-panel plot of global model evolution" style="width: 100%; max-width: 700px;">
+  <img src="{{ '/assets/demos/earth/global.png' | relative_url }}" alt="Multi-panel plot of global model evolution" style="width: 100%; max-width: 700px;" loading="lazy">
 </div>
 
 Atmospheric thickness increases over time; the right column tracks volatile inventories. Volatiles are initially mostly dissolved but are progressively *outgassed* as the mantle solidifies. Panel (b) shows partial surface pressures, which first increase and later decrease as some gas escapes.
@@ -69,7 +69,7 @@ In this scenario, solidification of Earth's early magma ocean produces an atmosp
 We visualise these climatic transitions by plotting atmospheric temperature profiles (below) at several points in time (line colours).
 
 <div class="demo-media">
-  <img src="{{ '/assets/demos/earth/atmos.png' | relative_url }}" alt="Atmosphere profiles over time" style="width: 100%; max-width: 450px;">
+  <img src="{{ '/assets/demos/earth/atmos.png' | relative_url }}" alt="Atmosphere profiles over time" style="width: 100%; max-width: 450px;" loading="lazy">
 </div>
 
 These profiles change shape because the atmosphere's capacity to cool the planet varies with time. PROTEUS resolves this continuum of climate regimes, which is central to quantifying the cooling timescale and linking model results to telescope observations of exo-Earths.
