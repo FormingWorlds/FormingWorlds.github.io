@@ -64,7 +64,7 @@ The image below plots several high-level variables across the course of this sim
 
 Atmospheric thickness increases over time; the right column tracks volatile inventories. Volatiles are initially mostly dissolved but are progressively *outgassed* as the mantle solidifies. Panel (b) shows partial surface pressures, which first increase and later decrease as some gas escapes.
 
-In this scenario, solidification of Earth's early magma ocean produces an atmosphere dominated by steam, carbon dioxide (CO2), and hydrogen sulfide (H2S). The steam eventually condenses to form a liquid water ocean beneath a CO2+H2S atmosphere, which could provide conditions suitable for the origin of life. The atmospheric composition and the timing of ocean formation are sensitive to the assumed volatile inventory and redox state of the mantle.
+In this scenario, solidification of Earth's early magma ocean produces an atmosphere dominated by steam, carbon dioxide (CO<sub>2</sub>), and hydrogen sulfide (H<sub>2</sub>S). The steam eventually condenses to form a liquid water ocean beneath a CO<sub>2</sub>+H<sub>2</sub>S atmosphere, which could provide conditions suitable for the origin of life. The atmospheric composition and the timing of ocean formation are sensitive to the assumed volatile inventory and redox state of the mantle.
 
 We visualise these climatic transitions by plotting atmospheric temperature profiles (below) at several points in time (line colours).
 
