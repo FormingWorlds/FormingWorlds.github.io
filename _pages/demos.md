@@ -37,7 +37,7 @@ In this example, the simulation begins with a modest initial inventory of volati
   <button id="play-video-btn" class="btn btn-primary mb-3">
     <i class="ni ni-button-play mr-1"></i> Simulate the early Earth
   </button>
-  <video id="demo-earth-video" muted playsinline preload="none" style="width: 100%; max-width: 500px;">
+  <video id="demo-earth-video" muted playsinline style="width: 100%; max-width: 500px;">
     <source src="/assets/demos/earth/anim.mp4">
     Your browser does not support MP4 videos.
   </video>
