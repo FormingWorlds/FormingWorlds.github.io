@@ -1,63 +1,96 @@
 // Site-wide custom styles for PROTEUS website
-// Unified colour scheme: brand orange accent, neutral navy/slate/grey
+// Theme switching via CSS custom properties
 
-// Brand palette
-$brand-accent: #c0571b;
-$brand-accent-hover: #a34a17;
-$brand-accent-light: rgba(192, 87, 27, 0.1);
-$heading-color: #1a1a2e;
-$body-color: #525f7f;
-$bg-light: #f7f8fa;
-$border-color: #e9ecef;
+// Dark theme values (mixin to avoid duplication)
+@mixin dark-theme {
+  --page-bg: #111218;
+  --surface-bg: #1a1c25;
+  --heading-color: #e4e4ea;
+  --body-color: #a8adb8;
+  --muted-color: #6b7280;
+  --border-color: #2d3040;
+  --accent: #d4703a;
+  --accent-hover: #e8843f;
+  --accent-light: rgba(212, 112, 58, 0.15);
+  --accent-gradient-end: #ba5c2e;
+  --card-bg: #1a1c25;
+  --card-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  --card-shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.4);
+  --link-underline: rgba(212, 112, 58, 0.3);
+}
+
+// Dark theme (default)
+:root {
+  @include dark-theme;
+}
+
+// Light theme (explicit toggle)
+[data-theme="light"] {
+  --page-bg: #ffffff;
+  --surface-bg: #f7f8fa;
+  --heading-color: #1a1a2e;
+  --body-color: #525f7f;
+  --muted-color: #8898aa;
+  --border-color: #e9ecef;
+  --accent: #c0571b;
+  --accent-hover: #a34a17;
+  --accent-light: rgba(192, 87, 27, 0.1);
+  --accent-gradient-end: #9a4616;
+  --card-bg: #ffffff;
+  --card-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --card-shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.1);
+  --link-underline: rgba(192, 87, 27, 0.3);
+}
 
 // Smooth scrolling
 html {
   scroll-behavior: smooth;
 }
 
-// Better body text
+// Body
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: $body-color;
+  color: var(--body-color);
+  background-color: var(--page-bg);
 }
 
 // Headings
 h1, h2, h3, h4, h5, h6,
 .display-1, .display-2, .display-3, .display-4 {
-  color: $heading-color;
+  color: var(--heading-color);
 }
 
 // Override text-muted for better readability
 .text-muted {
-  color: $body-color !important;
+  color: var(--body-color) !important;
 }
 
 // Override Argon primary colour to brand accent
 .btn-primary {
-  background-color: $brand-accent !important;
-  border-color: $brand-accent !important;
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
 }
 .btn-primary:hover, .btn-primary:focus {
-  background-color: $brand-accent-hover !important;
-  border-color: $brand-accent-hover !important;
+  background-color: var(--accent-hover) !important;
+  border-color: var(--accent-hover) !important;
 }
 .btn-outline-primary {
-  color: $brand-accent !important;
-  border-color: $brand-accent !important;
+  color: var(--accent) !important;
+  border-color: var(--accent) !important;
 }
 .btn-outline-primary:hover {
-  background-color: $brand-accent !important;
-  border-color: $brand-accent !important;
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
   color: #fff !important;
 }
 
 // Links use brand accent
 a {
-  color: $brand-accent;
+  color: var(--accent);
 }
 a:hover {
-  color: $brand-accent-hover;
+  color: var(--accent-hover);
 }
 
 // Section spacing
@@ -68,35 +101,50 @@ a:hover {
 // Card hover effects
 .card {
   transition: box-shadow 0.25s ease, transform 0.25s ease;
+  background-color: var(--card-bg);
+  border-color: var(--border-color);
 }
 .card:hover {
-  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  box-shadow: var(--card-shadow-hover);
 }
 
 // Better link styling for content areas
 #main a:not(.btn):not(.nav-link) {
   text-decoration: underline;
-  text-decoration-color: rgba($brand-accent, 0.3);
+  text-decoration-color: var(--link-underline);
   text-underline-offset: 2px;
   transition: text-decoration-color 0.2s;
 }
 #main a:not(.btn):not(.nav-link):hover {
-  text-decoration-color: $brand-accent;
+  text-decoration-color: var(--accent);
+}
+
+// Horizontal rules
+hr {
+  border-top-color: var(--border-color);
 }
 
 // Footer styling
 .footer {
-  background-color: $bg-light;
-  border-top: 1px solid $border-color;
+  background-color: var(--surface-bg);
+  border-top: 1px solid var(--border-color);
 }
 .footer h6 {
-  color: $heading-color;
+  color: var(--heading-color);
   font-size: 0.75rem;
   letter-spacing: 0.05em;
 }
 .footer a.text-muted:hover {
-  color: $brand-accent !important;
+  color: var(--accent) !important;
 }
+.footer hr {
+  border-color: var(--border-color);
+}
+
+// Footer logo switching (dark is default)
+.footer-logo-light { display: none; }
+[data-theme="light"] .footer-logo-dark { display: none; }
+[data-theme="light"] .footer-logo-light { display: inline; }
 
 // Navbar brand image sizing
 .navbar-brand img {
@@ -120,7 +168,7 @@ a:hover {
 .bg-gradient-primary,
 .bg-gradient-warning,
 .bg-gradient-info {
-  background: linear-gradient(135deg, $brand-accent 0%, darken($brand-accent, 8%) 100%) !important;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-gradient-end) 100%) !important;
 }
 
 // Badge colours: unify info/success/danger to brand accent
@@ -128,7 +176,7 @@ a:hover {
 .badge-info,
 .badge-success,
 .badge-danger {
-  background-color: $brand-accent !important;
+  background-color: var(--accent) !important;
 }
 
 // Badge circle
@@ -145,13 +193,30 @@ a:hover {
 
 // Nav link hover
 .navbar-nav .nav-link:hover {
-  color: $brand-accent !important;
+  color: var(--accent) !important;
 }
 
-// Dropdown menu icon colour (override Argon text-primary)
+// Dropdown menu styling
+.dropdown-menu {
+  background-color: var(--card-bg);
+  border-color: var(--border-color);
+}
+.navbar-nav .dropdown-menu:before,
+.dropdown .dropdown-menu:before,
+.dropdown-menu::before {
+  background: var(--card-bg) !important;
+}
+.dropdown-item {
+  color: var(--body-color);
+}
+.dropdown-item:hover, .dropdown-item:focus {
+  background-color: var(--surface-bg) !important;
+  color: var(--heading-color) !important;
+  box-shadow: none !important;
+}
 .dropdown-item .ni,
 .dropdown-item i[class*="text-"] {
-  color: $brand-accent !important;
+  color: var(--accent) !important;
 }
 
 // Demo page video/image refinements
@@ -206,6 +271,10 @@ a:hover {
   height: 100% !important;
   object-fit: cover;
   object-position: top !important;
+  transition: transform 0.4s ease;
+}
+.team-2 .card-profile:hover .card-image img {
+  transform: scale(1.05);
 }
 .team-2 .card-profile .card-body {
   position: absolute !important;
@@ -223,6 +292,45 @@ a:hover {
 }
 .team-2 .card-profile .card-body .lead {
   color: rgba(255,255,255,0.85) !important;
+}
+
+// Theme toggle button
+.theme-toggle {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+}
+.theme-toggle:hover {
+  color: #fff;
+}
+// Default (dark): show sun icon to switch to light
+.theme-toggle .fa-sun { display: inline; }
+.theme-toggle .fa-moon { display: none; }
+[data-theme="light"] .theme-toggle .fa-sun { display: none; }
+[data-theme="light"] .theme-toggle .fa-moon { display: inline; }
+
+// Dark is default, so these overrides apply globally
+.bg-white, .bg-secondary {
+  background-color: var(--surface-bg) !important;
+}
+.close {
+  color: var(--heading-color);
+}
+.navbar-collapse-header {
+  border-bottom-color: var(--border-color);
+}
+
+// Mobile nav collapse panel background
+@media (max-width: 991px) {
+  .navbar-collapse {
+    background-color: var(--surface-bg);
+  }
 }
 
 // Prevent horizontal overflow from fullWidth elements

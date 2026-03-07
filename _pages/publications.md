@@ -14,40 +14,40 @@ This list covers papers that develop or make direct use of the PROTEUS code. For
     font-size: 1.1rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: #8898aa;
-    border-bottom: 2px solid #e9ecef;
+    color: var(--muted-color);
+    border-bottom: 2px solid var(--border-color);
     padding-bottom: 0.5rem;
     margin-bottom: 1.25rem;
   }
   .pub-entry {
     margin-bottom: 1.75rem;
     padding-left: 1rem;
-    border-left: 3px solid #e9ecef;
+    border-left: 3px solid var(--border-color);
   }
   .pub-entry:hover {
-    border-left-color: #c0571b;
+    border-left-color: var(--accent);
   }
   .pub-title {
     font-weight: 700;
     font-size: 1.05rem;
-    color: #32325d;
+    color: var(--heading-color);
     margin: 0 0 0.25rem;
     line-height: 1.4;
   }
   .pub-title a {
-    color: #32325d;
+    color: var(--heading-color);
     text-decoration: none;
   }
   .pub-title a:hover {
-    color: #c0571b;
+    color: var(--accent);
   }
   .pub-authors {
-    color: #525f7f;
+    color: var(--body-color);
     font-size: 0.9rem;
     margin: 0 0 0.25rem;
   }
   .pub-venue {
-    color: #8898aa;
+    color: var(--muted-color);
     font-size: 0.85rem;
     font-style: italic;
     margin: 0 0 0.35rem;
@@ -59,18 +59,27 @@ This list covers papers that develop or make direct use of the PROTEUS code. For
   }
   .pub-links a {
     font-size: 0.8rem;
-    color: #c0571b;
+    color: var(--accent);
     text-decoration: none;
     padding: 0.15rem 0.5rem;
-    border: 1px solid rgba(192,87,27,0.3);
+    border: 1px solid var(--border-color);
     border-radius: 3px;
     transition: background 0.15s, border-color 0.15s;
   }
   .pub-links a:hover {
-    background: rgba(192,87,27,0.08);
-    border-color: #c0571b;
+    background: var(--accent-light);
+    border-color: var(--accent);
   }
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.pub-section a').forEach(function(a) {
+    a.setAttribute('target', '_blank');
+    a.setAttribute('rel', 'noopener noreferrer');
+  });
+});
+</script>
 
 <div class="pub-section">
   <h4>Published</h4>
@@ -84,7 +93,7 @@ This list covers papers that develop or make direct use of the PROTEUS code. For
     <div class="pub-links">
       <a href="https://doi.org/10.1093/mnras/staf1167">DOI</a>
       <a href="https://arxiv.org/abs/2505.03604">arXiv</a>
-      <a href="https://ui.adsabs.harvard.edu/abs/2025MNRAS.541.2566N">ADS</a>
+      <a href="https://scixplorer.org/abs/2025MNRAS.541.2566N">SciX</a>
     </div>
   </div>
 
@@ -97,7 +106,7 @@ This list covers papers that develop or make direct use of the PROTEUS code. For
     <div class="pub-links">
       <a href="https://doi.org/10.1093/mnras/stae2772">DOI</a>
       <a href="https://arxiv.org/abs/2412.11987">arXiv</a>
-      <a href="https://ui.adsabs.harvard.edu/abs/2025MNRAS.536.2957N">ADS</a>
+      <a href="https://scixplorer.org/abs/2025MNRAS.536.2957N">SciX</a>
     </div>
   </div>
 
@@ -110,7 +119,7 @@ This list covers papers that develop or make direct use of the PROTEUS code. For
     <div class="pub-links">
       <a href="https://doi.org/10.1029/2024JE008576">DOI</a>
       <a href="https://arxiv.org/abs/2411.19137">arXiv</a>
-      <a href="https://ui.adsabs.harvard.edu/abs/2024JGRE..12908576N">ADS</a>
+      <a href="https://scixplorer.org/abs/2024JGRE..12908576N">SciX</a>
     </div>
   </div>
 
@@ -123,7 +132,7 @@ This list covers papers that develop or make direct use of the PROTEUS code. For
     <div class="pub-links">
       <a href="https://doi.org/10.1029/2020JE006711">DOI</a>
       <a href="https://arxiv.org/abs/2101.10991">arXiv</a>
-      <a href="https://ui.adsabs.harvard.edu/abs/2021JGRE..12606711L">ADS</a>
+      <a href="https://scixplorer.org/abs/2021JGRE..12606711L">SciX</a>
     </div>
   </div>
 </div>
@@ -139,7 +148,7 @@ This list covers papers that develop or make direct use of the PROTEUS code. For
     <p class="pub-venue">Submitted to MNRAS (2025)</p>
     <div class="pub-links">
       <a href="https://arxiv.org/abs/2512.05816">arXiv</a>
-      <a href="https://ui.adsabs.harvard.edu/abs/2025arXiv251205816C">ADS</a>
+      <a href="https://scixplorer.org/abs/2025arXiv251205816C">SciX</a>
     </div>
   </div>
 
@@ -151,7 +160,7 @@ This list covers papers that develop or make direct use of the PROTEUS code. For
     <p class="pub-venue">Under review (2025)</p>
     <div class="pub-links">
       <a href="https://arxiv.org/abs/2511.00952">arXiv</a>
-      <a href="https://ui.adsabs.harvard.edu/abs/2025arXiv251100952V">ADS</a>
+      <a href="https://scixplorer.org/abs/2025arXiv251100952V">SciX</a>
     </div>
   </div>
 
@@ -163,7 +172,7 @@ This list covers papers that develop or make direct use of the PROTEUS code. For
     <p class="pub-venue">In review (2025)</p>
     <div class="pub-links">
       <a href="https://arxiv.org/abs/2507.02656">arXiv</a>
-      <a href="https://ui.adsabs.harvard.edu/abs/2025arXiv250702656N">ADS</a>
+      <a href="https://scixplorer.org/abs/2025arXiv250702656N">SciX</a>
     </div>
   </div>
 </div>

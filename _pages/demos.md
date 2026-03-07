@@ -15,11 +15,11 @@ description: PROTEUS demonstrations. Simulating coupled interior-atmosphere inte
   }
   .demo-media img {
     border-radius: 0.5rem;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    box-shadow: var(--card-shadow);
   }
   .demo-media video {
     border-radius: 0.5rem;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    box-shadow: var(--card-shadow);
   }
 </style>
 

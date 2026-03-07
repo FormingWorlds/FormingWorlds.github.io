@@ -18,24 +18,24 @@ All PROTEUS modules are fully open source. The modules currently available are l
     font-size: 1.1rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: #8898aa;
-    border-bottom: 2px solid #e9ecef;
+    color: var(--muted-color);
+    border-bottom: 2px solid var(--border-color);
     padding-bottom: 0.5rem;
     margin-bottom: 1rem;
   }
   .module-card {
-    border: 1px solid #e9ecef;
+    border: 1px solid var(--border-color);
     border-radius: 0.5rem;
     padding: 1.25rem;
     margin-bottom: 1rem;
     transition: box-shadow 0.2s, transform 0.2s;
-    background: #fff;
+    background: var(--card-bg);
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
   .module-card:hover {
-    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    box-shadow: var(--card-shadow);
     transform: translateY(-2px);
   }
   .module-card .module-info { flex: 1; }
@@ -43,11 +43,11 @@ All PROTEUS modules are fully open source. The modules currently available are l
     font-weight: 700;
     font-size: 1.1rem;
     margin: 0;
-    color: #32325d;
+    color: var(--heading-color);
   }
   .module-card .module-desc {
     margin: 0.25rem 0 0;
-    color: #8898aa;
+    color: var(--muted-color);
     font-size: 0.95rem;
   }
   .module-card .module-link {
