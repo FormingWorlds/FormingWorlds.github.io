@@ -4,8 +4,6 @@ subtitle: PROTEUS resolves the interior-atmosphere evolution of rocky exoplanets
 
 tagline: PROTEUS framework for planetary evolution.
 description: PROTEUS demonstrations. Simulating coupled interior-atmosphere interactions on exoplanets using advanced numerical methods.
-
-featured_image: /assets/img/illustrations/two_face_planet.jpg
 ---
 
 <style>

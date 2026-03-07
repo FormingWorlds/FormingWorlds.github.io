@@ -98,11 +98,6 @@ a:hover {
   color: $brand-accent !important;
 }
 
-// Better page header overlay for readability
-.page-header.page-header-small .page-header-image {
-  filter: brightness(0.7);
-}
-
 // Navbar brand image sizing
 .navbar-brand img {
   max-height: 36px;

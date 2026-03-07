@@ -6,22 +6,4 @@ description: PROTEUS framework for planetary evolution. Simulating coupled inter
 featured_image: /assets/img/illustrations/two_face_planet.jpg
 ---
 
-{% if site.data.settings.home_settings.theme == "landing" %}
-  {% include home.html %}
-{% endif %}
-
-{% if site.data.settings.home_settings.theme == "blog" %}
-  <div class="page-header page-header-small bg-secondary fullWidth">
-    <div class="container contentWrapper">
-      <div class="row">
-        <div class="col-lg-10 mx-auto text-center pt-4">
-          <h2 class="display-2">Papers</h2>
-          <h2 class="lead pl-5 pr-5 pb-3 text-center">The latest from our papers</h2>
-        </div>
-      </div>
-    </div>
-  </div>
-  <section class="blog mt-5">
-    {% include blogsHome.html %}
-  </section>
-{% endif %}
+{% include home.html %}

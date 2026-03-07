@@ -4,8 +4,6 @@ subtitle: Explore the modular components of the PROTEUS framework
 
 tagline: PROTEUS framework for planetary evolution.
 description: PROTEUS framework for planetary evolution. Simulating coupled interior-atmosphere interactions on exoplanets using advanced numerical methods, to understand observations and the origin of life.
-
-featured_image: /assets/img/illustrations/two_face_planet.jpg
 ---
 
 Planetary evolution involves tightly coupled physical processes: radiative transfer in the atmosphere, convection and solidification in the mantle, volatile exchange between interior and surface reservoirs, chemical reactions, atmospheric escape, stellar irradiation, and tidal dissipation. No single code can treat all of these from first principles at once.

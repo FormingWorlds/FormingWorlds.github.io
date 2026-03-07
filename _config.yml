@@ -52,7 +52,7 @@ plugins:
   - jekyll-github-metadata
 
 paginate: 6
-paginate_path: "/papers/page:num/"
+paginate_path: "/page:num/"
 
 github: [metadata]
 

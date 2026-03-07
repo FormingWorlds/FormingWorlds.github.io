@@ -18,13 +18,8 @@ home_settings:
   theme: landing
 
 blog_settings:
-  # Choose a format for your papers listings:
-    # basic - a simple list of papers
-    # narrow - a masonary grid of papers
-    # grid - a full-width square grid of papers
   theme: basic
-  # Should we display a narrow grid of other papers at the bottom of each paper?
-  read_more: "yes"
+  read_more: "no"
 
 menu_settings:
   menu_items:
@@ -44,7 +39,7 @@ menu_settings:
       url: '/demos'
 
     - title: 'Publications'
-      url: 'https://scixplorer.org/public-libraries/EVAJ1UgWTCy2Z7TRoSmjtQ'
+      url: '/publications'
 
     - title: 'People & Contact'
       url: '/people'

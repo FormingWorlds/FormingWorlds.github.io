@@ -41,6 +41,84 @@
   })();
 </script>
 
+<section class="home-overview">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <p class="overview-lead">
+          PROTEUS is an open-source framework that couples models of planetary interiors, atmospheres, chemistry, and orbital dynamics to simulate how rocky planets evolve from molten beginnings to potentially habitable worlds.
+        </p>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-lg-10 mx-auto">
+        <h5 class="overview-section-title">Modules</h5>
+        <div class="overview-modules">
+          <div class="overview-module">
+            <span class="module-dot" style="background:#5e72e4"></span>
+            <div>
+              <strong>AGNI / JANUS</strong>
+              <span class="module-brief">Radiative-convective atmosphere models</span>
+            </div>
+          </div>
+          <div class="overview-module">
+            <span class="module-dot" style="background:#8b572a"></span>
+            <div>
+              <strong>SPIDER / Aragog</strong>
+              <span class="module-brief">Magma ocean and mantle evolution</span>
+            </div>
+          </div>
+          <div class="overview-module">
+            <span class="module-dot" style="background:#fb6340"></span>
+            <div>
+              <strong>CALLIOPE / Atmodeller</strong>
+              <span class="module-brief">Volatile partitioning and outgassing</span>
+            </div>
+          </div>
+          <div class="overview-module">
+            <span class="module-dot" style="background:#2dce89"></span>
+            <div>
+              <strong>VULCAN</strong>
+              <span class="module-brief">Atmospheric photochemistry</span>
+            </div>
+          </div>
+          <div class="overview-module">
+            <span class="module-dot" style="background:#11cdef"></span>
+            <div>
+              <strong>ZEPHYRUS</strong>
+              <span class="module-brief">Hydrodynamic atmospheric escape</span>
+            </div>
+          </div>
+          <div class="overview-module">
+            <span class="module-dot" style="background:#f5365c"></span>
+            <div>
+              <strong>MORS</strong>
+              <span class="module-brief">Stellar evolution tracks</span>
+            </div>
+          </div>
+          <div class="overview-module">
+            <span class="module-dot" style="background:#8965e0"></span>
+            <div>
+              <strong>LovePy / Obliqua</strong>
+              <span class="module-brief">Tidal dissipation and heating</span>
+            </div>
+          </div>
+          <div class="overview-module">
+            <span class="module-dot" style="background:#8b572a"></span>
+            <div>
+              <strong>Zalmoxis</strong>
+              <span class="module-brief">Planetary interior structure</span>
+            </div>
+          </div>
+        </div>
+        <div class="mt-3 text-right">
+          <a href="/modules" class="overview-link">Full module details <i class="ni ni-bold-right" style="font-size:0.75rem"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <style>
   .hero-tagline {
@@ -87,6 +165,72 @@
   @media (min-width: 992px) {
     .hero-text-position {
       margin-right: 0 !important;
+    }
+  }
+
+  /* Homepage overview section */
+  .home-overview {
+    padding: 4rem 0 3rem;
+    background: #fff;
+  }
+  .overview-lead {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #525f7f;
+    text-align: center;
+  }
+  .overview-section-title {
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.85rem;
+    color: #8898aa;
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  .overview-modules {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem 2rem;
+  }
+  .overview-module {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+  }
+  .module-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 0.45rem;
+  }
+  .overview-module strong {
+    color: #1a1a2e;
+    font-size: 0.95rem;
+  }
+  .module-brief {
+    display: block;
+    color: #8898aa;
+    font-size: 0.85rem;
+    margin-top: 0.1rem;
+  }
+  .overview-link {
+    font-size: 0.9rem;
+    color: #c0571b;
+    text-decoration: none;
+  }
+  .overview-link:hover {
+    color: #a34a17;
+    text-decoration: underline;
+  }
+  @media (max-width: 576px) {
+    .overview-modules {
+      grid-template-columns: 1fr;
+    }
+    .overview-lead {
+      font-size: 1.05rem;
     }
   }
 </style>
