@@ -44,14 +44,14 @@ In this example, the simulation begins with a modest initial inventory of volati
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', function () {
+(function () {
   var btn = document.getElementById('play-video-btn');
   var vid = document.getElementById('demo-earth-video');
   if (!btn || !vid) return;
   btn.addEventListener('click', function () {
     vid.play().catch(function(e){ console.warn('Video play failed:', e); });
   });
-});
+})();
 </script>
 
 Under these specific conditions, Earth cools and forms oceans within ~1 billion years of simulated time. Different choices of initial parameters (for instance, a more oxidised mantle or a larger volatile budget) would shift this timescale significantly. The animation is not only illustrative; the outgoing radiation spectrum (bottom left) changes over time. This spectrum is what JWST would observe for an exo-Earth.
