@@ -1,4 +1,14 @@
 // Site-wide custom styles for PROTEUS website
+// Unified colour scheme: brand orange accent, neutral navy/slate/grey
+
+// Brand palette
+$brand-accent: #c0571b;
+$brand-accent-hover: #a34a17;
+$brand-accent-light: rgba(192, 87, 27, 0.1);
+$heading-color: #1a1a2e;
+$body-color: #525f7f;
+$bg-light: #f7f8fa;
+$border-color: #e9ecef;
 
 // Smooth scrolling
 html {
@@ -9,6 +19,45 @@ html {
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: $body-color;
+}
+
+// Headings
+h1, h2, h3, h4, h5, h6,
+.display-1, .display-2, .display-3, .display-4 {
+  color: $heading-color;
+}
+
+// Override text-muted for better readability
+.text-muted {
+  color: $body-color !important;
+}
+
+// Override Argon primary colour to brand accent
+.btn-primary {
+  background-color: $brand-accent !important;
+  border-color: $brand-accent !important;
+}
+.btn-primary:hover, .btn-primary:focus {
+  background-color: $brand-accent-hover !important;
+  border-color: $brand-accent-hover !important;
+}
+.btn-outline-primary {
+  color: $brand-accent !important;
+  border-color: $brand-accent !important;
+}
+.btn-outline-primary:hover {
+  background-color: $brand-accent !important;
+  border-color: $brand-accent !important;
+  color: #fff !important;
+}
+
+// Links use brand accent
+a {
+  color: $brand-accent;
+}
+a:hover {
+  color: $brand-accent-hover;
 }
 
 // Section spacing
@@ -27,26 +76,26 @@ body {
 // Better link styling for content areas
 #main a:not(.btn):not(.nav-link) {
   text-decoration: underline;
-  text-decoration-color: rgba(94, 114, 228, 0.3);
+  text-decoration-color: rgba($brand-accent, 0.3);
   text-underline-offset: 2px;
   transition: text-decoration-color 0.2s;
 }
 #main a:not(.btn):not(.nav-link):hover {
-  text-decoration-color: rgba(94, 114, 228, 1);
+  text-decoration-color: $brand-accent;
 }
 
 // Footer styling
 .footer {
-  background-color: #f8f9fe;
-  border-top: 1px solid #e9ecef;
+  background-color: $bg-light;
+  border-top: 1px solid $border-color;
 }
 .footer h6 {
-  color: #32325d;
+  color: $heading-color;
   font-size: 0.75rem;
   letter-spacing: 0.05em;
 }
 .footer a.text-muted:hover {
-  color: #5e72e4 !important;
+  color: $brand-accent !important;
 }
 
 // Better page header overlay for readability
@@ -60,7 +109,7 @@ body {
   width: auto;
 }
 
-// Icon shape utility
+// Icon shape utility (homepage feature cards)
 .icon-shape {
   width: 64px;
   height: 64px;
@@ -72,18 +121,22 @@ body {
   font-size: 1.5rem;
 }
 
-// Gradient backgrounds
-.bg-gradient-primary {
-  background: linear-gradient(135deg, #5e72e4 0%, #825ee4 100%) !important;
-}
-.bg-gradient-warning {
-  background: linear-gradient(135deg, #fb6340 0%, #fbb140 100%) !important;
-}
+// Unified gradient for all feature card icons: brand accent
+.bg-gradient-primary,
+.bg-gradient-warning,
 .bg-gradient-info {
-  background: linear-gradient(135deg, #11cdef 0%, #1171ef 100%) !important;
+  background: linear-gradient(135deg, $brand-accent 0%, darken($brand-accent, 8%) 100%) !important;
 }
 
-// Badge circle for check marks
+// Badge colours: unify info/success/danger to brand accent
+.badge-primary,
+.badge-info,
+.badge-success,
+.badge-danger {
+  background-color: $brand-accent !important;
+}
+
+// Badge circle
 .badge-circle {
   width: 28px;
   height: 28px;
@@ -92,6 +145,18 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 0.7rem;
+  color: #fff;
+}
+
+// Nav link hover
+.navbar-nav .nav-link:hover {
+  color: $brand-accent !important;
+}
+
+// Dropdown menu icon colour (override Argon text-primary)
+.dropdown-item .ni,
+.dropdown-item i[class*="text-"] {
+  color: $brand-accent !important;
 }
 
 // Demo page video/image refinements
@@ -101,9 +166,68 @@ body {
   height: auto;
 }
 
-// Team cards: consistent height
+// Team cards: hide research topic lists, tighten layout
+.team-2 .card-profile .table-responsive {
+  display: none;
+}
 .team-2 .card-profile {
   margin-bottom: 2rem;
+}
+.team-2 .card-profile .card-body {
+  padding-bottom: 1rem;
+}
+// Remove diagonal white overlay on card images
+.team-2 .card-profile .card-header::after {
+  display: none !important;
+}
+.team-2 .card-profile .card-image::after {
+  display: none !important;
+}
+// Full-image team cards: image fills entire card, text overlaid at bottom
+.team-2 .card-profile {
+  position: relative;
+  overflow: hidden;
+  border: none !important;
+  border-radius: 0.5rem;
+  height: 350px;
+}
+.team-2 .card-profile .card-header {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.team-2 .card-profile .card-image,
+.team-2 .card-profile .card-image a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.team-2 .card-profile .card-image img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  object-position: top !important;
+}
+.team-2 .card-profile .card-body {
+  position: absolute !important;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 !important;
+  transform: none !important;
+  top: auto !important;
+  background: linear-gradient(transparent, rgba(0,0,0,0.7)) !important;
+  padding: 2.5rem 1.25rem 1rem !important;
+}
+.team-2 .card-profile .card-body .display-4 {
+  color: #fff !important;
+}
+.team-2 .card-profile .card-body .lead {
+  color: rgba(255,255,255,0.85) !important;
 }
 
 // Mobile improvements
