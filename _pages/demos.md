@@ -34,10 +34,7 @@ Here we configure PROTEUS to model one specific evolutionary pathway for the ear
 In this example, the simulation begins with a modest initial inventory of volatiles and a fully molten interior, and runs until oceans form.
 
 <div class="demo-media">
-  <button class="btn btn-primary mb-3" onclick="var v=document.getElementById('demo-earth-video');v.style.display='block';v.play();">
-    <i class="ni ni-button-play mr-1"></i> Simulate the early Earth
-  </button>
-  <video id="demo-earth-video" muted playsinline controls style="display:none; width: 100%; max-width: 500px;">
+  <video autoplay muted playsinline loop controls style="width: 100%; max-width: 500px;">
     <source src="{{ '/assets/demos/earth/anim.mp4' | relative_url }}" type="video/mp4">
   </video>
 </div>
