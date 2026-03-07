@@ -34,25 +34,11 @@ Here we configure PROTEUS to model one specific evolutionary pathway for the ear
 In this example, the simulation begins with a modest initial inventory of volatiles and a fully molten interior, and runs until oceans form.
 
 <div class="demo-media">
-  <button id="play-video-btn" class="btn btn-primary mb-3">
-    <i class="ni ni-button-play mr-1"></i> Simulate the early Earth
-  </button>
-  <video id="demo-earth-video" muted playsinline style="width: 100%; max-width: 500px;">
-    <source src="/assets/demos/earth/anim.mp4">
+  <video controls muted playsinline style="width: 100%; max-width: 500px;">
+    <source src="{{ '/assets/demos/earth/anim.mp4' | relative_url }}" type="video/mp4">
     Your browser does not support MP4 videos.
   </video>
 </div>
-
-<script>
-(function () {
-  var btn = document.getElementById('play-video-btn');
-  var vid = document.getElementById('demo-earth-video');
-  if (!btn || !vid) return;
-  btn.addEventListener('click', function () {
-    vid.play().catch(function(e){ console.warn('Video play failed:', e); });
-  });
-})();
-</script>
 
 Under these specific conditions, Earth cools and forms oceans within ~1 billion years of simulated time. Different choices of initial parameters (for instance, a more oxidised mantle or a larger volatile budget) would shift this timescale significantly. The animation is not only illustrative; the outgoing radiation spectrum (bottom left) changes over time. This spectrum is what JWST would observe for an exo-Earth.
 
