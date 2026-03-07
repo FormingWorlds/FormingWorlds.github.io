@@ -230,7 +230,25 @@ a:hover {
   color: rgba(255,255,255,0.85) !important;
 }
 
+// Prevent horizontal overflow from fullWidth elements
+html, body {
+  overflow-x: hidden;
+}
+
 // Mobile improvements
+@media (max-width: 991px) {
+  // Footer: stack columns vertically
+  .footer .row > [class*="col-"] {
+    margin-bottom: 1.5rem;
+  }
+  .footer .col-lg-2,
+  .footer .col-lg-3,
+  .footer .col-lg-4 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
 @media (max-width: 768px) {
   .display-2 {
     font-size: 2rem !important;
@@ -241,7 +259,67 @@ a:hover {
   .section {
     padding: 2rem 0;
   }
-  .footer .row > [class*="col-"] {
-    margin-bottom: 1.5rem;
+
+  // People cards: 2 per row on tablets
+  .team-2 .row > [class*="col-"] {
+    flex: 0 0 50% !important;
+    max-width: 50% !important;
+  }
+  .team-2 .card-profile {
+    height: 280px;
+  }
+
+  // Footer: fully stacked
+  .footer .col-lg-2,
+  .footer .col-lg-3,
+  .footer .col-lg-4 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  // Hero buttons: stack vertically
+  .hero-text-position .btn {
+    display: block;
+    margin: 0.5rem auto !important;
+    width: fit-content;
+  }
+
+  // Module cards: stack link below text
+  .module-card {
+    flex-wrap: wrap;
+  }
+  .module-card .module-link {
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  // People cards: 1 per row on phones
+  .team-2 .row > [class*="col-"] {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+  .team-2 .card-profile {
+    height: 350px;
+  }
+
+  // Smaller hero text
+  .hero-text-position p,
+  .hero-text-position span {
+    font-size: 100% !important;
+  }
+
+  // Tighter section padding
+  .section {
+    padding: 1.5rem 0;
+  }
+
+  // Footer text centered
+  .footer {
+    text-align: center;
+  }
+  .footer .text-md-right {
+    text-align: center !important;
   }
 }
