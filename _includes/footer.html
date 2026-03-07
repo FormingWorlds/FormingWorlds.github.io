@@ -1,63 +1,65 @@
-<footer class="footer mt-5 pt-4">
+<footer class="footer mt-5 pt-5">
   <div class="container">
-    <div class="row row-grid align-items-center mb-2 mt-2">
-      <div class="col-lg-6">
-        <h4 class="mb-0 font-weight-light">{{ site.data.settings.footer_settings.footer_tagline }}</h4>
+    <div class="row mb-4">
+      <div class="col-lg-4 mb-4 mb-lg-0">
+        <img src="{{ '/assets/img/brand/PROTEUS_black_on_white.png' | relative_url }}" alt="PROTEUS" style="max-height: 40px;" class="mb-3">
+        <p class="text-muted">{{ site.data.settings.footer_settings.footer_tagline }}</p>
       </div>
-      <div class="col-lg-6 text-lg-right">
-        {% include socials.html %}
+      <div class="col-lg-2 col-md-4 col-6">
+        <h6 class="text-uppercase font-weight-bold mb-3">Navigate</h6>
+        <ul class="list-unstyled">
+          {% for item in site.data.settings.menu_settings.menu_items %}
+          {% unless item.submenu_items %}
+          <li class="mb-2"><a href="{{ item.url | relative_url }}" class="text-muted">{{ item.title }}</a></li>
+          {% endunless %}
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-4 col-6">
+        <h6 class="text-uppercase font-weight-bold mb-3">Documentation</h6>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="https://proteus-framework.org/PROTEUS/" class="text-muted" target="_blank" rel="noopener noreferrer">PROTEUS docs</a></li>
+          <li class="mb-2"><a href="/modules" class="text-muted">Module overview</a></li>
+          <li class="mb-2"><a href="https://github.com/FormingWorlds/PROTEUS" class="text-muted" target="_blank" rel="noopener noreferrer">GitHub repository</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-4">
+        <h6 class="text-uppercase font-weight-bold mb-3">Contact</h6>
+        <p class="text-muted mb-2">
+          <a href="mailto:proteus_dev@formingworlds.space" class="text-muted">proteus_dev@formingworlds.space</a>
+        </p>
+        <div class="mt-3">
+          {% include socials.html %}
+        </div>
       </div>
     </div>
     <hr>
-    <div class="row align-items-center justify-content-md-between">
+    <div class="row align-items-center py-3">
       <div class="col-md-6">
         <div class="copyright">
-          <span> © 2024-{{ 'now' | date: "%Y" }} <a href="https://www.formingworlds.space" target="_blank">Forming Worlds Lab</a></span>
+          <span class="text-muted">&copy; 2024-{{ 'now' | date: "%Y" }} <a href="https://www.formingworlds.space" target="_blank" class="text-muted">Forming Worlds Lab</a>. Apache 2.0 licence.</span>
         </div>
       </div>
-      <div class="col-md-6">
-        <ul class="nav nav-footer justify-content-end">
-          {% for item in site.data.settings.menu_settings.menu_items %}
-          {% if item.submenu_items %}
-
-          {% else %}
-          <li class="nav-item">
-            <a href="{{ item.url | relative_url }}" class="nav-link">
-              <span class="nav-link-inner--text">{{ item.title }}</span>
-            </a>
-          </li>
-          {% endif %}
-          {% endfor %}
-        </ul>
+      <div class="col-md-6 text-md-right">
+        <span class="text-muted" style="font-size: 0.85rem;">Built with Jekyll and the Argon Design System</span>
       </div>
     </div>
   </div>
 </footer>
-
-
 
 <!--   Core JS Files   -->
 <script src="{{ "/assets/js/core/jquery.min.js" | relative_url }}" type="text/javascript"></script>
 <script src="{{ "/assets/js/core/popper.min.js" | relative_url }}" type="text/javascript"></script>
 <script src="{{ "/assets/js/core/bootstrap.min.js" | relative_url }}" type="text/javascript"></script>
 <script src="{{ "/assets/js/plugins/perfect-scrollbar.jquery.min.js" | relative_url }}"></script>
-<!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
 <script src="{{ "/assets/js/plugins/bootstrap-switch.js" | relative_url }}"></script>
-<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
 <script src="{{ "/assets/js/plugins/nouislider.min.js" | relative_url }}" type="text/javascript"></script>
-<!--  Plugin for the Carousel, full documentation here: http://jedrzejchalubek.com/ -->
-<script src="{{ "/assets/js/plugins/glide.js"" | relative_url }}" type="text/javascript"></script>
-<!--  Plugin for the DatePicker, full documentation here: https://flatpickr.js.org/ -->
+<script src="{{ "/assets/js/plugins/glide.js" | relative_url }}" type="text/javascript"></script>
 <script src="{{ "/assets/js/plugins/moment.min.js" | relative_url }}"></script>
-<!--	Plugin for Select, full documentation here: https://joshuajohnson.co.uk/Choices/ -->
 <script src="{{ "/assets/js/plugins/choices.min.js" | relative_url }}" type="text/javascript"></script>
-<!--  Plugin for the DateTimePicker, full documentation here: https://flatpickr.js.org/ -->
-<script src="{{ "/assets/js/plugins/datetimepicker.js"" | relative_url }}" type="text/javascript"></script>
-<!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
-<script src="{{ "/assets/js/plugins/jasny-bootstrap.min.js"" | relative_url }}"></script>
-<!-- Plugin for Headrom, full documentation here: https://wicky.nillia.ms/headroom.js/ -->
+<script src="{{ "/assets/js/plugins/datetimepicker.js" | relative_url }}" type="text/javascript"></script>
+<script src="{{ "/assets/js/plugins/jasny-bootstrap.min.js" | relative_url }}"></script>
 <script src="{{ "/assets/js/plugins/headroom.min.js" | relative_url }}"></script>
-<!-- Control Center for Argon UI Kit: parallax effects, scripts for the example pages etc -->
 
 <script>
   // Blog Post Carousel
@@ -72,8 +74,7 @@
   }
 
   if (document.querySelector('.glide') !== null) {
-    // Generic
-     new Glide('.glide', {
+    new Glide('.glide', {
       type: 'carousel',
       startAt: 0,
       focusAt: 2,
@@ -83,7 +84,6 @@
   }
 
   if (document.querySelector('.testimonial-glide') !== null) {
-    // Testimonial Carousel
     new Glide('.testimonial-glide', {
       type: 'carousel',
       startAt: 0,
@@ -92,19 +92,18 @@
       perView: 4
     }).mount();
   }
-
 </script>
 
 <script>
   $(function () {
     var navOffset = $('#navbar-main').height();
     $('.contentWrapper').css('padding-top', navOffset * 2 + 'px');
-  });    
+  });
 </script>
 
 {% if site.data.settings.advanced_settings.google_maps_key %}
 <script
-  src='https://maps.googleapis.com/maps/api/js?key={{ site.data.settings.advanced_settings.google_maps_key }}  '></script>
+  src='https://maps.googleapis.com/maps/api/js?key={{ site.data.settings.advanced_settings.google_maps_key }}'></script>
 {% endif %}
 
 <script src="{{ "/assets/js/argon-design-system.min.js?v=1.0.0" | relative_url }}" type="text/javascript"></script>

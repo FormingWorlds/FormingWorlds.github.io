@@ -1,34 +1,36 @@
 <header class="header-1 fullWidth">
   <div class="page-header">
-    <div class="page-header-image" data-bg="{{ '/assets/img/illustrations/two_face_planet.jpg' | relative_url }}" style="opacity: 0.9;width: 100vw; margin-left: calc(50% - 50vw); background-size: cover; background-position: center; background-repeat: no-repeat;" >
-
+    <div class="page-header-image" data-bg="{{ '/assets/img/illustrations/two_face_planet.jpg' | relative_url }}" style="opacity: 0.9; width: 100vw; margin-left: calc(50% - 50vw); background-size: cover; background-position: center; background-repeat: no-repeat;">
     </div>
     <div class="container-fluid">
       <div class="row justify-content-center">
-        <div class="col-12 col-md-8 col-lg-6 d-flex justify-content-center flex-column hero-text-position  text-center">
+        <div class="col-12 col-md-8 col-lg-6 d-flex justify-content-center flex-column hero-text-position text-center">
           <br><br><br><br>
           <img src="{{ '/assets/img/brand/PROTEUS_transparent.svg' | relative_url }}" alt="PROTEUS" class="hero-logo" width="90%">
-          <br><br>
-          <p class="lead mt-0">
-            <span style="font-weight: bold; color: #ffa568;  text-shadow: 3px 2px 3px #000000">
-              <br><br>
-              Simulate the coupled interior-atmosphere evolution of rocky planets over deep time. 
-              </span>
-            <span style="font-weight: normal; color: #ffa568;  text-shadow: 3px 2px 3px #000000; font-size: 90% !important;">
+          <p class="lead mt-4">
+            <span class="hero-tagline">
+              Simulate the coupled interior-atmosphere evolution of rocky planets over deep time.
+            </span>
+            <span class="hero-subtitle">
               <br><br>
               Named after the Greek god of sea change, PROTEUS is flexible and adaptable; it can foretell the future, but answers only to those who ask the right questions.
             </span>
-
           </p>
+          <div class="mt-4">
+            <a href="https://proteus-framework.org/PROTEUS/" class="btn btn-primary btn-lg mr-2" target="_blank" rel="noopener noreferrer">
+              <i class="ni ni-books mr-1"></i> Documentation
+            </a>
+            <a href="/demos" class="btn btn-outline-secondary btn-lg hero-btn-outline">
+              <i class="ni ni-spaceship mr-1"></i> See demos
+            </a>
+          </div>
           <br>
-          <!-- <div class="card-footer text-center bg-transparent">
-            <button class="btn btn-primary mb-3" onclick="location.href='demo.html'">See demo</button>
-          </div> -->
         </div>
       </div>
     </div>
   </div>
 </header>
+
 <script>
   (function() {
     var el = document.querySelector('.page-header-image[data-bg]');
@@ -36,34 +38,153 @@
       el.style.backgroundImage = 'url(' + el.dataset.bg + ')';
     }
   })();
-  </script>
-<style>
-  @media (min-width: 992px) {
-    .hero-text-position {
-      margin-right: 0 !important;
-    }
-  }
-</style>
-<style>
-  .hero-text-position h3.display-3 {
-    font-size: 350% !important;
-    line-height: 1.3;
-  }
-</style>
-<style>
-  .text-outline, .text-outline * {
-    text-shadow: -1px -1px 0 rgba(0,0,0,0.9), 1px -1px 0 rgba(0,0,0,0.9), -1px 1px 0 rgba(0,0,0,0.9), 1px 1px 0 rgba(0,0,0,0.9);
-  }
-</style>
+</script>
+
+<!-- Features section -->
+<section class="section section-features pb-0">
+  <div class="container">
+    <div class="row text-center mb-5">
+      <div class="col-md-8 mx-auto">
+        <h2 class="display-3">A modular framework for planetary science</h2>
+        <p class="lead text-muted">PROTEUS couples independently developed physics modules into a single evolutionary simulation. Each module can be swapped, configured, or extended.</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card shadow-sm border-0 h-100">
+          <div class="card-body text-center px-4 py-5">
+            <div class="icon icon-shape icon-lg bg-gradient-primary text-white rounded-circle mb-4">
+              <i class="ni ni-world-2"></i>
+            </div>
+            <h5 class="font-weight-bold">Atmosphere</h5>
+            <p class="text-muted mb-0">Radiative-convective and prescribed atmosphere models (AGNI, JANUS) with chemical kinetics (VULCAN) and hydrodynamic escape (ZEPHYRUS).</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card shadow-sm border-0 h-100">
+          <div class="card-body text-center px-4 py-5">
+            <div class="icon icon-shape icon-lg bg-gradient-warning text-white rounded-circle mb-4">
+              <i class="ni ni-atom"></i>
+            </div>
+            <h5 class="font-weight-bold">Interior</h5>
+            <p class="text-muted mb-0">Magma ocean dynamics (Aragog, SPIDER), interior structure (Zalmoxis), and volatile outgassing (CALLIOPE, Atmodeller).</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-12 mb-4">
+        <div class="card shadow-sm border-0 h-100">
+          <div class="card-body text-center px-4 py-5">
+            <div class="icon icon-shape icon-lg bg-gradient-info text-white rounded-circle mb-4">
+              <i class="ni ni-settings-gear-65"></i>
+            </div>
+            <h5 class="font-weight-bold">Stellar & tidal</h5>
+            <p class="text-muted mb-0">Stellar luminosity evolution (MORS) and tidal heating from solid-phase (LovePy) and multi-phase (Obliqua) models.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-2 mb-5">
+      <a href="/modules" class="btn btn-sm btn-outline-primary">
+        View all modules <i class="ni ni-bold-right ml-1"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Highlights section -->
+<section class="section section-highlights bg-secondary py-5">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <img src="{{ '/assets/demos/earth/global.png' | relative_url }}" alt="PROTEUS simulation output for early Earth" class="img-fluid rounded shadow">
+      </div>
+      <div class="col-lg-6">
+        <h2 class="display-3">From magma oceans to habitable worlds</h2>
+        <p class="lead text-muted">
+          PROTEUS resolves the full evolutionary arc: from a molten post-impact state through volatile outgassing, atmospheric build-up, and ocean condensation.
+        </p>
+        <ul class="list-unstyled mt-3">
+          <li class="py-2">
+            <div class="d-flex align-items-center">
+              <div class="badge badge-circle badge-primary mr-3"><i class="ni ni-check-bold"></i></div>
+              <span>Sub-Neptunes, super-Earths, and terrestrial planets</span>
+            </div>
+          </li>
+          <li class="py-2">
+            <div class="d-flex align-items-center">
+              <div class="badge badge-circle badge-primary mr-3"><i class="ni ni-check-bold"></i></div>
+              <span>Coupled interior-atmosphere-escape evolution</span>
+            </div>
+          </li>
+          <li class="py-2">
+            <div class="d-flex align-items-center">
+              <div class="badge badge-circle badge-primary mr-3"><i class="ni ni-check-bold"></i></div>
+              <span>Synthetic observables for JWST and future missions</span>
+            </div>
+          </li>
+          <li class="py-2">
+            <div class="d-flex align-items-center">
+              <div class="badge badge-circle badge-primary mr-3"><i class="ni ni-check-bold"></i></div>
+              <span>Open source under the Apache 2.0 licence</span>
+            </div>
+          </li>
+        </ul>
+        <a href="/demos" class="btn btn-primary mt-3">
+          <i class="ni ni-spaceship mr-1"></i> Explore demos
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA section -->
+<section class="section section-cta py-5">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-8 mx-auto">
+        <h2 class="display-3">Get started</h2>
+        <p class="lead text-muted mb-4">
+          PROTEUS is free and open source. Install it, run the tutorials, and start simulating planetary evolution.
+        </p>
+        <a href="https://proteus-framework.org/PROTEUS/" class="btn btn-primary btn-lg mr-2" target="_blank" rel="noopener noreferrer">
+          <i class="ni ni-books mr-1"></i> Read the docs
+        </a>
+        <a href="https://github.com/FormingWorlds/PROTEUS" class="btn btn-default btn-lg" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-github mr-1"></i> View on GitHub
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <style>
+  .hero-tagline {
+    font-weight: bold;
+    color: #ffa568;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+  }
+  .hero-subtitle {
+    font-weight: normal;
+    color: #ffa568;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    font-size: 90% !important;
+  }
   .hero-text-position p,
   .hero-text-position span {
     font-size: 130% !important;
-    line-height: 1.3;
+    line-height: 1.4;
   }
-</style>
-<style>
+  .hero-btn-outline {
+    color: #fff !important;
+    border-color: rgba(255,255,255,0.6) !important;
+  }
+  .hero-btn-outline:hover {
+    background-color: rgba(255,255,255,0.15) !important;
+    border-color: #fff !important;
+  }
   .hero-logo {
     max-width: 750px;
     width: 100%;
@@ -80,5 +201,27 @@
     .hero-logo {
       max-width: 250px;
     }
+  }
+  @media (min-width: 992px) {
+    .hero-text-position {
+      margin-right: 0 !important;
+    }
+  }
+  .section-features .icon-shape {
+    width: 64px;
+    height: 64px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+  }
+  .section-highlights {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    padding-left: calc(50vw - 50%);
+    padding-right: calc(50vw - 50%);
+  }
+  .section-cta {
+    border-top: 1px solid #e9ecef;
   }
 </style>
