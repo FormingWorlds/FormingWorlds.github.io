@@ -5,11 +5,22 @@ site: PROTEUS Framework
 domain: formingworlds.github.io
 
 title: PROTEUS Framework
+description: "Open-source framework for simulating the coupled interior-atmosphere evolution of rocky planets, from magma oceans to habitable worlds."
+lang: en
 
 author: Tim Lichtenberg
 
 url: https://proteus-framework.org
-baseurl: 
+baseurl:
+
+# Social / SEO (used by jekyll-seo-tag)
+logo: /assets/img/brand/PROTEUS_white_on_black.png
+social:
+  name: PROTEUS Framework
+  links:
+    - https://github.com/FormingWorlds/PROTEUS
+twitter:
+  card: summary_large_image
 
 collections:
   pages:
@@ -26,6 +37,7 @@ defaults:
       path: ""
     values:
       layout: "default"
+      image: /assets/img/og-default.jpg
   -
     scope:
       path: ""
@@ -37,7 +49,7 @@ defaults:
       path: ""
       type: "posts"
     values:
-      layout: "post" 
+      layout: "post"
 
 sass:
   sass_dir: assets/styles

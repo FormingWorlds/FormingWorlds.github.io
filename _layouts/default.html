@@ -56,21 +56,7 @@
     }
   </script>
 
-  <title>{% if page.url == "/" %}{{ site.data.settings.basic_settings.site_title }} – {{ page.title }}{% else %}{{ page.title }} – {{ site.data.settings.basic_settings.site_title }}{% endif %}</title>
-  <meta name="description" content="{{ page.description }}">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title"
-    content="{% if page.url == "/" %}{{ site.data.settings.basic_settings.site_title }} – {{ page.title }}{% else %}{{ page.title }} – {{ site.data.settings.basic_settings.site_title }}{% endif %}">
-  <meta name="twitter:description" content="{{ page.description }}">
-  <meta name="twitter:image:src" content="{{ page.featured_image | absolute_url }}">
-
-  <!-- Facebook OpenGraph -->
-  <meta property="og:title"
-    content="{% if page.url == "/" %}{{ site.data.settings.basic_settings.site_title }} – {{ page.title }}{% else %}{{ page.title }} – {{ site.data.settings.basic_settings.site_title }}{% endif %}" />
-  <meta property="og:description" content="{{ page.description }}" />
-  <meta property="og:image" content="{{ page.featured_image | absolute_url }}" />
+  <!-- Title, OG, Twitter, and structured data handled by jekyll-seo-tag below -->
 
   <!--  Fonts and icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">

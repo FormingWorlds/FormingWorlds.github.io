@@ -2,8 +2,8 @@
 title: Demonstrations
 subtitle: PROTEUS resolves the interior-atmosphere evolution of rocky exoplanets, including sub-Neptunes, super-Earths, and terrestrials.
 
-tagline: PROTEUS framework for planetary evolution.
-description: PROTEUS demonstrations. Simulating coupled interior-atmosphere interactions on exoplanets using advanced numerical methods.
+description: "Live demonstrations of the PROTEUS framework simulating Earth's magma ocean solidification, atmosphere-interior coupling, and volatile evolution."
+image: /assets/img/og-default.jpg
 ---
 
 <style>

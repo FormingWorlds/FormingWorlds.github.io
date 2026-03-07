@@ -2,8 +2,8 @@
 title: Meet the team
 subtitle: For enquiries please write an email to <a href="mailto:proteus_dev@formingworlds.space">proteus_dev@formingworlds.space</a>
 
-tagline: PROTEUS framework for planetary evolution.
-description: PROTEUS framework for planetary evolution. Simulating coupled interior-atmosphere interactions on exoplanets using advanced numerical methods, to understand observations and the origin of life.
+description: "The PROTEUS development team: researchers and software engineers building open-source tools for rocky planet evolution."
+image: /assets/img/og-default.jpg
 ---
 
 {% include components/teams/team-carousel-2.html %}

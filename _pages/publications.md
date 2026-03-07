@@ -2,8 +2,8 @@
 title: Publications
 subtitle: Scientific papers that develop or apply the PROTEUS framework
 
-tagline: PROTEUS framework publications.
-description: Scientific publications developing and applying the PROTEUS framework for simulating coupled interior-atmosphere evolution of rocky planets.
+description: "Scientific papers developing and applying the PROTEUS framework for coupled interior-atmosphere evolution of rocky exoplanets and early Earth."
+image: /assets/img/og-default.jpg
 ---
 
 This list covers papers that develop or make direct use of the PROTEUS code. For a continuously updated version, see the [SciX library](https://scixplorer.org/public-libraries/EVAJ1UgWTCy2Z7TRoSmjtQ).
