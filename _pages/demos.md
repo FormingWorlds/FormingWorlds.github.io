@@ -85,7 +85,7 @@ image: /assets/img/og-default.jpg
       <div class="detail-body">
         <p>Starting from a fully molten mantle after a giant impact, PROTEUS tracks how Earth's magma ocean solidifies, volatiles outgas to form a thick steam atmosphere, and liquid water oceans eventually form.</p>
         <p>The simulation begins with a high mantle entropy (2900 J/K/kg) representing the aftermath of the Moon-forming impact. As the magma ocean cools, dissolved volatiles partition into the atmosphere following thermochemical equilibrium (CALLIOPE). The atmosphere is dominated by steam, CO<sub>2</sub>, and H<sub>2</sub>S.</p>
-        <p>Solidification approaches completion within ~700,000 years, with the last percent of melt persisting in the deep mantle. The thick steam atmosphere (~200 bar H<sub>2</sub>O, ~50 bar CO<sub>2</sub>) persists longer, eventually condensing to form a liquid water ocean beneath a CO<sub>2</sub>-dominated atmosphere. This transition constrains when Earth first became habitable, and is directly testable against geological evidence from the oldest surviving rocks.</p>
+        <p>The surface cools rapidly within the first ~700,000 years, but the last percent of deep-mantle melt persists through rheological transitions, reaching full solidification at ~2 million years. By that point the atmosphere has grown to ~290 bar (~210 bar H<sub>2</sub>O, ~50 bar CO<sub>2</sub>, plus N<sub>2</sub>, H<sub>2</sub>S, and SO<sub>2</sub>). This thick steam atmosphere eventually condenses to form a liquid water ocean beneath a CO<sub>2</sub>-dominated atmosphere. The transition constrains when Earth first became habitable, and is directly testable against geological evidence from the oldest surviving rocks.</p>
       </div>
     </details>
   </div>
