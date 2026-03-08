@@ -1,8 +1,8 @@
 ---
 title: Demonstrations
-subtitle: PROTEUS resolves the interior-atmosphere evolution of rocky exoplanets, including sub-Neptunes, super-Earths, and terrestrials.
+subtitle: PROTEUS resolves the coupled interior-atmosphere evolution of rocky planets from a molten beginning.
 
-description: "Live demonstrations of the PROTEUS framework simulating magma ocean solidification, atmosphere formation, and volatile evolution across four planetary scenarios."
+description: "Demonstration of the PROTEUS framework simulating magma ocean solidification and atmosphere formation for early Earth."
 image: /assets/img/og-default.jpg
 ---
 
@@ -13,278 +13,69 @@ image: /assets/img/og-default.jpg
   </video>
 </div>
 <p class="demo-hero-caption">
-  Earth's magma ocean solidifies over hundreds of thousands of years, outgassing volatiles that form a thick steam atmosphere. Eventually the surface cools enough for liquid water to condense, forming the first oceans. PROTEUS tracks this entire evolution self-consistently.
+  Earth's magma ocean solidifies over two million years, outgassing volatiles that form a thick steam atmosphere. PROTEUS tracks this entire evolution self-consistently.
 </p>
 
-<!-- Scenario tabs -->
-<h4 class="demo-section-title">Explore scenarios</h4>
+<!-- Earth scenario -->
+<h4 class="demo-section-title">Early Earth</h4>
 
-<ul class="scenario-pills nav nav-pills" role="tablist">
-  <li class="nav-item">
-    <a class="nav-link active" data-toggle="pill" href="#scenario-earth" role="tab">Early Earth</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" data-toggle="pill" href="#scenario-l9859d" role="tab">Super-Earth (L 98-59 d)</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" data-toggle="pill" href="#scenario-lavaworld" role="tab">Lava World</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" data-toggle="pill" href="#scenario-subneptune" role="tab">Sub-Neptune</a>
-  </li>
-</ul>
-
-<div class="tab-content">
-
-  <!-- ═══ EARTH ═══ -->
-  <div class="tab-pane fade show active scenario-pane" id="scenario-earth" role="tabpanel">
-    <div class="scenario-top">
-      <div class="scenario-video-col">
-        <video autoplay muted playsinline loop controls>
-          <source src="{{ '/assets/demos/earth/video.mp4' | relative_url }}" type="video/mp4">
-        </video>
-      </div>
-      <div class="scenario-info-col">
-        <div class="at-a-glance">
-          <h5>At a glance</h5>
-          <table>
-            <tr><td>Mass</td><td>1 M<sub>Earth</sub></td></tr>
-            <tr><td>Orbit</td><td>1 AU (Sun)</td></tr>
-            <tr><td>Volatiles</td><td>1 Earth ocean H<sub>2</sub>O</td></tr>
-            <tr><td>Redox</td><td>IW+4</td></tr>
-            <tr><td>Interior</td><td>SPIDER (magma ocean dynamics)</td></tr>
-            <tr><td>Atmosphere</td><td>AGNI (radiative-convective)</td></tr>
-          </table>
-          <div class="outcome">
-            <strong>Outcome:</strong> Ocean formation within ~1 Gyr
-          </div>
+<div class="scenario-pane">
+  <div class="scenario-top">
+    <div class="scenario-video-col">
+      <video autoplay muted playsinline loop controls>
+        <source src="{{ '/assets/demos/earth/video.mp4' | relative_url }}" type="video/mp4">
+      </video>
+    </div>
+    <div class="scenario-info-col">
+      <div class="at-a-glance">
+        <h5>At a glance</h5>
+        <table>
+          <tr><td>Mass</td><td>1 M<sub>Earth</sub></td></tr>
+          <tr><td>Orbit</td><td>1 AU (Sun)</td></tr>
+          <tr><td>Volatiles</td><td>1 Earth ocean H<sub>2</sub>O</td></tr>
+          <tr><td>Redox</td><td>IW+4</td></tr>
+          <tr><td>Interior</td><td>SPIDER (magma ocean dynamics)</td></tr>
+          <tr><td>Atmosphere</td><td>AGNI (radiative-convective)</td></tr>
+        </table>
+        <div class="outcome">
+          <strong>Outcome:</strong> Full mantle solidification within ~2 Myr
         </div>
       </div>
     </div>
-
-    <div class="result-gallery">
-      <div class="result-card">
-        <img class="plot-dark" src="{{ '/assets/demos/earth/thermal-dark.png' | relative_url }}" alt="Earth thermal evolution" loading="lazy">
-        <img class="plot-light" src="{{ '/assets/demos/earth/thermal-light.png' | relative_url }}" alt="Earth thermal evolution" loading="lazy">
-        <div class="result-label">Thermal evolution</div>
-      </div>
-      <div class="result-card">
-        <img class="plot-dark" src="{{ '/assets/demos/earth/volatiles-dark.png' | relative_url }}" alt="Earth volatile inventory" loading="lazy">
-        <img class="plot-light" src="{{ '/assets/demos/earth/volatiles-light.png' | relative_url }}" alt="Earth volatile inventory" loading="lazy">
-        <div class="result-label">Volatile inventory</div>
-      </div>
-      <div class="result-card">
-        <img class="plot-dark" src="{{ '/assets/demos/earth/spectrum-dark.png' | relative_url }}" alt="Earth emission spectrum" loading="lazy">
-        <img class="plot-light" src="{{ '/assets/demos/earth/spectrum-light.png' | relative_url }}" alt="Earth emission spectrum" loading="lazy">
-        <div class="result-label">Emission spectrum</div>
-      </div>
-    </div>
-
-    <details class="demo-detail">
-      <summary>Detailed interpretation</summary>
-      <div class="detail-body">
-        <p>Starting from a fully molten mantle after a giant impact, PROTEUS tracks how Earth's magma ocean solidifies, volatiles outgas to form a thick steam atmosphere, and liquid water oceans eventually form.</p>
-        <p>The simulation begins with a high mantle entropy (2900 J/K/kg) representing the aftermath of the Moon-forming impact. As the magma ocean cools, dissolved volatiles partition into the atmosphere following thermochemical equilibrium (CALLIOPE). The atmosphere is dominated by steam, CO<sub>2</sub>, and H<sub>2</sub>S.</p>
-        <p>The surface cools rapidly within the first ~700,000 years, but the last percent of deep-mantle melt persists through rheological transitions, reaching full solidification at ~2 million years. By that point the atmosphere has grown to ~290 bar (~210 bar H<sub>2</sub>O, ~50 bar CO<sub>2</sub>, plus N<sub>2</sub>, H<sub>2</sub>S, and SO<sub>2</sub>). This thick steam atmosphere eventually condenses to form a liquid water ocean beneath a CO<sub>2</sub>-dominated atmosphere. The transition constrains when Earth first became habitable, and is directly testable against geological evidence from the oldest surviving rocks.</p>
-      </div>
-    </details>
   </div>
 
-  <!-- ═══ SUPER-EARTH (L 98-59 d) ═══ -->
-  <div class="tab-pane fade scenario-pane" id="scenario-l9859d" role="tabpanel">
-    <div class="scenario-top">
-      <div class="scenario-video-col">
-        <video muted playsinline loop controls>
-          <source src="{{ '/assets/demos/l9859d/video.mp4' | relative_url }}" type="video/mp4">
-        </video>
-      </div>
-      <div class="scenario-info-col">
-        <div class="at-a-glance">
-          <h5>At a glance</h5>
-          <table>
-            <tr><td>Mass</td><td>1.64 M<sub>Earth</sub></td></tr>
-            <tr><td>Orbit</td><td>0.05 AU (M-dwarf, 0.29 M<sub>Sun</sub>)</td></tr>
-            <tr><td>Volatiles</td><td>H-rich, volatile-rich mantle</td></tr>
-            <tr><td>Redox</td><td>IW-4</td></tr>
-            <tr><td>Interior</td><td>SPIDER</td></tr>
-            <tr><td>Atmosphere</td><td>AGNI (Honeyside opacities)</td></tr>
-          </table>
-          <div class="outcome">
-            <strong>Outcome:</strong> Thick atmosphere, extended magma ocean, slow solidification
-          </div>
-        </div>
-      </div>
+  <div class="result-gallery">
+    <div class="result-card">
+      <img class="plot-dark" src="{{ '/assets/demos/earth/thermal-dark.png' | relative_url }}" alt="Earth thermal evolution" loading="lazy">
+      <img class="plot-light" src="{{ '/assets/demos/earth/thermal-light.png' | relative_url }}" alt="Earth thermal evolution" loading="lazy">
+      <div class="result-label">Thermal evolution</div>
     </div>
-
-    <div class="result-gallery">
-      <div class="result-card">
-        <img class="plot-dark" src="{{ '/assets/demos/l9859d/thermal-dark.png' | relative_url }}" alt="L 98-59 d thermal evolution" loading="lazy">
-        <img class="plot-light" src="{{ '/assets/demos/l9859d/thermal-light.png' | relative_url }}" alt="L 98-59 d thermal evolution" loading="lazy">
-        <div class="result-label">Thermal evolution</div>
-      </div>
-      <div class="result-card">
-        <img class="plot-dark" src="{{ '/assets/demos/l9859d/volatiles-dark.png' | relative_url }}" alt="L 98-59 d volatile inventory" loading="lazy">
-        <img class="plot-light" src="{{ '/assets/demos/l9859d/volatiles-light.png' | relative_url }}" alt="L 98-59 d volatile inventory" loading="lazy">
-        <div class="result-label">Volatile inventory</div>
-      </div>
-      <div class="result-card">
-        <img class="plot-dark" src="{{ '/assets/demos/l9859d/spectrum-dark.png' | relative_url }}" alt="L 98-59 d emission spectrum" loading="lazy">
-        <img class="plot-light" src="{{ '/assets/demos/l9859d/spectrum-light.png' | relative_url }}" alt="L 98-59 d emission spectrum" loading="lazy">
-        <div class="result-label">Emission spectrum</div>
-      </div>
+    <div class="result-card">
+      <img class="plot-dark" src="{{ '/assets/demos/earth/volatiles-dark.png' | relative_url }}" alt="Earth volatile inventory" loading="lazy">
+      <img class="plot-light" src="{{ '/assets/demos/earth/volatiles-light.png' | relative_url }}" alt="Earth volatile inventory" loading="lazy">
+      <div class="result-label">Volatile inventory</div>
     </div>
-
-    <details class="demo-detail">
-      <summary>Detailed interpretation</summary>
-      <div class="detail-body">
-        <p>L 98-59 d is a volatile-rich rocky super-Earth orbiting an M-dwarf at just 0.05 AU. Close-in stellar irradiation heats the surface strongly, while a massive volatile inventory keeps the atmosphere thick and opaque.</p>
-        <p>The combination of strong irradiation and a reduced mantle (IW-4) produces a hydrogen-rich outgassed atmosphere that acts as a thermal blanket, slowing interior cooling significantly. The magma ocean phase is extended compared to Earth-like conditions.</p>
-        <p>L 98-59 d is a confirmed JWST target. PROTEUS predictions for its atmospheric composition, thermal emission, and surface state are directly testable with upcoming observations.</p>
-      </div>
-    </details>
   </div>
 
-  <!-- ═══ LAVA WORLD ═══ -->
-  <div class="tab-pane fade scenario-pane" id="scenario-lavaworld" role="tabpanel">
-    <div class="scenario-top">
-      <div class="scenario-video-col">
-        <video muted playsinline loop controls>
-          <source src="{{ '/assets/demos/lavaworld/video.mp4' | relative_url }}" type="video/mp4">
-        </video>
-      </div>
-      <div class="scenario-info-col">
-        <div class="at-a-glance">
-          <h5>At a glance</h5>
-          <table>
-            <tr><td>Mass</td><td>~1 M<sub>Earth</sub></td></tr>
-            <tr><td>Orbit</td><td>~0.015 AU (M-dwarf, 0.1 M<sub>Sun</sub>)</td></tr>
-            <tr><td>Volatiles</td><td>~0.1 Earth oceans H<sub>2</sub>O</td></tr>
-            <tr><td>Redox</td><td>IW+2</td></tr>
-            <tr><td>Interior</td><td>SPIDER</td></tr>
-            <tr><td>Atmosphere</td><td>AGNI + CALLIOPE</td></tr>
-          </table>
-          <div class="outcome">
-            <strong>Outcome:</strong> Rapid solidification, thick secondary atmosphere from outgassing
-          </div>
-        </div>
-      </div>
+  <details class="demo-detail">
+    <summary>Detailed interpretation</summary>
+    <div class="detail-body">
+      <p>Starting from a fully molten mantle after a giant impact, PROTEUS tracks how Earth's magma ocean solidifies and volatiles outgas to form a thick steam atmosphere.</p>
+      <p>The simulation begins with a high mantle entropy (2900 J/K/kg) representing the aftermath of the Moon-forming impact. As the magma ocean cools, dissolved volatiles partition into the atmosphere following thermochemical equilibrium (CALLIOPE). The atmosphere becomes dominated by H<sub>2</sub>O, CO<sub>2</sub>, and sulfur species.</p>
+      <p>The surface cools from ~3400 K to ~1400 K within the first ~2 million years, with the last few percent of deep-mantle melt persisting through rheological transitions. By the end of solidification the atmosphere has grown to ~290 bar (~210 bar H<sub>2</sub>O, ~50 bar CO<sub>2</sub>, plus N<sub>2</sub>, H<sub>2</sub>S, and SO<sub>2</sub>). This thick steam atmosphere eventually condenses to form a liquid water ocean beneath a CO<sub>2</sub>-dominated atmosphere, constraining when Earth first became habitable.</p>
     </div>
-
-    <div class="result-gallery">
-      <div class="result-card">
-        <img class="plot-dark" src="{{ '/assets/demos/lavaworld/thermal-dark.png' | relative_url }}" alt="Lava world thermal evolution" loading="lazy">
-        <img class="plot-light" src="{{ '/assets/demos/lavaworld/thermal-light.png' | relative_url }}" alt="Lava world thermal evolution" loading="lazy">
-        <div class="result-label">Thermal evolution</div>
-      </div>
-      <div class="result-card">
-        <img class="plot-dark" src="{{ '/assets/demos/lavaworld/volatiles-dark.png' | relative_url }}" alt="Lava world volatile inventory" loading="lazy">
-        <img class="plot-light" src="{{ '/assets/demos/lavaworld/volatiles-light.png' | relative_url }}" alt="Lava world volatile inventory" loading="lazy">
-        <div class="result-label">Volatile inventory</div>
-      </div>
-      <div class="result-card">
-        <img class="plot-dark" src="{{ '/assets/demos/lavaworld/spectrum-dark.png' | relative_url }}" alt="Lava world emission spectrum" loading="lazy">
-        <img class="plot-light" src="{{ '/assets/demos/lavaworld/spectrum-light.png' | relative_url }}" alt="Lava world emission spectrum" loading="lazy">
-        <div class="result-label">Emission spectrum</div>
-      </div>
-    </div>
-
-    <details class="demo-detail">
-      <summary>Detailed interpretation</summary>
-      <div class="detail-body">
-        <p>A small rocky planet orbiting very close to its M-dwarf host star. Despite intense stellar irradiation, the equilibrium temperature (~440 K) lies below the silicate solidus, so the initially molten mantle solidifies within ~100,000 years.</p>
-        <p>As the magma ocean cools, dissolved volatiles partition into the atmosphere following thermochemical equilibrium. The planet builds up a substantial secondary atmosphere (~34 bar) dominated by CO<sub>2</sub>, CO, and H<sub>2</sub>O over hundreds of millions of years. The surface temperature stabilises around 700 K, well above the equilibrium temperature, because the thick outgassed atmosphere acts as a thermal blanket.</p>
-        <p>Close-in rocky planets around M-dwarfs are prime targets for atmospheric characterisation with JWST and future missions. PROTEUS predictions for their atmospheric composition and thermal state are directly testable.</p>
-      </div>
-    </details>
-  </div>
-
-  <!-- ═══ SUB-NEPTUNE ═══ -->
-  <div class="tab-pane fade scenario-pane" id="scenario-subneptune" role="tabpanel">
-    <div class="scenario-top">
-      <div class="scenario-video-col">
-        <video muted playsinline loop controls>
-          <source src="{{ '/assets/demos/subneptune/video.mp4' | relative_url }}" type="video/mp4">
-        </video>
-      </div>
-      <div class="scenario-info-col">
-        <div class="at-a-glance">
-          <h5>At a glance</h5>
-          <table>
-            <tr><td>Mass</td><td>5 M<sub>Earth</sub></td></tr>
-            <tr><td>Instellation</td><td>100x Earth</td></tr>
-            <tr><td>Atmosphere</td><td>H-rich envelope</td></tr>
-            <tr><td>Escape</td><td>ZEPHYRUS (XUV-driven)</td></tr>
-            <tr><td>Stellar evolution</td><td>MORS</td></tr>
-            <tr><td>Interior</td><td>SPIDER</td></tr>
-          </table>
-          <div class="outcome">
-            <strong>Outcome:</strong> Competition between outgassing and escape determines final atmospheric mass
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="result-gallery">
-      <div class="result-card">
-        <img class="plot-dark" src="{{ '/assets/demos/subneptune/thermal-dark.png' | relative_url }}" alt="Sub-Neptune thermal evolution" loading="lazy">
-        <img class="plot-light" src="{{ '/assets/demos/subneptune/thermal-light.png' | relative_url }}" alt="Sub-Neptune thermal evolution" loading="lazy">
-        <div class="result-label">Thermal evolution</div>
-      </div>
-      <div class="result-card">
-        <img class="plot-dark" src="{{ '/assets/demos/subneptune/volatiles-dark.png' | relative_url }}" alt="Sub-Neptune volatile inventory" loading="lazy">
-        <img class="plot-light" src="{{ '/assets/demos/subneptune/volatiles-light.png' | relative_url }}" alt="Sub-Neptune volatile inventory" loading="lazy">
-        <div class="result-label">Volatile inventory</div>
-      </div>
-      <div class="result-card">
-        <img class="plot-dark" src="{{ '/assets/demos/subneptune/spectrum-dark.png' | relative_url }}" alt="Sub-Neptune emission spectrum" loading="lazy">
-        <img class="plot-light" src="{{ '/assets/demos/subneptune/spectrum-light.png' | relative_url }}" alt="Sub-Neptune emission spectrum" loading="lazy">
-        <div class="result-label">Emission spectrum</div>
-      </div>
-    </div>
-
-    <details class="demo-detail">
-      <summary>Detailed interpretation</summary>
-      <div class="detail-body">
-        <p>A 5 Earth-mass planet with an H<sub>2</sub>-rich volatile envelope under intense stellar irradiation. PROTEUS tracks how XUV-driven escape strips the atmosphere while the molten interior outgasses dissolved volatiles, setting up a competition that determines the planet's final state.</p>
-        <p>The host star's XUV luminosity evolves over time (tracked by MORS), declining from its high initial levels as the star spins down. ZEPHYRUS computes the corresponding hydrodynamic escape rate. In this simulation, escape overwhelms outgassing: the initially thick (~600 bar) H<sub>2</sub>-dominated atmosphere is completely stripped within ~650 kyr, leaving a bare rocky surface cooling toward radiative equilibrium.</p>
-        <p>Sub-Neptunes are the most common planet type in the Galaxy, yet none exists in our own Solar System. Whether a given planet retains its envelope or is stripped to a bare super-Earth depends sensitively on stellar XUV history, volatile inventory, and interior-atmosphere coupling. PROTEUS captures all of these processes self-consistently.</p>
-      </div>
-    </details>
-  </div>
-
-</div><!-- /tab-content -->
+  </details>
+</div>
 
 ---
 
 ## What PROTEUS computes
 
-Each scenario above couples multiple physical processes in a single self-consistent simulation: radiative transfer through the atmosphere, convective heat transport in the mantle, thermochemical partitioning of volatiles between melt and gas, stellar evolution, atmospheric escape, and (where relevant) tidal dissipation. The modules responsible for each process can be swapped independently; see the [modules page](/modules) for details.
+Each simulation couples multiple physical processes in a single self-consistent calculation: radiative transfer through the atmosphere, convective heat transport in the mantle, thermochemical partitioning of volatiles between melt and gas, stellar evolution, and atmospheric escape. The modules responsible for each process can be swapped independently; see the [modules page](/modules) for details.
 
-The outgoing radiation spectra shown in the animations are not post-processed visualisations. They are computed at every time step by the atmosphere module (AGNI), meaning PROTEUS produces synthetic observables that can be compared directly with telescope data from JWST and future missions.
+The outgoing radiation spectra shown in the animation are computed at every time step by the atmosphere module (AGNI), producing synthetic observables that can be compared directly with telescope data from JWST and future missions.
 
 <div class="demo-cta">
   <a href="https://proteus-framework.org/PROTEUS/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Run PROTEUS yourself</a>
   <a href="https://github.com/FormingWorlds/PROTEUS" class="btn btn-outline-primary" target="_blank" rel="noopener noreferrer">Explore the code</a>
 </div>
-
-<!-- Tab-switching: pause inactive videos, play active -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  var pills = document.querySelectorAll('a[data-toggle="pill"]');
-  for (var i = 0; i < pills.length; i++) {
-    pills[i].addEventListener('shown.bs.tab', function(e) {
-      // Pause all scenario videos
-      var allVideos = document.querySelectorAll('.scenario-pane video');
-      for (var j = 0; j < allVideos.length; j++) {
-        allVideos[j].pause();
-      }
-      // Play video in newly active pane
-      var target = document.querySelector(e.target.getAttribute('href'));
-      if (target) {
-        var vid = target.querySelector('video');
-        if (vid) vid.play();
-      }
-    });
-  }
-});
-</script>
