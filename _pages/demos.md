@@ -50,7 +50,7 @@ image: /assets/img/og-default.jpg
           <table>
             <tr><td>Mass</td><td>1 M<sub>Earth</sub></td></tr>
             <tr><td>Orbit</td><td>1 AU (Sun)</td></tr>
-            <tr><td>Volatiles</td><td>2 Earth oceans H<sub>2</sub>O</td></tr>
+            <tr><td>Volatiles</td><td>1 Earth ocean H<sub>2</sub>O</td></tr>
             <tr><td>Redox</td><td>IW+4</td></tr>
             <tr><td>Interior</td><td>SPIDER (magma ocean dynamics)</td></tr>
             <tr><td>Atmosphere</td><td>AGNI (radiative-convective)</td></tr>
@@ -64,15 +64,18 @@ image: /assets/img/og-default.jpg
 
     <div class="result-gallery">
       <div class="result-card">
-        <img src="{{ '/assets/demos/earth/thermal.png' | relative_url }}" alt="Earth thermal evolution" loading="lazy">
+        <img class="plot-dark" src="{{ '/assets/demos/earth/thermal-dark.png' | relative_url }}" alt="Earth thermal evolution" loading="lazy">
+        <img class="plot-light" src="{{ '/assets/demos/earth/thermal-light.png' | relative_url }}" alt="Earth thermal evolution" loading="lazy">
         <div class="result-label">Thermal evolution</div>
       </div>
       <div class="result-card">
-        <img src="{{ '/assets/demos/earth/volatiles.png' | relative_url }}" alt="Earth volatile inventory" loading="lazy">
+        <img class="plot-dark" src="{{ '/assets/demos/earth/volatiles-dark.png' | relative_url }}" alt="Earth volatile inventory" loading="lazy">
+        <img class="plot-light" src="{{ '/assets/demos/earth/volatiles-light.png' | relative_url }}" alt="Earth volatile inventory" loading="lazy">
         <div class="result-label">Volatile inventory</div>
       </div>
       <div class="result-card">
-        <img src="{{ '/assets/demos/earth/spectrum.png' | relative_url }}" alt="Earth emission spectrum" loading="lazy">
+        <img class="plot-dark" src="{{ '/assets/demos/earth/spectrum-dark.png' | relative_url }}" alt="Earth emission spectrum" loading="lazy">
+        <img class="plot-light" src="{{ '/assets/demos/earth/spectrum-light.png' | relative_url }}" alt="Earth emission spectrum" loading="lazy">
         <div class="result-label">Emission spectrum</div>
       </div>
     </div>
@@ -82,7 +85,7 @@ image: /assets/img/og-default.jpg
       <div class="detail-body">
         <p>Starting from a fully molten mantle after a giant impact, PROTEUS tracks how Earth's magma ocean solidifies, volatiles outgas to form a thick steam atmosphere, and liquid water oceans eventually form.</p>
         <p>The simulation begins with a high mantle entropy (2900 J/K/kg) representing the aftermath of the Moon-forming impact. As the magma ocean cools, dissolved volatiles partition into the atmosphere following thermochemical equilibrium (CALLIOPE). The atmosphere is dominated by steam, CO<sub>2</sub>, and H<sub>2</sub>S.</p>
-        <p>Solidification completes within ~200,000 years, consistent with geological constraints from the oldest surviving rocks. The steam atmosphere persists longer, eventually condensing to form a liquid water ocean beneath a CO<sub>2</sub>+H<sub>2</sub>S atmosphere. This transition constrains when Earth first became habitable, and is directly testable against geological evidence.</p>
+        <p>Solidification approaches completion within ~700,000 years, with the last percent of melt persisting in the deep mantle. The thick steam atmosphere (~200 bar H<sub>2</sub>O, ~50 bar CO<sub>2</sub>) persists longer, eventually condensing to form a liquid water ocean beneath a CO<sub>2</sub>-dominated atmosphere. This transition constrains when Earth first became habitable, and is directly testable against geological evidence from the oldest surviving rocks.</p>
       </div>
     </details>
   </div>
@@ -115,15 +118,18 @@ image: /assets/img/og-default.jpg
 
     <div class="result-gallery">
       <div class="result-card">
-        <img src="{{ '/assets/demos/l9859d/thermal.png' | relative_url }}" alt="L 98-59 d thermal evolution" loading="lazy">
+        <img class="plot-dark" src="{{ '/assets/demos/l9859d/thermal-dark.png' | relative_url }}" alt="L 98-59 d thermal evolution" loading="lazy">
+        <img class="plot-light" src="{{ '/assets/demos/l9859d/thermal-light.png' | relative_url }}" alt="L 98-59 d thermal evolution" loading="lazy">
         <div class="result-label">Thermal evolution</div>
       </div>
       <div class="result-card">
-        <img src="{{ '/assets/demos/l9859d/volatiles.png' | relative_url }}" alt="L 98-59 d volatile inventory" loading="lazy">
+        <img class="plot-dark" src="{{ '/assets/demos/l9859d/volatiles-dark.png' | relative_url }}" alt="L 98-59 d volatile inventory" loading="lazy">
+        <img class="plot-light" src="{{ '/assets/demos/l9859d/volatiles-light.png' | relative_url }}" alt="L 98-59 d volatile inventory" loading="lazy">
         <div class="result-label">Volatile inventory</div>
       </div>
       <div class="result-card">
-        <img src="{{ '/assets/demos/l9859d/spectrum.png' | relative_url }}" alt="L 98-59 d emission spectrum" loading="lazy">
+        <img class="plot-dark" src="{{ '/assets/demos/l9859d/spectrum-dark.png' | relative_url }}" alt="L 98-59 d emission spectrum" loading="lazy">
+        <img class="plot-light" src="{{ '/assets/demos/l9859d/spectrum-light.png' | relative_url }}" alt="L 98-59 d emission spectrum" loading="lazy">
         <div class="result-label">Emission spectrum</div>
       </div>
     </div>
@@ -158,7 +164,7 @@ image: /assets/img/og-default.jpg
             <tr><td>Atmosphere</td><td>AGNI + CALLIOPE</td></tr>
           </table>
           <div class="outcome">
-            <strong>Outcome:</strong> Permanent magma ocean, thin atmosphere, strong thermal emission
+            <strong>Outcome:</strong> Rapid solidification, thick secondary atmosphere from outgassing
           </div>
         </div>
       </div>
@@ -166,15 +172,18 @@ image: /assets/img/og-default.jpg
 
     <div class="result-gallery">
       <div class="result-card">
-        <img src="{{ '/assets/demos/lavaworld/thermal.png' | relative_url }}" alt="Lava world thermal evolution" loading="lazy">
+        <img class="plot-dark" src="{{ '/assets/demos/lavaworld/thermal-dark.png' | relative_url }}" alt="Lava world thermal evolution" loading="lazy">
+        <img class="plot-light" src="{{ '/assets/demos/lavaworld/thermal-light.png' | relative_url }}" alt="Lava world thermal evolution" loading="lazy">
         <div class="result-label">Thermal evolution</div>
       </div>
       <div class="result-card">
-        <img src="{{ '/assets/demos/lavaworld/volatiles.png' | relative_url }}" alt="Lava world volatile inventory" loading="lazy">
+        <img class="plot-dark" src="{{ '/assets/demos/lavaworld/volatiles-dark.png' | relative_url }}" alt="Lava world volatile inventory" loading="lazy">
+        <img class="plot-light" src="{{ '/assets/demos/lavaworld/volatiles-light.png' | relative_url }}" alt="Lava world volatile inventory" loading="lazy">
         <div class="result-label">Volatile inventory</div>
       </div>
       <div class="result-card">
-        <img src="{{ '/assets/demos/lavaworld/spectrum.png' | relative_url }}" alt="Lava world emission spectrum" loading="lazy">
+        <img class="plot-dark" src="{{ '/assets/demos/lavaworld/spectrum-dark.png' | relative_url }}" alt="Lava world emission spectrum" loading="lazy">
+        <img class="plot-light" src="{{ '/assets/demos/lavaworld/spectrum-light.png' | relative_url }}" alt="Lava world emission spectrum" loading="lazy">
         <div class="result-label">Emission spectrum</div>
       </div>
     </div>
@@ -182,9 +191,9 @@ image: /assets/img/og-default.jpg
     <details class="demo-detail">
       <summary>Detailed interpretation</summary>
       <div class="detail-body">
-        <p>A small rocky planet so close to its star that it can never fully solidify. Its thin silicate atmosphere glows with thermal emission, making it one of the most observable classes of exoplanet.</p>
-        <p>At 0.015 AU from an M-dwarf, the equilibrium temperature exceeds the solidus of silicate rock. The dayside remains permanently molten, with a thin atmosphere composed primarily of outgassed silicate vapour and residual volatiles. The strong thermal emission from the molten surface produces a distinctive spectral signature.</p>
-        <p>Lava worlds are a growing class of detected exoplanets where PROTEUS predictions can be tested directly with current instrumentation.</p>
+        <p>A small rocky planet orbiting very close to its M-dwarf host star. Despite intense stellar irradiation, the equilibrium temperature (~440 K) lies below the silicate solidus, so the initially molten mantle solidifies within ~100,000 years.</p>
+        <p>As the magma ocean cools, dissolved volatiles partition into the atmosphere following thermochemical equilibrium. The planet builds up a substantial secondary atmosphere (~34 bar) dominated by CO<sub>2</sub>, CO, and H<sub>2</sub>O over hundreds of millions of years. The surface temperature stabilises around 700 K, well above the equilibrium temperature, because the thick outgassed atmosphere acts as a thermal blanket.</p>
+        <p>Close-in rocky planets around M-dwarfs are prime targets for atmospheric characterisation with JWST and future missions. PROTEUS predictions for their atmospheric composition and thermal state are directly testable.</p>
       </div>
     </details>
   </div>
@@ -217,15 +226,18 @@ image: /assets/img/og-default.jpg
 
     <div class="result-gallery">
       <div class="result-card">
-        <img src="{{ '/assets/demos/subneptune/thermal.png' | relative_url }}" alt="Sub-Neptune thermal evolution" loading="lazy">
+        <img class="plot-dark" src="{{ '/assets/demos/subneptune/thermal-dark.png' | relative_url }}" alt="Sub-Neptune thermal evolution" loading="lazy">
+        <img class="plot-light" src="{{ '/assets/demos/subneptune/thermal-light.png' | relative_url }}" alt="Sub-Neptune thermal evolution" loading="lazy">
         <div class="result-label">Thermal evolution</div>
       </div>
       <div class="result-card">
-        <img src="{{ '/assets/demos/subneptune/volatiles.png' | relative_url }}" alt="Sub-Neptune volatile inventory" loading="lazy">
+        <img class="plot-dark" src="{{ '/assets/demos/subneptune/volatiles-dark.png' | relative_url }}" alt="Sub-Neptune volatile inventory" loading="lazy">
+        <img class="plot-light" src="{{ '/assets/demos/subneptune/volatiles-light.png' | relative_url }}" alt="Sub-Neptune volatile inventory" loading="lazy">
         <div class="result-label">Volatile inventory</div>
       </div>
       <div class="result-card">
-        <img src="{{ '/assets/demos/subneptune/spectrum.png' | relative_url }}" alt="Sub-Neptune emission spectrum" loading="lazy">
+        <img class="plot-dark" src="{{ '/assets/demos/subneptune/spectrum-dark.png' | relative_url }}" alt="Sub-Neptune emission spectrum" loading="lazy">
+        <img class="plot-light" src="{{ '/assets/demos/subneptune/spectrum-light.png' | relative_url }}" alt="Sub-Neptune emission spectrum" loading="lazy">
         <div class="result-label">Emission spectrum</div>
       </div>
     </div>

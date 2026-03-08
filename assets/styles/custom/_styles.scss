@@ -228,6 +228,9 @@ hr {
   overflow: hidden;
   box-shadow: var(--card-shadow);
   margin-bottom: 1.5rem;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .demo-hero-video video {
   display: block;
@@ -374,6 +377,17 @@ hr {
   font-size: 0.8rem;
   color: #a8adb8;
   text-align: center;
+}
+
+// Plot theme switching (dark is default)
+.result-card .plot-light { display: none; }
+[data-theme="light"] .result-card .plot-dark { display: none; }
+[data-theme="light"] .result-card .plot-light { display: block; }
+[data-theme="light"] .result-card {
+  background: #f7f8fa;
+}
+[data-theme="light"] .result-card .result-label {
+  color: #525f7f;
 }
 
 // Expandable detail section
