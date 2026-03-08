@@ -6,16 +6,6 @@ description: "Demonstration of the PROTEUS framework simulating magma ocean soli
 image: /assets/img/og-default.jpg
 ---
 
-<!-- Hero video -->
-<div class="demo-hero-video">
-  <video autoplay muted playsinline loop>
-    <source src="{{ '/assets/demos/earth/video.mp4' | relative_url }}" type="video/mp4">
-  </video>
-</div>
-<p class="demo-hero-caption">
-  Earth's magma ocean solidifies over two million years, outgassing volatiles that form a thick steam atmosphere. PROTEUS tracks this entire evolution self-consistently.
-</p>
-
 <!-- Earth scenario -->
 <h4 class="demo-section-title">Early Earth</h4>
 
@@ -57,7 +47,7 @@ image: /assets/img/og-default.jpg
     </div>
   </div>
 
-  <details class="demo-detail">
+  <details class="demo-detail" open>
     <summary>Detailed interpretation</summary>
     <div class="detail-body">
       <p>Starting from a fully molten mantle after a giant impact, PROTEUS tracks how Earth's magma ocean solidifies and volatiles outgas to form a thick steam atmosphere.</p>
@@ -66,6 +56,16 @@ image: /assets/img/og-default.jpg
     </div>
   </details>
 </div>
+
+---
+
+## Beyond Earth
+
+The same physics that governed early Earth applies across a wide range of exoplanets. PROTEUS is designed to model any rocky or volatile-rich world, from lava planets orbiting their stars in hours to sub-Neptunes with thick hydrogen envelopes.
+
+**Super-Earths** like L 98-59 d (1.6 Earth masses, orbiting an M-dwarf at 0.05 AU) experience intense stellar irradiation and tidal heating from neighbouring planets. These effects can sustain partially molten interiors for billions of years, producing thick outgassed atmospheres that JWST is beginning to characterize. **Lava worlds**, even closer to their host stars, maintain permanent magma oceans with thin silicate atmospheres that glow in thermal emission. **Sub-Neptunes**, the most common planet type in the Galaxy, sit at the boundary between rocky and gaseous worlds: their final atmospheric mass is set by a competition between interior outgassing and XUV-driven escape, both of which PROTEUS tracks self-consistently.
+
+Demonstrations for these scenarios are in preparation. For the underlying science, see our [publications](/publications).
 
 ---
 

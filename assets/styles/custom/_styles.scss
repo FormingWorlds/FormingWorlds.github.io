@@ -5,8 +5,8 @@
 @mixin dark-theme {
   --page-bg: #111218;
   --surface-bg: #1a1c25;
-  --heading-color: #e4e4ea;
-  --body-color: #a8adb8;
+  --heading-color: #e8e8f0;
+  --body-color: #c8cdd5;
   --muted-color: #6b7280;
   --border-color: #2d3040;
   --accent: #d4703a;
@@ -28,8 +28,8 @@
 [data-theme="light"] {
   --page-bg: #ffffff;
   --surface-bg: #f7f8fa;
-  --heading-color: #1a1a2e;
-  --body-color: #525f7f;
+  --heading-color: #111122;
+  --body-color: #2d3748;
   --muted-color: #8898aa;
   --border-color: #e9ecef;
   --accent: #c0571b;
@@ -47,12 +47,16 @@ html {
   scroll-behavior: smooth;
 }
 
-// Body
+// Body – override Argon's 300wt paragraph text for readability
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--body-color);
   background-color: var(--page-bg);
+  font-weight: 400;
+}
+p, .lead {
+  font-weight: 400;
 }
 
 // Headings
