@@ -219,11 +219,248 @@ hr {
   color: var(--accent) !important;
 }
 
-// Demo page video/image refinements
+// ─── Demo page ───────────────────────────────────────────────────────
+
+// Hero video at page top
+.demo-hero-video {
+  position: relative;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  margin-bottom: 1.5rem;
+}
+.demo-hero-video video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.demo-hero-caption {
+  color: var(--muted-color);
+  font-size: 0.95rem;
+  margin-top: 0.75rem;
+  margin-bottom: 2.5rem;
+}
+
+// Section divider
+.demo-section-title {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted-color);
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+// Scenario pill tabs
+.scenario-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  padding: 0;
+  list-style: none;
+}
+.scenario-pills .nav-link {
+  background: var(--surface-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 2rem;
+  padding: 0.5rem 1.25rem;
+  color: var(--body-color);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  text-decoration: none !important;
+}
+.scenario-pills .nav-link:hover {
+  border-color: var(--accent);
+  color: var(--heading-color);
+}
+.scenario-pills .nav-link.active {
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: #fff !important;
+}
+
+// Scenario pane layout
+.scenario-pane {
+  padding: 0.5rem 0 2rem;
+}
+.scenario-top {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+.scenario-video-col {
+  flex: 7;
+  min-width: 0;
+}
+.scenario-video-col video {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  box-shadow: var(--card-shadow);
+  display: block;
+}
+.scenario-info-col {
+  flex: 5;
+  min-width: 0;
+}
+
+// "At a glance" summary card
+.at-a-glance {
+  background: var(--surface-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  height: 100%;
+}
+.at-a-glance h5 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted-color);
+  margin-bottom: 0.75rem;
+}
+.at-a-glance table {
+  width: 100%;
+  font-size: 0.9rem;
+}
+.at-a-glance td {
+  padding: 0.3rem 0;
+  border: none;
+  vertical-align: top;
+}
+.at-a-glance td:first-child {
+  color: var(--muted-color);
+  padding-right: 0.75rem;
+  white-space: nowrap;
+}
+.at-a-glance td:last-child {
+  color: var(--heading-color);
+}
+.at-a-glance .outcome {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-color);
+  font-size: 0.9rem;
+  color: var(--body-color);
+}
+.at-a-glance .outcome strong {
+  color: var(--heading-color);
+}
+
+// Plot gallery: dark cards for scientific plots
+.result-gallery {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.result-card {
+  flex: 1;
+  min-width: 0;
+  background: #1a1c25;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+}
+.result-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.result-card .result-label {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+  color: #a8adb8;
+  text-align: center;
+}
+
+// Expandable detail section
+.demo-detail {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+.demo-detail summary {
+  color: var(--accent);
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.95rem;
+  list-style: none;
+}
+.demo-detail summary::-webkit-details-marker {
+  display: none;
+}
+.demo-detail summary::before {
+  content: "\25B8\00a0";
+}
+.demo-detail[open] summary::before {
+  content: "\25BE\00a0";
+}
+.demo-detail .detail-body {
+  margin-top: 0.75rem;
+  padding-left: 0.5rem;
+  border-left: 2px solid var(--border-color);
+  color: var(--body-color);
+  font-size: 0.95rem;
+}
+
+// CTA section at bottom
+.demo-cta {
+  text-align: center;
+  padding: 2rem 0 1rem;
+  border-top: 1px solid var(--border-color);
+  margin-top: 2rem;
+}
+.demo-cta .btn {
+  margin: 0.5rem;
+}
+
+// Legacy support
 .demo-media video,
 .demo-media img {
   max-width: 100%;
   height: auto;
+}
+
+// ─── Demo page responsive ────────────────────────────────────────────
+
+@media (max-width: 991px) {
+  .scenario-top {
+    flex-direction: column;
+  }
+  .result-gallery {
+    flex-wrap: wrap;
+  }
+  .result-card {
+    flex: 1 1 calc(50% - 0.5rem);
+  }
+  // Third card stretches full width when wrapping
+  .result-card:last-child:nth-child(odd) {
+    flex: 1 1 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .scenario-pills {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.25rem;
+  }
+  .scenario-pills .nav-link {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .result-gallery {
+    flex-direction: column;
+  }
+  .result-card {
+    flex: 1 1 100%;
+  }
 }
 
 // Team cards: hide research topic lists, tighten layout
