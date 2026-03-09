@@ -54,7 +54,7 @@ Automatic deployment on merge to `main` branch via GitHub Pages (no custom workf
 ### Image Paths
 Always use Jekyll `relative_url` filter:
 ```liquid
-{{ '/assets/img/faces/example.avif' | relative_url }}
+{{ '/assets/img/faces/example.jpg' | relative_url }}
 ```
 Images organized by type: `assets/img/{brand,faces,illustrations,pages}/`
 
@@ -75,7 +75,7 @@ featured_image: /assets/img/illustrations/two_face_planet.jpg
 
 ### Team Member Cards
 HTML-heavy structure in [`_includes/components/teams/team-carousel-2.html`](_includes/components/teams/team-carousel-2.html). Each member requires:
-- Profile image in `assets/img/faces/` (preferably .avif format)
+- Profile image in `assets/img/faces/` (.jpg format, avoid AVIF due to browser compatibility)
 - Badge-circle icons from Nucleo icon set (e.g., `ni-atom`, `ni-planet`)
 - External profile link in card header
 
