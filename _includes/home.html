@@ -1,34 +1,37 @@
 <header class="header-1 fullWidth">
   <div class="page-header">
-    <div class="page-header-image" data-bg="{{ '/assets/img/illustrations/two_face_planet.jpg' | relative_url }}" style="opacity: 0.9;width: 100vw; margin-left: calc(50% - 50vw); background-size: cover; background-position: center; background-repeat: no-repeat;" >
-
+    <div class="page-header-image" data-bg="{{ '/assets/img/illustrations/two_face_planet.jpg' | relative_url }}" style="opacity: 0.9; width: 100vw; margin-left: calc(50% - 50vw); background-size: cover; background-position: center; background-repeat: no-repeat;">
     </div>
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.35); pointer-events: none;"></div>
     <div class="container-fluid">
       <div class="row justify-content-center">
-        <div class="col-12 col-md-8 col-lg-6 d-flex justify-content-center flex-column hero-text-position  text-center">
+        <div class="col-12 col-md-8 col-lg-6 d-flex justify-content-center flex-column hero-text-position text-center">
           <br><br><br><br>
-          <img src="{{ '/assets/img/brand/PROTEUS_transparent.svg' | relative_url }}" alt="PROTEUS" class="hero-logo" width="90%">
-          <br><br>
-          <p class="lead mt-0">
-            <span style="font-weight: bold; color: #ffa568;  text-shadow: 3px 2px 3px #000000">
-              <br><br>
-              Simulate the coupled interior-atmosphere evolution of rocky planets over deep time. 
-              </span>
-            <span style="font-weight: normal; color: #ffa568;  text-shadow: 3px 2px 3px #000000; font-size: 90% !important;">
+          <img src="{{ '/assets/img/brand/PROTEUS_transparent.svg' | relative_url }}" alt="PROTEUS" class="hero-logo" width="90%" fetchpriority="high">
+          <p class="lead mt-4">
+            <span class="hero-tagline">
+              Simulate the coupled interior-atmosphere evolution of rocky planets over deep time.
+            </span>
+            <span class="hero-subtitle">
               <br><br>
               Named after the Greek god of sea change, PROTEUS is flexible and adaptable; it can foretell the future, but answers only to those who ask the right questions.
             </span>
-
           </p>
+          <div class="mt-4">
+            <a href="https://proteus-framework.org/PROTEUS/" class="btn btn-primary btn-lg mr-2" target="_blank" rel="noopener noreferrer">
+              <i class="ni ni-books mr-1"></i> Documentation
+            </a>
+            <a href="/demos" class="btn btn-outline-secondary btn-lg hero-btn-outline">
+              <i class="ni ni-spaceship mr-1"></i> See demos
+            </a>
+          </div>
           <br>
-          <!-- <div class="card-footer text-center bg-transparent">
-            <button class="btn btn-primary mb-3" onclick="location.href='demo.html'">See demo</button>
-          </div> -->
         </div>
       </div>
     </div>
   </div>
 </header>
+
 <script>
   (function() {
     var el = document.querySelector('.page-header-image[data-bg]');
@@ -36,36 +39,114 @@
       el.style.backgroundImage = 'url(' + el.dataset.bg + ')';
     }
   })();
-  </script>
-<style>
-  @media (min-width: 992px) {
-    .hero-text-position {
-      margin-right: 0 !important;
-    }
-  }
-</style>
-<style>
-  .hero-text-position h3.display-3 {
-    font-size: 350% !important;
-    line-height: 1.3;
-  }
-</style>
-<style>
-  .text-outline, .text-outline * {
-    text-shadow: -1px -1px 0 rgba(0,0,0,0.9), 1px -1px 0 rgba(0,0,0,0.9), -1px 1px 0 rgba(0,0,0,0.9), 1px 1px 0 rgba(0,0,0,0.9);
-  }
-</style>
+</script>
+
+<section class="home-overview">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <p class="overview-lead">
+          PROTEUS is an open-source framework that couples models of planetary interiors, atmospheres, chemistry, and orbital dynamics to simulate how rocky planets evolve from molten beginnings to potentially habitable worlds.
+        </p>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-lg-10 mx-auto">
+        <h5 class="overview-section-title">Modules</h5>
+        <div class="overview-modules">
+          <div class="overview-module">
+            <span class="module-dot" style="background:#5e72e4"></span>
+            <div>
+              <strong>AGNI / JANUS</strong>
+              <span class="module-brief">Radiative-convective atmosphere models</span>
+            </div>
+          </div>
+          <div class="overview-module">
+            <span class="module-dot" style="background:#8b572a"></span>
+            <div>
+              <strong>SPIDER / Aragog</strong>
+              <span class="module-brief">Magma ocean and mantle evolution</span>
+            </div>
+          </div>
+          <div class="overview-module">
+            <span class="module-dot" style="background:#fb6340"></span>
+            <div>
+              <strong>CALLIOPE / Atmodeller</strong>
+              <span class="module-brief">Volatile partitioning and outgassing</span>
+            </div>
+          </div>
+          <div class="overview-module">
+            <span class="module-dot" style="background:#2dce89"></span>
+            <div>
+              <strong>VULCAN</strong>
+              <span class="module-brief">Atmospheric photochemistry</span>
+            </div>
+          </div>
+          <div class="overview-module">
+            <span class="module-dot" style="background:#11cdef"></span>
+            <div>
+              <strong>ZEPHYRUS</strong>
+              <span class="module-brief">Hydrodynamic atmospheric escape</span>
+            </div>
+          </div>
+          <div class="overview-module">
+            <span class="module-dot" style="background:#f5365c"></span>
+            <div>
+              <strong>MORS</strong>
+              <span class="module-brief">Stellar evolution tracks</span>
+            </div>
+          </div>
+          <div class="overview-module">
+            <span class="module-dot" style="background:#8965e0"></span>
+            <div>
+              <strong>LovePy / Obliqua</strong>
+              <span class="module-brief">Tidal dissipation and heating</span>
+            </div>
+          </div>
+          <div class="overview-module">
+            <span class="module-dot" style="background:#8b572a"></span>
+            <div>
+              <strong>Zalmoxis</strong>
+              <span class="module-brief">Planetary interior structure</span>
+            </div>
+          </div>
+        </div>
+        <div class="mt-3 text-right">
+          <a href="/modules" class="overview-link">Full module details <i class="ni ni-bold-right" style="font-size:0.75rem"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <style>
+  .hero-tagline {
+    font-weight: 600;
+    color: #ffffff;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.7), 0 0 30px rgba(0,0,0,0.4);
+  }
+  .hero-subtitle {
+    font-weight: 300;
+    color: rgba(255,255,255,0.85);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.7), 0 0 30px rgba(0,0,0,0.4);
+    font-size: 85% !important;
+  }
   .hero-text-position p,
   .hero-text-position span {
-    font-size: 130% !important;
-    line-height: 1.3;
+    font-size: 120% !important;
+    line-height: 1.5;
   }
-</style>
-<style>
+  .hero-btn-outline {
+    color: #fff !important;
+    border-color: rgba(255,255,255,0.6) !important;
+  }
+  .hero-btn-outline:hover {
+    background-color: rgba(255,255,255,0.15) !important;
+    border-color: #fff !important;
+  }
   .hero-logo {
-    max-width: 750px;
+    max-width: 550px;
     width: 100%;
     height: auto;
     display: block;
@@ -79,6 +160,77 @@
   @media (max-width: 576px) {
     .hero-logo {
       max-width: 250px;
+    }
+  }
+  @media (min-width: 992px) {
+    .hero-text-position {
+      margin-right: 0 !important;
+    }
+  }
+
+  /* Homepage overview section */
+  .home-overview {
+    padding: 4rem 0 3rem;
+    background: var(--page-bg);
+  }
+  .overview-lead {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--body-color);
+    text-align: center;
+  }
+  .overview-section-title {
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.85rem;
+    color: var(--muted-color);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  .overview-modules {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem 2rem;
+  }
+  .overview-module {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+  }
+  .module-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 0.45rem;
+  }
+  .overview-module strong {
+    color: var(--heading-color);
+    font-size: 0.95rem;
+  }
+  .module-brief {
+    display: block;
+    color: var(--muted-color);
+    font-size: 0.85rem;
+    margin-top: 0.1rem;
+  }
+  .overview-link {
+    font-size: 0.9rem;
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .overview-link:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
+  }
+  @media (max-width: 576px) {
+    .overview-modules {
+      grid-template-columns: 1fr;
+    }
+    .overview-lead {
+      font-size: 1.05rem;
     }
   }
 </style>

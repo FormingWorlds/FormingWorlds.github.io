@@ -13,34 +13,24 @@ header_settings:
 
 home_settings:
   # Choose a layout for your home page:
-    # landing – an example landing page made using the Argon design system
-    # papers – use your papers as the home page
+    # landing - an example landing page made using the Argon design system
+    # papers - use your papers as the home page
   theme: landing
 
 blog_settings:
-  # Choose a format for your papers listings:
-    # basic – a simple list of papers
-    # narrow – a masonary grid of papers
-    # grid – a full-width square grid of papers
   theme: basic
-  # Should we display a narrow grid of other papers at the bottom of each paper?
-  read_more: "yes"
+  read_more: "no"
 
-# Setup your navigation below – how to use the icons: 
-  # 1. See all the icons available here https://demos.creative-tim.com/argon-design-system-pro/docs/1.0/foundation/icons.html
-  # 2. Get the name of the icon e.g basket, then prefix with ni to make ni-basket. 
-  # 3. Add a color of the icon - text-primary, text-success, text-info, text-danger, text-warning and text-default all work! 
 menu_settings:
   menu_items:
     - title: 'Home'
       url: '/'
 
-      # submenu_items:
     - title: 'Documentation'
       submenu_items:
       - title: PROTEUS
         url: https://proteus-framework.org/PROTEUS/
-        icon: ni-books text-primary    
+        icon: ni-books text-primary
       - title: Modules
         url: /modules
         icon: ni-bold-right text-primary
@@ -48,17 +38,8 @@ menu_settings:
     - title: 'Demos'
       url: '/demos'
 
-    # - title: Modules
-    #   url: /modules
-    #   icon: ni-laptop text-danger
-
-    # - title: 'Policy'
-    #   url: '/policy'
-    #   icon: ni-settings-gear-65 text-default
-
     - title: 'Publications'
-      url: 'https://scixplorer.org/public-libraries/EVAJ1UgWTCy2Z7TRoSmjtQ'
-      icon: ni-book-bookmark text-primary
+      url: '/publications'
 
     - title: 'People & Contact'
       url: '/people'
@@ -66,25 +47,8 @@ menu_settings:
 footer_settings:
   footer_tagline: PROTEUS framework for planetary evolution
 
-contact_settings:
-  form_action: 'https://formspree.io/hello@jekyllthemes.io'
-  confirmation_url: '/thanks'
-  email_subject: 'Contact form submission'
-  send_button_text: 'Send Message'
-
 social_settings:
-  facebook_url: ''
-  twitter_url: ''
-  instagram_url: ''
-  youtube_url: ''
-  vimeo_url: ''
-  pinterest_url: ''
-  tumblr_url: ''
-  dribbble_url: ''
-  behance_url: ''
   github_url: 'https://github.com/FormingWorlds/PROTEUS'
-  reddit_url: ''
-  linkedin_url: ''
 
 authors:
   nicholls:
@@ -93,6 +57,6 @@ authors:
     name: Tim Lichtenberg
 
 advanced_settings:
-  analytics_code: 
-  header_js: 
-  footer_js: 
+  analytics_code: '<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZCDRX6PC62"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-ZCDRX6PC62");</script>'
+  header_js:
+  footer_js:

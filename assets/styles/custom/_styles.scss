@@ -1,1 +1,683 @@
+// Site-wide custom styles for PROTEUS website
+// Theme switching via CSS custom properties
 
+// Dark theme values (mixin to avoid duplication)
+@mixin dark-theme {
+  --page-bg: #111218;
+  --surface-bg: #1a1c25;
+  --heading-color: #e8e8f0;
+  --body-color: #c8cdd5;
+  --muted-color: #6b7280;
+  --border-color: #2d3040;
+  --accent: #d4703a;
+  --accent-hover: #e8843f;
+  --accent-light: rgba(212, 112, 58, 0.15);
+  --accent-gradient-end: #ba5c2e;
+  --card-bg: #1a1c25;
+  --card-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  --card-shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.4);
+  --link-underline: rgba(212, 112, 58, 0.3);
+}
+
+// Dark theme (default)
+:root {
+  @include dark-theme;
+}
+
+// Light theme (explicit toggle)
+[data-theme="light"] {
+  --page-bg: #ffffff;
+  --surface-bg: #f7f8fa;
+  --heading-color: #111122;
+  --body-color: #2d3748;
+  --muted-color: #8898aa;
+  --border-color: #e9ecef;
+  --accent: #c0571b;
+  --accent-hover: #a34a17;
+  --accent-light: rgba(192, 87, 27, 0.1);
+  --accent-gradient-end: #9a4616;
+  --card-bg: #ffffff;
+  --card-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --card-shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.1);
+  --link-underline: rgba(192, 87, 27, 0.3);
+}
+
+// Smooth scrolling
+html {
+  scroll-behavior: smooth;
+}
+
+// Body – override Argon's 300wt paragraph text for readability
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--body-color);
+  background-color: var(--page-bg);
+  font-weight: 400;
+}
+p, .lead {
+  font-weight: 400;
+}
+
+// Headings
+h1, h2, h3, h4, h5, h6,
+.display-1, .display-2, .display-3, .display-4 {
+  color: var(--heading-color);
+}
+
+// Override text-muted for better readability
+.text-muted {
+  color: var(--body-color) !important;
+}
+
+// Override Argon primary colour to brand accent
+.btn-primary {
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+.btn-primary:hover, .btn-primary:focus {
+  background-color: var(--accent-hover) !important;
+  border-color: var(--accent-hover) !important;
+}
+.btn-outline-primary {
+  color: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+.btn-outline-primary:hover {
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: #fff !important;
+}
+
+// Links use brand accent
+a {
+  color: var(--accent);
+}
+a:hover {
+  color: var(--accent-hover);
+}
+
+// Section spacing
+.section {
+  padding: 3rem 0;
+}
+
+// Card hover effects
+.card {
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+  background-color: var(--card-bg);
+  border-color: var(--border-color);
+}
+.card:hover {
+  box-shadow: var(--card-shadow-hover);
+}
+
+// Better link styling for content areas
+#main a:not(.btn):not(.nav-link) {
+  text-decoration: underline;
+  text-decoration-color: var(--link-underline);
+  text-underline-offset: 2px;
+  transition: text-decoration-color 0.2s;
+}
+#main a:not(.btn):not(.nav-link):hover {
+  text-decoration-color: var(--accent);
+}
+
+// Horizontal rules
+hr {
+  border-top-color: var(--border-color);
+}
+
+// Footer styling
+.footer {
+  background-color: var(--surface-bg);
+  border-top: 1px solid var(--border-color);
+}
+.footer h6 {
+  color: var(--heading-color);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+.footer a.text-muted:hover {
+  color: var(--accent) !important;
+}
+.footer hr {
+  border-color: var(--border-color);
+}
+
+// Footer logo switching (dark is default)
+.footer-logo-light { display: none; }
+[data-theme="light"] .footer-logo-dark { display: none; }
+[data-theme="light"] .footer-logo-light { display: inline; }
+
+// Navbar brand image sizing
+.navbar-brand img {
+  max-height: 36px;
+  width: auto;
+}
+
+// Icon shape utility (homepage feature cards)
+.icon-shape {
+  width: 64px;
+  height: 64px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon-lg {
+  font-size: 1.5rem;
+}
+
+// Unified gradient for all feature card icons: brand accent
+.bg-gradient-primary,
+.bg-gradient-warning,
+.bg-gradient-info {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-gradient-end) 100%) !important;
+}
+
+// Badge colours: unify info/success/danger to brand accent
+.badge-primary,
+.badge-info,
+.badge-success,
+.badge-danger {
+  background-color: var(--accent) !important;
+}
+
+// Badge circle
+.badge-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  color: #fff;
+}
+
+// Nav link hover
+.navbar-nav .nav-link:hover {
+  color: var(--accent) !important;
+}
+
+// Dropdown menu styling
+.dropdown-menu {
+  background-color: var(--card-bg);
+  border-color: var(--border-color);
+}
+.navbar-nav .dropdown-menu:before,
+.dropdown .dropdown-menu:before,
+.dropdown-menu::before {
+  background: var(--card-bg) !important;
+}
+.dropdown-item {
+  color: var(--body-color);
+}
+.dropdown-item:hover, .dropdown-item:focus {
+  background-color: var(--surface-bg) !important;
+  color: var(--heading-color) !important;
+  box-shadow: none !important;
+}
+.dropdown-item .ni,
+.dropdown-item i[class*="text-"] {
+  color: var(--accent) !important;
+}
+
+// ─── Demo page ───────────────────────────────────────────────────────
+
+// Hero video at page top
+.demo-hero-video {
+  position: relative;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  margin-bottom: 1.5rem;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.demo-hero-video video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.demo-hero-caption {
+  color: var(--muted-color);
+  font-size: 0.95rem;
+  margin-top: 0.75rem;
+  margin-bottom: 2.5rem;
+}
+
+// Section divider
+.demo-section-title {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted-color);
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+// Scenario pill tabs
+.scenario-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  padding: 0;
+  list-style: none;
+}
+.scenario-pills .nav-link {
+  background: var(--surface-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 2rem;
+  padding: 0.5rem 1.25rem;
+  color: var(--body-color);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  text-decoration: none !important;
+}
+.scenario-pills .nav-link:hover {
+  border-color: var(--accent);
+  color: var(--heading-color);
+}
+.scenario-pills .nav-link.active {
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: #fff !important;
+}
+
+// Scenario pane layout
+.scenario-pane {
+  padding: 0.5rem 0 2rem;
+}
+.scenario-top {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+.scenario-video-col {
+  flex: 7;
+  min-width: 0;
+}
+.scenario-video-col video {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  box-shadow: var(--card-shadow);
+  display: block;
+}
+.scenario-info-col {
+  flex: 5;
+  min-width: 0;
+}
+
+// "At a glance" summary card
+.at-a-glance {
+  background: var(--surface-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  height: 100%;
+}
+.at-a-glance h5 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted-color);
+  margin-bottom: 0.75rem;
+}
+.at-a-glance table {
+  width: 100%;
+  font-size: 0.9rem;
+}
+.at-a-glance td {
+  padding: 0.3rem 0;
+  border: none;
+  vertical-align: top;
+}
+.at-a-glance td:first-child {
+  color: var(--muted-color);
+  padding-right: 0.75rem;
+  white-space: nowrap;
+}
+.at-a-glance td:last-child {
+  color: var(--heading-color);
+}
+.at-a-glance .outcome {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-color);
+  font-size: 0.9rem;
+  color: var(--body-color);
+}
+.at-a-glance .outcome strong {
+  color: var(--heading-color);
+}
+
+// Plot gallery: dark cards for scientific plots
+.result-gallery {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.result-card {
+  flex: 1;
+  min-width: 0;
+  background: #1a1c25;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+}
+.result-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.result-card .result-label {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+  color: #a8adb8;
+  text-align: center;
+}
+
+// Plot theme switching (dark is default)
+.result-card .plot-light { display: none; }
+[data-theme="light"] .result-card .plot-dark { display: none; }
+[data-theme="light"] .result-card .plot-light { display: block; }
+[data-theme="light"] .result-card {
+  background: #f7f8fa;
+}
+[data-theme="light"] .result-card .result-label {
+  color: #525f7f;
+}
+
+// Expandable detail section
+.demo-detail {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+.demo-detail summary {
+  color: var(--accent);
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.95rem;
+  list-style: none;
+}
+.demo-detail summary::-webkit-details-marker {
+  display: none;
+}
+.demo-detail summary::before {
+  content: "\25B8\00a0";
+}
+.demo-detail[open] summary::before {
+  content: "\25BE\00a0";
+}
+.demo-detail .detail-body {
+  margin-top: 0.75rem;
+  padding-left: 0.5rem;
+  border-left: 2px solid var(--border-color);
+  color: var(--body-color);
+  font-size: 0.95rem;
+}
+
+// CTA section at bottom
+.demo-cta {
+  text-align: center;
+  padding: 2rem 0 1rem;
+  border-top: 1px solid var(--border-color);
+  margin-top: 2rem;
+}
+.demo-cta .btn {
+  margin: 0.5rem;
+}
+
+// Legacy support
+.demo-media video,
+.demo-media img {
+  max-width: 100%;
+  height: auto;
+}
+
+// ─── Demo page responsive ────────────────────────────────────────────
+
+@media (max-width: 991px) {
+  .scenario-top {
+    flex-direction: column;
+  }
+  .result-gallery {
+    flex-wrap: wrap;
+  }
+  .result-card {
+    flex: 1 1 calc(50% - 0.5rem);
+  }
+  // Third card stretches full width when wrapping
+  .result-card:last-child:nth-child(odd) {
+    flex: 1 1 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .scenario-pills {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.25rem;
+  }
+  .scenario-pills .nav-link {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .result-gallery {
+    flex-direction: column;
+  }
+  .result-card {
+    flex: 1 1 100%;
+  }
+}
+
+// Team cards: hide research topic lists, tighten layout
+.team-2 .card-profile .table-responsive {
+  display: none;
+}
+.team-2 .card-profile {
+  margin-bottom: 2rem;
+}
+.team-2 .card-profile .card-body {
+  padding-bottom: 1rem;
+}
+// Remove diagonal white overlay on card images
+.team-2 .card-profile .card-header::after {
+  display: none !important;
+}
+.team-2 .card-profile .card-image::after {
+  display: none !important;
+}
+// Full-image team cards: image fills entire card, text overlaid at bottom
+.team-2 .card-profile {
+  position: relative;
+  overflow: hidden;
+  border: none !important;
+  border-radius: 0.5rem;
+  height: 350px;
+}
+.team-2 .card-profile .card-header {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.team-2 .card-profile .card-image,
+.team-2 .card-profile .card-image a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.team-2 .card-profile .card-image img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  object-position: top !important;
+  transition: transform 0.4s ease;
+}
+.team-2 .card-profile:hover .card-image img {
+  transform: scale(1.05);
+}
+.team-2 .card-profile .card-body {
+  position: absolute !important;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 !important;
+  transform: none !important;
+  top: auto !important;
+  background: linear-gradient(transparent, rgba(0,0,0,0.7)) !important;
+  padding: 2.5rem 1.25rem 1rem !important;
+}
+.team-2 .card-profile .card-body .display-4 {
+  color: #fff !important;
+}
+.team-2 .card-profile .card-body .lead {
+  color: rgba(255,255,255,0.85) !important;
+}
+
+// Theme toggle button
+.theme-toggle {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+}
+.theme-toggle:hover {
+  color: #fff;
+}
+// Default (dark): show sun icon to switch to light
+.theme-toggle .fa-sun { display: inline; }
+.theme-toggle .fa-moon { display: none; }
+[data-theme="light"] .theme-toggle .fa-sun { display: none; }
+[data-theme="light"] .theme-toggle .fa-moon { display: inline; }
+
+// Dark is default, so these overrides apply globally
+.bg-white, .bg-secondary {
+  background-color: var(--surface-bg) !important;
+}
+.close {
+  color: var(--heading-color);
+}
+.navbar-collapse-header {
+  border-bottom-color: var(--border-color);
+}
+
+// Mobile nav collapse panel background
+@media (max-width: 991px) {
+  .navbar-collapse {
+    background-color: var(--surface-bg);
+  }
+}
+
+// Prevent horizontal overflow from fullWidth elements
+html, body {
+  overflow-x: hidden;
+}
+
+// Mobile improvements
+@media (max-width: 991px) {
+  // Footer: stack columns vertically
+  .footer .row > [class*="col-"] {
+    margin-bottom: 1.5rem;
+  }
+  .footer .col-lg-2,
+  .footer .col-lg-3,
+  .footer .col-lg-4 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .display-2 {
+    font-size: 2rem !important;
+  }
+  .display-3 {
+    font-size: 1.75rem !important;
+  }
+  .section {
+    padding: 2rem 0;
+  }
+
+  // People cards: 2 per row on tablets
+  .team-2 .row > [class*="col-"] {
+    flex: 0 0 50% !important;
+    max-width: 50% !important;
+  }
+  .team-2 .card-profile {
+    height: 280px;
+  }
+
+  // Footer: fully stacked
+  .footer .col-lg-2,
+  .footer .col-lg-3,
+  .footer .col-lg-4 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  // Hero buttons: stack vertically
+  .hero-text-position .btn {
+    display: block;
+    margin: 0.5rem auto !important;
+    width: fit-content;
+  }
+
+  // Module cards: stack link below text
+  .module-card {
+    flex-wrap: wrap;
+  }
+  .module-card .module-link {
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  // People cards: 1 per row on phones
+  .team-2 .row > [class*="col-"] {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+  .team-2 .card-profile {
+    height: 350px;
+  }
+
+  // Smaller hero text
+  .hero-text-position p,
+  .hero-text-position span {
+    font-size: 100% !important;
+  }
+
+  // Tighter section padding
+  .section {
+    padding: 1.5rem 0;
+  }
+
+  // Footer text centered
+  .footer {
+    text-align: center;
+  }
+  .footer .text-md-right {
+    text-align: center !important;
+  }
+}
