@@ -112,23 +112,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
   <div class="pub-entry">
     <p class="pub-title">
-      <a href="https://arxiv.org/abs/2507.02656">Volatile-rich evolution of molten super-Earth L 98-59 d</a>
-    </p>
-    <p class="pub-authors">Nicholls, H.; Lichtenberg, T.; Chatterjee, R. D.; Guimond, C. M.; Postolec, E.; Pierrehumbert, R. T.</p>
-    <p class="pub-venue">Nature Astronomy, in press (2026)</p>
-    <p class="pub-summary">JWST detected sulphur dioxide in the atmosphere of the 1.6 Earth-mass planet L 98-59 d, the first sulphur detection on a planet of this size. Simulations show the planet hosts a permanent magma ocean rich in sulphur, which outgasses and is converted to SO<sub>2</sub> by ultraviolet radiation. L 98-59 d does not fit the standard "gas dwarf" or "water world" categories, suggesting super-Earths are more diverse than previously assumed.</p>
-    <details class="pub-abstract">
-      <summary>Abstract</summary>
-      <p>Small low-density exoplanets are sculpted by strong stellar irradiation but their origin is unknown. Two competing scenarios are that they formed either with rocky interiors and H₂-He atmospheres ('gas-dwarfs'), or instead with bulk compositions dominated by H₂O phases ('water-worlds'). Observations of L 98-59 d have revealed its unusually low density and spectral characteristics, opening a window for disentangling its origin. We constrain the possible range of evolutionary histories linking L 98-59 d's birth conditions to these observations, using a coupled atmosphere-interior modelling framework. Observations are explained by a chemically-reducing mantle and early substantial (>1.8 mass%) sulfur and hydrogen content, inconsistent with both the gas-dwarf and water-world origin scenarios. Observed spectral features are explained by in-situ photochemical production of SO₂ in an H₂ background. L 98-59 d's interior comprises a permanent magma ocean, allowing long-term retention of volatiles within its interior over billions of years. In breaking with the supposed gas-dwarf/water-world dichotomy, we reveal an evolutionary pathway defined by high-molar-mass atmospheres overlying magma oceans, and invite a more nuanced taxonomy of small exoplanets.</p>
-    </details>
-    <div class="pub-links">
-      <a href="https://arxiv.org/abs/2507.02656">arXiv</a>
-      <a href="https://scixplorer.org/abs/2025arXiv250702656N">SciX</a>
-    </div>
-  </div>
-
-  <div class="pub-entry">
-    <p class="pub-title">
       <a href="https://arxiv.org/abs/2512.05816">Most rocky sub-Neptunes are molten: mapping the solidification shoreline for gas dwarf exoplanets</a>
     </p>
     <p class="pub-authors">Calder, R.; Shorttle, O.; Nicholls, H.; Lichtenberg, T.; Guimond, C.-M.</p>
@@ -164,6 +147,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <div class="pub-section">
   <h4>Published</h4>
+
+  <div class="pub-entry">
+    <p class="pub-title">
+      <a href="https://doi.org/10.1038/s41550-026-02815-8">Volatile-rich evolution of molten super-Earth L 98-59 d</a>
+    </p>
+    <p class="pub-authors">Nicholls, H.; Lichtenberg, T.; Chatterjee, R. D.; Guimond, C. M.; Postolec, E.; Pierrehumbert, R. T.</p>
+    <p class="pub-venue">Nature Astronomy (2026)</p>
+    <p class="pub-summary">JWST detected sulphur dioxide in the atmosphere of the 1.6 Earth-mass planet L 98-59 d, the first sulphur detection on a planet of this size. Simulations show the planet hosts a permanent magma ocean rich in sulphur, which outgasses and is converted to SO<sub>2</sub> by ultraviolet radiation. L 98-59 d does not fit the standard "gas dwarf" or "water world" categories, suggesting super-Earths are more diverse than previously assumed.</p>
+    <details class="pub-abstract">
+      <summary>Abstract</summary>
+      <p>Small low-density exoplanets are sculpted by strong stellar irradiation but their origin is unknown. Two competing scenarios are that they formed either with rocky interiors and H₂-He atmospheres ('gas-dwarfs'), or instead with bulk compositions dominated by H₂O phases ('water-worlds'). Observations of L 98-59 d have revealed its unusually low density and spectral characteristics, opening a window for disentangling its origin. We constrain the possible range of evolutionary histories linking L 98-59 d's birth conditions to these observations, using a coupled atmosphere-interior modelling framework. Observations are explained by a chemically-reducing mantle and early substantial (>1.8 mass%) sulfur and hydrogen content, inconsistent with both the gas-dwarf and water-world origin scenarios. Observed spectral features are explained by in-situ photochemical production of SO₂ in an H₂ background. L 98-59 d's interior comprises a permanent magma ocean, allowing long-term retention of volatiles within its interior over billions of years. In breaking with the supposed gas-dwarf/water-world dichotomy, we reveal an evolutionary pathway defined by high-molar-mass atmospheres overlying magma oceans, and invite a more nuanced taxonomy of small exoplanets.</p>
+    </details>
+    <div class="pub-links">
+      <a href="https://doi.org/10.1038/s41550-026-02815-8">DOI</a>
+      <a href="https://arxiv.org/abs/2507.02656">arXiv</a>
+      <a href="https://scixplorer.org/abs/2026NatAs.tmp...61N">SciX</a>
+    </div>
+  </div>
 
   <div class="pub-entry">
     <p class="pub-title">
