@@ -1337,13 +1337,16 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
     
-    // Redistribute shuffled cards across the available rows, scaling per-row
-    // capacity to the actual card count so no card is ever dropped. Bootstrap
-    // .col-lg-4 wraps a 4th card to a second visual line within the same .row.
-    const perRow = Math.ceil(allCards.length / cardRows.length);
+    // Redistribute shuffled cards across the available rows. Earlier rows get
+    // floor(total/numRows) cards; the final row absorbs the remainder so any
+    // wrapped extra (Bootstrap .col-lg-4 wraps a 4th column to a new visual
+    // line) appears at the very bottom rather than mid-page.
+    const baseCount = Math.floor(allCards.length / cardRows.length);
     let cardIndex = 0;
-    cardRows.forEach(row => {
-      for (let i = 0; i < perRow && cardIndex < allCards.length; i++) {
+    cardRows.forEach((row, rowIdx) => {
+      const isLast = rowIdx === cardRows.length - 1;
+      const count = isLast ? allCards.length - cardIndex : baseCount;
+      for (let i = 0; i < count && cardIndex < allCards.length; i++) {
         row.appendChild(allCards[cardIndex]);
         cardIndex++;
       }
