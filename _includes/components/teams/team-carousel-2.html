@@ -1337,10 +1337,13 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
     
-    // Redistribute shuffled cards (3 per row)
+    // Redistribute shuffled cards across the available rows, scaling per-row
+    // capacity to the actual card count so no card is ever dropped. Bootstrap
+    // .col-lg-4 wraps a 4th card to a second visual line within the same .row.
+    const perRow = Math.ceil(allCards.length / cardRows.length);
     let cardIndex = 0;
     cardRows.forEach(row => {
-      for (let i = 0; i < 3 && cardIndex < allCards.length; i++) {
+      for (let i = 0; i < perRow && cardIndex < allCards.length; i++) {
         row.appendChild(allCards[cardIndex]);
         cardIndex++;
       }
