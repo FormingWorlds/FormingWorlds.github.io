@@ -41,35 +41,36 @@ Built with [Jekyll](https://jekyllrb.com/) and hosted on GitHub Pages.
 
 ## Local development
 
-### Prerequisites
-
-You need Ruby and Bundler. On macOS, the system Ruby is outdated, so install a current version first:
+### Quick start (macOS)
 
 ```sh
-brew install ruby
+brew install ruby@3.3
+cd FormingWorlds.github.io
+bin/dev
 ```
 
-After installation, follow the instructions Homebrew prints to add the new Ruby to your `PATH` (typically adding a line to `~/.zshrc`). Then restart your terminal and install Bundler:
+`bin/dev` is a small wrapper that picks the right Ruby, runs `bundle install` on first use, and starts Jekyll at [http://127.0.0.1:4001](http://127.0.0.1:4001). Override the port with `PORT=4002 bin/dev`, or pass extra flags through to `jekyll serve` (e.g. `bin/dev --no-watch`).
+
+The site rebuilds automatically when you save changes to most files (except `_config.yml`, which requires restarting the server).
+
+### Why Ruby 3.3?
+
+The `github-pages` gem (version 232, pinned by GitHub Pages) requires Ruby `>= 2.6, < 4.0`. The default `brew install ruby` formula now installs Ruby 4.x and will fail dependency resolution. Use `ruby@3.3` (or any 3.x) instead. `bin/dev` picks `/opt/homebrew/opt/ruby@3.3/bin` automatically when present, and falls back to whatever `ruby` is on `PATH` for non-macOS contributors using rbenv, asdf, etc.
+
+### Manual setup (without bin/dev)
 
 ```sh
 gem install bundler
-```
-
-### Running the site locally
-
-```sh
-cd FormingWorlds.github.io
-bundle install        # install dependencies (first time only)
+bundle config set --local path 'vendor/bundle'
+bundle install
 bundle exec jekyll serve
 ```
 
-Open [http://localhost:4000](http://localhost:4000) in your browser. The site rebuilds automatically when you save changes to most files (except `_config.yml`, which requires restarting the server).
-
 ### Troubleshooting
 
-- **`bundle install` fails**: Make sure you are using the Homebrew Ruby, not the macOS system Ruby. Run `which ruby` to check.
+- **`bundle install` fails with a Ruby version error**: You are likely on Ruby 4.x. Install `ruby@3.3` (see above) or use `bin/dev`, which prefers it automatically.
 - **Styles not updating**: SCSS changes require Jekyll to recompile. If live reload is not picking them up, restart the server.
-- **`_config.yml` changes not showing**: This file is only read at startup. Stop the server (Ctrl+C) and run `bundle exec jekyll serve` again.
+- **`_config.yml` changes not showing**: This file is only read at startup. Stop the server (Ctrl+C) and run `bin/dev` again.
 
 ## Technical notes
 

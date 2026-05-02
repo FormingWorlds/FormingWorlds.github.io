@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+#
+# bin/dev — start the local Jekyll preview server at http://127.0.0.1:4001.
+#
+# Usage:
+#   bin/dev                  # default port 4001, auto-reload on
+#   PORT=4002 bin/dev        # override port (useful if 4001 is taken)
+#   bin/dev --no-watch       # any extra flags pass through to `jekyll serve`
+#
+# What it does:
+#   1. Picks Homebrew's ruby@3.3 if available. The plain `brew install ruby`
+#      formula now installs Ruby 4.x, but the `github-pages` 232 gem caps
+#      Ruby at < 4.0, so a fresh `bundle install` against system or default
+#      Homebrew Ruby fails dependency resolution. Falling back to whatever
+#      `ruby` is on PATH lets non-macOS contributors keep using their setup.
+#   2. Runs `bundle install` automatically on first use (when vendor/bundle/
+#      is missing) so a fresh clone is one command away from running.
+#      Gems install into ./vendor/bundle (gitignored) per .bundle/config.
+#   3. Hands off to `bundle exec jekyll serve` via `exec`, so Ctrl-C goes
+#      straight to Jekyll and there is no leftover wrapper process.
+#
+set -euo pipefail
+
+# Run relative to the repo root regardless of where the user invokes it from.
+cd "$(dirname "$0")/.."
+
+# Prefer ruby@3.3 if Homebrew has it (see note above). Otherwise leave PATH
+# alone so contributors with their own Ruby toolchain (rbenv, asdf, system)
+# keep working.
+RUBY_PREFIX="/opt/homebrew/opt/ruby@3.3/bin"
+if [[ -x "$RUBY_PREFIX/ruby" ]]; then
+  export PATH="$RUBY_PREFIX:$PATH"
+fi
+
+# First-time setup: install gems into vendor/bundle (gitignored).
+if [[ ! -d vendor/bundle ]]; then
+  bundle install
+fi
+
+# Hand off to Jekyll. PORT env var overrides the default; any extra args
+# pass through (e.g. --no-watch, --incremental).
+exec bundle exec jekyll serve --port "${PORT:-4001}" "$@"
