@@ -110,27 +110,13 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="pub-section">
   <h4>Preprints</h4>
 
-  <div class="pub-entry">
-    <p class="pub-title">
-      <a href="https://arxiv.org/abs/2511.16142">Coupled atmospHere Interior modeL Intercomparison (CHILI) Protocol Version 1.0: A CUISINES Intercomparison Project of Magma Ocean Models</a>
-    </p>
-    <p class="pub-authors"><strong>Lichtenberg, T.</strong>; Schaefer, L.; Krissansen-Totton, J.; Miguel, Y.; Sergeev, D. E.; Baumeister, P.; Cmiel, J.; Janssen, L. J.; Nguyen, T. G.; Miyazaki, Y.; <strong>Nicholls, H.</strong>; Papesh, A.; Pelissard, H.; Peng, B.; Perez, J.; <strong>Postolec, E.</strong>; Sastre, M.; Salvador, A.; Spreeuw, H.; Zorzi, A.; Fauchez, T. J.; Hamano, K.; Leconte, J.; Maurice, M.; Noack, L.; Soucasse, L.</p>
-    <p class="pub-venue">Preprint (2025)</p>
-    <p class="pub-summary">Presents the experimental protocol for CHILI, an intercomparison project for coupled magma ocean-atmosphere models. The protocol defines standard tests for early Earth, Venus, and rocky exoplanets around M-dwarfs to quantify differences in energy transport, geochemistry, and volatile cycling between various models in the community.</p>
-    <details class="pub-abstract">
-      <summary>Abstract</summary>
-      <p>Spectroscopic characterization of rocky exoplanets with the James Webb Space Telescope has brought the origin and evolution of their atmospheres into the focus of exoplanet science. Time-evolved models of the feedback between interior and atmosphere are critical to predict and interpret these observations and link them to the Solar System terrestrial planets. However, models differ in methodologies and input data, which can lead to significant differences in interpretation. In this paper, we present the experimental protocol of the Coupled atmospHere Interior modeL Intercomparison (CHILI) project. CHILI is an (exo-)planet model intercomparison project within the Climates Using Interactive Suites of Intercomparisons Nested for Exoplanet Studies (CUISINES) framework, which aims to support a diverse set of multi-model intercomparison projects in the exoplanet community. The present protocol includes the initial set of participating magma ocean models, divided into evolutionary and static models, and two types of test categories, one focused on Solar System planets (Earth & Venus) and the other on exoplanets orbiting low-mass M-dwarfs. Both test categories aim to quantify the evolution of key markers of the links between planetary atmospheres and interiors over geological timescales. The proposed tests would allow us to quantify and compare the differences between coupled atmosphere-interior models used by the exoplanet and planetary science communities. Results from the proposed tests will be published in dedicated follow-up papers. To encourage the community to join this comparison effort and as an example, we present initial test results for the early Earth and TRAPPIST-1 b, conducted with models differing in the treatment of energy transport in the planetary interior and atmosphere, surface boundary layer, geochemistry, and the in- and outgassing of volatile compounds.</p>
-    </details>
-    <div class="pub-links">
-      <a href="https://arxiv.org/abs/2511.16142">arXiv</a>
-    </div>
   </div>
 
   <div class="pub-entry">
     <p class="pub-title">
       <a href="https://arxiv.org/abs/2512.05816">Most rocky sub-Neptunes are molten: mapping the solidification shoreline for gas dwarf exoplanets</a>
     </p>
-    <p class="pub-authors">Calder, R.; Shorttle, O.; Nicholls, H.; Lichtenberg, T.; Guimond, C.-M.</p>
+    <p class="pub-authors">Calder, Robb; Shorttle, Oliver; Nicholls, Harrison; Lichtenberg, Tim; Guimond, Claire Marie</p>
     <p class="pub-venue">Under review at MNRAS (2026)</p>
     <p class="pub-summary">Sub-Neptunes are the most common type of detected exoplanet, but their internal structure is ambiguous. This study maps the "solidification shoreline" separating molten from solid interiors and finds that 98% of detected sub-Neptunes, if they have rocky cores with hydrogen envelopes, host permanent magma oceans today.</p>
     <details class="pub-abstract">
@@ -149,9 +135,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
   <div class="pub-entry">
     <p class="pub-title">
+      <a href="https://arxiv.org/abs/2511.16142">Coupled atmospHere Interior modeL Intercomparison (CHILI) Protocol Version 1.0: A CUISINES Intercomparison Project of Magma Ocean Models</a>
+    </p>
+    <p class="pub-authors">Lichtenberg, Tim; Schaefer, Laura; Krissansen-Totton, Joshua; Miguel, Yamila; Sergeev, Denis E.; Baumeister, Philipp; Cmiel, Jessica; Janssen, Leoni J.; Nguyen, T. Giang; Miyazaki, Yoshinori; Nicholls, Harrison; Papesh, Alexandra; Pelissard, Hugo; Peng, Bo; Perez, Junellie; Postolec, Emma; Sastre, Mariana; Salvador, Arnaud; Spreeuw, Hanno; Zorzi, Andrea; Fauchez, Thomas J.; Hamano, Keiko; Leconte, Jérémy; Maurice, Maxime; Noack, Lena; Soucasse, Laurent</p>
+    <p class="pub-venue">In press at The Planetary Science Journal (2026)</p>
+    <p class="pub-summary">Presents the experimental protocol for CHILI, an intercomparison project for coupled magma ocean-atmosphere models. The protocol defines standard tests for early Earth, Venus, and rocky exoplanets around M-dwarfs to quantify differences in energy transport, geochemistry, and volatile cycling between various models in the community.</p>
+    <details class="pub-abstract">
+      <summary>Abstract</summary>
+      <p>Spectroscopic characterization of rocky exoplanets with the James Webb Space Telescope has brought the origin and evolution of their atmospheres into the focus of exoplanet science. Time-evolved models of the feedback between interior and atmosphere are critical to predict and interpret these observations and link them to the Solar System terrestrial planets. However, models differ in methodologies and input data, which can lead to significant differences in interpretation. In this paper, we present the experimental protocol of the Coupled atmospHere Interior modeL Intercomparison (CHILI) project. CHILI is an (exo-)planet model intercomparison project within the Climates Using Interactive Suites of Intercomparisons Nested for Exoplanet Studies (CUISINES) framework, which aims to support a diverse set of multi-model intercomparison projects in the exoplanet community. The present protocol includes the initial set of participating magma ocean models, divided into evolutionary and static models, and two types of test categories, one focused on Solar System planets (Earth & Venus) and the other on exoplanets orbiting low-mass M-dwarfs. Both test categories aim to quantify the evolution of key markers of the links between planetary atmospheres and interiors over geological timescales. The proposed tests would allow us to quantify and compare the differences between coupled atmosphere-interior models used by the exoplanet and planetary science communities. Results from the proposed tests will be published in dedicated follow-up papers. To encourage the community to join this comparison effort and as an example, we present initial test results for the early Earth and TRAPPIST-1 b, conducted with models differing in the treatment of energy transport in the planetary interior and atmosphere, surface boundary layer, geochemistry, and the in- and outgassing of volatile compounds.</p>
+    </details>
+    <div class="pub-links">
+      <a href="https://arxiv.org/abs/2511.16142">arXiv</a>
+      <a href="https://scixplorer.org/abs/2025arXiv251116142L">SciX</a>
+    </div>
+  </div>
+
+  <div class="pub-entry">
+    <p class="pub-title">
       <a href="https://doi.org/10.3847/psj/ae5928">Onset of habitable conditions on the Hadean Earth set by feedback between tides and greenhouse forcing</a>
     </p>
-    <p class="pub-authors">van Dijk, Marijn R.; <strong>Nicholls, Harrison</strong>; <strong>Lichtenberg, Tim</strong></p>
+    <p class="pub-authors">van Dijk, Marijn R.; Nicholls, Harrison; Lichtenberg, Tim</p>
     <p class="pub-venue">The Planetary Science Journal, 7(4), 94 (2026)</p>
     <p class="pub-summary">After the Moon-forming impact, Earth's magma ocean had to solidify before liquid water oceans could form. This study shows that feedback between tidal heating from the early Moon and greenhouse forcing from the outgassed atmosphere can vary the magma ocean lifetime from 30 Myr to 500 Myr, depending on the mantle redox state and volatile inventory.</p>
     <details class="pub-abstract">
@@ -169,7 +172,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <p class="pub-title">
       <a href="https://doi.org/10.1038/s41550-026-02815-8">Volatile-rich evolution of molten super-Earth L 98-59 d</a>
     </p>
-    <p class="pub-authors">Nicholls, H.; Lichtenberg, T.; Chatterjee, R. D.; Guimond, C. M.; Postolec, E.; Pierrehumbert, R. T.</p>
+    <p class="pub-authors">Nicholls, Harrison; Lichtenberg, Tim; Chatterjee, Richard D.; Guimond, Claire Marie; Postolec, Emma; Pierrehumbert, Raymond T.</p>
     <p class="pub-venue">Nature Astronomy (2026)</p>
     <p class="pub-summary">JWST detected sulphur dioxide in the atmosphere of the 1.6 Earth-mass planet L 98-59 d, the first sulphur detection on a planet of this size. Simulations show the planet hosts a permanent magma ocean rich in sulphur, which outgasses and is converted to SO<sub>2</sub> by ultraviolet radiation. L 98-59 d does not fit the standard "gas dwarf" or "water world" categories, suggesting super-Earths are more diverse than previously assumed.</p>
     <details class="pub-abstract">
@@ -187,7 +190,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <p class="pub-title">
       <a href="https://doi.org/10.1093/mnras/staf1167">Self-limited tidal heating and prolonged magma oceans in the L 98-59 system</a>
     </p>
-    <p class="pub-authors">Nicholls, H.; Guimond, C. M.; Hay, H. C. F. C.; Chatterjee, R. D.; Lichtenberg, T.; Pierrehumbert, R. T.</p>
+    <p class="pub-authors">Nicholls, Harrison; Guimond, Claire Marie; Hay, Hamish C. F. C.; Chatterjee, Richard D.; Lichtenberg, Tim; Pierrehumbert, Raymond T.</p>
     <p class="pub-venue">Monthly Notices of the Royal Astronomical Society, 541, 2566 (2025)</p>
     <p class="pub-summary">Simulates the early evolution of all three rocky planets in the L 98-59 system with self-consistent tidal heating. Discovers a new "radiation-tide-rheology feedback" where tidal heating, mantle viscosity, and radiative cooling regulate each other, yielding heating rates up to 100x lower than previous estimates but still sufficient to keep magma oceans alive for billions of years.</p>
     <details class="pub-abstract">
@@ -205,7 +208,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <p class="pub-title">
       <a href="https://doi.org/10.1093/mnras/stae2772">Convective shutdown in the atmospheres of lava worlds</a>
     </p>
-    <p class="pub-authors">Nicholls, H.; Pierrehumbert, R. T.; Lichtenberg, T.; Soucasse, L.; Smeets, S.</p>
+    <p class="pub-authors">Nicholls, Harrison; Pierrehumbert, Raymond T.; Lichtenberg, Tim; Soucasse, Laurent; Smeets, Simon</p>
     <p class="pub-venue">Monthly Notices of the Royal Astronomical Society, 536, 2957 (2025)</p>
     <p class="pub-summary">Previous models assumed convection always sets the atmospheric temperature structure on lava worlds. This work shows that atmospheres overlying magma oceans can develop deep convectively stable isothermal layers, yet permanent magma oceans persist regardless. Applied to HD 63433 d and TRAPPIST-1 c, the results show that low-molecular-weight atmospheres can produce cool stratospheres that mimic the emission of an airless body.</p>
     <details class="pub-abstract">
@@ -223,7 +226,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <p class="pub-title">
       <a href="https://doi.org/10.1029/2024JE008576">Magma ocean evolution at arbitrary redox state</a>
     </p>
-    <p class="pub-authors">Nicholls, H.; Lichtenberg, T.; Bower, D. J.; Pierrehumbert, R. T.</p>
+    <p class="pub-authors">Nicholls, Harrison; Lichtenberg, Tim; Bower, Dan J.; Pierrehumbert, Raymond T.</p>
     <p class="pub-venue">Journal of Geophysical Research: Planets, 129 (2024)</p>
     <p class="pub-summary">Introduces the current PROTEUS framework with coupled magma ocean interior, radiative-convective atmosphere, and redox-dependent outgassing chemistry. Explores how varying the mantle oxidation state, orbital distance, hydrogen budget, and C/H ratio controls whether a planet ends up with a steam atmosphere, a hydrogen-rich greenhouse, or a permanently molten surface.</p>
     <details class="pub-abstract">
@@ -241,7 +244,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <p class="pub-title">
       <a href="https://doi.org/10.1029/2020JE006711">Vertically resolved magma ocean-protoatmosphere evolution: H<sub>2</sub>, H<sub>2</sub>O, CO<sub>2</sub>, CH<sub>4</sub>, CO, O<sub>2</sub>, and N<sub>2</sub> as primary absorbers</a>
     </p>
-    <p class="pub-authors">Lichtenberg, T.; Bower, D. J.; Hammond, M.; Boukrouche, R.; Sanan, P.; Tsai, S.-M.; Pierrehumbert, R. T.</p>
+    <p class="pub-authors">Lichtenberg, Tim; Bower, Dan J.; Hammond, Mark; Boukrouche, Ryan; Sanan, Patrick; Tsai, Shang-Min; Pierrehumbert, Raymond T.</p>
     <p class="pub-venue">Journal of Geophysical Research: Planets, 126 (2021)</p>
     <p class="pub-summary">The foundational PROTEUS paper. Couples a vertically resolved magma ocean model with a radiative-convective atmosphere to track how Earth-sized planets evolve under different dominant volatiles. Finds that H<sub>2</sub>-dominated atmospheres delay solidification by orders of magnitude compared to H<sub>2</sub>O or CO<sub>2</sub>, linking interior evolution directly to multi-wavelength observations.</p>
     <details class="pub-abstract">
