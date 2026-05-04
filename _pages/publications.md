@@ -110,8 +110,6 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="pub-section">
   <h4>Preprints</h4>
 
-  </div>
-
   <div class="pub-entry">
     <p class="pub-title">
       <a href="https://arxiv.org/abs/2512.05816">Most rocky sub-Neptunes are molten: mapping the solidification shoreline for gas dwarf exoplanets</a>
@@ -266,4 +264,6 @@ X</a>
 cixplorer.org/abs/2021JGRE..12606711L">SciX</a>
     </div>
   </div>
+</div>
+>
 </div>
