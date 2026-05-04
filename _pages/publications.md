@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   <div class="pub-entry">
     <p class="pub-title">
-      <a href="https://arxiv.org/abs/2511.00952">Onset of habitable conditions on the Hadean Earth set by feedback between tides and greenhouse forcing</a>
+      <a href="https://doi.org/10.3847/psj/ae5928">Onset of habitable conditions on the Hadean Earth set by feedback between tides and greenhouse forcing</a>
     </p>
     <p class="pub-authors">van Dijk, M. R.; Nicholls, H.; <strong>Lichtenberg, T.</strong></p>
     <p class="pub-venue">The Planetary Science Journal (2026)</p>
@@ -159,6 +159,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <p>In the aftermath of the Moon-forming giant impact, the Hadean Earth's mantle and surface crystallized from a global magma ocean blanketed by a dense volatile-rich atmosphere. While prior studies have explored the thermal evolution of such early Earth scenarios under idealized, oxidizing conditions, the potential feedback between tidal heating driven by Earth-Moon orbital forcing and variable redox scenarios have not yet been explored in detail. We investigate whether tidal heating could have prolonged this early magma ocean phase and supported quasi-steady state epochs of global radiative equilibrium: periods of thermal balance between outgoing radiation and interior heat flux. Using the PROTEUS simulation framework, we simulate Earth's early evolution under a range of plausible tidal power densities, oxygen fugacities, and volatile inventories. Our results suggest that feedback between tidal heating and atmospheric forcing can induce substantial variation in magma ocean lifetimes, from ~30 Myr up to ~500 Myr, sensitive to interior redox conditions. Global radiative equilibrium epochs commonly arise across this range, lasting from ~2 to ~320 Myr, and typically occur from 24 Myr after the Moon-forming impact. Under oxidizing conditions, late-stage H₂O degassing promotes melt retention and sustained heating due to its significant contribution to greenhouse forcing.</p>
     </details>
     <div class="pub-links">
+      <a href="https://doi.org/10.3847/psj/ae5928">DOI</a>
       <a href="https://arxiv.org/abs/2511.00952">arXiv</a>
       <a href="https://scixplorer.org/abs/2025arXiv251100952V">SciX</a>
     </div>
