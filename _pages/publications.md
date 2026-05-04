@@ -151,8 +151,8 @@ document.addEventListener('DOMContentLoaded', function() {
     <p class="pub-title">
       <a href="https://doi.org/10.3847/psj/ae5928">Onset of habitable conditions on the Hadean Earth set by feedback between tides and greenhouse forcing</a>
     </p>
-    <p class="pub-authors">van Dijk, M. R.; Nicholls, H.; <strong>Lichtenberg, T.</strong></p>
-    <p class="pub-venue">The Planetary Science Journal (2026)</p>
+    <p class="pub-authors">van Dijk, Marijn R.; <strong>Nicholls, Harrison</strong>; <strong>Lichtenberg, Tim</strong></p>
+    <p class="pub-venue">The Planetary Science Journal, 7(4), 94 (2026)</p>
     <p class="pub-summary">After the Moon-forming impact, Earth's magma ocean had to solidify before liquid water oceans could form. This study shows that feedback between tidal heating from the early Moon and greenhouse forcing from the outgassed atmosphere can vary the magma ocean lifetime from 30 Myr to 500 Myr, depending on the mantle redox state and volatile inventory.</p>
     <details class="pub-abstract">
       <summary>Abstract</summary>
@@ -252,6 +252,15 @@ document.addEventListener('DOMContentLoaded', function() {
       <a href="https://doi.org/10.1029/2020JE006711">DOI</a>
       <a href="https://arxiv.org/abs/2101.10991">arXiv</a>
       <a href="https://scixplorer.org/abs/2021JGRE..12606711L">SciX</a>
+    </div>
+  </div>
+</div>
+X</a>
+    </div>
+  </div>
+</div>
+/div>
+cixplorer.org/abs/2021JGRE..12606711L">SciX</a>
     </div>
   </div>
 </div>
