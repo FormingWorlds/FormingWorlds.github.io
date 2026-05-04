@@ -112,6 +112,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
   <div class="pub-entry">
     <p class="pub-title">
+      <a href="https://arxiv.org/abs/2511.16142">Coupled atmospHere Interior modeL Intercomparison (CHILI) Protocol Version 1.0: A CUISINES Intercomparison Project of Magma Ocean Models</a>
+    </p>
+    <p class="pub-authors"><strong>Lichtenberg, T.</strong>; Schaefer, L.; Krissansen-Totton, J.; Miguel, Y.; Sergeev, D. E.; Baumeister, P.; Cmiel, J.; Janssen, L. J.; Nguyen, T. G.; Miyazaki, Y.; <strong>Nicholls, H.</strong>; Papesh, A.; Pelissard, H.; Peng, B.; Perez, J.; <strong>Postolec, E.</strong>; Sastre, M.; Salvador, A.; Spreeuw, H.; Zorzi, A.; Fauchez, T. J.; Hamano, K.; Leconte, J.; Maurice, M.; Noack, L.; Soucasse, L.</p>
+    <p class="pub-venue">Preprint (2025)</p>
+    <p class="pub-summary">Presents the experimental protocol for CHILI, an intercomparison project for coupled magma ocean-atmosphere models. The protocol defines standard tests for early Earth, Venus, and rocky exoplanets around M-dwarfs to quantify differences in energy transport, geochemistry, and volatile cycling between various models in the community.</p>
+    <details class="pub-abstract">
+      <summary>Abstract</summary>
+      <p>Spectroscopic characterization of rocky exoplanets with the James Webb Space Telescope has brought the origin and evolution of their atmospheres into the focus of exoplanet science. Time-evolved models of the feedback between interior and atmosphere are critical to predict and interpret these observations and link them to the Solar System terrestrial planets. However, models differ in methodologies and input data, which can lead to significant differences in interpretation. In this paper, we present the experimental protocol of the Coupled atmospHere Interior modeL Intercomparison (CHILI) project. CHILI is an (exo-)planet model intercomparison project within the Climates Using Interactive Suites of Intercomparisons Nested for Exoplanet Studies (CUISINES) framework, which aims to support a diverse set of multi-model intercomparison projects in the exoplanet community. The present protocol includes the initial set of participating magma ocean models, divided into evolutionary and static models, and two types of test categories, one focused on Solar System planets (Earth & Venus) and the other on exoplanets orbiting low-mass M-dwarfs. Both test categories aim to quantify the evolution of key markers of the links between planetary atmospheres and interiors over geological timescales. The proposed tests would allow us to quantify and compare the differences between coupled atmosphere-interior models used by the exoplanet and planetary science communities. Results from the proposed tests will be published in dedicated follow-up papers. To encourage the community to join this comparison effort and as an example, we present initial test results for the early Earth and TRAPPIST-1 b, conducted with models differing in the treatment of energy transport in the planetary interior and atmosphere, surface boundary layer, geochemistry, and the in- and outgassing of volatile compounds.</p>
+    </details>
+    <div class="pub-links">
+      <a href="https://arxiv.org/abs/2511.16142">arXiv</a>
+    </div>
+  </div>
+
+  <div class="pub-entry">
+    <p class="pub-title">
       <a href="https://arxiv.org/abs/2512.05816">Most rocky sub-Neptunes are molten: mapping the solidification shoreline for gas dwarf exoplanets</a>
     </p>
     <p class="pub-authors">Calder, R.; Shorttle, O.; Nicholls, H.; Lichtenberg, T.; Guimond, C.-M.</p>
@@ -126,13 +142,17 @@ document.addEventListener('DOMContentLoaded', function() {
       <a href="https://scixplorer.org/abs/2025arXiv251205816C">SciX</a>
     </div>
   </div>
+</div>
+
+<div class="pub-section">
+  <h4>Published</h4>
 
   <div class="pub-entry">
     <p class="pub-title">
       <a href="https://arxiv.org/abs/2511.00952">Onset of habitable conditions on the Hadean Earth set by feedback between tides and greenhouse forcing</a>
     </p>
-    <p class="pub-authors">van Dijk, M. R.; Nicholls, H.; Lichtenberg, T.</p>
-    <p class="pub-venue">Under review at PSJ (2026)</p>
+    <p class="pub-authors">van Dijk, M. R.; Nicholls, H.; <strong>Lichtenberg, T.</strong></p>
+    <p class="pub-venue">The Planetary Science Journal (2026)</p>
     <p class="pub-summary">After the Moon-forming impact, Earth's magma ocean had to solidify before liquid water oceans could form. This study shows that feedback between tidal heating from the early Moon and greenhouse forcing from the outgassed atmosphere can vary the magma ocean lifetime from 30 Myr to 500 Myr, depending on the mantle redox state and volatile inventory.</p>
     <details class="pub-abstract">
       <summary>Abstract</summary>
@@ -143,10 +163,6 @@ document.addEventListener('DOMContentLoaded', function() {
       <a href="https://scixplorer.org/abs/2025arXiv251100952V">SciX</a>
     </div>
   </div>
-</div>
-
-<div class="pub-section">
-  <h4>Published</h4>
 
   <div class="pub-entry">
     <p class="pub-title">
