@@ -1,5 +1,12 @@
 # PROTEUS Framework Website - AI Coding Instructions
 
+## Crucial: Mandatory Update Skill
+Before making any updates to the website (especially the publications list), you MUST follow the **PROTEUS Website Update Skill** defined in [`GEMINI.md`](GEMINI.md). This file contains:
+- Strict HTML templates for publication entries.
+- Mandatory link ordering (SciX → arXiv → DOI).
+- Specific venue formatting rules.
+- A mandatory **Internal Review Phase** to prevent formatting regressions.
+
 ## Project Overview
 Jekyll-based static website for the PROTEUS planetary evolution framework, deployed via GitHub Pages at proteus-framework.org. Uses Argon Design System (Bootstrap-based) for styling and components.
 
