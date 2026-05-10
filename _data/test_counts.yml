@@ -65,8 +65,10 @@ mature:
     workflow: tests.yaml
     ci_label: CI
     has_codecov: true
-    total: 100
-    breakdown: "Marker scheme declared, application in progress"
+    total_endpoint: .github/badges/tests-total.json
+    markers:
+      unit: .github/badges/tests-unit.json
+      integration: .github/badges/tests-integration.json
 
 in_development:
   - name: MORS
