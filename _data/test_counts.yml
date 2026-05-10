@@ -38,8 +38,10 @@ mature:
     workflow: CI.yml
     ci_label: CI
     has_codecov: true
-    total: 1047
-    breakdown: "132 unit, 2 integration, 17 smoke, 18 slow; large parameterised sweeps"
+    total_endpoint: .github/badges/tests-total.json
+    markers:
+      unit: .github/badges/tests-unit.json
+      integration: .github/badges/tests-integration.json
 
   - name: AGNI
     owner: nichollsh
