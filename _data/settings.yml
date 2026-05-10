@@ -38,6 +38,9 @@ menu_settings:
     - title: 'Demos'
       url: '/demos'
 
+    - title: 'Testing'
+      url: '/testing'
+
     - title: 'Publications'
       url: '/publications'
 
