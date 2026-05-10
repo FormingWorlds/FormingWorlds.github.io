@@ -154,7 +154,7 @@ Pull requests must additionally clear an 80% diff-cover bar on changed lines, an
 
 <h4>Code coverage and test counts</h4>
 
-The PROTEUS framework and its mature submodules expose passing-tests badges and, where wired, line-coverage badges from <a href="https://app.codecov.io/gh/FormingWorlds" target="_blank" rel="noopener noreferrer">Codecov</a>. Counts below are static snapshots; live status is at the linked badges.
+The PROTEUS framework and its mature submodules expose passing-tests badges and, where wired, line-coverage badges from <a href="https://app.codecov.io/gh/FormingWorlds" target="_blank" rel="noopener noreferrer">Codecov</a>. Test counts marked with a live badge refresh automatically from each repository's CI; static counts are snapshots from the date in the footnote below.
 
 <p style="font-size: 0.95rem; margin-bottom: 0.4rem;"><strong>Mature suites</strong></p>
 
@@ -169,41 +169,35 @@ The PROTEUS framework and its mature submodules expose passing-tests badges and,
     </tr>
   </thead>
   <tbody>
+    {% for row in site.data.test_counts.mature %}
     <tr>
-      <td class="module-name"><a href="https://github.com/FormingWorlds/PROTEUS">PROTEUS</a></td>
-      <td class="test-count">1007</td>
-      <td class="test-breakdown">816 unit, 38 integration, 15 smoke, 6 slow</td>
-      <td><a href="https://github.com/FormingWorlds/PROTEUS/actions/workflows/ci-pr-checks.yml"><img src="https://img.shields.io/github/actions/workflow/status/FormingWorlds/PROTEUS/ci-pr-checks.yml?branch=main&label=CI&logo=github" alt="CI"></a></td>
-      <td><a href="https://app.codecov.io/gh/FormingWorlds/PROTEUS"><img src="https://img.shields.io/codecov/c/github/FormingWorlds/PROTEUS?label=coverage&logo=codecov" alt="coverage"></a></td>
+      <td class="module-name"><a href="https://github.com/{{ row.owner }}/{{ row.repo }}">{{ row.name }}</a></td>
+      <td class="test-count">
+        {%- if row.total_endpoint -%}
+          <a href="https://github.com/{{ row.owner }}/{{ row.repo }}/blob/main/{{ row.total_endpoint }}"><img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/{{ row.owner }}/{{ row.repo }}/main/{{ row.total_endpoint }}" alt="tests"></a>
+        {%- else -%}
+          {{ row.total }}
+        {%- endif -%}
+      </td>
+      <td class="test-breakdown">
+        {%- if row.markers -%}
+          {%- for m in row.markers -%}
+            <a href="https://github.com/{{ row.owner }}/{{ row.repo }}/blob/main/{{ m[1] }}"><img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/{{ row.owner }}/{{ row.repo }}/main/{{ m[1] }}" alt="{{ m[0] }}"></a>{% unless forloop.last %} {% endunless %}
+          {%- endfor -%}
+        {%- else -%}
+          {{ row.breakdown }}
+        {%- endif -%}
+      </td>
+      <td><a href="https://github.com/{{ row.owner }}/{{ row.repo }}/actions/workflows/{{ row.workflow }}"><img src="https://img.shields.io/github/actions/workflow/status/{{ row.owner }}/{{ row.repo }}/{{ row.workflow }}?branch=main&label={{ row.ci_label }}&logo=github" alt="{{ row.ci_label }}"></a></td>
+      <td>
+        {%- if row.has_codecov -%}
+          <a href="https://app.codecov.io/gh/{{ row.owner }}/{{ row.repo }}"><img src="https://img.shields.io/codecov/c/github/{{ row.owner }}/{{ row.repo }}?label=coverage&logo=codecov" alt="coverage"></a>
+        {%- else -%}
+          <span style="color: var(--muted-color); font-size: 0.85rem;">Codecov pending</span>
+        {%- endif -%}
+      </td>
     </tr>
-    <tr>
-      <td class="module-name"><a href="https://github.com/FormingWorlds/Zalmoxis">Zalmoxis</a></td>
-      <td class="test-count">1047</td>
-      <td class="test-breakdown">132 unit, 2 integration, 17 smoke, 18 slow; large parameterised sweeps</td>
-      <td><a href="https://github.com/FormingWorlds/Zalmoxis/actions/workflows/CI.yml"><img src="https://img.shields.io/github/actions/workflow/status/FormingWorlds/Zalmoxis/CI.yml?branch=main&label=CI&logo=github" alt="CI"></a></td>
-      <td><a href="https://app.codecov.io/gh/FormingWorlds/Zalmoxis"><img src="https://img.shields.io/codecov/c/github/FormingWorlds/Zalmoxis?label=coverage&logo=codecov" alt="coverage"></a></td>
-    </tr>
-    <tr>
-      <td class="module-name"><a href="https://github.com/nichollsh/AGNI">AGNI</a></td>
-      <td class="test-count">411</td>
-      <td class="test-breakdown">411 <code>@test</code> assertions in 106 testsets (Julia <code>Test.jl</code>)</td>
-      <td><a href="https://github.com/nichollsh/AGNI/actions/workflows/install_and_test.yml"><img src="https://img.shields.io/github/actions/workflow/status/nichollsh/AGNI/install_and_test.yml?branch=main&label=tests&logo=github" alt="tests"></a></td>
-      <td><span style="color: var(--muted-color); font-size: 0.85rem;">Codecov pending</span></td>
-    </tr>
-    <tr>
-      <td class="module-name"><a href="https://github.com/ExPlanetology/atmodeller">atmodeller</a></td>
-      <td class="test-count">138</td>
-      <td class="test-breakdown">PROTEUS-style markers being adopted</td>
-      <td><a href="https://github.com/ExPlanetology/atmodeller/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/ExPlanetology/atmodeller/ci.yml?branch=main&label=CI&logo=github" alt="CI"></a></td>
-      <td><span style="color: var(--muted-color); font-size: 0.85rem;">Codecov pending</span></td>
-    </tr>
-    <tr>
-      <td class="module-name"><a href="https://github.com/FormingWorlds/CALLIOPE">CALLIOPE</a></td>
-      <td class="test-count">100</td>
-      <td class="test-breakdown">Marker scheme declared, application in progress</td>
-      <td><a href="https://github.com/FormingWorlds/CALLIOPE/actions/workflows/tests.yaml"><img src="https://img.shields.io/github/actions/workflow/status/FormingWorlds/CALLIOPE/tests.yaml?branch=main&label=CI&logo=github" alt="CI"></a></td>
-      <td><a href="https://app.codecov.io/gh/FormingWorlds/CALLIOPE"><img src="https://img.shields.io/codecov/c/github/FormingWorlds/CALLIOPE?label=coverage&logo=codecov" alt="coverage"></a></td>
-    </tr>
+    {% endfor %}
   </tbody>
 </table>
 
@@ -219,58 +213,38 @@ The PROTEUS framework and its mature submodules expose passing-tests badges and,
     </tr>
   </thead>
   <tbody>
+    {% for row in site.data.test_counts.in_development %}
     <tr>
-      <td class="module-name"><a href="https://github.com/FormingWorlds/MORS">MORS</a></td>
-      <td class="test-count">16</td>
-      <td class="test-breakdown">PROTEUS-style markers planned</td>
-      <td><a href="https://github.com/FormingWorlds/MORS/actions/workflows/tests.yaml"><img src="https://img.shields.io/github/actions/workflow/status/FormingWorlds/MORS/tests.yaml?branch=main&label=CI&logo=github" alt="CI"></a></td>
+      <td class="module-name"><a href="https://github.com/{{ row.owner }}/{{ row.repo }}">{{ row.name }}</a></td>
+      <td class="test-count">
+        {%- if row.total_endpoint -%}
+          <a href="https://github.com/{{ row.owner }}/{{ row.repo }}/blob/main/{{ row.total_endpoint }}"><img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/{{ row.owner }}/{{ row.repo }}/main/{{ row.total_endpoint }}" alt="tests"></a>
+        {%- else -%}
+          {{ row.total }}
+        {%- endif -%}
+      </td>
+      <td class="test-breakdown">
+        {%- if row.markers -%}
+          {%- for m in row.markers -%}
+            <a href="https://github.com/{{ row.owner }}/{{ row.repo }}/blob/main/{{ m[1] }}"><img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/{{ row.owner }}/{{ row.repo }}/main/{{ m[1] }}" alt="{{ m[0] }}"></a>{% unless forloop.last %} {% endunless %}
+          {%- endfor -%}
+        {%- else -%}
+          {{ row.breakdown }}
+        {%- endif -%}
+      </td>
+      <td>
+        {%- if row.workflow != "" -%}
+          <a href="https://github.com/{{ row.owner }}/{{ row.repo }}/actions/workflows/{{ row.workflow }}"><img src="https://img.shields.io/github/actions/workflow/status/{{ row.owner }}/{{ row.repo }}/{{ row.workflow }}?branch=main&label={{ row.ci_label }}&logo=github" alt="{{ row.ci_label }}"></a>
+        {%- else -%}
+          <span style="color: var(--muted-color); font-size: 0.85rem;">No CI yet</span>
+        {%- endif -%}
+      </td>
     </tr>
-    <tr>
-      <td class="module-name"><a href="https://github.com/FormingWorlds/aragog">Aragog</a></td>
-      <td class="test-count">11</td>
-      <td class="test-breakdown">Expanded suite (~500 tests, full marker scheme) landing in <code>tl/interior-refactor</code></td>
-      <td><a href="https://github.com/FormingWorlds/aragog/actions/workflows/ci_tests.yml"><img src="https://img.shields.io/github/actions/workflow/status/FormingWorlds/aragog/ci_tests.yml?branch=main&label=CI&logo=github" alt="CI"></a></td>
-    </tr>
-    <tr>
-      <td class="module-name"><a href="https://github.com/FormingWorlds/JANUS">JANUS</a></td>
-      <td class="test-count">9</td>
-      <td class="test-breakdown">Stable API, additional integration tests planned</td>
-      <td><a href="https://github.com/FormingWorlds/JANUS/actions/workflows/tests.yaml"><img src="https://img.shields.io/github/actions/workflow/status/FormingWorlds/JANUS/tests.yaml?branch=main&label=CI&logo=github" alt="CI"></a></td>
-    </tr>
-    <tr>
-      <td class="module-name"><a href="https://github.com/FormingWorlds/VULCAN">VULCAN</a></td>
-      <td class="test-count">6</td>
-      <td class="test-breakdown">2 unit, 1 integration; expansion in progress</td>
-      <td><a href="https://github.com/FormingWorlds/VULCAN/actions/workflows/tests.yaml"><img src="https://img.shields.io/github/actions/workflow/status/FormingWorlds/VULCAN/tests.yaml?branch=main&label=CI&logo=github" alt="CI"></a></td>
-    </tr>
-    <tr>
-      <td class="module-name"><a href="https://github.com/FormingWorlds/Obliqua">Obliqua</a></td>
-      <td class="test-count">custom suite</td>
-      <td class="test-breakdown">Hand-written Julia validation runner, Test.jl migration planned</td>
-      <td><a href="https://github.com/FormingWorlds/Obliqua/actions/workflows/runtests.yml"><img src="https://img.shields.io/github/actions/workflow/status/FormingWorlds/Obliqua/runtests.yml?branch=main&label=tests&logo=github" alt="tests"></a></td>
-    </tr>
-    <tr>
-      <td class="module-name"><a href="https://github.com/FormingWorlds/SPIDER">SPIDER</a></td>
-      <td class="test-count">3 cases</td>
-      <td class="test-breakdown">SciATH integration tests for the C/PETSc solver (blackbody50, external-mesh round trip, plot smoke)</td>
-      <td><a href="https://github.com/FormingWorlds/SPIDER/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/FormingWorlds/SPIDER/ci.yml?branch=main&label=CI&logo=github" alt="CI"></a></td>
-    </tr>
-    <tr>
-      <td class="module-name"><a href="https://github.com/FormingWorlds/ZEPHYRUS">ZEPHYRUS</a></td>
-      <td class="test-count">1</td>
-      <td class="test-breakdown">Test scaffold in place; suite under construction</td>
-      <td><a href="https://github.com/FormingWorlds/ZEPHYRUS/actions/workflows/tests.yaml"><img src="https://img.shields.io/github/actions/workflow/status/FormingWorlds/ZEPHYRUS/tests.yaml?branch=main&label=CI&logo=github" alt="CI"></a></td>
-    </tr>
-    <tr>
-      <td class="module-name"><a href="https://github.com/nichollsh/lovepy">LovePy</a></td>
-      <td class="test-count">none yet</td>
-      <td class="test-breakdown">Cross-validated against analytic Love number solutions in published applications</td>
-      <td><span style="color: var(--muted-color); font-size: 0.85rem;">No CI yet</span></td>
-    </tr>
+    {% endfor %}
   </tbody>
 </table>
 
-<p class="footnote">Test counts and marker breakdowns last verified on 2026-05-10 by direct repository inspection. Ecosystem-wide adoption of the PROTEUS marker convention (unit, smoke, integration, slow) is in progress; until then, total counts on main are the most comparable figure across repositories.</p>
+<p class="footnote">Static test counts above were last verified on 2026-05-10 by direct repository inspection. Rows displaying a numeric badge instead of a number are live: the count is fetched from a JSON file refreshed by each repository's CI on every passing run on main. Ecosystem-wide adoption of the PROTEUS marker convention (unit, smoke, integration, slow) is in progress; until then, total counts are the most comparable figure across repositories.</p>
 
 <h4>Three categories of test, three things they catch</h4>
 

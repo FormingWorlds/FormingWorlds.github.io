@@ -1,0 +1,134 @@
+# Test count and badge data for the /testing page.
+#
+# Each entry is rendered as one row in either the "mature" or "in_development"
+# table by _pages/testing.md.
+#
+# Per-row fields:
+#   name           Display name
+#   owner          GitHub owner
+#   repo           GitHub repo
+#   workflow       Filename of the primary test workflow (for the CI badge)
+#   ci_label       Text shown on the CI badge ("CI" or "tests")
+#   has_codecov    Whether to render a Codecov coverage badge
+#   total          Static total test count (text or number). Shown when no
+#                    `total_endpoint` is provided.
+#   total_endpoint Optional. Path of the shields.io-compatible JSON file on
+#                    main (e.g. ".github/badges/tests-total.json"). When set,
+#                    the row renders a live shields.io endpoint badge instead
+#                    of the static `total`.
+#   breakdown      Optional. Plain-text marker breakdown ("816 unit, ...").
+#                    Used until per-marker endpoint files are published.
+#   markers        Optional. Map of marker name to JSON path on main; when set,
+#                    each marker renders as a live shields.io badge in place
+#                    of `breakdown`. Keys: unit, integration, smoke, slow.
+
+mature:
+  - name: PROTEUS
+    owner: FormingWorlds
+    repo: PROTEUS
+    workflow: ci-pr-checks.yml
+    ci_label: CI
+    has_codecov: true
+    total: 1007
+    breakdown: "816 unit, 38 integration, 15 smoke, 6 slow"
+
+  - name: Zalmoxis
+    owner: FormingWorlds
+    repo: Zalmoxis
+    workflow: CI.yml
+    ci_label: CI
+    has_codecov: true
+    total: 1047
+    breakdown: "132 unit, 2 integration, 17 smoke, 18 slow; large parameterised sweeps"
+
+  - name: AGNI
+    owner: nichollsh
+    repo: AGNI
+    workflow: install_and_test.yml
+    ci_label: tests
+    has_codecov: false
+    total: 411
+    breakdown: "411 <code>@test</code> assertions in 106 testsets (Julia <code>Test.jl</code>)"
+
+  - name: atmodeller
+    owner: ExPlanetology
+    repo: atmodeller
+    workflow: ci.yml
+    ci_label: CI
+    has_codecov: false
+    total: 138
+    breakdown: "PROTEUS-style markers being adopted"
+
+  - name: CALLIOPE
+    owner: FormingWorlds
+    repo: CALLIOPE
+    workflow: tests.yaml
+    ci_label: CI
+    has_codecov: true
+    total: 100
+    breakdown: "Marker scheme declared, application in progress"
+
+in_development:
+  - name: MORS
+    owner: FormingWorlds
+    repo: MORS
+    workflow: tests.yaml
+    ci_label: CI
+    total: 16
+    breakdown: "PROTEUS-style markers planned"
+
+  - name: Aragog
+    owner: FormingWorlds
+    repo: aragog
+    workflow: ci_tests.yml
+    ci_label: CI
+    total: 11
+    breakdown: "Expanded suite (~500 tests, full marker scheme) landing in <code>tl/interior-refactor</code>"
+
+  - name: JANUS
+    owner: FormingWorlds
+    repo: JANUS
+    workflow: tests.yaml
+    ci_label: CI
+    total: 9
+    breakdown: "Stable API, additional integration tests planned"
+
+  - name: VULCAN
+    owner: FormingWorlds
+    repo: VULCAN
+    workflow: tests.yaml
+    ci_label: CI
+    total: 6
+    breakdown: "2 unit, 1 integration; expansion in progress"
+
+  - name: Obliqua
+    owner: FormingWorlds
+    repo: Obliqua
+    workflow: runtests.yml
+    ci_label: tests
+    total: "custom suite"
+    breakdown: "Hand-written Julia validation runner, Test.jl migration planned"
+
+  - name: SPIDER
+    owner: FormingWorlds
+    repo: SPIDER
+    workflow: ci.yml
+    ci_label: CI
+    total: "3 cases"
+    breakdown: "SciATH integration tests for the C/PETSc solver (blackbody50, external-mesh round trip, plot smoke)"
+
+  - name: ZEPHYRUS
+    owner: FormingWorlds
+    repo: ZEPHYRUS
+    workflow: tests.yaml
+    ci_label: CI
+    total: 1
+    breakdown: "Test scaffold in place; suite under construction"
+
+  - name: LovePy
+    owner: nichollsh
+    repo: lovepy
+    workflow: ""  # no workflow yet
+    ci_label: ""
+    total: "none yet"
+    breakdown: "Cross-validated against analytic Love number solutions in published applications"
