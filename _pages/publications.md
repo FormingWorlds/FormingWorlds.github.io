@@ -108,14 +108,14 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <div class="pub-section">
-  <h4>Preprints</h4>
+  <h4>Published</h4>
 
   <div class="pub-entry">
     <p class="pub-title">
       <a href="https://arxiv.org/abs/2512.05816">Most rocky sub-Neptunes are molten: mapping the solidification shoreline for gas dwarf exoplanets</a>
     </p>
     <p class="pub-authors">Calder, Robb; Shorttle, Oliver; Nicholls, Harrison; Lichtenberg, Tim; Guimond, Claire Marie</p>
-    <p class="pub-venue">Under review</p>
+    <p class="pub-venue">Monthly Notices of the Royal Astronomical Society, in press (2026)</p>
     <p class="pub-summary">Sub-Neptunes are the most common type of detected exoplanet, but their internal structure is ambiguous. This study maps the "solidification shoreline" separating molten from solid interiors and finds that 98% of detected sub-Neptunes, if they have rocky cores with hydrogen envelopes, host permanent magma oceans today.</p>
     <details class="pub-abstract">
       <summary>Abstract</summary>
@@ -126,10 +126,6 @@ document.addEventListener('DOMContentLoaded', function() {
       <a href="https://arxiv.org/abs/2512.05816">arXiv</a>
     </div>
   </div>
-</div>
-
-<div class="pub-section">
-  <h4>Published</h4>
 
   <div class="pub-entry">
     <p class="pub-title">
