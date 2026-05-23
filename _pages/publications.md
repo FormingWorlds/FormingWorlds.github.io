@@ -129,10 +129,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
   <div class="pub-entry">
     <p class="pub-title">
-      <a href="https://arxiv.org/abs/2511.16142">Coupled atmospHere Interior modeL Intercomparison (CHILI) Protocol Version 1.0: A CUISINES Intercomparison Project of Magma Ocean Models</a>
+      <a href="https://doi.org/10.3847/psj/ae593b">Coupled atmospHere Interior modeL Intercomparison (CHILI) Protocol Version 1.0: A CUISINES Intercomparison Project of Magma Ocean Models</a>
     </p>
     <p class="pub-authors">Lichtenberg, Tim; Schaefer, Laura; Krissansen-Totton, Joshua; Miguel, Yamila; Sergeev, Denis E.; Baumeister, Philipp; Cmiel, Jessica; Janssen, Leoni J.; Nguyen, T. Giang; Miyazaki, Yoshinori; Nicholls, Harrison; Papesh, Alexandra; Pelissard, Hugo; Peng, Bo; Perez, Junellie; Postolec, Emma; Sastre, Mariana; Salvador, Arnaud; Spreeuw, Hanno; Zorzi, Andrea; Fauchez, Thomas J.; Hamano, Keiko; Leconte, Jérémy; Maurice, Maxime; Noack, Lena; Soucasse, Laurent</p>
-    <p class="pub-venue">The Planetary Science Journal, in press (2026)</p>
+    <p class="pub-venue">The Planetary Science Journal, 7, 108 (2026)</p>
     <p class="pub-summary">Presents the experimental protocol for CHILI, an intercomparison project for coupled magma ocean-atmosphere models. The protocol defines standard tests for early Earth, Venus, and rocky exoplanets around M-dwarfs to quantify differences in energy transport, geochemistry, and volatile cycling between various models in the community.</p>
     <details class="pub-abstract">
       <summary>Abstract</summary>
@@ -141,6 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="pub-links">
       <a href="https://scixplorer.org/abs/2025arXiv251116142L">SciX</a>
       <a href="https://arxiv.org/abs/2511.16142">arXiv</a>
+      <a href="https://doi.org/10.3847/psj/ae593b">DOI</a>
     </div>
   </div>
 
