@@ -51,7 +51,7 @@ Representative examples across the ecosystem:
     <tr><td>Apache 2.0</td><td>Permissive (with patent grant)</td><td>PROTEUS, AGNI, CALLIOPE, JANUS, ZEPHYRUS</td></tr>
     <tr><td>MIT</td><td>Permissive</td><td>MORS, Zalmoxis</td></tr>
     <tr><td>BSD 3-Clause</td><td>Permissive</td><td>SOCRATES</td></tr>
-    <tr><td>GPL-3.0</td><td>Strong copyleft</td><td>VULCAN, FastChem, atmodeller, SPIDER</td></tr>
+    <tr><td>GPL-3.0</td><td>Strong copyleft</td><td>VULCAN, FastChem, atmodeller, SPIDER, aragog</td></tr>
   </tbody>
 </table>
 
