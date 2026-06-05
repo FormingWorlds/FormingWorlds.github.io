@@ -61,8 +61,13 @@ PROTEUS itself, the coupling framework, is released under the [Apache 2.0 licens
 
 Apache 2.0 is a permissive license.
 It lets anyone use, modify, and redistribute the code, including as part of a larger work under a different license, as long as attribution and the license notice are preserved.
-Beyond the permissions shared by MIT and BSD, Apache 2.0 adds an explicit patent license from contributors to users, together with a patent retaliation clause.
-For scientific software intended to be reused widely, that patent grant provides a layer of protection that the shorter permissive licenses do not.
+Where Apache 2.0 goes further than MIT and BSD is on patents, which those shorter licenses do not address at all.
+Apache 2.0 includes an explicit patent grant: each contributor automatically gives every user a perpetual, worldwide, royalty-free license to any of their own patents that are necessarily infringed by the code they contributed.
+In plain terms, a contributor, or the institution that employs them, cannot have their code accepted into the project and then later assert a patent against the people who use it.
+The license also includes a patent retaliation clause: if a user starts patent litigation alleging that the software infringes one of their patents, the patent licenses that user received under Apache 2.0 are terminated.
+Together these provisions close a gap that MIT and BSD leave open, where a contributor could grant the copyright permissions while quietly retaining patent rights over the same code, and they shield the project and its community from patent attacks.
+For scientific software this certainty is worth having, because contributors come from many universities, research institutes, and companies, each with their own intellectual property policies and patent portfolios.
+The explicit grant lets everyone who builds on PROTEUS, including other research groups and any downstream industrial or governmental users, rely on the methods implemented in the code without fear of a later patent claim from a contributor.
 
 The deeper reason is reach.
 A permissive license keeps the barriers to adoption as low as possible.
