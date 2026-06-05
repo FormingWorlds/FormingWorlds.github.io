@@ -33,7 +33,7 @@ The PROTEUS coupler orchestrates the exchange of boundary conditions between whi
 Two consequences follow from this design, and both matter for licensing:
 
 - **Modules are optional and swappable.** No single module is required for the framework to function. You can exchange one atmosphere model for another, enable or disable tidal heating, or substitute a different interior model. The framework never depends on any one specific component.
-- **Modules are distributed separately.** PROTEUS does not bundle or redistribute the modules. The released PROTEUS package contains only PROTEUS source code. Each module is obtained directly by the user from its own repository, installed alongside PROTEUS, and combined at run time on the user's own machine.
+- **Modules are published by their own authors.** PROTEUS does not copy module source code into its own code base, and it does not re-host or relicense any module. The PROTEUS package contains only PROTEUS source code. Where a module is a Python package, PROTEUS names it as a dependency that the package manager retrieves from that module's own published release; other modules are fetched from their own repositories at install time. In each case the code comes from the module's own authors, under the module's own license, and is combined with PROTEUS at run time on the user's machine.
 
 Much of the value of PROTEUS lies in this integration work: bringing established codes together, extending them, and in many cases contributing improvements back to the projects they came from.
 
@@ -61,11 +61,11 @@ PROTEUS itself, the coupling framework, is released under the [Apache 2.0 licens
 
 Apache 2.0 is a permissive license.
 It lets anyone use, modify, and redistribute the code, including as part of a larger work under a different license, as long as attribution and the license notice are preserved.
-Where Apache 2.0 goes further than MIT and BSD is on patents, which those shorter licenses do not address at all.
-Apache 2.0 includes an explicit patent grant: each contributor automatically gives every user a perpetual, worldwide, royalty-free license to any of their own patents that are necessarily infringed by the code they contributed.
+Where Apache 2.0 goes further than MIT and BSD is on patents, which those shorter licenses do not cover with an explicit grant.
+Apache 2.0 includes an explicit patent grant: each contributor automatically gives every user a perpetual, worldwide, royalty-free license to any of their own patents that are necessarily infringed by the code they contributed, whether on its own or in combination with the rest of the project.
 In plain terms, a contributor, or the institution that employs them, cannot have their code accepted into the project and then later assert a patent against the people who use it.
 The license also includes a patent retaliation clause: if a user starts patent litigation alleging that the software infringes one of their patents, the patent licenses that user received under Apache 2.0 are terminated.
-Together these provisions close a gap that MIT and BSD leave open, where a contributor could grant the copyright permissions while quietly retaining patent rights over the same code, and they shield the project and its community from patent attacks.
+Together these provisions close a gap that MIT and BSD leave open, where a contributor could grant the copyright permissions while making no express promise about their patents. They also shield the project and its community from patent attacks.
 For scientific software this certainty is worth having, because contributors come from many universities, research institutes, and companies, each with their own intellectual property policies and patent portfolios.
 The explicit grant lets everyone who builds on PROTEUS, including other research groups and any downstream industrial or governmental users, rely on the methods implemented in the code without fear of a later patent claim from a contributor.
 
@@ -73,7 +73,6 @@ The deeper reason is reach.
 A permissive license keeps the barriers to adoption as low as possible.
 Researchers and institutions can build on PROTEUS, and integrate parts of it into their own pipelines, without being obliged to release their entire surrounding codebase under a copyleft license.
 This matters in practice: some public research institutes, agencies, and companies restrict or prohibit the use of strong-copyleft code precisely because of that obligation.
-A permissive license keeps the door open to the widest possible set of collaborators.
 
 There are situations where strong copyleft is the right choice, for example when the explicit goal is to ensure that every downstream user must in turn keep their derived code open.
 For the core PROTEUS framework, whose purpose is to enable science and to be reused as broadly as possible, we judge that maximising reach and minimising friction is more important than enforcing that obligation downstream.
@@ -87,17 +86,17 @@ PROTEUS does not incorporate GPL-3.0 source code into its own code base, so this
 
 The framework relies instead on the modular, separately distributed design described above.
 The GPL's strong copyleft obligations attach to the distribution of a combined work.
-Because PROTEUS distributes only its own Apache 2.0 code, and each module is distributed separately by its own authors and obtained directly by the user, PROTEUS itself does not distribute a combined work that includes GPL-3.0 code.
+Because the PROTEUS package contains only its own Apache 2.0 code, and each module is published separately by its own authors under its own license, it is our understanding that the PROTEUS package itself does not distribute a combined work that includes GPL-3.0 code.
 The modules remain independent programs, each governed by its own license.
 
 We state this plainly so that anyone reusing the framework understands which terms apply.
-When PROTEUS is run together with a GPL-3.0 module, the combined work assembled on your machine is, in the strictest reading, subject to the terms of that module's license.
-Treating each repository's license as authoritative, and keeping the modules optional and swappable, means the framework can always be configured to match the licensing requirements of a given project or institution.
+When PROTEUS is run together with a GPL-3.0 module, the combination assembled on your machine is subject to the terms of that module's license, and we treat that license as authoritative for any such run.
+Treating each repository's license as authoritative, and keeping the modules optional and swappable, means the framework can be configured to match the licensing requirements of a project or institution wherever a suitable alternative module is available for each role it needs.
 
 ## Permissive licenses are the norm in scientific software
 
 Permissive licensing is the established choice across the scientific software the research community relies on every day.
-The foundational scientific Python stack, including [NumPy](https://numpy.org), [SciPy](https://scipy.org), [pandas](https://pandas.pydata.org), [Matplotlib](https://matplotlib.org), [scikit-learn](https://scikit-learn.org), and [Astropy](https://www.astropy.org), is released under the permissive BSD 3-Clause license.
+Much of the foundational scientific Python stack, including [NumPy](https://numpy.org), [SciPy](https://scipy.org), [pandas](https://pandas.pydata.org), [scikit-learn](https://scikit-learn.org), and [Astropy](https://www.astropy.org), is released under the permissive BSD 3-Clause license, and [Matplotlib](https://matplotlib.org) under its own, equally permissive license.
 Major frameworks such as [TensorFlow](https://www.tensorflow.org) and [JAX](https://github.com/jax-ml/jax) use Apache 2.0, the same license as PROTEUS.
 Many of these tools, including Matplotlib, NumPy, and pandas, grew out of academia and became broadly useful in large part because their permissive licensing posed the fewest obstacles to adoption.
 PROTEUS follows the same path.
@@ -112,14 +111,14 @@ We are committed to giving that work proper credit:
 
 - The documentation and code link to the relevant publications and repositories for every module, so the original work is easy to find and cite.
 - Modules that wrap or extend an existing code point to the original project and its papers.
-- Users of PROTEUS are asked to cite the manuscripts listed in the [bibliography](https://proteus-framework.org/PROTEUS/Reference/bibliography/), to state the code version used, and to include an acknowledgement.
+- Users of PROTEUS are asked to cite the manuscripts listed in the [bibliography](https://proteus-framework.org/PROTEUS/Reference/bibliography), to state the code version used, and to include an acknowledgement.
 
-Our full guidance on citation, authorship, and acknowledgement is set out in the [contributing guidelines](https://proteus-framework.org/PROTEUS/Community/CONTRIBUTING/).
+Our full guidance on citation, authorship, and acknowledgement is set out in the [contributing guidelines](https://proteus-framework.org/PROTEUS/Community/CONTRIBUTING).
 
 ## Questions and discussion
 
-Licensing in open source is a genuinely nuanced area, and reasonable people interpret parts of it differently.
-We have set out our position here in the spirit of transparency, and we welcome questions, corrections, and discussion.
+Licensing in open source is nuanced, and reasonable people read parts of it differently.
+We have set out our position here, and we welcome questions, corrections, and discussion.
 If you maintain a code we build on, are considering building on PROTEUS, or simply want to understand our approach better, please get in touch.
 
 You can reach us through [GitHub Discussions](https://github.com/orgs/FormingWorlds/discussions), open an issue on the relevant repository, or email [proteus_dev@formingworlds.space](mailto:proteus_dev@formingworlds.space).

@@ -44,6 +44,9 @@ menu_settings:
     - title: 'People & Contact'
       url: '/people'
 
+    - title: 'License'
+      url: '/license'
+
 footer_settings:
   footer_tagline: PROTEUS framework for planetary evolution
 
