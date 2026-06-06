@@ -102,12 +102,14 @@ PROTEUS does not incorporate GPL-3.0 source code into its code base, so this con
 
 The framework relies instead on the modular, separately distributed design described above.
 The GPL's strong copyleft obligations attach to the distribution of a combined work.
-The PROTEUS package contains only Apache 2.0 code, and each module is published separately by its authors.
-It is our understanding that the PROTEUS package therefore does not distribute a combined work that includes GPL-3.0 code, and that the modules remain independent programs, each governed by its own license.
+Where exactly the boundary of a combined work lies is a long-standing, unresolved question in open source licensing, and there is no settled legal position for the run-time coupling of independent programs.
+We therefore state our reading openly and take a pragmatic view, grounded in the architecture of the framework.
+The PROTEUS package contains only Apache 2.0 code, and each module is published separately by its authors as a standalone program.
+On that basis we treat the PROTEUS package as not distributing a combined work that includes GPL-3.0 code, and the modules as independent programs, each governed by its own license.
 
-In practice: running PROTEUS together with a GPL-3.0 module on your own machine imposes no copyleft obligation on your code, because nothing is distributed.
+In practice, on this reading: running PROTEUS together with a GPL-3.0 module on your own machine imposes no copyleft obligation on your code, because nothing is distributed.
 If you redistribute the combination, or modify and redistribute a module, that distribution is governed by the GPL.
-On this understanding, and because the modules are optional and swappable, a simulation can be configured to meet the licensing requirements of a project or institution, provided a suitable alternative module exists for each role.
+Because the modules are optional and swappable, a simulation can be configured to meet the licensing requirements of a project or institution, provided a suitable alternative module exists for each role.
 
 ## Credit where it is due
 
