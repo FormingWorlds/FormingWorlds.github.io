@@ -7,26 +7,25 @@ image: /assets/img/og-default.jpg
 ---
 
 PROTEUS is fully open source.
-Open source code can be read, run, and improved by anyone, which makes the results that depend on it reproducible and the methods behind them transparent.
+Open source code can be [read, run, and improved by anyone](https://www.gnu.org/philosophy/free-sw.html){:target="_blank" rel="noopener noreferrer"}, which makes the results that depend on it [reproducible](https://www.nature.com/articles/nature10836){:target="_blank" rel="noopener noreferrer"} and the methods behind them transparent.
 For scientific software we consider this a requirement, not an optional extra.
-Every part of the framework is released under an established open source license.
+The [UNESCO open science framework](https://unesdoc.unesco.org/ark:/48223/pf0000387983){:target="_blank" rel="noopener noreferrer"} takes the same view and counts open source software among the pillars of open scientific knowledge.
+Every part of the framework is released under an [established open source license](https://opensource.org/licenses){:target="_blank" rel="noopener noreferrer"}.
 
 We also believe that open development is the best way to build software that lasts.
 PROTEUS grows through collaboration: contributions from research scientists, software engineers, students, and many others across institutions and countries.
-Keeping the code open is what allows that community to form and the science to move forward.
+Keeping the code open is what allows that community to form and [the science to move forward](https://www.nature.com/articles/nchem.1149){:target="_blank" rel="noopener noreferrer"}.
 
-## Open source, without exception
+## Open source, developed in the open
 
-PROTEUS will only ever support and include fully open source code.
+PROTEUS will only ever support and include [fully open source](https://opensource.org/osd){:target="_blank" rel="noopener noreferrer"} code.
 We do not build on closed, proprietary, or source-unavailable components, and we do not plan to.
 If a capability can only be provided by code that is not open, we would rather develop an open alternative than compromise on this principle.
 This keeps the entire pipeline, from input data to published figure, open to inspection.
 
-## Developed in the open
-
-Development of PROTEUS and the modules we maintain happens in public repositories under the [FormingWorlds organisation](https://github.com/FormingWorlds) on GitHub.
+Development of PROTEUS and the modules we maintain happens in public repositories, dominantly under the [FormingWorlds organisation](https://github.com/FormingWorlds){:target="_blank" rel="noopener noreferrer"} on GitHub.
 Issues, code review, and design discussions are public, and anyone can follow the work, report problems, or propose changes.
-Releases are versioned and published, so a published result can state the exact code that produced it.
+Releases are versioned and published, so a published result can state the exact code that produced it, in line with the [FAIR principles for research software](https://www.nature.com/articles/s41597-022-01710-x){:target="_blank" rel="noopener noreferrer"}.
 
 ## A framework of independent modules
 
@@ -61,7 +60,7 @@ Representative examples across the ecosystem:
   </tbody>
 </table>
 
-PROTEUS itself, the coupling framework, is released under the [Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0).
+PROTEUS itself, the coupling framework, is released under the [Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0){:target="_blank" rel="noopener noreferrer"}.
 
 ## Why PROTEUS uses Apache 2.0
 
@@ -87,24 +86,28 @@ This is why we license the framework, and the modules we maintain, permissively,
 ## Permissive licenses are widely used in scientific software
 
 Permissive licensing is the established choice for the general-purpose scientific software the research community relies on every day.
-Much of the foundational scientific Python stack, including [NumPy](https://numpy.org), [SciPy](https://scipy.org), [pandas](https://pandas.pydata.org), [scikit-learn](https://scikit-learn.org), and [Astropy](https://www.astropy.org), is released under the permissive BSD 3-Clause license, and [Matplotlib](https://matplotlib.org) under its own, equally permissive license.
-Major frameworks such as [TensorFlow](https://www.tensorflow.org) and [JAX](https://github.com/jax-ml/jax) use Apache 2.0, the same license as PROTEUS.
+Much of the foundational scientific Python stack, including [NumPy](https://numpy.org){:target="_blank" rel="noopener noreferrer"}, [SciPy](https://scipy.org){:target="_blank" rel="noopener noreferrer"}, [pandas](https://pandas.pydata.org){:target="_blank" rel="noopener noreferrer"}, [scikit-learn](https://scikit-learn.org){:target="_blank" rel="noopener noreferrer"}, and [Astropy](https://www.astropy.org){:target="_blank" rel="noopener noreferrer"}, is released under the permissive BSD 3-Clause license, and [Matplotlib](https://matplotlib.org){:target="_blank" rel="noopener noreferrer"} under its own, equally permissive license.
+Major frameworks such as [TensorFlow](https://www.tensorflow.org){:target="_blank" rel="noopener noreferrer"} and [JAX](https://github.com/jax-ml/jax){:target="_blank" rel="noopener noreferrer"} use Apache 2.0, the same license as PROTEUS.
 Many of these tools, including Matplotlib, NumPy, and Astropy, grew out of research environments; their permissive licensing removed one obstacle to adoption by companies and institutions alike.
 PROTEUS sits at the framework level, and we license the coupling framework permissively for the same reason.
 Several of the domain-specific solver codes PROTEUS uses are released under copyleft licenses; the next section describes how the framework respects their terms.
 
 ## How Apache 2.0 works alongside GPL-3 modules
 
-Some modules used by PROTEUS are released under the GPL-3.0 license.
-Apache 2.0 and GPL-3.0 are compatible in one direction: Apache 2.0 code may be incorporated into a GPL-3.0 project, and the combined result is then governed by the GPL.
-The reverse does not hold: GPL-3.0 code may not be incorporated into an Apache 2.0 project.
-PROTEUS does not incorporate GPL-3.0 source code into its code base, so this constraint does not arise for PROTEUS itself.
+Some modules used by PROTEUS are released under the [GPL-3.0 license](https://www.gnu.org/licenses/gpl-3.0.html){:target="_blank" rel="noopener noreferrer"}.
+The question that matters here is redistribution: the GPL's strong copyleft obligations attach when a combined work that includes GPL code is distributed, not when programs are run.
+PROTEUS does not redistribute GPL-3.0 code in any form.
+It does not incorporate GPL-3.0 source into its code base, and the PROTEUS package contains only Apache 2.0 code; each module is published separately by its authors as a standalone program.
 
-The framework relies instead on the modular, separately distributed design described above.
-The GPL's strong copyleft obligations attach to the distribution of a combined work.
-Where exactly the boundary of a combined work lies is a long-standing, unresolved question in open source licensing, and there is no settled legal position for the run-time coupling of independent programs.
-We therefore state our reading openly and take a pragmatic view, grounded in the architecture of the framework.
-The PROTEUS package contains only Apache 2.0 code, and each module is published separately by its authors as a standalone program.
+For source code itself, the two licenses are compatible in one direction.
+Apache 2.0 code may be incorporated into a code base distributed under GPL-3.0, and the combined result is then governed by the GPL.
+The reverse does not hold: GPL-3.0 code may not be incorporated into a code base distributed under Apache 2.0.
+Since the PROTEUS code base contains no GPL-3.0 source, this constraint does not arise.
+
+What counts as a combined work is the harder question.
+Where exactly the boundary lies has been debated for as long as open source licensing has existed, and there is no settled legal position for the run-time coupling of independent programs.
+The Free Software Foundation [reads combination broadly](https://www.gnu.org/licenses/gpl-faq.html#GPLStaticVsDynamic){:target="_blank" rel="noopener noreferrer"}; the opposite reading, that running independent programs together does not create a derivative work, [goes back at least two decades](https://www.linuxjournal.com/article/6366){:target="_blank" rel="noopener noreferrer"}.
+We state our reading openly and take a pragmatic view, grounded in the architecture of the framework: the modules are standalone programs, published separately by their authors, and the coupler exchanges boundary conditions with them at run time.
 On that basis we treat the PROTEUS package as not distributing a combined work that includes GPL-3.0 code, and the modules as independent programs, each governed by its own license.
 
 In practice, on this reading: running PROTEUS together with a GPL-3.0 module on your own machine imposes no copyleft obligation on your code, because nothing is distributed.
@@ -121,9 +124,9 @@ We are committed to giving that work proper credit:
 
 - The documentation and code link to the relevant publications and repositories for every module, so the original work is easy to find and cite.
 - Modules that wrap or extend an existing code point to the original project and its papers.
-- We ask users of PROTEUS to cite the manuscripts listed in the [bibliography](https://proteus-framework.org/PROTEUS/Reference/bibliography), to state the code version used, and to include an acknowledgement.
+- We ask users of PROTEUS to cite the manuscripts listed in the [bibliography](https://proteus-framework.org/PROTEUS/Reference/bibliography){:target="_blank" rel="noopener noreferrer"}, to state the code version used, and to include an acknowledgement.
 
-Our full guidance on citation, authorship, and acknowledgement is set out in the [contributing guidelines](https://proteus-framework.org/PROTEUS/Community/CONTRIBUTING).
+Our full guidance on citation, authorship, and acknowledgement is set out in the [contributing guidelines](https://proteus-framework.org/PROTEUS/Community/CONTRIBUTING){:target="_blank" rel="noopener noreferrer"}.
 
 ## Questions and discussion
 
@@ -131,7 +134,7 @@ Licensing in open source is nuanced, and reasonable people read parts of it diff
 We have set out our position here, and we welcome questions, corrections, and discussion.
 If you maintain a code we depend on, are considering using PROTEUS in your own work, or simply want to understand our approach better, please get in touch.
 
-You can reach us through [GitHub Discussions](https://github.com/orgs/FormingWorlds/discussions), open an issue on the relevant repository, or email [proteus_dev@formingworlds.space](mailto:proteus_dev@formingworlds.space).
+You can reach us through [GitHub Discussions](https://github.com/orgs/FormingWorlds/discussions){:target="_blank" rel="noopener noreferrer"}, open an issue on the relevant repository, or email [proteus_dev@formingworlds.space](mailto:proteus_dev@formingworlds.space).
 
 <style>
   table.lic-table {
