@@ -114,6 +114,33 @@ In practice, on this reading: running PROTEUS together with a GPL-3.0 module on 
 If you redistribute the combination, or modify and redistribute a module, that distribution is governed by the GPL.
 Because the modules are optional and swappable, a simulation can be configured to meet the licensing requirements of a project or institution, provided a suitable alternative module exists for each role.
 
+## Documentation, data, and other non-software assets
+
+The framework produces more than code.
+It also produces documentation, website text, figures, lookup tables, reference data, and the deposits we publish to archives such as [Zenodo](https://zenodo.org){:target="_blank" rel="noopener noreferrer"}.
+These carry their own licenses, chosen on the same open principle as the software but matched to the kind of material.
+
+We do not place a noncommercial restriction on any of it.
+Such a clause would fail the [Open Definition](https://opendefinition.org){:target="_blank" rel="noopener noreferrer"}, which requires that material may be reused for any purpose, so it would classify our data and figures as closed while the code is open.
+It would also undercut the reach we license the code for: the same companies, agencies, and institutes we want building on the framework would be free to run the code but restricted from reusing the figures and tables around it.
+A [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/){:target="_blank" rel="noopener noreferrer"} already requires credit on every reuse, so it protects attribution without the legal-review friction that "noncommercial" introduces.
+
+We license non-software assets by class, each with one license:
+
+<table class="lic-table">
+  <thead>
+    <tr><th>Asset</th><th>License</th><th>What it means</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Documentation, website text, figures</td><td>CC BY 4.0</td><td>Free to reuse and adapt with attribution. Compatible with the CC BY terms used by open access journals, so a figure can move between our pages and the published literature without a rights conflict. The content analogue of the permissive license we use for code.</td></tr>
+    <tr><td>Lookup tables, reference data, archive deposits</td><td>CC0 1.0</td><td>Placed in the public domain, so combined datasets need not carry a growing list of required credits. Citation is handled the way science already handles it, through community norms and our credit guidance. Major data repositories require or default to CC0, and research funders accept it for deposited data.</td></tr>
+    <tr><td>Logos and brand marks</td><td>Reserved</td><td>Not openly licensed. We do not want forks or unrelated products shipping under the project's visual identity, which established projects guard through trademark policy. We hold no registered marks, so the artwork stays under reserved copyright with a short usage note.</td></tr>
+  </tbody>
+</table>
+
+A mixed archive deposit carries CC BY for the deposit as a whole, with any public-domain data files marked [CC0](https://creativecommons.org/publicdomain/zero/1.0/){:target="_blank" rel="noopener noreferrer"} in its README.
+Where share-alike is specifically wanted, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/){:target="_blank" rel="noopener noreferrer"} is the fallback: it keeps adaptations open and is one-way compatible with GPL-3.0, at the cost of the journal compatibility above, so figures would still stay under CC BY.
+
 ## Credit where it is due
 
 A permissive license requires little beyond preserving copyright and license notices; it says nothing about the scientific credit owed to the people who wrote the code.
