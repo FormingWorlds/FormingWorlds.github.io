@@ -119,10 +119,9 @@ Because the modules are optional and swappable, a simulation can be configured t
 The framework produces more than code.
 Documentation, website text, figures, lookup tables, reference data, and the deposits we publish to archives such as [Zenodo](https://zenodo.org){:target="_blank" rel="noopener noreferrer"} all carry their own licenses, chosen on the same open principle as the software but matched to the kind of material.
 
-We do not place a noncommercial restriction on any of it.
-Such a clause would fail the [Open Definition](https://opendefinition.org){:target="_blank" rel="noopener noreferrer"}, which requires that material may be reused for any purpose, so it would classify our data and figures as closed while the code stays open.
-It would also work against the reach we license the code for: the same companies, agencies, and institutes we want building on the framework could run the code but not reuse the figures and tables around it.
-A [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/){:target="_blank" rel="noopener noreferrer"} already requires credit on every reuse, so it protects attribution without forcing reusers to judge whether their use counts as commercial.
+We license these assets so that anyone can reuse them, for any purpose including commercially, as long as they give credit.
+That openness is the standard the [Open Definition](https://opendefinition.org){:target="_blank" rel="noopener noreferrer"} sets, and it follows the same reasoning as our permissive software license: figures, tables, and text are most useful when companies, agencies, institutes, and individual researchers can all build on them freely.
+A [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/){:target="_blank" rel="noopener noreferrer"} asks only for credit in return, which keeps the work attributed to its authors while leaving it genuinely open to reuse.
 
 We license non-software assets by class, each with one license:
 
