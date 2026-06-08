@@ -88,7 +88,7 @@ This is why we license the framework, and the modules we maintain, permissively,
 Permissive licensing is the established choice for the general-purpose scientific software the research community relies on every day.
 Much of the foundational scientific Python stack, including [NumPy](https://numpy.org){:target="_blank" rel="noopener noreferrer"}, [SciPy](https://scipy.org){:target="_blank" rel="noopener noreferrer"}, [pandas](https://pandas.pydata.org){:target="_blank" rel="noopener noreferrer"}, [scikit-learn](https://scikit-learn.org){:target="_blank" rel="noopener noreferrer"}, and [Astropy](https://www.astropy.org){:target="_blank" rel="noopener noreferrer"}, is released under the permissive BSD 3-Clause license, and [Matplotlib](https://matplotlib.org){:target="_blank" rel="noopener noreferrer"} under its own, equally permissive license.
 Major frameworks such as [TensorFlow](https://www.tensorflow.org){:target="_blank" rel="noopener noreferrer"} and [JAX](https://github.com/jax-ml/jax){:target="_blank" rel="noopener noreferrer"} use Apache 2.0, the same license as PROTEUS.
-Many of these tools, including Matplotlib, NumPy, and Astropy, grew out of research environments; their permissive licensing removed one obstacle to adoption by companies and institutions alike.
+Many of these tools, including Matplotlib, NumPy, and Astropy, grew out of research environments; their permissive licensing removed one obstacle to adoption by institutions and companies alike.
 PROTEUS sits at the framework level, and we license the coupling framework permissively for the same reason.
 Several of the domain-specific solver codes PROTEUS uses are released under copyleft licenses; the next section describes how the framework respects their terms.
 
@@ -120,7 +120,7 @@ The framework produces more than code.
 Documentation, website text, figures, lookup tables, reference data, and the deposits we publish to archives such as [Zenodo](https://zenodo.org){:target="_blank" rel="noopener noreferrer"} all carry their own licenses, chosen on the same open principle as the software but matched to the kind of material.
 
 We license these assets so that anyone can reuse them, for any purpose including commercially, as long as they give credit.
-That openness is the standard the [Open Definition](https://opendefinition.org){:target="_blank" rel="noopener noreferrer"} sets, and it follows the same reasoning as our permissive software license: figures, tables, and text are most useful when companies, agencies, institutes, and individual researchers can all build on them freely.
+That openness is the standard the [Open Definition](https://opendefinition.org){:target="_blank" rel="noopener noreferrer"} sets, and it follows the same reasoning as our permissive software license: figures, tables, and text are most useful when researchers, universities, institutes, agencies, and companies can all build on them freely.
 A [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/){:target="_blank" rel="noopener noreferrer"} asks only for credit in return, which keeps the work attributed to its authors while leaving it genuinely open to reuse.
 
 We license non-software assets by class, each with one license:
