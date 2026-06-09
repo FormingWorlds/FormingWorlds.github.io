@@ -6,17 +6,38 @@ permalink: /license/
 image: /assets/img/og-default.jpg
 ---
 
-PROTEUS is fully open source.
-Open source code can be [read, run, and improved by anyone](https://www.gnu.org/philosophy/free-sw.html){:target="_blank" rel="noopener noreferrer"}, which makes the results that depend on it [reproducible](https://www.nature.com/articles/nature10836){:target="_blank" rel="noopener noreferrer"} and the methods behind them transparent.
-For scientific software we consider this a requirement, not an optional extra.
-The [UNESCO open science framework](https://unesdoc.unesco.org/ark:/48223/pf0000387983){:target="_blank" rel="noopener noreferrer"} takes the same view and counts open source software among the pillars of open scientific knowledge.
-Every part of the framework is released under an [established open source license](https://opensource.org/licenses){:target="_blank" rel="noopener noreferrer"}.
+## In brief: our core values
 
-We also believe that open development is the best way to build software that lasts.
-PROTEUS grows through collaboration: contributions from research scientists, software engineers, students, and many others across institutions and countries.
-Keeping the code open is what allows that community to form and [the science to move forward](https://www.nature.com/articles/nchem.1149){:target="_blank" rel="noopener noreferrer"}.
+Licensing is a legal subject, and rarely the most exciting part of research.
+We set it out carefully because the right licensing is what lets the law support how we want to do science, rather than stand in its way.
+Two core values shape every choice described on this page:
 
-## Open source, developed in the open
+1. **Open science is the fastest route to progress, and the basis of reproducibility.**
+
+   PROTEUS is fully open source.
+   Open source code can be [read, run, and improved by anyone](https://www.gnu.org/philosophy/free-sw.html){:target="_blank" rel="noopener noreferrer"}, which makes the results that depend on it [reproducible](https://www.nature.com/articles/nature10836){:target="_blank" rel="noopener noreferrer"} and the methods behind them transparent.
+   For scientific software we consider this a requirement, not an optional extra.
+   The [UNESCO open science framework](https://unesdoc.unesco.org/ark:/48223/pf0000387983){:target="_blank" rel="noopener noreferrer"} takes the same view and counts open source software among the pillars of open scientific knowledge.
+   Every part of the framework is released under an [established open source license](https://opensource.org/licenses){:target="_blank" rel="noopener noreferrer"}.
+
+2. **Collaborative science should be as smooth as possible.**
+
+   Open development is the best way to build software that lasts.
+   PROTEUS grows through collaboration: contributions from research scientists, software engineers, students, and many others across institutions and countries.
+   Keeping the code open is what allows that community to form and [the science to move forward](https://www.nature.com/articles/nchem.1149){:target="_blank" rel="noopener noreferrer"}.
+
+The sections below explain how each choice follows from these two values:
+
+- [We build only on fully open source code, and develop it in the open.](#open-development)
+- [PROTEUS couples independent modules, each published and licensed by its own authors.](#modules)
+- [Different components carry different licenses; the repository is always the authoritative source.](#licenses)
+- [We license the framework permissively, under Apache 2.0, for the widest possible reach.](#apache)
+- [Permissive licensing is the established norm for scientific software.](#permissive-norm)
+- [We respect the terms of copyleft modules; running them alongside PROTEUS distributes nothing.](#gpl)
+- [Documentation, data, and figures are openly licensed too; only the logo is reserved.](#assets)
+- [Scientific credit is a separate obligation, and we take it seriously.](#credit)
+
+## Open source, developed in the open {#open-development}
 
 PROTEUS will only ever support and include [fully open source](https://opensource.org/osd){:target="_blank" rel="noopener noreferrer"} code.
 We do not build on closed, proprietary, or source-unavailable components, and we do not plan to.
@@ -27,7 +48,7 @@ Development of PROTEUS and the modules we maintain happens in public repositorie
 Issues, code review, and design discussions are public, and anyone can follow the work, report problems, or propose changes.
 Releases are versioned and published, so a published result can state the exact code that produced it, in line with the [FAIR principles for research software](https://www.nature.com/articles/s41597-022-01710-x){:target="_blank" rel="noopener noreferrer"}.
 
-## A framework of independent modules
+## A framework of independent modules {#modules}
 
 PROTEUS is a coupling framework rather than a single monolithic program.
 The physics is divided across a set of modules, each of which handles one domain: the atmosphere, the mantle, outgassing, photochemistry, escape, stellar evolution, tides, or interior structure.
@@ -42,7 +63,7 @@ One consequence follows from this design, and one is a deliberate choice we have
 
 Much of the value of PROTEUS lies in this integration work: bringing established codes together, extending them, and in many cases contributing improvements back to the projects they came from.
 
-## Licenses across the framework
+## Licenses across the framework {#licenses}
 
 Different components carry different licenses, reflecting the choices of their authors.
 The authoritative license for any component is always the one stated in its repository.
@@ -62,7 +83,7 @@ Representative examples across the ecosystem:
 
 PROTEUS itself, the coupling framework, is released under the [Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0){:target="_blank" rel="noopener noreferrer"}.
 
-## Why PROTEUS uses Apache 2.0
+## Why PROTEUS uses Apache 2.0 {#apache}
 
 Apache 2.0 is a permissive license.
 It lets anyone use, modify, and redistribute the code, including as part of a larger work under a different license, as long as attribution and the license notice are preserved.
@@ -83,7 +104,7 @@ The license also includes a patent retaliation clause: if a user starts patent l
 For scientific software this certainty is worth having, because contributors come from many universities, research institutes, and companies, each with different intellectual property policies and patent portfolios.
 This is why we license the framework, and the modules we maintain, permissively, with Apache 2.0 as our default.
 
-## Permissive licenses are widely used in scientific software
+## Permissive licenses are widely used in scientific software {#permissive-norm}
 
 Permissive licensing is the established choice for the general-purpose scientific software the research community relies on every day.
 Much of the foundational scientific Python stack, including [NumPy](https://numpy.org){:target="_blank" rel="noopener noreferrer"}, [SciPy](https://scipy.org){:target="_blank" rel="noopener noreferrer"}, [pandas](https://pandas.pydata.org){:target="_blank" rel="noopener noreferrer"}, [scikit-learn](https://scikit-learn.org){:target="_blank" rel="noopener noreferrer"}, and [Astropy](https://www.astropy.org){:target="_blank" rel="noopener noreferrer"}, is released under the permissive BSD 3-Clause license, and [Matplotlib](https://matplotlib.org){:target="_blank" rel="noopener noreferrer"} under its own, equally permissive license.
@@ -92,7 +113,7 @@ Many of these tools, including Matplotlib, NumPy, and Astropy, grew out of resea
 PROTEUS sits at the framework level, and we license the coupling framework permissively for the same reason.
 Several of the domain-specific solver codes PROTEUS uses are released under copyleft licenses; the next section describes how the framework respects their terms.
 
-## How Apache 2.0 works alongside GPL-3 modules
+## How Apache 2.0 works alongside GPL-3 modules {#gpl}
 
 Some modules used by PROTEUS are released under the [GPL-3.0 license](https://www.gnu.org/licenses/gpl-3.0.html){:target="_blank" rel="noopener noreferrer"}.
 The question that matters here is redistribution: the GPL's strong copyleft obligations attach when a combined work that includes GPL code is distributed, not when programs are run.
@@ -114,7 +135,7 @@ In practice, on this reading: running PROTEUS together with a GPL-3.0 module on 
 If you redistribute the combination, or modify and redistribute a module, that distribution is governed by the GPL.
 Because the modules are optional and swappable, a simulation can be configured to meet the licensing requirements of a project or institution, provided a suitable alternative module exists for each role.
 
-## Documentation, data, and other non-software assets
+## Documentation, data, and other non-software assets {#assets}
 
 The framework produces more than code.
 Documentation, website text, figures, lookup tables, reference data, and the deposits we publish to archives such as [Zenodo](https://zenodo.org){:target="_blank" rel="noopener noreferrer"} all carry their own licenses, chosen on the same open principle as the software but matched to the kind of material.
@@ -141,7 +162,7 @@ The reserved logo is the only exception: the code, documentation, data, and figu
 An archive deposit that mixes content and data carries CC BY as a whole, with any public-domain data files inside it marked [CC0](https://creativecommons.org/publicdomain/zero/1.0/){:target="_blank" rel="noopener noreferrer"} in the README.
 Where adaptations must stay open under share-alike, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/){:target="_blank" rel="noopener noreferrer"} is the fallback: it is one-way compatible with GPL-3.0, but it cannot be republished under the plain CC BY terms that many journals use, so figures stay under CC BY to remain publishable there.
 
-## Credit where it is due
+## Credit where it is due {#credit}
 
 A permissive license requires little beyond preserving copyright and license notices; it says nothing about the scientific credit owed to the people who wrote the code.
 We treat that credit as a separate and serious obligation, fully independent of licensing.
