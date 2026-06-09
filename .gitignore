@@ -30,3 +30,7 @@ Thumbs.db
 
 # Byebug command history
 .byebug_history
+
+# Local preview overlay and tooling artifacts (not used by GitHub Pages)
+_config.local.yml
+.playwright-mcp/
