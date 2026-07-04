@@ -246,7 +246,7 @@ The PROTEUS framework and its mature submodules expose passing-tests badges and,
   </tbody>
 </table>
 
-<p class="footnote">Static test counts above were last verified on 2026-07-04 by direct repository inspection. Rows displaying a numeric badge instead of a number are live: the count is fetched from a JSON file refreshed by each repository's CI on every passing run on main. Ecosystem-wide adoption of the PROTEUS marker convention (unit, smoke, integration, slow) is in progress; until then, total counts are the most comparable figure across repositories.</p>
+<p class="footnote">Rows displaying a numeric badge are live: the count is fetched from a JSON file that each repository's CI regenerates and republishes whenever its tests change. The remaining plain-number rows are static counts, last verified on 2026-07-04 by direct repository inspection. Ecosystem-wide adoption of the PROTEUS marker convention (unit, smoke, integration, slow) is in progress; until then, total counts are the most comparable figure across repositories.</p>
 
 <h4>Three categories of test, three things they catch</h4>
 

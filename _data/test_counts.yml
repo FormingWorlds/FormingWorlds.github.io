@@ -12,10 +12,11 @@
 #   has_codecov    Whether to render a Codecov coverage badge
 #   total          Static total test count (text or number). Shown when no
 #                    `total_endpoint` is provided.
-#   total_endpoint Optional. Path of the shields.io-compatible JSON file (e.g.
-#                    ".github/badges/tests-total.json"). When set, the row
-#                    renders a live shields.io endpoint badge instead of the
-#                    static `total`.
+#   total_endpoint Optional. Path of the shields.io-compatible JSON file,
+#                    relative to `badge_branch` (e.g. "tests-total.json" at the
+#                    root of a badges branch, or ".github/badges/tests-total.json"
+#                    on main). When set, the row renders a live shields.io
+#                    endpoint badge instead of the static `total`.
 #   badge_branch   Optional. Branch that holds the badge JSON files. Defaults
 #                    to "main". Repos with a protected main publish the JSON to
 #                    a dedicated "badges" branch instead; set this to that
@@ -24,9 +25,10 @@
 #                    badges (those always track main).
 #   breakdown      Optional. Plain-text marker breakdown ("816 unit, ...").
 #                    Used until per-marker endpoint files are published.
-#   markers        Optional. Map of marker name to JSON path on main; when set,
-#                    each marker renders as a live shields.io badge in place
-#                    of `breakdown`. Keys: unit, integration, smoke, slow.
+#   markers        Optional. Map of marker name to JSON path (relative to
+#                    `badge_branch`); when set, each marker renders as a live
+#                    shields.io badge in place of `breakdown`. Keys: unit,
+#                    integration, smoke, slow.
 
 mature:
   - name: PROTEUS
@@ -35,8 +37,11 @@ mature:
     workflow: ci-pr-checks.yml
     ci_label: CI
     has_codecov: true
-    total: 2766
-    breakdown: "2517 unit, 260 integration"
+    total_endpoint: tests-total.json
+    badge_branch: badges
+    markers:
+      unit: tests-unit.json
+      integration: tests-integration.json
 
   - name: Zalmoxis
     owner: FormingWorlds
@@ -44,10 +49,11 @@ mature:
     workflow: CI.yml
     ci_label: CI
     has_codecov: true
-    total_endpoint: .github/badges/tests-total.json
+    total_endpoint: tests-total.json
+    badge_branch: badges
     markers:
-      unit: .github/badges/tests-unit.json
-      integration: .github/badges/tests-integration.json
+      unit: tests-unit.json
+      integration: tests-integration.json
 
   - name: AGNI
     owner: nichollsh
@@ -73,10 +79,11 @@ mature:
     workflow: tests.yaml
     ci_label: CI
     has_codecov: true
-    total_endpoint: .github/badges/tests-total.json
+    total_endpoint: tests-total.json
+    badge_branch: badges
     markers:
-      unit: .github/badges/tests-unit.json
-      integration: .github/badges/tests-integration.json
+      unit: tests-unit.json
+      integration: tests-integration.json
 
   - name: Aragog
     owner: FormingWorlds
@@ -84,10 +91,11 @@ mature:
     workflow: ci_tests.yml
     ci_label: CI
     has_codecov: true
-    total_endpoint: .github/badges/tests-total.json
+    total_endpoint: tests-total.json
+    badge_branch: badges
     markers:
-      unit: .github/badges/tests-unit.json
-      integration: .github/badges/tests-integration.json
+      unit: tests-unit.json
+      integration: tests-integration.json
 
 in_development:
   - name: MORS
@@ -95,24 +103,29 @@ in_development:
     repo: MORS
     workflow: tests.yaml
     ci_label: CI
-    total: 36
-    breakdown: "PROTEUS-style markers planned"
+    total_endpoint: tests-total.json
+    badge_branch: badges
+    breakdown: "Total count; tests parametrized, not tier-marked"
 
   - name: JANUS
     owner: FormingWorlds
     repo: JANUS
     workflow: tests.yaml
     ci_label: CI
-    total: 12
-    breakdown: "Stable API, additional integration tests planned"
+    total_endpoint: tests-total.json
+    badge_branch: badges
+    breakdown: "Total count; tests parametrized, not tier-marked"
 
   - name: VULCAN
     owner: FormingWorlds
     repo: VULCAN
     workflow: tests.yaml
     ci_label: CI
-    total: 6
-    breakdown: "2 unit, 1 integration; expansion in progress"
+    total_endpoint: tests-total.json
+    badge_branch: badges
+    markers:
+      unit: tests-unit.json
+      integration: tests-integration.json
 
   - name: Obliqua
     owner: FormingWorlds
@@ -127,15 +140,17 @@ in_development:
     repo: SPIDER
     workflow: ci.yml
     ci_label: CI
-    total: "3 cases"
-    breakdown: "SciATH integration tests for the C/PETSc solver (blackbody50, external-mesh round trip, plot smoke)"
+    total_endpoint: tests-total.json
+    badge_branch: badges
+    breakdown: "SciATH integration cases for the C/PETSc solver"
 
   - name: ZEPHYRUS
     owner: FormingWorlds
     repo: ZEPHYRUS
     workflow: tests.yaml
     ci_label: CI
-    total: 3
+    total_endpoint: tests-total.json
+    badge_branch: badges
     breakdown: "Test scaffold in place; suite under construction"
 
   - name: LovePy
