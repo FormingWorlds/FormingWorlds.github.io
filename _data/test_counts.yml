@@ -12,10 +12,16 @@
 #   has_codecov    Whether to render a Codecov coverage badge
 #   total          Static total test count (text or number). Shown when no
 #                    `total_endpoint` is provided.
-#   total_endpoint Optional. Path of the shields.io-compatible JSON file on
-#                    main (e.g. ".github/badges/tests-total.json"). When set,
-#                    the row renders a live shields.io endpoint badge instead
-#                    of the static `total`.
+#   total_endpoint Optional. Path of the shields.io-compatible JSON file (e.g.
+#                    ".github/badges/tests-total.json"). When set, the row
+#                    renders a live shields.io endpoint badge instead of the
+#                    static `total`.
+#   badge_branch   Optional. Branch that holds the badge JSON files. Defaults
+#                    to "main". Repos with a protected main publish the JSON to
+#                    a dedicated "badges" branch instead; set this to that
+#                    branch name so the endpoint URLs resolve. Applies to
+#                    `total_endpoint` and `markers` only, not the CI/coverage
+#                    badges (those always track main).
 #   breakdown      Optional. Plain-text marker breakdown ("816 unit, ...").
 #                    Used until per-marker endpoint files are published.
 #   markers        Optional. Map of marker name to JSON path on main; when set,
@@ -29,8 +35,8 @@ mature:
     workflow: ci-pr-checks.yml
     ci_label: CI
     has_codecov: true
-    total: 1007
-    breakdown: "816 unit, 38 integration, 15 smoke, 6 slow"
+    total: 2766
+    breakdown: "2517 unit, 260 integration"
 
   - name: Zalmoxis
     owner: FormingWorlds
@@ -48,9 +54,9 @@ mature:
     repo: AGNI
     workflow: install_and_test.yml
     ci_label: tests
-    has_codecov: false
-    total: 411
-    breakdown: "411 <code>@test</code> assertions in 106 testsets (Julia <code>Test.jl</code>)"
+    has_codecov: true
+    total: 707
+    breakdown: "707 <code>@test</code> assertions in 150 testsets (Julia <code>Test.jl</code>)"
 
   - name: atmodeller
     owner: ExPlanetology
@@ -89,7 +95,7 @@ in_development:
     repo: MORS
     workflow: tests.yaml
     ci_label: CI
-    total: 16
+    total: 36
     breakdown: "PROTEUS-style markers planned"
 
   - name: JANUS
@@ -97,7 +103,7 @@ in_development:
     repo: JANUS
     workflow: tests.yaml
     ci_label: CI
-    total: 9
+    total: 12
     breakdown: "Stable API, additional integration tests planned"
 
   - name: VULCAN
@@ -129,7 +135,7 @@ in_development:
     repo: ZEPHYRUS
     workflow: tests.yaml
     ci_label: CI
-    total: 1
+    total: 3
     breakdown: "Test scaffold in place; suite under construction"
 
   - name: LovePy

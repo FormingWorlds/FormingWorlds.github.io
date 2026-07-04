@@ -170,11 +170,12 @@ The PROTEUS framework and its mature submodules expose passing-tests badges and,
   </thead>
   <tbody>
     {% for row in site.data.test_counts.mature %}
+    {%- assign bb = row.badge_branch | default: 'main' -%}
     <tr>
       <td class="module-name"><a href="https://github.com/{{ row.owner }}/{{ row.repo }}">{{ row.name }}</a></td>
       <td class="test-count">
         {%- if row.total_endpoint -%}
-          <a href="https://github.com/{{ row.owner }}/{{ row.repo }}/blob/main/{{ row.total_endpoint }}"><img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/{{ row.owner }}/{{ row.repo }}/main/{{ row.total_endpoint }}" alt="tests"></a>
+          <a href="https://github.com/{{ row.owner }}/{{ row.repo }}/blob/{{ bb }}/{{ row.total_endpoint }}"><img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/{{ row.owner }}/{{ row.repo }}/{{ bb }}/{{ row.total_endpoint }}" alt="tests"></a>
         {%- else -%}
           {{ row.total }}
         {%- endif -%}
@@ -182,7 +183,7 @@ The PROTEUS framework and its mature submodules expose passing-tests badges and,
       <td class="test-breakdown">
         {%- if row.markers -%}
           {%- for m in row.markers -%}
-            <a href="https://github.com/{{ row.owner }}/{{ row.repo }}/blob/main/{{ m[1] }}"><img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/{{ row.owner }}/{{ row.repo }}/main/{{ m[1] }}" alt="{{ m[0] }}"></a>{% unless forloop.last %} {% endunless %}
+            <a href="https://github.com/{{ row.owner }}/{{ row.repo }}/blob/{{ bb }}/{{ m[1] }}"><img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/{{ row.owner }}/{{ row.repo }}/{{ bb }}/{{ m[1] }}" alt="{{ m[0] }}"></a>{% unless forloop.last %} {% endunless %}
           {%- endfor -%}
         {%- else -%}
           {{ row.breakdown }}
@@ -214,11 +215,12 @@ The PROTEUS framework and its mature submodules expose passing-tests badges and,
   </thead>
   <tbody>
     {% for row in site.data.test_counts.in_development %}
+    {%- assign bb = row.badge_branch | default: 'main' -%}
     <tr>
       <td class="module-name"><a href="https://github.com/{{ row.owner }}/{{ row.repo }}">{{ row.name }}</a></td>
       <td class="test-count">
         {%- if row.total_endpoint -%}
-          <a href="https://github.com/{{ row.owner }}/{{ row.repo }}/blob/main/{{ row.total_endpoint }}"><img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/{{ row.owner }}/{{ row.repo }}/main/{{ row.total_endpoint }}" alt="tests"></a>
+          <a href="https://github.com/{{ row.owner }}/{{ row.repo }}/blob/{{ bb }}/{{ row.total_endpoint }}"><img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/{{ row.owner }}/{{ row.repo }}/{{ bb }}/{{ row.total_endpoint }}" alt="tests"></a>
         {%- else -%}
           {{ row.total }}
         {%- endif -%}
@@ -226,7 +228,7 @@ The PROTEUS framework and its mature submodules expose passing-tests badges and,
       <td class="test-breakdown">
         {%- if row.markers -%}
           {%- for m in row.markers -%}
-            <a href="https://github.com/{{ row.owner }}/{{ row.repo }}/blob/main/{{ m[1] }}"><img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/{{ row.owner }}/{{ row.repo }}/main/{{ m[1] }}" alt="{{ m[0] }}"></a>{% unless forloop.last %} {% endunless %}
+            <a href="https://github.com/{{ row.owner }}/{{ row.repo }}/blob/{{ bb }}/{{ m[1] }}"><img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/{{ row.owner }}/{{ row.repo }}/{{ bb }}/{{ m[1] }}" alt="{{ m[0] }}"></a>{% unless forloop.last %} {% endunless %}
           {%- endfor -%}
         {%- else -%}
           {{ row.breakdown }}
@@ -244,7 +246,7 @@ The PROTEUS framework and its mature submodules expose passing-tests badges and,
   </tbody>
 </table>
 
-<p class="footnote">Static test counts above were last verified on 2026-05-10 by direct repository inspection. Rows displaying a numeric badge instead of a number are live: the count is fetched from a JSON file refreshed by each repository's CI on every passing run on main. Ecosystem-wide adoption of the PROTEUS marker convention (unit, smoke, integration, slow) is in progress; until then, total counts are the most comparable figure across repositories.</p>
+<p class="footnote">Static test counts above were last verified on 2026-07-04 by direct repository inspection. Rows displaying a numeric badge instead of a number are live: the count is fetched from a JSON file refreshed by each repository's CI on every passing run on main. Ecosystem-wide adoption of the PROTEUS marker convention (unit, smoke, integration, slow) is in progress; until then, total counts are the most comparable figure across repositories.</p>
 
 <h4>Three categories of test, three things they catch</h4>
 
