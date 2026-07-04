@@ -108,14 +108,14 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <div class="pub-section">
-  <h4>Preprints</h4>
+  <h4>Published</h4>
 
   <div class="pub-entry">
     <p class="pub-title">
       <a href="https://arxiv.org/abs/2512.05816">Most rocky sub-Neptunes are molten: mapping the solidification shoreline for gas dwarf exoplanets</a>
     </p>
     <p class="pub-authors">Calder, Robb; Shorttle, Oliver; Nicholls, Harrison; Lichtenberg, Tim; Guimond, Claire Marie</p>
-    <p class="pub-venue">Under review</p>
+    <p class="pub-venue">Monthly Notices of the Royal Astronomical Society, in press (2026)</p>
     <p class="pub-summary">Sub-Neptunes are the most common type of detected exoplanet, but their internal structure is ambiguous. This study maps the "solidification shoreline" separating molten from solid interiors and finds that 98% of detected sub-Neptunes, if they have rocky cores with hydrogen envelopes, host permanent magma oceans today.</p>
     <details class="pub-abstract">
       <summary>Abstract</summary>
@@ -126,17 +126,13 @@ document.addEventListener('DOMContentLoaded', function() {
       <a href="https://arxiv.org/abs/2512.05816">arXiv</a>
     </div>
   </div>
-</div>
-
-<div class="pub-section">
-  <h4>Published</h4>
 
   <div class="pub-entry">
     <p class="pub-title">
-      <a href="https://arxiv.org/abs/2511.16142">Coupled atmospHere Interior modeL Intercomparison (CHILI) Protocol Version 1.0: A CUISINES Intercomparison Project of Magma Ocean Models</a>
+      <a href="https://doi.org/10.3847/psj/ae593b">Coupled atmospHere Interior modeL Intercomparison (CHILI) Protocol Version 1.0: A CUISINES Intercomparison Project of Magma Ocean Models</a>
     </p>
     <p class="pub-authors">Lichtenberg, Tim; Schaefer, Laura; Krissansen-Totton, Joshua; Miguel, Yamila; Sergeev, Denis E.; Baumeister, Philipp; Cmiel, Jessica; Janssen, Leoni J.; Nguyen, T. Giang; Miyazaki, Yoshinori; Nicholls, Harrison; Papesh, Alexandra; Pelissard, Hugo; Peng, Bo; Perez, Junellie; Postolec, Emma; Sastre, Mariana; Salvador, Arnaud; Spreeuw, Hanno; Zorzi, Andrea; Fauchez, Thomas J.; Hamano, Keiko; Leconte, Jérémy; Maurice, Maxime; Noack, Lena; Soucasse, Laurent</p>
-    <p class="pub-venue">The Planetary Science Journal, in press (2026)</p>
+    <p class="pub-venue">The Planetary Science Journal, 7, 108 (2026)</p>
     <p class="pub-summary">Presents the experimental protocol for CHILI, an intercomparison project for coupled magma ocean-atmosphere models. The protocol defines standard tests for early Earth, Venus, and rocky exoplanets around M-dwarfs to quantify differences in energy transport, geochemistry, and volatile cycling between various models in the community.</p>
     <details class="pub-abstract">
       <summary>Abstract</summary>
@@ -145,6 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="pub-links">
       <a href="https://scixplorer.org/abs/2025arXiv251116142L">SciX</a>
       <a href="https://arxiv.org/abs/2511.16142">arXiv</a>
+      <a href="https://doi.org/10.3847/psj/ae593b">DOI</a>
     </div>
   </div>
 
