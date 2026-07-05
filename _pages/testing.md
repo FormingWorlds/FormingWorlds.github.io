@@ -192,7 +192,7 @@ The full developer-facing detail is on the PROTEUS <a href="https://proteus-fram
   <div class="test-card">
     <span class="accent accent-unit"></span>
     <h5>Unit tests</h5>
-    <p>Isolate one function with mocked physics. Catch algebra errors, IO regressions, and broken assumptions about types and units. They run in milliseconds, so the suite stays cheap to invoke on every commit.</p>
+    <p>Isolate one function with mocked physics. Catch algebra errors, input-output regressions, and broken assumptions about types and units. They run in milliseconds, so the suite stays cheap to invoke on every commit.</p>
   </div>
   <div class="test-card">
     <span class="accent accent-integ"></span>
