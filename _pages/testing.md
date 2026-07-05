@@ -225,7 +225,7 @@ The full developer-facing detail is on the PROTEUS <a href="https://proteus-fram
     <ul>
       <li>Single-assertion tests, and weak checks such as "the result is not empty" or "the result is positive" left to stand alone.</li>
       <li>Floating-point equality against a literal value.</li>
-      <li>Tests that mock the very function they are meant to check.</li>
+      <li>Tests that used a dummy 'mocked' implementation of the very function they are meant to check.</li>
       <li>Tests which never explicitly state their targeted physical scenario or 'contract clause'  (i.e. some obligation to reproduce a certain physical behaviour) </li>
     </ul>
   </div>
