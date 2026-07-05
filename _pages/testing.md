@@ -340,7 +340,7 @@ Testing extends far beyond software workflows. We also probe whether each code w
 <div class="vignette">
   <h6>Early Earth: the magma ocean lifetime</h6>
   <p>Coupled PROTEUS simulations of post-impact Earth resolve the interplay between tidal heating from the early Moon and greenhouse forcing from the outgassed atmosphere. The magma ocean lifetime ranges from roughly 30 to 500 Myr depending on mantle redox and volatile inventory, a prediction tied to specific geochemical observables.</p>
-  <p class="ref">van Dijk, Nicholls &amp; Lichtenberg, <em>Planetary Science Journal</em> 7, 94 (2026). <a href="https://doi.org/10.3847/PSJ/adc1ef">doi:10.3847/PSJ/adc1ef</a></p>
+  <p class="ref">van Dijk, Nicholls &amp; Lichtenberg, <em>Planetary Science Journal</em> 7, 94 (2026). <a href="https://doi.org/10.3847/PSJ/ae5928">doi:10.3847/PSJ/ae5928</a></p>
 </div>
 
 <div class="vignette">
