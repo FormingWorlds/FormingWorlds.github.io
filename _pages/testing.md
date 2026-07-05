@@ -150,7 +150,7 @@ image: /assets/img/og-default.jpg
   }
 </style>
 
-<p class="lead">Every change to the PROTEUS ecosystem clears an automated test gate before it can merge. Thousands of tests run across a dozen open-source repositories; line coverage is tracked publicly and allowed only to increase; and the core physics is cross-checked against independent codes and against refereed, published applications.</p>
+<p class="lead">Every change to code within the PROTEUS ecosystem must pass test 'gates' before it can be merged into the main versions of our models. In addition, the modelled physics is cross-checked against independent codes and against peer-reviewed papers. The 'coverage' of these tests (i.e. the fraction of the code which is probed) is tracked publicly. Validating workflows ensure that the coverage is only allowed only to increase as development progresses. We now have thousands of tests across all of our open-source repositories.</p>
 
 <div class="epistemic-callout">
   <span class="callout-label">On what testing can and cannot show</span>
