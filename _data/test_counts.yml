@@ -9,7 +9,12 @@
 #   repo           GitHub repo
 #   workflow       Filename of the primary test workflow (for the CI badge)
 #   ci_label       Text shown on the CI badge ("CI" or "tests")
-#   has_codecov    Whether to render a Codecov coverage badge
+#   has_codecov    Whether to render a coverage badge. The figure is read from a
+#                    `coverage-<repo>.json` endpoint on this site's own `badges`
+#                    branch, refreshed daily by the coverage workflow; the module
+#                    must be on Codecov for the figure to populate. After adding a
+#                    module, run the "Refresh coverage badges" workflow once so
+#                    the endpoint exists before the badge renders.
 #   total          Static total test count (text or number). Shown when no
 #                    `total_endpoint` is provided.
 #   total_endpoint Optional. Path of the shields.io-compatible JSON file,
@@ -21,8 +26,9 @@
 #                    to "main". Repos with a protected main publish the JSON to
 #                    a dedicated "badges" branch instead; set this to that
 #                    branch name so the endpoint URLs resolve. Applies to
-#                    `total_endpoint` and `markers` only, not the CI/coverage
-#                    badges (those always track main).
+#                    `total_endpoint` and `markers` only. The CI badge always
+#                    tracks main; the coverage badge is read from this site's own
+#                    `badges` branch (see `has_codecov`).
 #   breakdown      Optional. Plain-text marker breakdown ("816 unit, ...").
 #                    Used until per-marker endpoint files are published.
 #   markers        Optional. Map of marker name to JSON path (relative to

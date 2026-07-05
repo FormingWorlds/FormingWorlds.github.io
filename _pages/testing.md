@@ -273,7 +273,7 @@ The PROTEUS framework and its mature submodules expose passing-tests badges and,
       <td><a href="https://github.com/{{ row.owner }}/{{ row.repo }}/actions/workflows/{{ row.workflow }}"><img src="https://img.shields.io/github/actions/workflow/status/{{ row.owner }}/{{ row.repo }}/{{ row.workflow }}?branch=main&label={{ row.ci_label }}&logo=github" alt="{{ row.ci_label }}"></a></td>
       <td>
         {%- if row.has_codecov -%}
-          <a href="https://app.codecov.io/gh/{{ row.owner }}/{{ row.repo }}"><img src="https://img.shields.io/codecov/c/github/{{ row.owner }}/{{ row.repo }}?label=coverage&logo=codecov" alt="coverage"></a>
+          <a href="https://app.codecov.io/gh/{{ row.owner }}/{{ row.repo }}"><img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/FormingWorlds/FormingWorlds.github.io/badges/coverage-{{ row.repo | downcase }}.json&logo=codecov" alt="coverage"></a>
         {%- else -%}
           <span style="color: var(--muted-color); font-size: 0.85rem;">Codecov pending</span>
         {%- endif -%}
