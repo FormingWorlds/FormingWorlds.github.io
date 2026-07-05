@@ -331,7 +331,7 @@ The PROTEUS framework and its mature submodules expose passing-tests badges and,
 
 <h4 id="tests-and-papers">Tests and papers</h4>
 
-Two tests of the framework sit beyond CI, and both are on the public record: whether a single code matches observations, and whether independent codes agree with one another. The papers highlighted below are part of the complete <a href="/publications">PROTEUS publications list</a>.
+Testing extends far beyond software workflows. We also probe whether each code within the PROTEUS ecosystem matches real world observations, and whether independent codes (models) agree with one another in the expected regimes. These other testing modes are both on the public record. The papers highlighted below are part of the complete <a href="/publications">PROTEUS publications list</a>.
 
 <h5 class="subsection">Tested against data: published applications</h5>
 
