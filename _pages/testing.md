@@ -154,7 +154,7 @@ image: /assets/img/og-default.jpg
 
 <div class="epistemic-callout">
   <span class="callout-label">On what testing can and cannot show</span>
-  <p>"How do you know the code is right?" holds two questions. First: does the code do what we wrote it to do, every time? That is what the test suite proves, and this page shows how. Second: does what we wrote capture the planet? That is judged not by tests but by data: JWST spectra, geochemical and geophysical measurements, and comparison with independent codes.</p>
+  <p>How do we know the code is accurately modelling the real world? This can be approached as two questions. Firstly: does the code do what we wrote it to do, every time? Our test suite tracks the modelled behaviours for reproducibility, and this page describes how. Secondly: do codes and models we have written capture the real behaviour of planets? This is judged by comparison against empirical data, including JWST spectra, geochemical and geophysical measurements, as well as with independent codes from other research groups.</p>
   <p>The test suite is the precondition, not the substitute. It guarantees the code does, reproducibly, what we wrote, so that any disagreement with data is a statement about the physics we chose, not a bug we failed to catch.</p>
 </div>
 
