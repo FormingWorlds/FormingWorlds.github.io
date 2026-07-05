@@ -355,7 +355,7 @@ Testing extends far beyond software workflows. We also probe whether each code w
 
 <div class="vignette">
   <h6>CHILI: a shared benchmark for coupled codes</h6>
-  <p>CHILI defines a common protocol of standardized cases, early Earth, Venus, and rocky exoplanets around M-dwarfs, that any coupled interior-atmosphere code can run. Fixing the inputs turns model disagreement into a measured quantity: differences in energy transport, geochemistry, and volatile cycling become numbers to explain rather than buried assumptions. It is the community-scale counterpart of the cross-code checks PROTEUS runs internally, such as SPIDER against Aragog for the magma-ocean energy budget.</p>
+  <p><a href="https://nexss.info/cuisines/chili-mip/">CHILI defines a common protocol of standardized cases</a>, early Earth, Venus, and rocky exoplanets around M-dwarfs, that any coupled interior-atmosphere code can run. Fixing the inputs turns model disagreement into a measured quantity: differences in energy transport, geochemistry, and volatile cycling become numbers to explain rather than buried assumptions. It is the community-scale counterpart of the cross-code checks PROTEUS runs internally, such as SPIDER against Aragog for the magma-ocean energy budget.</p>
   <p class="ref">Lichtenberg et al., <em>Planetary Science Journal</em> 7, 108 (2026). <a href="https://doi.org/10.3847/PSJ/ae593b">doi:10.3847/PSJ/ae593b</a></p>
 </div>
 
