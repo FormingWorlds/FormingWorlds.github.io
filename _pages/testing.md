@@ -361,7 +361,7 @@ Testing extends far beyond software workflows. We also probe whether each code w
 
 <div class="vignette">
   <h6>CHILI I: primordial magma oceans of Earth and Venus</h6>
-  <p>The first results benchmark planetary evolution codes on the primordial magma oceans of Earth and Venus. Nominal Earth models agree on solidification timescale to within 4 Myr; Venus scenarios diverge more, and the intercomparison pins that divergence to specific treatments of volatile partitioning, vertical energy transport, mantle rheology, and melting. Locating those sensitivities is what separates a code that runs from one that agrees with independent implementations, and shows exactly where it does not.</p>
+  <p>The model intercomparison results benchmark planetary evolution codes against the scenarios of Earth and Venus. Earth models agree on solidification timescale to within 4 Myr. Simulated Venus scenarios diverge more, between the participating models. The intercomparison highlights that divergence arise through variant treatments of volatile partitioning, vertical energy transport, mantle rheology, and melting. Locating those sensitivities is what separates a code that runs from one that agrees with independent implementations.</p>
   <p class="ref">Nicholls et al. (2026). <a href="https://arxiv.org/abs/2606.24757">arXiv:2606.24757</a></p>
 </div>
 
