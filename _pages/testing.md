@@ -327,7 +327,7 @@ The PROTEUS framework and its mature submodules expose passing-tests badges and,
   </tbody>
 </table>
 
-<p class="footnote">Rows displaying a numeric badge are live: the count is fetched from a JSON file that each repository's CI regenerates and republishes whenever its tests change. The remaining plain-number rows are static counts, last verified on 2026-07-04 by direct repository inspection. Ecosystem-wide adoption of the PROTEUS marker convention (unit, smoke, integration, slow) is in progress; until then, total counts are the most comparable figure across repositories.</p>
+<p class="footnote">Rows displaying a numeric badge are live. The count is fetched from each repository's automated workflows, and republished whenever the repository's tests change. The remaining plain number rows are static counts ( last verified on 4 July 2026). Ecosystem-wide adoption of the PROTEUS marker convention (unit, smoke, integration, slow) is a point of active development.</p>
 
 <h4 id="tests-and-papers">Tests and papers</h4>
 
