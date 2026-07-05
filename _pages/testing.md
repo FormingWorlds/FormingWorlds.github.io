@@ -197,7 +197,7 @@ The full developer-facing detail is on the PROTEUS <a href="https://proteus-fram
   <div class="test-card">
     <span class="accent accent-integ"></span>
     <h5>Integration and smoke tests</h5>
-    <p>Run real binaries on minimal configurations, often a single time step at low resolution. Catch coupling bugs that unit tests cannot see: when two correct modules disagree on a boundary condition, on a sign convention, or on which way time runs.</p>
+    <p>Run the real models under a minimal-configuration scenario. Often, using a single simulation time step at spatial low resolution. These catch bugs that could arise due to model coupling, which specific unit tests cannot see. For example, when two correct modules disagree on a boundary condition, on a sign convention, or on which way time runs.</p>
   </div>
   <div class="test-card">
     <span class="accent accent-physical"></span>
