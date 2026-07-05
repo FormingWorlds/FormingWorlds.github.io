@@ -44,11 +44,11 @@ menu_settings:
     - title: 'Publications'
       url: '/publications'
 
-    - title: 'People & Contact'
-      url: '/people'
-
     - title: 'License'
       url: '/license'
+
+    - title: 'People & Contact'
+      url: '/people'
 
 footer_settings:
   footer_tagline: PROTEUS framework for planetary evolution
