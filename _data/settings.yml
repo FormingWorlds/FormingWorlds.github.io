@@ -38,14 +38,17 @@ menu_settings:
     - title: 'Demos'
       url: '/demos'
 
+    - title: 'Testing'
+      url: '/testing'
+
     - title: 'Publications'
       url: '/publications'
 
-    - title: 'People & Contact'
-      url: '/people'
-
     - title: 'License'
       url: '/license'
+
+    - title: 'People & Contact'
+      url: '/people'
 
 footer_settings:
   footer_tagline: PROTEUS framework for planetary evolution
