@@ -182,7 +182,9 @@ Every change to PROTEUS or its modules runs through automated tests on GitHub Ac
   </tbody>
 </table>
 
-Pull requests must additionally clear an 80% diff-cover bar on changed lines, and a 0.3% grace allowance on the global coverage threshold. The full developer-facing detail lives in the PROTEUS <a href="https://proteus-framework.org/PROTEUS/How-to/testing.html" target="_blank" rel="noopener noreferrer">testing how-to</a> and <a href="https://proteus-framework.org/PROTEUS/Explanations/test_framework.html" target="_blank" rel="noopener noreferrer">test-framework explanation</a>.
+Pull requests must additionally clear an 80% bar on changed lines: meaning that 80% of the lines of code updated in a pull request must be tested. We apply a 0.3% grace tolerance on changes to the global coverage for each pull request. 
+
+The full developer-facing detail is on the PROTEUS <a href="https://proteus-framework.org/PROTEUS/How-to/testing.html" target="_blank" rel="noopener noreferrer">testing how-to</a> and <a href="https://proteus-framework.org/PROTEUS/Explanations/test_framework.html" target="_blank" rel="noopener noreferrer">test-framework pages</a>.
 
 <h4>Three categories of test, three things they catch</h4>
 
