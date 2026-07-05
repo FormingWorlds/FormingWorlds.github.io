@@ -214,7 +214,7 @@ The full developer-facing detail is on the PROTEUS <a href="https://proteus-fram
   <div class="quality-col quality-req">
     <h5>Required in every test</h5>
     <ul>
-      <li>A boundary or edge case: a temperature at the solidus, an empty inventory, or an extreme physical parameter.</li>
+      <li>A boundary or edge case: a temperature at the solidus, an empty inventory of volatiles, or an extreme physical parameter.</li>
       <li>The failure path. Where the code validates its input, the error must fire and leave no side effect behind; for closed-form physics, the limiting case must hold exactly.</li>
       <li>A value a plausible bug would break. A wrong sign, a wrong exponent, a missing factor, or a unit slip must make the test fail, so inputs are chosen where a wrong formula lands far from the right one.</li>
       <li>On physics modules, at least one physical invariant: conservation of mass, energy, or angular momentum; boundedness (temperatures positive, mass fractions within zero and one); monotonicity or symmetry; or a value pinned to a published benchmark or an independent code.</li>
