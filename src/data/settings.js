@@ -1,4 +1,4 @@
-// Site configuration ported from the original _data/settings.yml.
+// Central site configuration: title, favicons, navigation, footer, socials, SEO.
 // Consumed by Base.astro, Header.astro, Footer.astro, and Socials.astro.
 
 export const siteTitle = 'PROTEUS Framework';

@@ -1,8 +1,8 @@
 ---
-// Site shell, ported from _layouts/default.html.
-// Reproduces the rendered <head> (favicons, theme detection, fonts/icons,
-// compiled CSS, analytics, SEO meta) and the body chrome (Header, optional auto
-// title block, #main slot, Footer with the end-of-body vendor scripts).
+// Base HTML shell shared by every page.
+// Builds the <head> (favicons, theme detection, fonts/icons, compiled CSS,
+// analytics, SEO meta) and the body chrome (Header, optional title block,
+// #main slot, Footer).
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { favicons, analyticsCode, siteTitle } from '../data/settings.js';

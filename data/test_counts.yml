@@ -1,7 +1,8 @@
 # Test count and badge data for the /testing page.
 #
-# Each entry is rendered as one row in either the "mature" or "in_development"
-# table by _pages/testing.md.
+# Each entry describes one module in either the "mature" or "in_development"
+# group. The coverage-badge workflow reads this file to publish the coverage
+# badge endpoints that the /testing page displays.
 #
 # Per-row fields:
 #   name           Display name

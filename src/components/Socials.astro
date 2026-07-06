@@ -1,7 +1,7 @@
 ---
-// Social buttons, ported from _includes/socials.html.
+// Social buttons for the header and footer.
 // Each entry key (e.g. `github_url`) drives the button class, tooltip label,
-// and Font Awesome icon exactly as the original Liquid did.
+// and Font Awesome icon.
 import { socialSettings } from '../data/settings.js';
 
 const entries = Object.entries(socialSettings).filter(([, url]) => url !== '');
@@ -11,11 +11,9 @@ function capitalize(s) {
 }
 
 const buttons = entries.map(([key, url]) => {
-  // {{ key | remove: '_url' | replace: '-', ' ' }}
+  // Derive the button class, tooltip label, and icon slug from the setting key.
   const name = key.replace('_url', '').replace(/-/g, ' ');
-  // {{ key | remove: '_url' | replace: '-', ' ' | capitalize }}
   const label = capitalize(name);
-  // {{ key | replace: 'facebook', 'facebook-f' | remove: '_url' }}
   const icon = key.replace('facebook', 'facebook-f').replace('_url', '');
   return { url, className: name, label, icon };
 });

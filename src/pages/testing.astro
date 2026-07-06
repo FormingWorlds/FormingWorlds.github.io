@@ -149,6 +149,74 @@ import Base from '../layouts/Base.astro';
     color: var(--muted-color);
     margin-top: 0.4rem;
   }
+
+  /* Narrow screens: the wide badge tables reflow into stacked cards so nothing
+     is clipped or crammed on phones and small tablets. */
+  @media (max-width: 767px) {
+    .coverage-table,
+    .coverage-table thead,
+    .coverage-table tbody,
+    .ci-table,
+    .ci-table thead,
+    .ci-table tbody {
+      display: block;
+      width: 100%;
+    }
+    .coverage-table thead,
+    .ci-table thead {
+      display: none;
+    }
+    .coverage-table tr,
+    .ci-table tr {
+      border: 1px solid var(--border-color);
+      border-radius: 0.5rem;
+      padding: 0.85rem 1rem;
+      margin-bottom: 0.85rem;
+    }
+
+    /* Coverage rows: title on its own line, self-labelling badges flow below,
+       the breakdown gets its own full-width line at the bottom of the card. */
+    .coverage-table tr {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem 0.75rem;
+    }
+    .coverage-table td {
+      border-bottom: none;
+      padding: 0;
+    }
+    .coverage-table td.module-name {
+      flex: 0 0 100%;
+      font-size: 1.05rem;
+      white-space: normal;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .coverage-table td.test-breakdown {
+      flex: 0 0 100%;
+      order: 1;
+    }
+
+    /* CI rows: stack each cell and label it from its data-label attribute. */
+    .ci-table td {
+      display: block;
+      border-bottom: none;
+      padding: 0.35rem 0 0;
+    }
+    .ci-table td:first-child {
+      padding-top: 0;
+    }
+    .ci-table td::before {
+      content: attr(data-label);
+      display: block;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--muted-color);
+      margin-bottom: 0.1rem;
+    }
+  }
 </style>
 
 <p class="lead">Every change to code within the PROTEUS ecosystem must pass test 'gates' before it can be merged into the main versions of our models. In addition, the modelled physics is cross-checked against independent codes and against peer-reviewed papers. The 'coverage' of these tests (i.e. the fraction of the code which is probed) is tracked publicly. Validating workflows ensure that the coverage is only allowed only to increase as development progresses. We now have thousands of tests across all of our open-source repositories.</p>
@@ -171,14 +239,14 @@ Every change to PROTEUS or its modules runs through automated tests on GitHub Ac
   </thead>
   <tbody>
     <tr>
-      <td><strong>Fast PR gate</strong></td>
-      <td>Every pull request</td>
-      <td>Runs unit tests with mocked physics and smoke tests with real binaries on a small configuration. Roughly 5 minutes; gates merging.</td>
+      <td data-label="Pipeline"><strong>Fast PR gate</strong></td>
+      <td data-label="Trigger">Every pull request</td>
+      <td data-label="What it does">Runs unit tests with mocked physics and smoke tests with real binaries on a small configuration. Roughly 5 minutes; gates merging.</td>
     </tr>
     <tr>
-      <td><strong>Nightly full suite</strong></td>
-      <td>Nightly (03:00 UTC)</td>
-      <td>Runs the complete suite including integration and slow tests, uploads coverage to Codecov, and ratchets the coverage threshold so it can only ever increase.</td>
+      <td data-label="Pipeline"><strong>Nightly full suite</strong></td>
+      <td data-label="Trigger">Nightly (03:00 UTC)</td>
+      <td data-label="What it does">Runs the complete suite including integration and slow tests, uploads coverage to Codecov, and ratchets the coverage threshold so it can only ever increase.</td>
     </tr>
   </tbody>
 </table>

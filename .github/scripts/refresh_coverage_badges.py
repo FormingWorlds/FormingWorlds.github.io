@@ -2,7 +2,7 @@
 """Generate shields.io endpoint JSON for each module's Codecov line coverage.
 
 The testing page lists the coverage figure for every module whose
-``has_codecov`` flag is set in ``_data/test_counts.yml``. Rather than have the
+``has_codecov`` flag is set in ``data/test_counts.yml``. Rather than have the
 page call Codecov at render time (that request times out often enough to leave
 broken badges), this script reads the settled line coverage from the public
 Codecov v2 API once, server-side, and writes a small shields.io endpoint file
