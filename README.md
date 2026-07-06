@@ -14,7 +14,7 @@ Built with [Astro](https://astro.build/) and published to GitHub Pages.
 | `src/data/settings.js` | Central config: site title, navigation menu, footer links, social links, favicons, SEO defaults |
 | `public/assets/img/faces/` | Team photos (JPG, 600x600) |
 | `public/assets/img/` | Other images (hero, logos, illustrations, icons) |
-| `public/assets/styles/styles.css` | Compiled stylesheet (Argon Design System plus the custom theme) |
+| `public/assets/styles/styles.css` | Compiled stylesheet (Bootstrap 4 base plus the custom theme) |
 | `public/assets/js/` | Vendor JavaScript for the navbar, dropdowns, and tooltips |
 | `data/test_counts.yml` | Module test-count and badge data used by the coverage-badge workflow |
 | `.github/workflows/deploy.yml` | Builds the site and publishes it to GitHub Pages |
@@ -68,7 +68,7 @@ Every push to `main` triggers the `Build and deploy site` workflow, which builds
 
 ## Technical notes
 
-- **Theme**: Argon Design System (Bootstrap 4, Creative Tim), customised. The compiled stylesheet and vendor scripts are served as static assets under `public/assets/`.
+- **Styling**: a compiled Bootstrap 4 stylesheet with a custom theme layer, served with the vendor scripts as static assets under `public/assets/`.
 - **Dark and light mode**: dark is the default. The sun/moon button in the navbar toggles it; the preference is stored in `localStorage` and falls back to `prefers-color-scheme`.
 - **Images**: team photos are JPG for broad browser support. New photos should be 600x600 with the face near the top so the card crop keeps it in frame.
 - **Publications**: maintained as a static list in `src/pages/publications.astro`.
@@ -76,4 +76,4 @@ Every push to `main` triggers the `Build and deploy site` workflow, which builds
 
 ## License
 
-The site content and configuration are released under the MIT License (`LICENSE`). The Argon Design System theme is used under its own license (`THEME-LICENSE.md`).
+The site content and configuration are released under the MIT License (`LICENSE`). The bundled visual theme is used under its own license (`THEME-LICENSE.md`).
