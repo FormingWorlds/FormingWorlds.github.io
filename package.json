@@ -5,6 +5,10 @@
   "private": true,
   "description": "PROTEUS Framework website",
   "scripts": {
+    "badges": "node scripts/generate-badges.mjs",
+    "predev": "npm run badges",
+    "prestart": "npm run badges",
+    "prebuild": "npm run badges",
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
@@ -13,6 +17,9 @@
   },
   "devDependencies": {
     "@astrojs/sitemap": "^3.3.0",
-    "astro": "^5.6.1"
+    "astro": "^5.6.1",
+    "badge-maker": "^6.0.0",
+    "simple-icons": "^16.25.0",
+    "yaml": "^2.9.0"
   }
 }
