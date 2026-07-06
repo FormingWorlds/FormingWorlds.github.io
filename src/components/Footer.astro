@@ -1,6 +1,6 @@
 ---
 // Site footer: navigation columns, contact address, and social buttons.
-// Also carries the end-of-body vendor scripts, loaded just before </body>.
+// Also carries the end-of-body scripts that drive the navbar and set content padding.
 import { menuItems, footerLogos, contactEmail } from '../data/settings.js';
 import Socials from './Socials.astro';
 
@@ -44,7 +44,7 @@ const year = new Date().getFullYear();
     <div class="row align-items-center py-3">
       <div class="col-md-6">
         <div class="copyright">
-          <span class="text-muted">&copy; 2023-{year} <a href="https://www.formingworlds.space" target="_blank" class="text-muted">Forming Worlds Lab</a></span>
+          <span class="text-muted">&copy; 2023-{year} <a href="https://www.formingworlds.space" target="_blank" rel="noopener noreferrer" class="text-muted">Forming Worlds Lab</a></span>
         </div>
       </div>
       <div class="col-md-6 text-md-right">
@@ -53,15 +53,52 @@ const year = new Date().getFullYear();
   </div>
 </footer>
 
-<!--   Core JS Files   -->
-<script is:inline>window.flatpickr=function(){};flatpickr.l10ns={};</script>
-<script src="/assets/js/core/jquery.min.js" defer></script>
-<script src="/assets/js/core/popper.min.js" defer></script>
-<script src="/assets/js/core/bootstrap.min.js" defer></script>
-<script src="/assets/js/plugins/headroom.min.js" defer></script>
-<!-- Stub removed plugins so Argon's Windows code path does not throw -->
-<script src="/assets/js/plugins/stubs.js" defer></script>
-<script src="/assets/js/argon-design-system.min.js?v=1.0.0" defer></script>
+<!-- Navigation behaviour: mobile menu, dropdown submenus, theme toggle -->
+<script is:inline>
+  (function () {
+    var LG = 992; // below this width the collapsed menu is active
+    document.addEventListener('click', function (e) {
+      var nav = document.getElementById('navbar-main');
+      if (!nav) return;
+      var collapse = document.getElementById('navbar_global');
+      var mobile = window.innerWidth < LG;
+
+      // Hamburger and close button: open or close the collapsed panel
+      var toggler = e.target.closest('.navbar-toggler[data-target]');
+      if (toggler && nav.contains(toggler)) {
+        var target = document.querySelector(toggler.getAttribute('data-target'));
+        if (target) target.classList.toggle('show');
+        return;
+      }
+
+      // On mobile, tapping a dropdown toggle expands its submenu inline
+      var dt = e.target.closest('[data-toggle="dropdown"]');
+      if (mobile && dt && nav.contains(dt)) {
+        e.preventDefault();
+        var li = dt.closest('.nav-item.dropdown');
+        if (li) {
+          li.classList.toggle('show');
+          var menu = li.querySelector('.dropdown-menu');
+          if (menu) menu.classList.toggle('show');
+        }
+        return;
+      }
+
+      // On mobile, clicking outside an open menu closes it
+      if (mobile && collapse && collapse.classList.contains('show') && !collapse.contains(e.target)) {
+        collapse.classList.remove('show');
+      }
+    });
+
+    // Escape closes the mobile menu
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        var collapse = document.getElementById('navbar_global');
+        if (collapse) collapse.classList.remove('show');
+      }
+    });
+  })();
+</script>
 
 <script is:inline>
   document.addEventListener('DOMContentLoaded', function () {

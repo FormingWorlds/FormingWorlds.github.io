@@ -2,6 +2,9 @@
 dist/
 .astro/
 
+# Testing-page badge SVGs, rendered from data/test_counts.yml at build time
+public/assets/badges/
+
 # Dependencies
 node_modules/
 
