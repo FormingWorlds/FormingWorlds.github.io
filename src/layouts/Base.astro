@@ -1,0 +1,163 @@
+---
+// Base HTML shell shared by every page.
+// Builds the <head> (favicons, theme detection, fonts/icons, compiled CSS,
+// analytics, SEO meta) and the body chrome (Header, optional title block,
+// #main slot, Footer).
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { favicons, analyticsCode, siteTitle } from '../data/settings.js';
+
+interface Props {
+  /** Page title. Rendered as `${title} | PROTEUS Framework` and used for og/twitter titles and the auto title block heading. */
+  title?: string;
+  /** Optional subtitle for the auto title block. May contain raw HTML (e.g. a mailto link); rendered with set:html. */
+  subtitle?: string;
+  /** Meta description / og:description / twitter description. */
+  description?: string;
+  /** Social share image path (absolute-ized against the site origin). */
+  image?: string;
+  /** When false, suppress the auto title block (the home page passes false). */
+  titleBlock?: boolean;
+  /** Open Graph type: 'website' for the home page, 'article' for content pages. */
+  ogType?: string;
+}
+
+const {
+  title = 'Home',
+  subtitle,
+  description = 'PROTEUS is an open-source framework for simulating the coupled interior-atmosphere evolution of rocky planets, from magma oceans to habitable worlds.',
+  image = '/assets/img/og-default.jpg',
+  titleBlock = true,
+  ogType = 'article',
+} = Astro.props;
+
+const fullTitle = `${title} | ${siteTitle}`;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const imageUrl = new URL(image, Astro.site).href;
+const logoUrl = new URL('/assets/img/brand/PROTEUS_white_on_black.png', Astro.site).href;
+const author = 'Tim Lichtenberg';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': ogType === 'website' ? 'WebSite' : 'BlogPosting',
+  author: { '@type': 'Person', name: author },
+  description,
+  headline: title,
+  image: imageUrl,
+  name: siteTitle,
+  publisher: {
+    '@type': 'Organization',
+    logo: { '@type': 'ImageObject', url: logoUrl },
+    name: author,
+  },
+  sameAs: ['https://github.com/FormingWorlds/PROTEUS'],
+  url: canonical,
+};
+---
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="utf-8">
+
+  <!-- Favicons (light/dark) -->
+  <link id="favicon" rel="icon" type="image/png" href={favicons.light}>
+
+  <script is:inline define:vars={{ light: favicons.light, dark: favicons.dark }}>
+    (function () {
+      const link = document.getElementById("favicon");
+      const mq = window.matchMedia("(prefers-color-scheme: dark)");
+
+      function setIcon(e) {
+        link.href = e.matches ? dark : light;
+      }
+
+      setIcon(mq);
+
+      // modern + older listener support
+      if (mq.addEventListener) mq.addEventListener("change", setIcon);
+      else if (mq.addListener) mq.addListener(setIcon);
+    })();
+  </script>
+
+  <!-- Theme detection: set data-theme before first paint to prevent flash -->
+  <script is:inline>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+
+      // Follow OS changes when user has no explicit preference
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
+        if (!localStorage.getItem('theme')) {
+          document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+        }
+      });
+    })();
+
+    function toggleTheme() {
+      var html = document.documentElement;
+      var current = html.getAttribute('data-theme');
+      var next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    }
+  </script>
+
+  <!--  Fonts and icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://use.fontawesome.com">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+  <!-- Nucleo Icons -->
+  <link href="/assets/css/nucleo-icons.css" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="/assets/styles/styles.css">
+
+  <!-- Analytics Code -->
+  <Fragment set:html={analyticsCode} />
+
+  <!-- Search engine optimization -->
+  <title>{fullTitle}</title>
+  <meta property="og:title" content={title} />
+  <meta name="author" content={author} />
+  <meta property="og:locale" content="en" />
+  <meta name="description" content={description} />
+  <meta property="og:description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:site_name" content={siteTitle} />
+  <meta property="og:image" content={imageUrl} />
+  <meta property="og:type" content={ogType} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="twitter:image" content={imageUrl} />
+  <meta property="twitter:title" content={title} />
+  <meta name="twitter:creator" content={`@${author}`} />
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+</head>
+
+<body>
+  <Header />
+  <div class="wrapper page">
+    {titleBlock && title && (
+      <div class="container contentWrapper pb-2">
+        <div class="text-left mt-5 mb-3">
+          <h3 class="display-2">{title}</h3>
+          {subtitle && <p class="lead" set:html={subtitle} />}
+        </div>
+      </div>
+    )}
+
+    <div id="main" class="container">
+      <slot />
+    </div>
+  </div>
+
+  <Footer />
+</body>
+
+</html>

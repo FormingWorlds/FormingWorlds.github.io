@@ -1,0 +1,90 @@
+---
+// Top navigation bar with the primary menu, dropdowns, and theme toggle.
+// The navbar always renders the dark bg-default variant.
+import { header, menuItems, siteTitle } from '../data/settings.js';
+
+const { logoImage, mobileLogoImage } = header;
+---
+<nav id="navbar-main" class="navbar navbar-main navbar-expand-lg bg-default navbar-dark headroom">
+
+  <div class="container-fluid">
+    {logoImage ? (
+      <a href="/" class="navbar-brand mr-lg-5">
+        <img src={logoImage} />
+      </a>
+    ) : (
+      <a href="/" class="navbar-brand mr-lg-5">
+        {siteTitle}
+      </a>
+    )}
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global"
+      aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse" id="navbar_global">
+      <div class="navbar-collapse-header">
+        <div class="row">
+          <div class="col-6 collapse-brand">
+            {mobileLogoImage ? (
+              <a href="/">
+                <img src={mobileLogoImage} />
+              </a>
+            ) : logoImage ? (
+              <a href="/">
+                <img src={logoImage} />
+              </a>
+            ) : (
+              <a class="navbar-brand" href="/">
+                {siteTitle}
+              </a>
+            )}
+          </div>
+          <div class="col-6 collapse-close">
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar_global"
+              aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <ul class="navbar-nav navbar-nav-hover align-items-lg-center ml-auto">
+        {menuItems.map((item) =>
+          item.submenuItems ? (
+            <li class="nav-item dropdown">
+              <a href="javascript:;" class="nav-link" data-toggle="dropdown" role="button">
+                <span class="nav-link-inner--text">{item.title}</span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                {item.submenuItems.map((subitem) => (
+                  <a class="dropdown-item" href={subitem.url}>
+                    <i class={`ni ${subitem.icon}`}></i>
+                    {subitem.title}
+                  </a>
+                ))}
+              </div>
+            </li>
+          ) : (
+            <li class="nav-item">
+              {item.url.includes('http') ? (
+                <a href={item.url} class="nav-link" target="_blank" rel="noopener noreferrer">
+                  <span class="nav-link-inner--text">{item.title}</span>
+                </a>
+              ) : (
+                <a href={item.url} class="nav-link">
+                  <span class="nav-link-inner--text">{item.title}</span>
+                </a>
+              )}
+            </li>
+          )
+        )}
+
+      </ul>
+      <button class="theme-toggle ml-3" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+      </button>
+    </div>
+  </div>
+</nav>

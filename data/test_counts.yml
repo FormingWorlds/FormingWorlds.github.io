@@ -1,0 +1,169 @@
+# Test count and badge data for the /testing page.
+#
+# Each entry describes one module in either the "mature" or "in_development"
+# group. The coverage-badge workflow reads this file to publish the coverage
+# badge endpoints that the /testing page displays.
+#
+# Per-row fields:
+#   name           Display name
+#   owner          GitHub owner
+#   repo           GitHub repo
+#   workflow       Filename of the primary test workflow (for the CI badge)
+#   ci_label       Text shown on the CI badge ("CI" or "tests")
+#   has_codecov    Whether to render a coverage badge. The figure is read from a
+#                    `coverage-<repo>.json` endpoint on this site's own `badges`
+#                    branch, refreshed daily by the coverage workflow; the module
+#                    must be on Codecov for the figure to populate. After adding a
+#                    module, run the "Refresh coverage badges" workflow once so
+#                    the endpoint exists before the badge renders.
+#   total          Static total test count (text or number). Shown when no
+#                    `total_endpoint` is provided.
+#   total_endpoint Optional. Path of the shields.io-compatible JSON file,
+#                    relative to `badge_branch` (e.g. "tests-total.json" at the
+#                    root of a badges branch, or ".github/badges/tests-total.json"
+#                    on main). When set, the row renders a live shields.io
+#                    endpoint badge instead of the static `total`.
+#   badge_branch   Optional. Branch that holds the badge JSON files. Defaults
+#                    to "main". Repos with a protected main publish the JSON to
+#                    a dedicated "badges" branch instead; set this to that
+#                    branch name so the endpoint URLs resolve. Applies to
+#                    `total_endpoint` and `markers` only. The CI badge always
+#                    tracks main; the coverage badge is read from this site's own
+#                    `badges` branch (see `has_codecov`).
+#   breakdown      Optional. Plain-text marker breakdown ("816 unit, ...").
+#                    Used until per-marker endpoint files are published.
+#   markers        Optional. Map of marker name to JSON path (relative to
+#                    `badge_branch`); when set, each marker renders as a live
+#                    shields.io badge in place of `breakdown`. Keys: unit,
+#                    integration, smoke, slow.
+
+mature:
+  - name: PROTEUS
+    owner: FormingWorlds
+    repo: PROTEUS
+    workflow: ci-pr-checks.yml
+    ci_label: CI
+    has_codecov: true
+    total_endpoint: tests-total.json
+    badge_branch: badges
+    markers:
+      unit: tests-unit.json
+      integration: tests-integration.json
+
+  - name: Zalmoxis
+    owner: FormingWorlds
+    repo: Zalmoxis
+    workflow: CI.yml
+    ci_label: CI
+    has_codecov: true
+    total_endpoint: tests-total.json
+    badge_branch: badges
+    markers:
+      unit: tests-unit.json
+      integration: tests-integration.json
+
+  - name: AGNI
+    owner: nichollsh
+    repo: AGNI
+    workflow: install_and_test.yml
+    ci_label: tests
+    has_codecov: true
+    total: 707
+    breakdown: "707 <code>@test</code> assertions in 150 testsets (Julia <code>Test.jl</code>)"
+
+  - name: atmodeller
+    owner: ExPlanetology
+    repo: atmodeller
+    workflow: ci.yml
+    ci_label: CI
+    has_codecov: false
+    total: 138
+    breakdown: "PROTEUS-style markers being adopted"
+
+  - name: CALLIOPE
+    owner: FormingWorlds
+    repo: CALLIOPE
+    workflow: tests.yaml
+    ci_label: CI
+    has_codecov: true
+    total_endpoint: tests-total.json
+    badge_branch: badges
+    markers:
+      unit: tests-unit.json
+      integration: tests-integration.json
+
+  - name: Aragog
+    owner: FormingWorlds
+    repo: aragog
+    workflow: ci_tests.yml
+    ci_label: CI
+    has_codecov: true
+    total_endpoint: tests-total.json
+    badge_branch: badges
+    markers:
+      unit: tests-unit.json
+      integration: tests-integration.json
+
+in_development:
+  - name: MORS
+    owner: FormingWorlds
+    repo: MORS
+    workflow: tests.yaml
+    ci_label: CI
+    total_endpoint: tests-total.json
+    badge_branch: badges
+    breakdown: "Total count; tests parametrized, not tier-marked"
+
+  - name: JANUS
+    owner: FormingWorlds
+    repo: JANUS
+    workflow: tests.yaml
+    ci_label: CI
+    total_endpoint: tests-total.json
+    badge_branch: badges
+    breakdown: "Total count; tests parametrized, not tier-marked"
+
+  - name: VULCAN
+    owner: FormingWorlds
+    repo: VULCAN
+    workflow: tests.yaml
+    ci_label: CI
+    total_endpoint: tests-total.json
+    badge_branch: badges
+    markers:
+      unit: tests-unit.json
+      integration: tests-integration.json
+
+  - name: Obliqua
+    owner: FormingWorlds
+    repo: Obliqua
+    workflow: runtests.yml
+    ci_label: tests
+    total: "custom suite"
+    breakdown: "Hand-written Julia validation runner, Test.jl migration planned"
+
+  - name: SPIDER
+    owner: FormingWorlds
+    repo: SPIDER
+    workflow: ci.yml
+    ci_label: CI
+    total_endpoint: tests-total.json
+    badge_branch: badges
+    breakdown: "SciATH integration cases for the C/PETSc solver"
+
+  - name: ZEPHYRUS
+    owner: FormingWorlds
+    repo: ZEPHYRUS
+    workflow: tests.yaml
+    ci_label: CI
+    total_endpoint: tests-total.json
+    badge_branch: badges
+    breakdown: "Test scaffold in place; suite under construction"
+
+  - name: LovePy
+    owner: nichollsh
+    repo: lovepy
+    workflow: ""  # no workflow yet
+    ci_label: ""
+    total: "none yet"
+    breakdown: "Cross-validated against analytic Love number solutions in published applications"

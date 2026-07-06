@@ -1,0 +1,33 @@
+---
+// Social buttons for the header and footer.
+// Each entry key (e.g. `github_url`) drives the button class, tooltip label,
+// and Font Awesome icon.
+import { socialSettings } from '../data/settings.js';
+
+const entries = Object.entries(socialSettings).filter(([, url]) => url !== '');
+
+function capitalize(s) {
+  return s.charAt(0).toUpperCase() + s.slice(1);
+}
+
+const buttons = entries.map(([key, url]) => {
+  // Derive the button class, tooltip label, and icon slug from the setting key.
+  const name = key.replace('_url', '').replace(/-/g, ' ');
+  const label = capitalize(name);
+  const icon = key.replace('facebook', 'facebook-f').replace('_url', '');
+  return { url, className: name, label, icon };
+});
+---
+{buttons.map((b) => (
+  <button
+    onclick={`window.open('${b.url}', '_blank');`}
+    rel="nofollow"
+    class={`btn btn-icon-only btn-${b.className} rounded-circle`}
+    data-toggle="tooltip"
+    data-original-title={b.label}
+  >
+    <span class="btn-inner--icon">
+      <i class={`fab fa-${b.icon}`} aria-hidden="true"></i>
+    </span>
+  </button>
+))}

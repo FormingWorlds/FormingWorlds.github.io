@@ -1,36 +1,20 @@
-# .gitignore for Jekyll websites
-
-# Site output
-_site/
-.sass-cache/
-.jekyll-cache/
-.jekyll-metadata
+# Build output
+dist/
+.astro/
 
 # Dependencies
 node_modules/
-.bundle/
-# vendor/
-vendor/bundle/
-vendor/cache/
-vendor/gems/
-vendor/ruby/
 
-# Gem lock
-Gemfile.lock
-
-# Log files
+# Logs
 *.log
+
+# Environment variables
+.env
 
 # OS generated files
 .DS_Store
 Thumbs.db
 
-# dotenv environment variables
-.env
-
-# Byebug command history
-.byebug_history
-
-# Local preview overlay and tooling artifacts (not used by GitHub Pages)
-_config.local.yml
-.playwright-mcp/
+# Python bytecode (coverage-badge script)
+__pycache__/
+*.pyc

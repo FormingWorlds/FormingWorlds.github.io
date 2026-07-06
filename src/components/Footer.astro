@@ -1,0 +1,77 @@
+---
+// Site footer: navigation columns, contact address, and social buttons.
+// Also carries the end-of-body vendor scripts, loaded just before </body>.
+import { menuItems, footerLogos, contactEmail } from '../data/settings.js';
+import Socials from './Socials.astro';
+
+const navItems = menuItems.filter((item) => !item.submenuItems);
+const year = new Date().getFullYear();
+---
+<footer class="footer mt-5 pt-5">
+  <div class="container">
+    <div class="row mb-4">
+      <div class="col-lg-4 mb-4 mb-lg-0">
+        <img src={footerLogos.light} alt="PROTEUS" style="max-height: 40px;" class="mb-3 footer-logo-light" loading="lazy">
+        <img src={footerLogos.dark} alt="PROTEUS" style="max-height: 40px;" class="mb-3 footer-logo-dark" loading="lazy">
+      </div>
+      <div class="col-lg-2 col-md-4 col-6">
+        <h6 class="text-uppercase font-weight-bold mb-3">Navigate</h6>
+        <ul class="list-unstyled">
+          {navItems.map((item) => (
+            <li class="mb-2"><a href={item.url} class="text-muted">{item.title}</a></li>
+          ))}
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-4 col-6">
+        <h6 class="text-uppercase font-weight-bold mb-3">Documentation</h6>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="https://proteus-framework.org/PROTEUS/" class="text-muted" target="_blank" rel="noopener noreferrer">PROTEUS docs</a></li>
+          <li class="mb-2"><a href="/modules" class="text-muted">Module overview</a></li>
+          <li class="mb-2"><a href="https://github.com/FormingWorlds/PROTEUS" class="text-muted" target="_blank" rel="noopener noreferrer">GitHub repository</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-4">
+        <h6 class="text-uppercase font-weight-bold mb-3">Contact</h6>
+        <p class="text-muted mb-2">
+          <a href={`mailto:${contactEmail}`} class="text-muted">{contactEmail}</a>
+        </p>
+        <div class="mt-3">
+          <Socials />
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center py-3">
+      <div class="col-md-6">
+        <div class="copyright">
+          <span class="text-muted">&copy; 2023-{year} <a href="https://www.formingworlds.space" target="_blank" class="text-muted">Forming Worlds Lab</a></span>
+        </div>
+      </div>
+      <div class="col-md-6 text-md-right">
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!--   Core JS Files   -->
+<script is:inline>window.flatpickr=function(){};flatpickr.l10ns={};</script>
+<script src="/assets/js/core/jquery.min.js" defer></script>
+<script src="/assets/js/core/popper.min.js" defer></script>
+<script src="/assets/js/core/bootstrap.min.js" defer></script>
+<script src="/assets/js/plugins/headroom.min.js" defer></script>
+<!-- Stub removed plugins so Argon's Windows code path does not throw -->
+<script src="/assets/js/plugins/stubs.js" defer></script>
+<script src="/assets/js/argon-design-system.min.js?v=1.0.0" defer></script>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function () {
+    var nav = document.getElementById('navbar-main');
+    if (nav) {
+      var offset = nav.offsetHeight;
+      var els = document.querySelectorAll('.contentWrapper');
+      for (var i = 0; i < els.length; i++) {
+        els[i].style.paddingTop = (offset * 2) + 'px';
+      }
+    }
+  });
+</script>

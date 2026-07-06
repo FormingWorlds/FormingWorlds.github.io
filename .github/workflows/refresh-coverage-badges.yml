@@ -12,7 +12,7 @@ on:
   push:
     branches: [main]
     paths:
-      - _data/test_counts.yml
+      - data/test_counts.yml
       - .github/scripts/refresh_coverage_badges.py
       - .github/workflows/refresh-coverage-badges.yml
   workflow_dispatch:
@@ -60,7 +60,7 @@ jobs:
           fi
 
           python "${GITHUB_WORKSPACE}/.github/scripts/refresh_coverage_badges.py" \
-            --data "${GITHUB_WORKSPACE}/_data/test_counts.yml" \
+            --data "${GITHUB_WORKSPACE}/data/test_counts.yml" \
             --out "${work}"
 
           printf '%s\n' \
