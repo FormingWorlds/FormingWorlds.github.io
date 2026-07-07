@@ -7,6 +7,10 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://proteus-framework.org',
   trailingSlash: 'ignore',
+  // Keep the former /testing address working after the page moved to /validation.
+  redirects: {
+    '/testing': '/validation',
+  },
   integrations: [sitemap()],
   build: {
     format: 'directory',

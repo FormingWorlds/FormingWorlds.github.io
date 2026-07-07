@@ -3,7 +3,7 @@ name: Build and deploy site
 on:
   push:
     branches: [main]
-  # Rebuild daily so the testing-page badges pick up new test counts and
+  # Rebuild daily so the validation-page badges pick up new test counts and
   # coverage. Runs after the coverage-badge refresh so the figures are current.
   schedule:
     - cron: '37 6 * * *'

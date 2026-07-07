@@ -1,4 +1,4 @@
-// Render the testing-page status badges to static SVG files at build time.
+// Render the validation-page status badges to static SVG files at build time.
 //
 // The page shows one row per module with test-count, marker, coverage, and CI
 // badges. Those figures live as small shields.io endpoint JSON files (test
@@ -11,7 +11,7 @@
 // never depends on shields.io being reachable.
 //
 // Output: one SVG per badge in public/assets/badges/, named by a stable
-// convention the testing page references directly:
+// convention the validation page references directly:
 //   ci-<slug>.svg  tests-total-<slug>.svg  tests-<marker>-<slug>.svg
 //   coverage-<slug>.svg        (slug = repo name, lower-cased)
 //

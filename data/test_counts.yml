@@ -1,8 +1,8 @@
-# Test count and badge data for the /testing page.
+# Test count and badge data for the /validation page.
 #
 # Each entry describes one module in either the "mature" or "in_development"
 # group. The coverage-badge workflow reads this file to publish the coverage
-# badge endpoints that the /testing page displays.
+# badge endpoints that the /validation page displays.
 #
 # Per-row fields:
 #   name           Display name
