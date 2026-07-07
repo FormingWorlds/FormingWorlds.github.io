@@ -8,7 +8,7 @@ Built with [Astro](https://astro.build/) and published to GitHub Pages.
 
 | Path | What it does |
 |------|-------------|
-| `src/pages/` | One `.astro` file per page (home, modules, demos, testing, publications, people, license, 404) |
+| `src/pages/` | One `.astro` file per page (home, modules, demos, validation, publications, people, license, 404) |
 | `src/layouts/Base.astro` | Shared HTML shell: head metadata, theme detection, fonts, stylesheet, analytics, SEO |
 | `src/components/` | Reusable pieces: `Header.astro` (navbar), `Footer.astro`, `Socials.astro` |
 | `src/data/settings.js` | Central config: site title, navigation menu, footer links, social links, favicons, SEO defaults |
@@ -18,7 +18,7 @@ Built with [Astro](https://astro.build/) and published to GitHub Pages.
 | `public/assets/js/` | Vendor JavaScript for the navbar, dropdowns, and tooltips |
 | `data/test_counts.yml` | Module test-count and badge data used by the coverage-badge workflow |
 | `.github/workflows/deploy.yml` | Builds the site and publishes it to GitHub Pages |
-| `.github/workflows/refresh-coverage-badges.yml` | Refreshes the coverage badges shown on the testing page |
+| `.github/workflows/refresh-coverage-badges.yml` | Refreshes the coverage badges shown on the validation page |
 
 Editing guidance for contributors and coding assistants lives in [`.github/copilot-instructions.md`](.github/copilot-instructions.md) (with `CLAUDE.md` and `GEMINI.md` as symlinks to it).
 
@@ -44,7 +44,7 @@ Editing guidance for contributors and coding assistants lives in [`.github/copil
 
 **Add a publication**: edit `src/pages/publications.astro`; the entry template and link ordering are documented in `.github/copilot-instructions.md`.
 
-**Update the testing table's coverage data**: edit `data/test_counts.yml`, then run the "Refresh coverage badges" workflow once so the badge endpoints exist.
+**Update the validation table's coverage data**: edit `data/test_counts.yml`, then run the "Refresh coverage badges" workflow once so the badge endpoints exist.
 
 ## Local development
 
@@ -72,7 +72,7 @@ Every push to `main` triggers the `Build and deploy site` workflow, which builds
 - **Dark and light mode**: dark is the default. The sun/moon button in the navbar toggles it; the preference is stored in `localStorage` and falls back to `prefers-color-scheme`.
 - **Images**: team photos are JPG for broad browser support. New photos should be 600x600 with the face near the top so the card crop keeps it in frame.
 - **Publications**: maintained as a static list in `src/pages/publications.astro`.
-- **Coverage badges**: `refresh-coverage-badges.yml` reads `data/test_counts.yml`, queries Codecov once a day, and publishes shields.io endpoint files to the `badges` branch. The testing page renders those by URL, so a badge never depends on Codecov being reachable at page load.
+- **Coverage badges**: `refresh-coverage-badges.yml` reads `data/test_counts.yml`, queries Codecov once a day, and publishes shields.io endpoint files to the `badges` branch. The validation page renders those by URL, so a badge never depends on Codecov being reachable at page load.
 
 ## License
 

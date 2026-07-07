@@ -50,7 +50,7 @@ export const menuItems = [
   },
   {
     title: 'Validation',
-    url: '/testing',
+    url: '/validation',
   },
   {
     title: 'Publications',

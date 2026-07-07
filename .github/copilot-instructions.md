@@ -8,13 +8,13 @@ Static site built with [Astro](https://astro.build/) and published to GitHub Pag
 
 ## Layout
 
-- `src/pages/` one `.astro` file per page: `index` (home), `modules`, `demos`, `testing`, `publications`, `people`, `license`, and `404`.
+- `src/pages/` one `.astro` file per page: `index` (home), `modules`, `demos`, `validation`, `publications`, `people`, `license`, and `404`.
 - `src/layouts/Base.astro` the shared HTML shell: `<head>` metadata, theme detection, fonts, the compiled stylesheet, analytics, and SEO. Every page imports it and fills its slot.
 - `src/components/` reusable pieces: `Header.astro` (navbar), `Footer.astro`, `Socials.astro`.
 - `src/data/settings.js` central configuration: site title, navigation menu, footer links, social links, favicons, and SEO defaults. Change navigation, footer, and social links here, not in the components.
 - `public/assets/` static assets served verbatim: `styles/styles.css` (compiled stylesheet), `js/` (vendor scripts for the navbar, dropdowns, and tooltips), `img/` (images), and `img/faces/` (team photos).
 - `data/test_counts.yml` module test-count and badge data, read by the build-time badge generator and the coverage workflow.
-- `.github/workflows/deploy.yml` builds and publishes the site; `.github/workflows/refresh-coverage-badges.yml` refreshes the testing-page coverage badges.
+- `.github/workflows/deploy.yml` builds and publishes the site; `.github/workflows/refresh-coverage-badges.yml` refreshes the validation-page coverage badges.
 
 ## Local development
 
@@ -70,15 +70,15 @@ Team cards live in `src/pages/people.astro`, split into current members and past
 - Photos go in `public/assets/img/faces/` as JPG, ideally 600x600, cropped so the face sits near the top of the frame.
 - Badge icons come from the Nucleo set already loaded on the page, for example `ni-atom` or `ni-planet`.
 
-## Testing page and coverage badges
+## Validation page and coverage badges
 
-The testing table is static HTML in `src/pages/testing.astro`; edit that file to add or change a module row.
+The validation table is static HTML in `src/pages/validation.astro`; edit that file to add or change a module row.
 
 The status badges are rendered to static SVG at build time, not fetched from shields.io at page load. `scripts/generate-badges.mjs` runs before every `astro build` and `astro dev` (wired as the `prebuild`/`predev`/`prestart` npm hooks). It reads `data/test_counts.yml`, pulls each figure from its source (test counts from each module's `badges` branch, coverage from this site's own `badges` branch, CI status from the GitHub Actions API), and writes one SVG per badge into `public/assets/badges/`. That directory is git-ignored and regenerated on each build. The page references the SVGs by path, so a visitor never contacts shields.io or GitHub and a badge cannot rate-limit. If a figure cannot be fetched, the script keeps any existing SVG or writes a neutral placeholder and always exits successfully, so a network hiccup never breaks the build. The deploy workflow also runs on a daily schedule so the counts stay current between pushes.
 
 Coverage figures still come from `coverage-<repo>.json` on the `badges` branch, which `refresh-coverage-badges.yml` refreshes from Codecov once a day; the build reads that JSON to render the coverage badge.
 
-To add a badge for a new module: add the module to `data/test_counts.yml` (`total_endpoint` and `markers` for counts, `has_codecov: true` for coverage, `workflow` and `ci_label` for CI), then point the module's row in `testing.astro` at the generated files. The naming convention is `tests-total-<slug>.svg`, `tests-<marker>-<slug>.svg`, `coverage-<slug>.svg`, and `ci-<slug>.svg`, where `<slug>` is the lower-cased repo name. For a new coverage badge, run the "Refresh coverage badges" workflow once so its JSON exists before the next build.
+To add a badge for a new module: add the module to `data/test_counts.yml` (`total_endpoint` and `markers` for counts, `has_codecov: true` for coverage, `workflow` and `ci_label` for CI), then point the module's row in `validation.astro` at the generated files. The naming convention is `tests-total-<slug>.svg`, `tests-<marker>-<slug>.svg`, `coverage-<slug>.svg`, and `ci-<slug>.svg`, where `<slug>` is the lower-cased repo name. For a new coverage badge, run the "Refresh coverage badges" workflow once so its JSON exists before the next build.
 
 ## Conventions
 
