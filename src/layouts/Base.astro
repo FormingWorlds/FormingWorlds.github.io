@@ -86,7 +86,7 @@ const jsonLd = {
     (function () {
       var stored = localStorage.getItem('theme');
       var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      var theme = stored || 'dark';
+      var theme = stored || (prefersDark ? 'dark' : 'light');
       document.documentElement.setAttribute('data-theme', theme);
 
       // Follow OS changes when user has no explicit preference
