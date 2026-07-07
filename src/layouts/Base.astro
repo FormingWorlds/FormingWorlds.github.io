@@ -61,6 +61,50 @@ const jsonLd = {
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta charset="utf-8">
 
+  <!-- Send a known path in the wrong letter case to its canonical URL.
+       GitHub Pages matches paths case-sensitively, so a request like /Aragog
+       or /PEOPLE lands on this 404 instead of the real page. This runs before
+       paint and is a no-op when the path is already correctly cased. -->
+  <script is:inline>
+    (function () {
+      var routes = {
+        // Pages served from this repo.
+        modules: '/modules',
+        demos: '/demos',
+        validation: '/validation',
+        testing: '/validation',
+        publications: '/publications',
+        people: '/people',
+        license: '/license',
+        // Module documentation sites (separate repos on this domain).
+        aragog: '/aragog/',
+        calliope: '/CALLIOPE/',
+        janus: '/JANUS/',
+        mors: '/MORS/',
+        obliqua: '/Obliqua/',
+        proteus: '/PROTEUS/',
+        spider: '/SPIDER/',
+        vulcan: '/VULCAN/',
+        zalmoxis: '/Zalmoxis/',
+        zephyrus: '/ZEPHYRUS/',
+      };
+      var m = location.pathname.match(/^\/([^\/]+)(\/.*)?$/);
+      if (!m) return;
+      var key;
+      try {
+        key = decodeURIComponent(m[1]).toLowerCase();
+      } catch (e) {
+        return;
+      }
+      var canonical = routes[key];
+      if (!canonical) return;
+      var canonicalFirst = canonical.replace(/\/$/, '');
+      if ('/' + m[1] === canonicalFirst) return; // already correctly cased
+      var target = m[2] ? canonicalFirst + m[2] : canonical;
+      location.replace(target + location.search + location.hash);
+    })();
+  </script>
+
   <!-- Favicons (light/dark) -->
   <link id="favicon" rel="icon" type="image/png" href={favicons.light}>
 
