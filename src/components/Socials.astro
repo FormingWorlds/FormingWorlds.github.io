@@ -36,3 +36,22 @@ const buttons = entries.map(([key, url]) => {
     <span class="btn-inner--icon" set:html={b.svg} />
   </button>
 ))}
+
+<style>
+  /* The bundled theme centres these round icon buttons for an icon-font glyph.
+     These buttons carry an inline SVG instead, so centre it with flexbox rather
+     than the glyph-specific offset the theme would otherwise apply. */
+  .btn-icon-only {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    line-height: 1;
+  }
+  .btn-icon-only .btn-inner--icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+</style>
