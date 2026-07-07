@@ -49,7 +49,7 @@ export const menuItems = [
     url: '/demos',
   },
   {
-    title: 'Testing',
+    title: 'Validation',
     url: '/testing',
   },
   {
