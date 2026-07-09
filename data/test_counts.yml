@@ -68,7 +68,7 @@ mature:
     owner: nichollsh
     repo: AGNI
     workflow: install_and_test.yml
-    ci_label: tests
+    ci_label: CI
     has_codecov: true
     total_endpoint: https://gist.githubusercontent.com/nichollsh/e20f4fa3c7811c75d34005311fef3696/raw/tests-total.json
     markers:
