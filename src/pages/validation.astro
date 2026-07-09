@@ -65,6 +65,8 @@ import Base from '../layouts/Base.astro';
     font-size: 0.85rem;
     line-height: 1.35;
   }
+  /* Space the marker badges (unit, integration) apart from each other. */
+  .coverage-table td.test-breakdown a + a { margin-left: 0.4rem; }
 
   .test-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin: 1rem 0 1.5rem; }
   .test-card {
