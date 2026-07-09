@@ -142,7 +142,7 @@ in_development:
     owner: FormingWorlds
     repo: Obliqua
     workflow: runtests.yml
-    ci_label: tests
+    ci_label: CI
     total: "custom suite"
     breakdown: "Hand-written Julia validation runner, Test.jl migration planned"
 
