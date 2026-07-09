@@ -46,8 +46,25 @@ function logoDataUri(icon) {
 const LOGO_GITHUB = logoDataUri(simpleIcons.siGithub);
 const LOGO_CODECOV = logoDataUri(simpleIcons.siCodecov);
 
+// House color for test-count and marker badges. Their color carries no
+// pass/fail meaning, so every module renders in the same blue for a uniform
+// row, regardless of the color its endpoint happens to emit. Only the count
+// itself comes from the endpoint.
+const COUNT_COLOR = 'blue';
+
 /** Lower-cased repo name used as the file-name slug for a module. */
 const slugOf = (mod) => mod.repo.toLowerCase();
+
+/**
+ * Resolve a test-count endpoint to a raw URL. A value that is already an
+ * absolute URL (for example a gist raw endpoint that a module's CI publishes)
+ * is used verbatim; a bare file name is resolved against the module's repo and
+ * badge branch.
+ */
+function endpointUrl(mod, file, branch) {
+  if (/^https?:\/\//i.test(file)) return file;
+  return `${RAW}/${mod.owner}/${mod.repo}/${branch}/${file}`;
+}
 
 /** Fetch a URL with a timeout and a few retries; returns the Response or null. */
 async function fetchWithRetry(url, headers = {}) {
@@ -149,16 +166,16 @@ async function main() {
     }
 
     if (mod.total_endpoint) {
-      const url = `${RAW}/${mod.owner}/${mod.repo}/${branch}/${mod.total_endpoint}`;
+      const url = endpointUrl(mod, mod.total_endpoint, branch);
       jobs.push(
-        fetchEndpoint(url).then((d) => writeBadge(`tests-total-${slug}`, d && render(d), 'tests')),
+        fetchEndpoint(url).then((d) => writeBadge(`tests-total-${slug}`, d && render({ ...d, color: COUNT_COLOR }), 'tests')),
       );
     }
 
     for (const [marker, file] of Object.entries(mod.markers ?? {})) {
-      const url = `${RAW}/${mod.owner}/${mod.repo}/${branch}/${file}`;
+      const url = endpointUrl(mod, file, branch);
       jobs.push(
-        fetchEndpoint(url).then((d) => writeBadge(`tests-${marker}-${slug}`, d && render(d), marker)),
+        fetchEndpoint(url).then((d) => writeBadge(`tests-${marker}-${slug}`, d && render({ ...d, color: COUNT_COLOR }), marker)),
       );
     }
 
