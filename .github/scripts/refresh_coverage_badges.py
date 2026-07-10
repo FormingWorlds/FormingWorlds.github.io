@@ -74,18 +74,38 @@ def _coverage_of(totals: object) -> float | None:
     return None
 
 
-def fetch_coverage(owner: str, repo: str) -> float:
-    """Return the default-branch line coverage percent for a Codecov repo.
+def _branch_head_coverage(repo_url: str, branch: str) -> float | None:
+    """Return the head-commit line coverage for one branch, or None.
 
-    The repository summary is read first. A repo that was only just activated on
-    Codecov can serve a fully processed commit while its repository-level
-    ``totals`` object is still empty; in that case the default branch's
-    head-commit total, which carries the same figure, is used instead.
+    A branch Codecov does not know about is treated as simply having no
+    coverage, so probing a fallback branch that does not exist never aborts the
+    wider search.
+    """
+    try:
+        branch_payload = _get_json(f"{repo_url}branches/{branch}/")
+    except RuntimeError:
+        return None
+    head_commit = branch_payload.get("head_commit")
+    return _coverage_of(head_commit.get("totals") if isinstance(head_commit, dict) else None)
+
+
+def fetch_coverage(owner: str, repo: str) -> float:
+    """Return the line coverage percent for a Codecov repo.
+
+    The repository summary is read first. When it carries no total, each
+    candidate branch is tried in turn and the first head-commit total found is
+    used. Two situations make the summary total absent: a repo only just
+    activated on Codecov can serve a fully processed commit while its
+    repository-level ``totals`` is still empty, and Codecov's own record of the
+    default branch can lag a ``master`` to ``main`` rename on GitHub, leaving the
+    coverage attached to a branch other than the one it reports as default. The
+    candidate order is Codecov's recorded default first, then ``main`` and
+    ``master``.
 
     Raises
     ------
     RuntimeError
-        If neither the repository summary nor the default branch yields a
+        If neither the repository summary nor any candidate branch yields a
         coverage total.
     """
     repo_url = API_URL.format(owner=owner, repo=repo)
@@ -94,14 +114,18 @@ def fetch_coverage(owner: str, repo: str) -> float:
     if coverage is not None:
         return coverage
 
-    branch = payload.get("default_branch") or "main"
-    branch_payload = _get_json(f"{repo_url}branches/{branch}/")
-    head_commit = branch_payload.get("head_commit")
-    coverage = _coverage_of(head_commit.get("totals") if isinstance(head_commit, dict) else None)
-    if coverage is not None:
-        return coverage
+    candidates: list[str] = []
+    for branch in (payload.get("default_branch"), "main", "master"):
+        if branch and branch not in candidates:
+            candidates.append(branch)
+    for branch in candidates:
+        coverage = _branch_head_coverage(repo_url, branch)
+        if coverage is not None:
+            return coverage
 
-    raise RuntimeError(f"no coverage total for {owner}/{repo} (repository or {branch} head)")
+    raise RuntimeError(
+        f"no coverage total for {owner}/{repo} (repository or branches {', '.join(candidates)})"
+    )
 
 
 def color_for(percent: float) -> str:
