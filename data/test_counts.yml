@@ -122,6 +122,18 @@ mature:
       unit: tests-unit.json
       integration: tests-integration.json
 
+  - name: ZEPHYRUS
+    owner: FormingWorlds
+    repo: ZEPHYRUS
+    workflow: tests.yaml
+    ci_label: CI
+    has_codecov: true
+    total_endpoint: tests-total.json
+    badge_branch: badges
+    markers:
+      unit: tests-unit.json
+      integration: tests-integration.json
+
 in_development:
   - name: JANUS
     owner: FormingWorlds
@@ -159,15 +171,6 @@ in_development:
     total_endpoint: tests-total.json
     badge_branch: badges
     breakdown: "SciATH integration cases for the C/PETSc solver"
-
-  - name: ZEPHYRUS
-    owner: FormingWorlds
-    repo: ZEPHYRUS
-    workflow: tests.yaml
-    ci_label: CI
-    total_endpoint: tests-total.json
-    badge_branch: badges
-    breakdown: "Test scaffold in place; suite under construction"
 
   - name: LovePy
     owner: nichollsh
