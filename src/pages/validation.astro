@@ -68,6 +68,17 @@ import Base from '../layouts/Base.astro';
   /* Space the marker badges (unit, integration) apart from each other. */
   .coverage-table td.test-breakdown a + a { margin-left: 0.4rem; }
 
+  /* Both module tables share one fixed column geometry, so the "Mature suites"
+     and "Suites in development" tables line up column-for-column and read as a
+     single grid. In-development modules carry no coverage figure, so their
+     fifth column is reserved but empty. */
+  .coverage-table { table-layout: fixed; }
+  .coverage-table col.col-module { width: 20%; }
+  .coverage-table col.col-count { width: 17%; }
+  .coverage-table col.col-breakdown { width: 30%; }
+  .coverage-table col.col-ci { width: 17%; }
+  .coverage-table col.col-coverage { width: 16%; }
+
   .test-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin: 1rem 0 1.5rem; }
   .test-card {
     border: 1px solid var(--border-color);
@@ -306,11 +317,18 @@ The full developer-facing detail is on the PROTEUS <a href="https://proteus-fram
 
 <h4>Code coverage and test counts</h4>
 
-The PROTEUS framework and its mature submodules expose passing-tests badges and, where wired, line-coverage badges from <a href="https://app.codecov.io/gh/FormingWorlds" target="_blank" rel="noopener noreferrer">Codecov</a>. Test counts marked with a live badge refresh automatically from each repository's CI; static counts are snapshots from the date in the footnote below. Each row links to the public repository behind it, and every live badge to the workflow or coverage report that generated it, so the figures can be checked at source.
+The PROTEUS framework and its mature submodules expose passing-tests badges and, where wired, line-coverage badges from <a href="https://app.codecov.io/gh/FormingWorlds" target="_blank" rel="noopener noreferrer">Codecov</a>. Test counts marked with a live badge refresh automatically from each repository's CI. Each row links to the public repository behind it, and every live badge to the workflow or coverage report that generated it, so the figures can be checked at source.
 
 <p style="font-size: 0.95rem; margin-bottom: 0.4rem;"><strong>Mature suites</strong></p>
 
 <table class="coverage-table">
+  <colgroup>
+    <col class="col-module" />
+    <col class="col-count" />
+    <col class="col-breakdown" />
+    <col class="col-ci" />
+    <col class="col-coverage" />
+  </colgroup>
   <thead>
     <tr>
       <th>Module</th>
@@ -370,6 +388,13 @@ The PROTEUS framework and its mature submodules expose passing-tests badges and,
 <p style="font-size: 0.95rem; margin: 1.4rem 0 0.4rem;"><strong>Suites in development</strong></p>
 
 <table class="coverage-table">
+  <colgroup>
+    <col class="col-module" />
+    <col class="col-count" />
+    <col class="col-breakdown" />
+    <col class="col-ci" />
+    <col class="col-coverage" />
+  </colgroup>
   <thead>
     <tr>
       <th>Module</th>
@@ -425,7 +450,7 @@ The PROTEUS framework and its mature submodules expose passing-tests badges and,
   </tbody>
 </table>
 
-<p class="footnote">Rows displaying a numeric badge are live. The count is fetched from each repository's automated workflows, and republished whenever the repository's tests change. The remaining plain number rows are static counts ( last verified on 4 July 2026). Ecosystem-wide adoption of the PROTEUS marker convention (unit, smoke, integration, slow) is a point of active development.</p>
+<p class="footnote">Rows displaying a numeric badge are live. The count is fetched from each repository's automated workflows, and republished whenever the repository's tests change. Ecosystem-wide adoption of the PROTEUS marker convention (unit, smoke, integration, slow) is a point of active development.</p>
 
 <h4 id="tests-and-papers">Tests and papers</h4>
 

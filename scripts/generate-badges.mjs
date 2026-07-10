@@ -47,11 +47,13 @@ const LOGO_GITHUB = logoDataUri(simpleIcons.siGithub);
 const LOGO_CODECOV = logoDataUri(simpleIcons.siCodecov);
 
 // House style for test-count and marker badges. Their color carries no
-// pass/fail meaning, so every module renders in the same blue with a
-// lower-cased label for a uniform row, regardless of what its endpoint emits.
-// Only the count itself comes from the endpoint.
+// pass/fail meaning, so every module renders in the same blue. The label is
+// fixed by the badge's role (the total badge reads "tests", a marker badge
+// reads its marker name), not taken from the endpoint, so the row reads
+// identically no matter what wording a module's own endpoint emits. Only the
+// count itself comes from the endpoint.
 const COUNT_COLOR = 'blue';
-const houseCount = (d) => ({ ...d, label: (d.label ?? '').toLowerCase(), color: COUNT_COLOR });
+const houseCount = (d, label) => ({ label, message: d.message, color: COUNT_COLOR });
 
 /** Lower-cased repo name used as the file-name slug for a module. */
 const slugOf = (mod) => mod.repo.toLowerCase();
@@ -169,14 +171,14 @@ async function main() {
     if (mod.total_endpoint) {
       const url = endpointUrl(mod, mod.total_endpoint, branch);
       jobs.push(
-        fetchEndpoint(url).then((d) => writeBadge(`tests-total-${slug}`, d && render(houseCount(d)), 'tests')),
+        fetchEndpoint(url).then((d) => writeBadge(`tests-total-${slug}`, d && render(houseCount(d, 'tests')), 'tests')),
       );
     }
 
     for (const [marker, file] of Object.entries(mod.markers ?? {})) {
       const url = endpointUrl(mod, file, branch);
       jobs.push(
-        fetchEndpoint(url).then((d) => writeBadge(`tests-${marker}-${slug}`, d && render(houseCount(d)), marker)),
+        fetchEndpoint(url).then((d) => writeBadge(`tests-${marker}-${slug}`, d && render(houseCount(d, marker)), marker)),
       );
     }
 
