@@ -76,13 +76,15 @@ mature:
       integration: https://gist.githubusercontent.com/nichollsh/e20f4fa3c7811c75d34005311fef3696/raw/tests-integration.json
 
   - name: atmodeller
-    owner: ExPlanetology
+    owner: FormingWorlds
     repo: atmodeller
     workflow: ci.yml
     ci_label: CI
-    has_codecov: false
-    total: 138
-    breakdown: "PROTEUS-style markers being adopted"
+    has_codecov: true
+    total_endpoint: https://gist.githubusercontent.com/timlichtenberg/3b0d1370019572c00e2650799e81717d/raw/tests-total.json
+    markers:
+      unit: https://gist.githubusercontent.com/timlichtenberg/3b0d1370019572c00e2650799e81717d/raw/tests-unit.json
+      integration: https://gist.githubusercontent.com/timlichtenberg/3b0d1370019572c00e2650799e81717d/raw/tests-integration.json
 
   - name: CALLIOPE
     owner: FormingWorlds
