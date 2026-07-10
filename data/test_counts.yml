@@ -110,16 +110,19 @@ mature:
       unit: tests-unit.json
       integration: tests-integration.json
 
-in_development:
   - name: MORS
     owner: FormingWorlds
     repo: MORS
     workflow: tests.yaml
     ci_label: CI
+    has_codecov: true
     total_endpoint: tests-total.json
     badge_branch: badges
-    breakdown: "Total count; tests parametrized, not tier-marked"
+    markers:
+      unit: tests-unit.json
+      integration: tests-integration.json
 
+in_development:
   - name: JANUS
     owner: FormingWorlds
     repo: JANUS
