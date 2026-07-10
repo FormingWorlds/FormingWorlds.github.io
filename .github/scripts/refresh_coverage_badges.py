@@ -39,18 +39,17 @@ import yaml
 API_URL = "https://api.codecov.io/api/v2/github/{owner}/repos/{repo}/"
 
 
-def fetch_coverage(owner: str, repo: str, attempts: int = 4, timeout: int = 25) -> float:
-    """Return the default-branch line coverage percent for a Codecov repo.
+def _get_json(url: str, attempts: int = 4, timeout: int = 25) -> dict:
+    """Fetch a JSON object from a Codecov URL with linear backoff.
 
-    Retries a few times with a linear backoff so a slow or briefly unavailable
-    Codecov response does not fail the run on the first miss.
+    Retries a few times so a slow or briefly unavailable Codecov response does
+    not fail the run on the first miss.
 
     Raises
     ------
     RuntimeError
-        If every attempt fails or the response carries no coverage total.
+        If every attempt fails or the body is not a JSON object.
     """
-    url = API_URL.format(owner=owner, repo=repo)
     last_error: Exception | None = None
     for attempt in range(1, attempts + 1):
         try:
@@ -59,17 +58,50 @@ def fetch_coverage(owner: str, repo: str, attempts: int = 4, timeout: int = 25) 
                 payload = json.load(response)
             if not isinstance(payload, dict):
                 raise ValueError("response body was not a JSON object")
-            totals = payload.get("totals")
-            if not isinstance(totals, dict):
-                raise ValueError("response carried no totals object")
-            coverage = totals.get("coverage")
-            if not isinstance(coverage, (int, float, str)):
-                raise ValueError("response carried no usable coverage total")
-            return float(coverage)
+            return payload
         except (urllib.error.URLError, ValueError, json.JSONDecodeError, TimeoutError) as error:
             last_error = error
             time.sleep(2 * attempt)
-    raise RuntimeError(f"Codecov query failed for {owner}/{repo}: {last_error}")
+    raise RuntimeError(f"Codecov request failed for {url}: {last_error}")
+
+
+def _coverage_of(totals: object) -> float | None:
+    """Pull a numeric coverage percent out of a Codecov totals object, or None."""
+    if isinstance(totals, dict):
+        coverage = totals.get("coverage")
+        if isinstance(coverage, (int, float, str)):
+            return float(coverage)
+    return None
+
+
+def fetch_coverage(owner: str, repo: str) -> float:
+    """Return the default-branch line coverage percent for a Codecov repo.
+
+    The repository summary is read first. A repo that was only just activated on
+    Codecov can serve a fully processed commit while its repository-level
+    ``totals`` object is still empty; in that case the default branch's
+    head-commit total, which carries the same figure, is used instead.
+
+    Raises
+    ------
+    RuntimeError
+        If neither the repository summary nor the default branch yields a
+        coverage total.
+    """
+    repo_url = API_URL.format(owner=owner, repo=repo)
+    payload = _get_json(repo_url)
+    coverage = _coverage_of(payload.get("totals"))
+    if coverage is not None:
+        return coverage
+
+    branch = payload.get("default_branch") or "main"
+    branch_payload = _get_json(f"{repo_url}branches/{branch}/")
+    head_commit = branch_payload.get("head_commit")
+    coverage = _coverage_of(head_commit.get("totals") if isinstance(head_commit, dict) else None)
+    if coverage is not None:
+        return coverage
+
+    raise RuntimeError(f"no coverage total for {owner}/{repo} (repository or {branch} head)")
 
 
 def color_for(percent: float) -> str:
