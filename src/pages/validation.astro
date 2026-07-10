@@ -65,6 +65,19 @@ import Base from '../layouts/Base.astro';
     font-size: 0.85rem;
     line-height: 1.35;
   }
+  /* Space the marker badges (unit, integration) apart from each other. */
+  .coverage-table td.test-breakdown a + a { margin-left: 0.4rem; }
+
+  /* Both module tables share one fixed column geometry, so the "Mature suites"
+     and "Suites in development" tables line up column-for-column and read as a
+     single grid. In-development modules carry no coverage figure, so their
+     fifth column is reserved but empty. */
+  .coverage-table { table-layout: fixed; }
+  .coverage-table col.col-module { width: 20%; }
+  .coverage-table col.col-count { width: 17%; }
+  .coverage-table col.col-breakdown { width: 30%; }
+  .coverage-table col.col-ci { width: 17%; }
+  .coverage-table col.col-coverage { width: 16%; }
 
   .test-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin: 1rem 0 1.5rem; }
   .test-card {
@@ -304,11 +317,18 @@ The full developer-facing detail is on the PROTEUS <a href="https://proteus-fram
 
 <h4>Code coverage and test counts</h4>
 
-The PROTEUS framework and its mature submodules expose passing-tests badges and, where wired, line-coverage badges from <a href="https://app.codecov.io/gh/FormingWorlds" target="_blank" rel="noopener noreferrer">Codecov</a>. Test counts marked with a live badge refresh automatically from each repository's CI; static counts are snapshots from the date in the footnote below. Each row links to the public repository behind it, and every live badge to the workflow or coverage report that generated it, so the figures can be checked at source.
+The PROTEUS framework and its mature submodules expose passing-tests badges and, where wired, line-coverage badges from <a href="https://app.codecov.io/gh/FormingWorlds" target="_blank" rel="noopener noreferrer">Codecov</a>. Test counts marked with a live badge refresh automatically from each repository's CI. Each row links to the public repository behind it, and every live badge to the workflow or coverage report that generated it, so the figures can be checked at source.
 
 <p style="font-size: 0.95rem; margin-bottom: 0.4rem;"><strong>Mature suites</strong></p>
 
 <table class="coverage-table">
+  <colgroup>
+    <col class="col-module" />
+    <col class="col-count" />
+    <col class="col-breakdown" />
+    <col class="col-ci" />
+    <col class="col-coverage" />
+  </colgroup>
   <thead>
     <tr>
       <th>Module</th>
@@ -335,17 +355,17 @@ The PROTEUS framework and its mature submodules expose passing-tests badges and,
     </tr>
     <tr>
       <td class="module-name"><a href="https://github.com/nichollsh/AGNI">AGNI</a></td>
-      <td class="test-count">707</td>
-      <td class="test-breakdown">707 <code>@test</code> assertions in 150 testsets (Julia <code>Test.jl</code>)</td>
-      <td><a href="https://github.com/nichollsh/AGNI/actions/workflows/install_and_test.yml"><img src="/assets/badges/ci-agni.svg" alt="tests" /></a></td>
+      <td class="test-count"><a href="https://gist.github.com/nichollsh/e20f4fa3c7811c75d34005311fef3696#file-tests-total-json"><img src="/assets/badges/tests-total-agni.svg" alt="tests" /></a></td>
+      <td class="test-breakdown"><a href="https://gist.github.com/nichollsh/e20f4fa3c7811c75d34005311fef3696#file-tests-unit-json"><img src="/assets/badges/tests-unit-agni.svg" alt="unit" /></a><a href="https://gist.github.com/nichollsh/e20f4fa3c7811c75d34005311fef3696#file-tests-integration-json"><img src="/assets/badges/tests-integration-agni.svg" alt="integration" /></a></td>
+      <td><a href="https://github.com/nichollsh/AGNI/actions/workflows/install_and_test.yml"><img src="/assets/badges/ci-agni.svg" alt="CI" /></a></td>
       <td><a href="https://app.codecov.io/gh/nichollsh/AGNI"><img src="/assets/badges/coverage-agni.svg" alt="coverage" /></a></td>
     </tr>
     <tr>
-      <td class="module-name"><a href="https://github.com/ExPlanetology/atmodeller">atmodeller</a></td>
-      <td class="test-count">138</td>
-      <td class="test-breakdown">PROTEUS-style markers being adopted</td>
-      <td><a href="https://github.com/ExPlanetology/atmodeller/actions/workflows/ci.yml"><img src="/assets/badges/ci-atmodeller.svg" alt="CI" /></a></td>
-      <td><span style="color: var(--muted-color); font-size: 0.85rem;">Codecov pending</span></td>
+      <td class="module-name"><a href="https://github.com/FormingWorlds/atmodeller">atmodeller</a></td>
+      <td class="test-count"><a href="https://gist.github.com/timlichtenberg/3b0d1370019572c00e2650799e81717d#file-tests-total-json"><img src="/assets/badges/tests-total-atmodeller.svg" alt="tests" /></a></td>
+      <td class="test-breakdown"><a href="https://gist.github.com/timlichtenberg/3b0d1370019572c00e2650799e81717d#file-tests-unit-json"><img src="/assets/badges/tests-unit-atmodeller.svg" alt="unit" /></a><a href="https://gist.github.com/timlichtenberg/3b0d1370019572c00e2650799e81717d#file-tests-integration-json"><img src="/assets/badges/tests-integration-atmodeller.svg" alt="integration" /></a></td>
+      <td><a href="https://github.com/FormingWorlds/atmodeller/actions/workflows/ci.yml"><img src="/assets/badges/ci-atmodeller.svg" alt="CI" /></a></td>
+      <td><a href="https://app.codecov.io/gh/FormingWorlds/atmodeller"><img src="/assets/badges/coverage-atmodeller.svg" alt="coverage" /></a></td>
     </tr>
     <tr>
       <td class="module-name"><a href="https://github.com/FormingWorlds/CALLIOPE">CALLIOPE</a></td>
@@ -368,6 +388,13 @@ The PROTEUS framework and its mature submodules expose passing-tests badges and,
 <p style="font-size: 0.95rem; margin: 1.4rem 0 0.4rem;"><strong>Suites in development</strong></p>
 
 <table class="coverage-table">
+  <colgroup>
+    <col class="col-module" />
+    <col class="col-count" />
+    <col class="col-breakdown" />
+    <col class="col-ci" />
+    <col class="col-coverage" />
+  </colgroup>
   <thead>
     <tr>
       <th>Module</th>
@@ -399,7 +426,7 @@ The PROTEUS framework and its mature submodules expose passing-tests badges and,
       <td class="module-name"><a href="https://github.com/FormingWorlds/Obliqua">Obliqua</a></td>
       <td class="test-count">custom suite</td>
       <td class="test-breakdown">Hand-written Julia validation runner, Test.jl migration planned</td>
-      <td><a href="https://github.com/FormingWorlds/Obliqua/actions/workflows/runtests.yml"><img src="/assets/badges/ci-obliqua.svg" alt="tests" /></a></td>
+      <td><a href="https://github.com/FormingWorlds/Obliqua/actions/workflows/runtests.yml"><img src="/assets/badges/ci-obliqua.svg" alt="CI" /></a></td>
     </tr>
     <tr>
       <td class="module-name"><a href="https://github.com/FormingWorlds/SPIDER">SPIDER</a></td>
@@ -423,7 +450,7 @@ The PROTEUS framework and its mature submodules expose passing-tests badges and,
   </tbody>
 </table>
 
-<p class="footnote">Rows displaying a numeric badge are live. The count is fetched from each repository's automated workflows, and republished whenever the repository's tests change. The remaining plain number rows are static counts ( last verified on 4 July 2026). Ecosystem-wide adoption of the PROTEUS marker convention (unit, smoke, integration, slow) is a point of active development.</p>
+<p class="footnote">Rows displaying a numeric badge are live. The count is fetched from each repository's automated workflows, and republished whenever the repository's tests change. Ecosystem-wide adoption of the PROTEUS marker convention (unit, smoke, integration, slow) is a point of active development.</p>
 
 <h4 id="tests-and-papers">Tests and papers</h4>
 

@@ -21,8 +21,10 @@
 #   total_endpoint Optional. Path of the shields.io-compatible JSON file,
 #                    relative to `badge_branch` (e.g. "tests-total.json" at the
 #                    root of a badges branch, or ".github/badges/tests-total.json"
-#                    on main). When set, the row renders a live shields.io
-#                    endpoint badge instead of the static `total`.
+#                    on main), or a full https URL to the JSON (e.g. a gist raw
+#                    endpoint that the module's CI publishes). When set, the row
+#                    renders a live shields.io endpoint badge instead of the
+#                    static `total`.
 #   badge_branch   Optional. Branch that holds the badge JSON files. Defaults
 #                    to "main". Repos with a protected main publish the JSON to
 #                    a dedicated "badges" branch instead; set this to that
@@ -33,9 +35,9 @@
 #   breakdown      Optional. Plain-text marker breakdown ("816 unit, ...").
 #                    Used until per-marker endpoint files are published.
 #   markers        Optional. Map of marker name to JSON path (relative to
-#                    `badge_branch`); when set, each marker renders as a live
-#                    shields.io badge in place of `breakdown`. Keys: unit,
-#                    integration, smoke, slow.
+#                    `badge_branch`) or full https URL; when set, each marker
+#                    renders as a live shields.io badge in place of `breakdown`.
+#                    Keys: unit, integration, smoke, slow.
 
 mature:
   - name: PROTEUS
@@ -66,19 +68,23 @@ mature:
     owner: nichollsh
     repo: AGNI
     workflow: install_and_test.yml
-    ci_label: tests
+    ci_label: CI
     has_codecov: true
-    total: 707
-    breakdown: "707 <code>@test</code> assertions in 150 testsets (Julia <code>Test.jl</code>)"
+    total_endpoint: https://gist.githubusercontent.com/nichollsh/e20f4fa3c7811c75d34005311fef3696/raw/tests-total.json
+    markers:
+      unit: https://gist.githubusercontent.com/nichollsh/e20f4fa3c7811c75d34005311fef3696/raw/tests-unit.json
+      integration: https://gist.githubusercontent.com/nichollsh/e20f4fa3c7811c75d34005311fef3696/raw/tests-integration.json
 
   - name: atmodeller
-    owner: ExPlanetology
+    owner: FormingWorlds
     repo: atmodeller
     workflow: ci.yml
     ci_label: CI
-    has_codecov: false
-    total: 138
-    breakdown: "PROTEUS-style markers being adopted"
+    has_codecov: true
+    total_endpoint: https://gist.githubusercontent.com/timlichtenberg/3b0d1370019572c00e2650799e81717d/raw/tests-total.json
+    markers:
+      unit: https://gist.githubusercontent.com/timlichtenberg/3b0d1370019572c00e2650799e81717d/raw/tests-unit.json
+      integration: https://gist.githubusercontent.com/timlichtenberg/3b0d1370019572c00e2650799e81717d/raw/tests-integration.json
 
   - name: CALLIOPE
     owner: FormingWorlds
@@ -138,7 +144,7 @@ in_development:
     owner: FormingWorlds
     repo: Obliqua
     workflow: runtests.yml
-    ci_label: tests
+    ci_label: CI
     total: "custom suite"
     breakdown: "Hand-written Julia validation runner, Test.jl migration planned"
 
