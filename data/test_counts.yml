@@ -143,8 +143,8 @@ mature:
     total_endpoint: tests-total.json
     badge_branch: badges
     markers:
-      unit: tests-fast.json
-      integration: tests-nightly.json
+      unit: tests-unit.json
+      integration: tests-integration.json
 
 in_development:
   - name: JANUS
