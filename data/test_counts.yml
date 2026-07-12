@@ -134,6 +134,18 @@ mature:
       unit: tests-unit.json
       integration: tests-integration.json
 
+  - name: SPIDER
+    owner: FormingWorlds
+    repo: SPIDER
+    workflow: ci.yml
+    ci_label: CI
+    has_codecov: true
+    total_endpoint: tests-total.json
+    badge_branch: badges
+    markers:
+      fast: tests-fast.json
+      nightly: tests-nightly.json
+
 in_development:
   - name: JANUS
     owner: FormingWorlds
@@ -162,15 +174,6 @@ in_development:
     ci_label: CI
     total: "custom suite"
     breakdown: "Hand-written Julia validation runner, Test.jl migration planned"
-
-  - name: SPIDER
-    owner: FormingWorlds
-    repo: SPIDER
-    workflow: ci.yml
-    ci_label: CI
-    total_endpoint: tests-total.json
-    badge_branch: badges
-    breakdown: "SciATH integration cases for the C/PETSc solver"
 
   - name: LovePy
     owner: nichollsh
