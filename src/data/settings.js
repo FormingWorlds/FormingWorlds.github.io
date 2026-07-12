@@ -3,22 +3,11 @@
 
 export const siteTitle = 'PROTEUS Framework';
 
+// Phase-glyph favicons: the `light` file suits a light browser chrome, the
+// `dark` file a dark one; Base.astro swaps them on prefers-color-scheme.
 export const favicons = {
-  light: '/assets/img/brand/PROTEUS_black_on_white_logo_only.png',
-  dark: '/assets/img/brand/PROTEUS_white_on_black_logo_only.png',
-};
-
-export const header = {
-  logoImage: '/assets/img/brand/PROTEUS_white_on_black.png',
-  mobileLogoImage: '/assets/img/brand/PROTEUS_white_on_black.png',
-  theme: 'dark',
-  allowTransparent: 'yes',
-};
-
-// Footer brand logos (light/dark variants toggled by CSS via data-theme).
-export const footerLogos = {
-  light: '/assets/img/brand/PROTEUS_black_on_white.png',
-  dark: '/assets/img/brand/PROTEUS_white_on_black.png',
+  light: '/assets/img/brand/favicon-light.png',
+  dark: '/assets/img/brand/favicon.png',
 };
 
 export const contactEmail = 'proteus_dev@formingworlds.space';
@@ -35,12 +24,10 @@ export const menuItems = [
       {
         title: 'PROTEUS',
         url: 'https://proteus-framework.org/PROTEUS/',
-        icon: 'ni-books text-primary',
       },
       {
         title: 'Modules',
         url: '/modules',
-        icon: 'ni-bold-right text-primary',
       },
     ],
   },

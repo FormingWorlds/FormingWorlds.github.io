@@ -9,7 +9,7 @@ import Base from '../layouts/Base.astro';
   image="/assets/img/og-default.jpg"
 >
   <!-- Earth scenario -->
-<h4 class="demo-section-title">Early Earth</h4>
+<h4 class="section-label">Early Earth</h4>
 
 <div class="scenario-pane">
   <div class="scenario-top">
@@ -79,6 +79,117 @@ import Base from '../layouts/Base.astro';
 
 <div class="demo-cta">
   <a href="https://proteus-framework.org/PROTEUS/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Run PROTEUS yourself</a>
-  <a href="https://github.com/FormingWorlds/PROTEUS" class="btn btn-outline-primary" target="_blank" rel="noopener noreferrer">Explore the code</a>
+  <a href="https://github.com/FormingWorlds/PROTEUS" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">Explore the code</a>
 </div>
+
+<style is:global>
+  .scenario-pane { padding: 0.5rem 0 2rem; }
+  .scenario-top { display: flex; gap: 1.5rem; margin-bottom: 2rem; }
+  .scenario-video-col { flex: 7; min-width: 0; }
+  .scenario-video-col video {
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--pt-line-d);
+    border-radius: var(--pt-r-2);
+    display: block;
+  }
+  .scenario-info-col { flex: 5; min-width: 0; }
+  .at-a-glance {
+    background: var(--pt-basalt);
+    border: 1px solid var(--pt-line-d);
+    border-radius: var(--pt-r-2);
+    padding: 1.25rem;
+    height: 100%;
+  }
+  .at-a-glance h5 {
+    font-family: var(--pt-font-mono);
+    font-weight: 500;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: var(--pt-track-label);
+    color: var(--pt-azure);
+    margin-bottom: 0.75rem;
+  }
+  .at-a-glance table { width: 100%; font-size: 0.9rem; border-collapse: collapse; }
+  .at-a-glance td { padding: 0.3rem 0; border: none; vertical-align: top; }
+  .at-a-glance td:first-child {
+    font-family: var(--pt-font-mono);
+    font-size: 0.8rem;
+    color: var(--pt-text-d3);
+    padding-right: 0.75rem;
+    padding-top: 0.42rem;
+    white-space: nowrap;
+  }
+  .at-a-glance td:last-child { color: var(--pt-text-d); }
+  .at-a-glance .outcome {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--pt-line-d);
+    font-size: 0.9rem;
+    color: var(--pt-text-d2);
+  }
+  .at-a-glance .outcome strong { color: var(--pt-text-d); }
+
+  .result-gallery { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
+  .result-card {
+    flex: 1;
+    min-width: 0;
+    background: var(--pt-basalt);
+    border: 1px solid var(--pt-line-d);
+    border-radius: var(--pt-r-2);
+    overflow: hidden;
+  }
+  .result-card img { display: block; width: 100%; height: auto; }
+  .result-card .result-label {
+    font-family: var(--pt-font-mono);
+    padding: 0.55rem 0.75rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--pt-text-d3);
+    text-align: center;
+  }
+  /* Each plot ships in a dark and a light variant; show the one that matches
+     the active theme. */
+  .result-card .plot-light { display: none; }
+  [data-theme="light"] .result-card .plot-dark { display: none; }
+  [data-theme="light"] .result-card .plot-light { display: block; }
+
+  .demo-detail { margin-top: 0.5rem; margin-bottom: 1rem; }
+  .demo-detail summary {
+    color: var(--pt-azure);
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.95rem;
+    list-style: none;
+  }
+  .demo-detail summary::-webkit-details-marker { display: none; }
+  .demo-detail summary::before { content: "\25B8\00a0"; }
+  .demo-detail[open] summary::before { content: "\25BE\00a0"; }
+  .demo-detail .detail-body {
+    margin-top: 0.75rem;
+    padding-left: 0.75rem;
+    border-left: 2px solid var(--pt-line-d);
+  }
+  .demo-detail .detail-body p { font-size: 0.95rem; }
+
+  .demo-cta {
+    text-align: center;
+    padding: 2rem 0 1rem;
+    border-top: 1px solid var(--pt-line-d);
+    margin-top: 2rem;
+  }
+  .demo-cta .btn { margin: 0.5rem; }
+
+  @media (max-width: 991px) {
+    .scenario-top { flex-direction: column; }
+    .result-gallery { flex-wrap: wrap; }
+    .result-card { flex: 1 1 calc(50% - 0.5rem); }
+    .result-card:last-child:nth-child(odd) { flex: 1 1 100%; }
+  }
+  @media (max-width: 576px) {
+    .result-gallery { flex-direction: column; }
+    .result-card { flex: 1 1 100%; }
+  }
+</style>
 </Base>

@@ -25,3 +25,4 @@ Thumbs.db
 # Python bytecode (coverage-badge script)
 __pycache__/
 *.pyc
+.playwright-mcp/

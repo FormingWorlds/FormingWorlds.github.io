@@ -2,16 +2,44 @@
 import Base from '../layouts/Base.astro';
 ---
 <Base title="Page not found" description="Sorry, the page you are looking for does not exist." titleBlock={false}>
-  <div class="page-header error-page fullWidth">
-    <div class="page-header-image" style="background-image: url('/assets/img/ill/404.svg')"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 text-center">
-          <h1 class="title">404</h1>
-          <p class="lead">Page not found :(</p>
-          <h4 class="description text-default">Ooooups! Looks like you got lost.</h4>
-        </div>
-      </div>
-    </div>
+  <div class="error-page">
+    <img class="error-glyph only-dark" src="/assets/img/brand/glyph_phase_dark.png" alt="" aria-hidden="true" />
+    <img class="error-glyph only-light" src="/assets/img/brand/glyph_phase_light.png" alt="" aria-hidden="true" />
+    <h1 class="title">404</h1>
+    <p class="lead">Page not found :(</p>
+    <h4 class="description">Ooooups! Looks like you got lost.</h4>
   </div>
+
+<style>
+  .error-page {
+    text-align: center;
+    padding: 110px 0 60px;
+  }
+  .error-glyph {
+    width: 96px;
+    margin: 0 auto 32px;
+  }
+  .error-page .title {
+    font-family: var(--pt-font-display);
+    font-weight: 800;
+    font-size: clamp(72px, 12vw, 120px);
+    letter-spacing: -0.025em;
+    line-height: 1;
+    margin: 0;
+  }
+  .error-page .lead {
+    font-size: 19px;
+    color: var(--pt-text-d2);
+    margin: 18px 0 6px;
+  }
+  .error-page .description {
+    font-family: var(--pt-font-mono);
+    font-weight: 400;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--pt-text-d3);
+    margin: 0;
+  }
+</style>
 </Base>
