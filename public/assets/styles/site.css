@@ -1,4 +1,4 @@
-/* PROTEUS website — shared chrome (Thermocline v1.0). Pairs with tokens.css.
+/* PROTEUS website — shared chrome (Thermocline v1.1). Pairs with tokens.css.
    The chrome section mirrors templates/web/site.css in
    FormingWorlds/proteus-visual-language; site-specific extensions follow the
    marked divider below. */
@@ -88,7 +88,7 @@ footer.site { border-top: 1px solid var(--pt-line-d); padding: 80px 0 56px; back
 .foot-lockup { display: inline-flex; flex-direction: column; }
 .foot-lockup .word { display: flex; align-items: center; font-family: var(--pt-font-display); font-weight: 800; font-size: 44px; letter-spacing: 0.01em; line-height: 1; color: var(--pt-paper); }
 .foot-lockup .word img { height: 1.06em; width: auto; margin: 0 0.015em 0 0.03em; transform: translateY(0.011em); }
-.foot-lockup .tag { font-family: var(--pt-font-mono); font-weight: 500; font-size: 8px; letter-spacing: 0.52em; color: var(--pt-azure); align-self: flex-end; margin-top: 7px; }
+.foot-lockup .tag { font-family: var(--pt-font-mono); font-weight: 500; font-size: 8px; letter-spacing: 0.52em; color: var(--pt-azure); align-self: flex-end; margin-top: -1px; margin-right: 14px; }
 .foot-bottom { display: flex; justify-content: space-between; align-items: center; margin-top: 72px; padding-top: 28px; border-top: 1px solid var(--pt-line-d); font-size: 14px; color: var(--pt-text-d3); }
 
 /* ============================================================
@@ -169,11 +169,13 @@ html { overflow-x: hidden; overflow-x: clip; }
 /* ---------- brand lockup (Lockup.astro) ---------- */
 /* The wordmark with the phase glyph as the O plus the "framework" tag. The
    footer and home-hero variants set the --lockup-* properties and share the
-   glyph alignment here, so tuning it moves every lockup together. */
+   glyph alignment here, so tuning it moves every lockup together. The tag is
+   tucked into the wordmark's lower-right corner: raised to hug the baseline
+   and inset from the right edge, both scaled to the wordmark size. */
 .brand-lockup { display: inline-flex; flex-direction: column; }
 .brand-lockup .word { display: inline-flex; align-items: center; font-family: var(--pt-font-display); font-weight: 800; font-size: var(--lockup-size, 44px); letter-spacing: 0.01em; line-height: 1; color: var(--pt-paper); }
 .brand-lockup .word img { height: 1.06em; width: auto; margin: 0 0.015em 0 0.03em; transform: translateY(0.011em); }
-.brand-lockup .tag { font-family: var(--pt-font-mono); font-weight: 500; font-size: var(--lockup-tag-size, 8px); letter-spacing: var(--lockup-tag-track, var(--pt-track-tag)); color: var(--pt-azure); align-self: flex-end; margin-top: var(--lockup-tag-gap, 7px); }
+.brand-lockup .tag { font-family: var(--pt-font-mono); font-weight: 500; font-size: var(--lockup-tag-size, 8px); letter-spacing: var(--lockup-tag-track, var(--pt-track-tag)); color: var(--pt-azure); align-self: flex-end; margin-top: var(--lockup-tag-gap, calc(-0.03 * var(--lockup-size, 44px))); margin-right: var(--lockup-tag-inset, calc(0.32 * var(--lockup-size, 44px))); }
 
 /* ---------- header: mobile navigation ---------- */
 .nav-burger { display: none; place-items: center; width: 38px; height: 38px; border: 1px solid var(--pt-line-d); border-radius: var(--pt-r-2); background: transparent; color: var(--pt-text-d2); cursor: pointer; flex: none; }
