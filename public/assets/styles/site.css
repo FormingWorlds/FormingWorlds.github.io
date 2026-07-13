@@ -207,12 +207,17 @@ html { overflow-x: hidden; overflow-x: clip; }
 /* The lockup is a link inside a footer column, so it must win over the
    generic .foot-col a block-display rule to keep its flex layout. */
 .foot-col a.foot-lockup { display: inline-flex; flex-direction: column; padding: 0; }
+/* The social button is also a link inside a footer column, so it must beat the
+   generic .foot-col a rule: block display kills its place-items centring and
+   the 5px block padding pushes the icon off-centre. */
+.foot-col a.social-btn { display: inline-grid; padding: 0; }
 .foot-tagline { font-size: 14px; color: var(--pt-text-d3); margin-top: 18px; max-width: 34ch; }
 .social-btn { display: inline-grid; place-items: center; width: 38px; height: 38px; border: 1px solid var(--pt-line-d); border-radius: var(--pt-r-2); background: transparent; color: var(--pt-text-d2); cursor: pointer; }
 .social-btn:hover { color: var(--pt-text-d); background: var(--pt-basalt-2); border-color: var(--pt-text-d3); }
-/* No transform nudge on the mark: fractional offsets rasterise blurrily on
-   non-retina displays. */
-.social-btn svg { width: 17px; height: 17px; display: block; }
+/* overflow visible lets the octocat's leg tips show past the viewBox edge,
+   which is shifted down in Socials.astro to optically centre the top-heavy
+   mark. */
+.social-btn svg { width: 17px; height: 17px; display: block; overflow: visible; }
 @media (max-width: 900px) {
   .foot-grid { grid-template-columns: 1fr 1fr; gap: 40px 32px; }
 }
