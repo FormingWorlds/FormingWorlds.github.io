@@ -92,30 +92,27 @@ def _branch_head_coverage(repo_url: str, branch: str) -> float | None:
 def fetch_coverage(owner: str, repo: str) -> float:
     """Return the line coverage percent for a Codecov repo.
 
-    The repository summary is read first. When it carries no total, each
-    candidate branch is tried in turn and the first head-commit total found is
-    used. Two situations make the summary total absent: a repo only just
-    activated on Codecov can serve a fully processed commit while its
-    repository-level ``totals`` is still empty, and Codecov's own record of the
-    default branch can lag a ``master`` to ``main`` rename on GitHub, leaving the
-    coverage attached to a branch other than the one it reports as default. The
-    candidate order is Codecov's recorded default first, then ``main`` and
-    ``master``.
+    The head commit of a branch is the authoritative figure, so each candidate
+    branch is tried first and the first head-commit total found is used. The
+    candidate order is Codecov's recorded default branch, then ``main`` and
+    ``master``; the extra names cover the case where Codecov's record of the
+    default branch lags a rename on GitHub. The repository-level summary is a
+    last resort only: Codecov can serve a stale summary total long after a
+    branch head carries a fresh upload (a rebuilt test suite keeps its old
+    repo-wide figure until the summary catches up), and a just-activated repo
+    can have a processed commit while its summary ``totals`` is still empty.
 
     Raises
     ------
     RuntimeError
-        If neither the repository summary nor any candidate branch yields a
+        If neither any candidate branch nor the repository summary yields a
         coverage total.
     """
     repo_url = API_URL.format(owner=owner, repo=repo)
     payload = _get_json(repo_url)
-    coverage = _coverage_of(payload.get("totals"))
-    if coverage is not None:
-        return coverage
 
     candidates: list[str] = []
-    for branch in (payload.get("default_branch"), "main", "master"):
+    for branch in (payload.get("default_branch"), payload.get("branch"), "main", "master"):
         if branch and branch not in candidates:
             candidates.append(branch)
     for branch in candidates:
@@ -123,8 +120,12 @@ def fetch_coverage(owner: str, repo: str) -> float:
         if coverage is not None:
             return coverage
 
+    coverage = _coverage_of(payload.get("totals"))
+    if coverage is not None:
+        return coverage
+
     raise RuntimeError(
-        f"no coverage total for {owner}/{repo} (repository or branches {', '.join(candidates)})"
+        f"no coverage total for {owner}/{repo} (branches {', '.join(candidates)} or repository summary)"
     )
 
 
