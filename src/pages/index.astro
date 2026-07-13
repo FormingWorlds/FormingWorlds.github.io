@@ -83,6 +83,21 @@ for (const m of overviewModules) {
       var(--pt-grad-hero);
     border-bottom: 1px solid var(--pt-line-d);
   }
+  /* Where CSS image-set with type() is available (every current browser),
+     serve the higher-resolution AVIF, then WebP, with the JPEG layer above as
+     the fallback. The dark scene compresses small, so the crisper 3200px art
+     still loads lighter than the old 2000px JPEG. */
+  @supports (background-image: image-set(url("i.webp") type("image/webp"))) {
+    .hero {
+      background:
+        linear-gradient(rgba(5, 7, 11, 0.55), rgba(5, 7, 11, 0.3) 45%, rgba(5, 7, 11, 0.65)),
+        image-set(
+          url('/assets/img/illustrations/two_face_planet.avif') type('image/avif'),
+          url('/assets/img/illustrations/two_face_planet.webp') type('image/webp')
+        ) center / cover no-repeat,
+        var(--pt-grad-hero);
+    }
+  }
   .hero-inner {
     position: relative;
     z-index: 1;
