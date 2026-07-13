@@ -208,10 +208,9 @@ html { overflow-x: hidden; overflow-x: clip; }
 .foot-tagline { font-size: 14px; color: var(--pt-text-d3); margin-top: 18px; max-width: 34ch; }
 .social-btn { display: inline-grid; place-items: center; width: 38px; height: 38px; border: 1px solid var(--pt-line-d); border-radius: var(--pt-r-2); background: transparent; color: var(--pt-text-d2); cursor: pointer; }
 .social-btn:hover { color: var(--pt-text-d); background: var(--pt-basalt-2); border-color: var(--pt-text-d3); }
-/* The GitHub mark is flush to the top of its own viewBox and is top-heavy (heavy
-   head, thin legs), so it optically reads as sitting high in the square button; a
-   sub-pixel downward nudge settles it into the visual centre. */
-.social-btn svg { width: 17px; height: 17px; display: block; transform: translateY(0.75px); }
+/* No transform nudge on the mark: fractional offsets rasterise blurrily on
+   non-retina displays. */
+.social-btn svg { width: 17px; height: 17px; display: block; }
 @media (max-width: 900px) {
   .foot-grid { grid-template-columns: 1fr 1fr; gap: 40px 32px; }
 }

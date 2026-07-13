@@ -31,7 +31,10 @@ const {
   ogType = 'article',
 } = Astro.props;
 
-const fullTitle = `${title} | ${siteTitle}`;
+// The landing page is titled by the site name alone; "Home | ..." carries no
+// information in a tab or a search result.
+const fullTitle = title === 'Home' ? siteTitle : `${title} | ${siteTitle}`;
+const socialTitle = title === 'Home' ? siteTitle : title;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const imageUrl = new URL(image, Astro.site).href;
 const logoUrl = new URL('/assets/img/brand/proteus-lockup-dark.png', Astro.site).href;
@@ -42,7 +45,7 @@ const jsonLd = {
   '@type': ogType === 'website' ? 'WebSite' : 'BlogPosting',
   author: { '@type': 'Person', name: author },
   description,
-  headline: title,
+  headline: socialTitle,
   image: imageUrl,
   name: siteTitle,
   publisher: {
@@ -162,7 +165,7 @@ const jsonLd = {
 
   <!-- Search engine optimization -->
   <title>{fullTitle}</title>
-  <meta property="og:title" content={title} />
+  <meta property="og:title" content={socialTitle} />
   <meta name="author" content={author} />
   <meta property="og:locale" content="en" />
   <meta name="description" content={description} />
@@ -174,7 +177,7 @@ const jsonLd = {
   <meta property="og:type" content={ogType} />
   <meta name="twitter:card" content="summary_large_image" />
   <meta property="twitter:image" content={imageUrl} />
-  <meta property="twitter:title" content={title} />
+  <meta property="twitter:title" content={socialTitle} />
   <meta name="twitter:creator" content={`@${author}`} />
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 

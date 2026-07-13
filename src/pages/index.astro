@@ -56,13 +56,13 @@ for (const m of overviewModules) {
     <h2 class="section-label">Modules</h2>
     <div class="overview-modules">
       {overviewModules.map((m) => (
-        <div class="overview-module">
+        <a href="/modules" class="overview-module">
           <span class={`module-swatch dom-${m.domain}`}></span>
           <div>
             <strong>{m.name}</strong>
             <span class="module-brief">{m.brief}</span>
           </div>
-        </div>
+        </a>
       ))}
     </div>
     <div class="overview-more">
@@ -148,11 +148,20 @@ for (const m of overviewModules) {
     grid-template-columns: repeat(2, 1fr);
     gap: 14px var(--pt-7);
   }
-  .overview-module {
+  /* Each entry links to the module details page; the hover surface signals
+     that the rows are clickable. The selector outweighs the chrome's generic
+     content-link underline rule. */
+  .home-overview .overview-module {
     display: flex;
     align-items: flex-start;
     gap: 14px;
-    padding: 6px 0;
+    padding: 6px 10px;
+    margin: 0 -10px;
+    border-radius: var(--pt-r-2);
+    text-decoration: none;
+  }
+  .home-overview .overview-module:hover {
+    background: var(--pt-basalt-2);
   }
   /* Swatch colour comes from the shared .dom-* classes in site.css. */
   .module-swatch {
