@@ -1,8 +1,10 @@
 ---
 import Base from '../layouts/Base.astro';
+import Lockup from '../components/Lockup.astro';
 
 // Homepage module overview: name, one-line brief, and the module's physical
-// domain, which sets the swatch colour (tokens --pt-dom-*).
+// domain, which sets the swatch colour via the shared .dom-* classes in
+// site.css.
 const overviewModules = [
   { name: 'AGNI / JANUS', brief: 'Radiative-convective atmosphere models', domain: 'atmos' },
   { name: 'SPIDER / Aragog', brief: 'Magma ocean and mantle evolution', domain: 'interior' },
@@ -13,6 +15,14 @@ const overviewModules = [
   { name: 'LovePy / Obliqua', brief: 'Tidal dissipation and heating', domain: 'tidal' },
   { name: 'Zalmoxis', brief: 'Planetary interior structure', domain: 'interior' },
 ];
+
+// A typo'd domain would render an invisible swatch; fail the build instead.
+const knownDomains = ['interior', 'outgassing', 'tidal', 'chem', 'atmos', 'stellar'];
+for (const m of overviewModules) {
+  if (!knownDomains.includes(m.domain)) {
+    throw new Error(`Unknown module domain "${m.domain}" for ${m.name}`);
+  }
+}
 ---
 <Base
   title="Home"
@@ -22,15 +32,11 @@ const overviewModules = [
   image="/assets/img/og-default.jpg"
 >
   <!-- The hero stays dark in both themes (tokens.css restores the dark text
-       tokens under [data-theme="light"] .hero), so it uses the dark glyph
-       directly rather than the only-dark/only-light swap. -->
+       tokens under [data-theme="light"] .hero), so the lockup uses the dark
+       glyph directly rather than the only-dark/only-light swap. -->
   <section class="hero fullbleed">
-    <img class="hero-glyph" src="/assets/img/brand/glyph_phase.svg" alt="" aria-hidden="true" />
     <div class="wrap narrow hero-inner">
-      <div class="hero-lockup" aria-label="PROTEUS framework">
-        <span class="word">PR<img src="/assets/img/brand/glyph_phase_dark.png" alt="O" />TEUS</span>
-        <span class="tag">framework</span>
-      </div>
+      <Lockup tag="h1" class="hero-lockup" ariaLabel="PROTEUS framework" />
       <p class="hero-tagline">Simulate the coupled interior-atmosphere evolution of rocky planets over deep time.</p>
       <p class="hero-subtitle">Named after the Greek god of sea change, PROTEUS is flexible and adaptable; it can foretell the future, but answers only to those who ask the right questions.</p>
       <div class="hero-actions">
@@ -38,6 +44,7 @@ const overviewModules = [
         <a href="/demos" class="btn btn-ghost">See demos</a>
       </div>
     </div>
+    <p class="hero-credit">Artwork &copy; Mark A. Garlick</p>
     <div class="hero-band" aria-hidden="true"></div>
   </section>
 
@@ -46,11 +53,11 @@ const overviewModules = [
       PROTEUS is an open-source framework that couples models of planetary interiors, atmospheres, chemistry, and orbital dynamics to simulate how rocky planets evolve from molten beginnings to potentially habitable worlds.
     </p>
 
-    <h5 class="section-label">Modules</h5>
+    <h2 class="section-label">Modules</h2>
     <div class="overview-modules">
       {overviewModules.map((m) => (
         <div class="overview-module">
-          <span class={`module-swatch swatch-${m.domain}`}></span>
+          <span class={`module-swatch dom-${m.domain}`}></span>
           <div>
             <strong>{m.name}</strong>
             <span class="module-brief">{m.brief}</span>
@@ -65,51 +72,44 @@ const overviewModules = [
 
 <style is:global>
   /* ---------- hero ---------- */
+  /* Planetary-system artwork behind a dark scrim that keeps the lockup and
+     text legible; the token gradient sits underneath as the pre-load and
+     fallback background. */
   .hero {
     position: relative;
     overflow: hidden;
-    background: var(--pt-grad-hero);
+    background:
+      linear-gradient(rgba(5, 7, 11, 0.55), rgba(5, 7, 11, 0.3) 45%, rgba(5, 7, 11, 0.65)),
+      url('/assets/img/illustrations/two_face_planet.jpg') center / cover no-repeat,
+      var(--pt-grad-hero);
     border-bottom: 1px solid var(--pt-line-d);
   }
   .hero-inner {
     position: relative;
     z-index: 1;
     padding-top: 110px;
-    padding-bottom: 96px;
+    padding-bottom: var(--pt-9);
   }
-  .hero-glyph {
+  .hero-credit {
     position: absolute;
-    right: -14vmin;
-    bottom: -22vmin;
-    width: 58vmin;
-    opacity: 0.16;
-    pointer-events: none;
-  }
-  .hero-lockup { display: inline-flex; flex-direction: column; }
-  .hero-lockup .word {
-    display: inline-flex;
-    align-items: center;
-    font-family: var(--pt-font-display);
-    font-weight: 800;
-    font-size: clamp(56px, 10vw, 120px);
-    letter-spacing: 0.01em;
-    line-height: 1;
-    color: var(--pt-paper);
-  }
-  .hero-lockup .word img {
-    height: 1.06em;
-    width: auto;
-    margin: 0 0.015em 0 0.03em;
-    transform: translateY(0.011em);
-  }
-  .hero-lockup .tag {
+    right: 14px;
+    bottom: calc(var(--pt-2) + 10px);
+    z-index: 1;
+    margin: 0;
     font-family: var(--pt-font-mono);
-    font-weight: 500;
-    font-size: clamp(10px, 1.6vw, 20px);
-    letter-spacing: var(--pt-track-tag);
-    color: var(--pt-azure);
-    align-self: flex-end;
-    margin-top: 14px;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--pt-text-d2);
+    opacity: 0.35;
+    text-shadow: 0 1px 2px rgba(5, 7, 11, 0.6);
+  }
+  /* Hero variant of the brand lockup: the shared .brand-lockup rules carry
+     the structure and glyph alignment; this scales it up for the banner. */
+  .hero-lockup {
+    --lockup-size: clamp(56px, 10vw, var(--pt-fs-120));
+    --lockup-tag-size: clamp(10px, 1.6vw, var(--pt-fs-20));
+    --lockup-tag-gap: 14px;
   }
   .hero-tagline {
     font-size: clamp(19px, 2.4vw, 26px);
@@ -130,7 +130,7 @@ const overviewModules = [
   .hero-band {
     position: relative;
     z-index: 1;
-    height: 8px;
+    height: var(--pt-2);
     background: var(--pt-grad-phase);
   }
 
@@ -142,11 +142,11 @@ const overviewModules = [
     color: var(--pt-text-d2);
     max-width: 76ch;
   }
-  .home-overview .section-label { margin-top: 64px; }
+  .home-overview .section-label { margin-top: var(--pt-8); }
   .overview-modules {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 14px 48px;
+    gap: 14px var(--pt-7);
   }
   .overview-module {
     display: flex;
@@ -154,6 +154,7 @@ const overviewModules = [
     gap: 14px;
     padding: 6px 0;
   }
+  /* Swatch colour comes from the shared .dom-* classes in site.css. */
   .module-swatch {
     width: 22px;
     height: 14px;
@@ -161,23 +162,17 @@ const overviewModules = [
     flex-shrink: 0;
     margin-top: 5px;
   }
-  .swatch-interior { background: var(--pt-dom-interior); }
-  .swatch-outgassing { background: var(--pt-dom-outgassing); }
-  .swatch-tidal { background: var(--pt-dom-tidal); }
-  .swatch-chem { background: var(--pt-dom-chem); }
-  .swatch-atmos { background: var(--pt-dom-atmos); }
-  .swatch-stellar { background: var(--pt-dom-stellar); }
-  .overview-module strong { color: var(--pt-text-d); font-size: 16px; }
+  .overview-module strong { color: var(--pt-text-d); font-size: var(--pt-fs-16); }
   .module-brief {
     display: block;
-    color: var(--pt-text-d3);
+    color: var(--pt-text-d2);
     font-size: 14.5px;
     margin-top: 2px;
   }
   .overview-more { margin-top: 20px; text-align: right; }
   .overview-link {
     font-family: var(--pt-font-mono);
-    font-size: 13px;
+    font-size: var(--pt-fs-13);
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
@@ -186,5 +181,6 @@ const overviewModules = [
     .overview-lead { font-size: 17px; }
     .hero-actions .btn { width: 100%; justify-content: center; }
   }
+
 </style>
 </Base>

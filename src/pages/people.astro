@@ -101,6 +101,8 @@ const currentDevelopers = [
     role: 'Kapteyn MSc Student',
     url: 'https://github.com/ipanagiotou02',
     photo: '/assets/img/faces/IoannisPanagiotou.jpg',
+    // Crop the star chart above his head so his face sits higher in the frame.
+    objectPosition: 'center 30%',
     topics: ['Super-Earth evolution', 'Atmospheric chemistry', 'Ultra-hot planets'],
   },
   {
@@ -118,6 +120,8 @@ const pastContributors = [
     role: 'ETH Zurich Staff',
     url: 'https://eaps.ethz.ch/en/people/profile.daniel-bower.html',
     photo: '/assets/img/faces/DanBower.jpg',
+    // Crop a little more sky so his head sits higher in the square frame.
+    objectPosition: 'center 30%',
     topics: ['Mantle evolution', 'Thermodynamics & EOS', 'Volatile partitioning'],
   },
   {
@@ -170,15 +174,15 @@ const pastContributors = [
   description="The PROTEUS development team: researchers and software engineers building open-source tools for rocky planet evolution."
   image="/assets/img/og-default.jpg"
 >
-  <h3 class="team-heading">Current developers</h3>
+  <h2 class="team-heading">Current developers</h2>
   <div class="team-grid" id="current-developers-section">
     {currentDevelopers.map((person) => (
       <div class="person-card">
         <a href={person.url} target="_blank" rel="noopener noreferrer" class="person-photo">
-          <img src={person.photo} alt={person.name} loading="lazy" />
+          <img src={person.photo} alt={person.name} loading="lazy" style={person.objectPosition ? `object-position: ${person.objectPosition}` : undefined} />
         </a>
         <div class="person-body">
-          <h4 class="person-name">{person.name}</h4>
+          <h3 class="person-name">{person.name}</h3>
           <p class="person-role">{person.role}</p>
           <ul class="person-topics">
             {person.topics.map((topic) => <li>{topic}</li>)}
@@ -188,15 +192,15 @@ const pastContributors = [
     ))}
   </div>
 
-  <h3 class="team-heading">Past contributors</h3>
+  <h2 class="team-heading">Past contributors</h2>
   <div class="team-grid" id="past-contributors-section">
     {pastContributors.map((person) => (
       <div class="person-card">
         <a href={person.url} target="_blank" rel="noopener noreferrer" class="person-photo">
-          <img src={person.photo} alt={person.name} loading="lazy" />
+          <img src={person.photo} alt={person.name} loading="lazy" style={person.objectPosition ? `object-position: ${person.objectPosition}` : undefined} />
         </a>
         <div class="person-body">
-          <h4 class="person-name">{person.name}</h4>
+          <h3 class="person-name">{person.name}</h3>
           <p class="person-role">{person.role}</p>
           <ul class="person-topics">
             {person.topics.map((topic) => <li>{topic}</li>)}
@@ -212,7 +216,7 @@ const pastContributors = [
     font-weight: 800;
     font-size: 28px;
     letter-spacing: -0.02em;
-    margin: 56px 0 24px;
+    margin: 56px 0 var(--pt-5);
   }
   .team-grid {
     display: grid;
@@ -225,19 +229,32 @@ const pastContributors = [
     border-radius: var(--pt-r-2);
     overflow: hidden;
   }
-  .person-photo { display: block; }
+  /* The photo is a link to the person's profile; the zoom-and-lift on hover or
+     keyboard focus signals that it is clickable. */
+  .person-photo { display: block; overflow: hidden; }
   .person-photo img {
     display: block;
     width: 100%;
     aspect-ratio: 1 / 1;
     object-fit: cover;
     object-position: top;
+    transition: transform 0.45s ease, filter 0.3s ease;
   }
-  .person-body { padding: 14px 16px 16px; }
+  .person-photo:hover img,
+  .person-photo:focus-visible img {
+    transform: scale(1.05);
+    filter: brightness(1.06);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .person-photo img { transition: filter 0.3s ease; }
+    .person-photo:hover img,
+    .person-photo:focus-visible img { transform: none; }
+  }
+  .person-body { padding: 14px var(--pt-4) var(--pt-4); }
   .person-name {
     font-family: var(--pt-font-display);
     font-weight: 700;
-    font-size: 16px;
+    font-size: var(--pt-fs-16);
     letter-spacing: -0.01em;
     color: var(--pt-text-d);
     margin: 0;

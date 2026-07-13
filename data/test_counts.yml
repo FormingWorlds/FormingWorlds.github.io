@@ -37,7 +37,11 @@
 #   markers        Optional. Map of marker name to JSON path (relative to
 #                    `badge_branch`) or full https URL; when set, each marker
 #                    renders as a live shields.io badge in place of `breakdown`.
-#                    Keys: unit, integration, smoke, slow.
+#                    The public surface is always the two categories "unit" and
+#                    "integration". A marker may map to a LIST of JSON paths;
+#                    the badge then shows the sum of their counts, which folds
+#                    a module's extra tiers (smoke, slow) into the integration
+#                    badge the same way the PROTEUS badge convention does.
 
 mature:
   - name: PROTEUS
@@ -143,8 +147,8 @@ mature:
     total_endpoint: tests-total.json
     badge_branch: badges
     markers:
-      unit: tests-fast.json
-      integration: tests-nightly.json
+      unit: tests-unit.json
+      integration: tests-integration.json
 
 in_development:
   - name: JANUS

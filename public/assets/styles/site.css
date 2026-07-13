@@ -99,6 +99,18 @@ footer.site { border-top: 1px solid var(--pt-line-d); padding: 80px 0 56px; back
 html { color-scheme: dark; }
 [data-theme="light"] { color-scheme: light; }
 
+/* The full-bleed hero is 100vw wide, which includes the vertical-scrollbar
+   gutter on platforms with classic scrollbars; clip the few px of horizontal
+   overflow rather than growing a page-wide horizontal scrollbar. The hidden
+   fallback covers browsers without overflow: clip. */
+html { overflow-x: hidden; overflow-x: clip; }
+
+/* Honour the OS reduced-motion preference: anchor jumps snap instead of
+   animating. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
 :focus-visible { outline: 2px solid var(--pt-magma); outline-offset: 2px; }
 
 /* Theme-swapped images: the dark variant renders in dark mode, the light
@@ -123,14 +135,45 @@ html { color-scheme: dark; }
 :where(#main) li p { margin-bottom: 10px; }
 :where(#main) a:not(.btn) { text-decoration: underline; text-decoration-color: color-mix(in srgb, currentColor 40%, transparent); text-underline-offset: 3px; }
 :where(#main) a:not(.btn):hover { text-decoration-color: currentColor; }
-:where(#main) hr { border: none; border-top: 1px solid var(--pt-line-d); margin: 48px 0; }
+:where(#main) hr { border: none; border-top: 1px solid var(--pt-line-d); margin: var(--pt-7) 0; }
 :where(#main) .lead { font-size: 19px; line-height: 1.65; color: var(--pt-text-d2); }
 
-/* Mono uppercase section label (the eyebrow as a section heading). */
-.section-label { font-family: var(--pt-font-mono); font-size: 13px; font-weight: 500; letter-spacing: var(--pt-track-label); color: var(--pt-azure); text-transform: uppercase; border-bottom: 1px solid var(--pt-line-d); padding-bottom: 10px; margin: 56px 0 22px; }
+/* Mono uppercase section label (the eyebrow as a section heading). The class
+   carries the look only; apply it to whatever heading level the page's
+   document outline calls for. */
+.section-label { font-family: var(--pt-font-mono); font-size: var(--pt-fs-13); font-weight: 500; letter-spacing: var(--pt-track-label); color: var(--pt-azure); text-transform: uppercase; border-bottom: 1px solid var(--pt-line-d); padding-bottom: 10px; margin: 56px 0 22px; }
 
 /* Full-bleed band inside the constrained content column. */
 .fullbleed { width: 100vw; margin-left: calc(50% - 50vw); }
+
+/* ---------- contrast steps above the shared chrome ---------- */
+/* White label text on pure magma sits just under the 4.5:1 AA contrast
+   ratio, so primary buttons rest on the deepened crimson and darken further
+   on hover. */
+.btn-primary { background: var(--pt-crimson); }
+.btn-primary:hover { background: var(--pt-mantle); }
+/* Muted d3 text reads below the AA ratio at small sizes; informational
+   footer text steps up to the secondary tone. */
+.foot-col h6, .foot-bottom { color: var(--pt-text-d2); }
+
+/* ---------- module domain colours ---------- */
+/* One class per physical domain, shared by the homepage swatches and the
+   modules-page accent bars so every page names a domain the same way. */
+.dom-interior { background: var(--pt-dom-interior); }
+.dom-outgassing { background: var(--pt-dom-outgassing); }
+.dom-tidal { background: var(--pt-dom-tidal); }
+.dom-chem { background: var(--pt-dom-chem); }
+.dom-atmos { background: var(--pt-dom-atmos); }
+.dom-stellar { background: var(--pt-dom-stellar); }
+
+/* ---------- brand lockup (Lockup.astro) ---------- */
+/* The wordmark with the phase glyph as the O plus the "framework" tag. The
+   footer and home-hero variants set the --lockup-* properties and share the
+   glyph alignment here, so tuning it moves every lockup together. */
+.brand-lockup { display: inline-flex; flex-direction: column; }
+.brand-lockup .word { display: inline-flex; align-items: center; font-family: var(--pt-font-display); font-weight: 800; font-size: var(--lockup-size, 44px); letter-spacing: 0.01em; line-height: 1; color: var(--pt-paper); }
+.brand-lockup .word img { height: 1.06em; width: auto; margin: 0 0.015em 0 0.03em; transform: translateY(0.011em); }
+.brand-lockup .tag { font-family: var(--pt-font-mono); font-weight: 500; font-size: var(--lockup-tag-size, 8px); letter-spacing: var(--lockup-tag-track, var(--pt-track-tag)); color: var(--pt-azure); align-self: flex-end; margin-top: var(--lockup-tag-gap, 7px); }
 
 /* ---------- header: mobile navigation ---------- */
 .nav-burger { display: none; place-items: center; width: 38px; height: 38px; border: 1px solid var(--pt-line-d); border-radius: var(--pt-r-2); background: transparent; color: var(--pt-text-d2); cursor: pointer; flex: none; }
@@ -140,7 +183,7 @@ html { color-scheme: dark; }
 .nav-links > .dd > a.active::after { content: ""; display: block; height: 2px; margin-top: 2px; background: var(--pt-magma); border-radius: 1px; }
 @media (max-width: 820px) {
   .nav-burger { display: inline-grid; }
-  .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 2px; background: var(--pt-basalt); border-bottom: 1px solid var(--pt-line-d); box-shadow: var(--pt-shadow-2); padding: 12px 24px 18px; }
+  .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 2px; background: var(--pt-basalt); border-bottom: 1px solid var(--pt-line-d); box-shadow: var(--pt-shadow-2); padding: var(--pt-3) var(--pt-5) 18px; }
   .nav-links.open { display: flex; }
   .nav-links > a, .nav-links > .dd > a { font-size: 15px; padding: 11px 10px; }
   .nav-links > a.active::after, .nav-links > .dd > a.active::after { width: 20px; }
@@ -151,7 +194,10 @@ html { color-scheme: dark; }
 }
 
 /* ---------- page hero sizing ---------- */
-.page-hero { padding: 72px 0 48px; }
+/* margin-bottom sets the gap below the hero divider; it collapses with the
+   first content block's top margin, so a page that opens on a heading keeps its
+   larger heading margin while a page that opens on a paragraph clears the line. */
+.page-hero { padding: 72px 0 var(--pt-7); margin-bottom: 28px; }
 .page-hero h1 { font-size: clamp(34px, 6vw, 52px); }
 .page-hero .lede { max-width: 72ch; }
 
@@ -162,7 +208,10 @@ html { color-scheme: dark; }
 .foot-tagline { font-size: 14px; color: var(--pt-text-d3); margin-top: 18px; max-width: 34ch; }
 .social-btn { display: inline-grid; place-items: center; width: 38px; height: 38px; border: 1px solid var(--pt-line-d); border-radius: var(--pt-r-2); background: transparent; color: var(--pt-text-d2); cursor: pointer; }
 .social-btn:hover { color: var(--pt-text-d); background: var(--pt-basalt-2); border-color: var(--pt-text-d3); }
-.social-btn svg { width: 17px; height: 17px; display: block; }
+/* The GitHub mark is flush to the top of its own viewBox and is top-heavy (heavy
+   head, thin legs), so it optically reads as sitting high in the square button; a
+   sub-pixel downward nudge settles it into the visual centre. */
+.social-btn svg { width: 17px; height: 17px; display: block; transform: translateY(0.75px); }
 @media (max-width: 900px) {
   .foot-grid { grid-template-columns: 1fr 1fr; gap: 40px 32px; }
 }

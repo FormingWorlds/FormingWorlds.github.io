@@ -210,7 +210,7 @@ If you maintain a code we depend on, are considering using PROTEUS in your own w
     border-bottom: 1px solid var(--pt-line-d);
     vertical-align: top;
     color: var(--pt-text-d2);
-    line-height: 1.55;
+    line-height: var(--pt-lh-body);
   }
   .lic-table thead th {
     font-family: var(--pt-font-mono);
@@ -218,10 +218,13 @@ If you maintain a code we depend on, are considering using PROTEUS in your own w
     text-transform: uppercase;
     letter-spacing: 0.1em;
     font-size: 0.72rem;
-    color: var(--pt-text-d3);
+    color: var(--pt-text-d2);
     border-bottom: 2px solid var(--pt-line-d);
   }
   .lic-table tbody tr:hover { background: var(--pt-basalt); }
-  .lic-table td:first-child { font-weight: 700; color: var(--pt-text-d); white-space: nowrap; }
+  /* First-column phrases can run long ("Documentation, website text,
+     figures"), so they wrap rather than forcing the table wider than a phone
+     viewport. */
+  .lic-table td:first-child { font-weight: 700; color: var(--pt-text-d); }
 </style>
 </Base>

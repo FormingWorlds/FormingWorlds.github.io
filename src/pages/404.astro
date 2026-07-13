@@ -7,7 +7,7 @@ import Base from '../layouts/Base.astro';
     <img class="error-glyph only-light" src="/assets/img/brand/glyph_phase_light.png" alt="" aria-hidden="true" />
     <h1 class="title">404</h1>
     <p class="lead">Page not found :(</p>
-    <h4 class="description">Ooooups! Looks like you got lost.</h4>
+    <p class="description">Ooooups! Looks like you got lost.</p>
   </div>
 
 <style>
@@ -16,13 +16,13 @@ import Base from '../layouts/Base.astro';
     padding: 110px 0 60px;
   }
   .error-glyph {
-    width: 96px;
-    margin: 0 auto 32px;
+    width: var(--pt-9);
+    margin: 0 auto var(--pt-6);
   }
   .error-page .title {
     font-family: var(--pt-font-display);
     font-weight: 800;
-    font-size: clamp(72px, 12vw, 120px);
+    font-size: clamp(72px, 12vw, var(--pt-fs-120));
     letter-spacing: -0.025em;
     line-height: 1;
     margin: 0;
@@ -35,10 +35,10 @@ import Base from '../layouts/Base.astro';
   .error-page .description {
     font-family: var(--pt-font-mono);
     font-weight: 400;
-    font-size: 13px;
+    font-size: var(--pt-fs-13);
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--pt-text-d3);
+    color: var(--pt-text-d2);
     margin: 0;
   }
 </style>

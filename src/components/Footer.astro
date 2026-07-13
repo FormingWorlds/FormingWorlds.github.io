@@ -2,6 +2,7 @@
 // Site footer: phase rule, brand lockup, navigation columns, contact address,
 // and social buttons.
 import { menuItems, contactEmail } from '../data/settings.js';
+import Lockup from './Lockup.astro';
 import Socials from './Socials.astro';
 
 const navItems = menuItems.filter((item) => !item.submenuItems);
@@ -12,10 +13,7 @@ const year = new Date().getFullYear();
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-col">
-        <a href="/" class="foot-lockup" aria-label="PROTEUS">
-          <span class="word">PR<img class="only-dark" src="/assets/img/brand/glyph_phase_dark.png" alt="O" /><img class="only-light" src="/assets/img/brand/glyph_phase_light.png" alt="O" />TEUS</span>
-          <span class="tag">framework</span>
-        </a>
+        <Lockup tag="a" href="/" class="foot-lockup" ariaLabel="PROTEUS" themeSwap />
       </div>
       <div class="foot-col">
         <h6>Navigate</h6>
@@ -42,7 +40,6 @@ const year = new Date().getFullYear();
 </footer>
 
 <style>
-  .foot-lockup .word { display: inline-flex; }
   .foot-bottom a { color: var(--pt-text-d2); }
   .foot-bottom a:hover { color: var(--pt-ice); }
 </style>

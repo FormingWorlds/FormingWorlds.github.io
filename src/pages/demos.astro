@@ -9,7 +9,7 @@ import Base from '../layouts/Base.astro';
   image="/assets/img/og-default.jpg"
 >
   <!-- Earth scenario -->
-<h4 class="section-label">Early Earth</h4>
+<h2 class="section-label">Early Earth</h2>
 
 <div class="scenario-pane">
   <div class="scenario-top">
@@ -20,7 +20,7 @@ import Base from '../layouts/Base.astro';
     </div>
     <div class="scenario-info-col">
       <div class="at-a-glance">
-        <h5>At a glance</h5>
+        <h3>At a glance</h3>
         <table>
           <tr><td>Mass</td><td>1 M<sub>Earth</sub></td></tr>
           <tr><td>Orbit</td><td>1 AU (Sun)</td></tr>
@@ -101,21 +101,21 @@ import Base from '../layouts/Base.astro';
     padding: 1.25rem;
     height: 100%;
   }
-  .at-a-glance h5 {
+  .at-a-glance h3 {
     font-family: var(--pt-font-mono);
     font-weight: 500;
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: var(--pt-track-label);
     color: var(--pt-azure);
-    margin-bottom: 0.75rem;
+    margin: 0 0 0.75rem;
   }
   .at-a-glance table { width: 100%; font-size: 0.9rem; border-collapse: collapse; }
   .at-a-glance td { padding: 0.3rem 0; border: none; vertical-align: top; }
   .at-a-glance td:first-child {
     font-family: var(--pt-font-mono);
     font-size: 0.8rem;
-    color: var(--pt-text-d3);
+    color: var(--pt-text-d2);
     padding-right: 0.75rem;
     padding-top: 0.42rem;
     white-space: nowrap;
@@ -146,7 +146,7 @@ import Base from '../layouts/Base.astro';
     font-size: 0.75rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--pt-text-d3);
+    color: var(--pt-text-d2);
     text-align: center;
   }
   /* Each plot ships in a dark and a light variant; show the one that matches
@@ -192,4 +192,18 @@ import Base from '../layouts/Base.astro';
     .result-card { flex: 1 1 100%; }
   }
 </style>
+
+<script is:inline>
+  // Honour the OS reduced-motion preference: leave the demo videos paused
+  // with their controls instead of autoplaying on a loop.
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('video[autoplay]').forEach(function (v) {
+        v.removeAttribute('autoplay');
+        v.removeAttribute('loop');
+        v.pause();
+      });
+    });
+  }
+</script>
 </Base>
