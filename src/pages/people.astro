@@ -1,5 +1,172 @@
 ---
 import Base from '../layouts/Base.astro';
+
+// One entry per person: display name, role, external profile link, photo in
+// public/assets/img/faces/, and three research-topic labels. The topic lists
+// ship in the markup but stay visually hidden, matching the card design.
+const currentDevelopers = [
+  {
+    name: 'Tim Lichtenberg',
+    role: 'Kapteyn Staff',
+    url: 'https://www.formingworlds.space/team/tim-lichtenberg',
+    photo: '/assets/img/faces/TimLichtenberg.jpg',
+    topics: ['Planetary geoscience', 'Origin of life', 'Project architecture'],
+  },
+  {
+    name: 'Harrison Nicholls',
+    role: 'Cambridge Postdoc',
+    url: 'https://www.h-nicholls.space/',
+    photo: '/assets/img/faces/HarrisonNicholls.jpg',
+    topics: ['Planetary climates', 'Gas-phase chemistry', 'Numerical methods'],
+  },
+  {
+    name: 'Mariana Sastre',
+    role: 'Kapteyn PhD Student',
+    url: 'https://planetmariana.github.io/',
+    photo: '/assets/img/faces/MarianaSastre.jpg',
+    topics: ['Exoplanet interior evolution', 'Mantle dynamics', 'Volatile partitioning'],
+  },
+  {
+    name: 'Emma Postolec',
+    role: 'Kapteyn PhD Student',
+    url: 'https://www.formingworlds.space/team/emma-postolec',
+    photo: '/assets/img/faces/EmmaPostolec.jpg',
+    topics: ['Atmospheric escape', 'Volatile fractionation', 'JWST Observations'],
+  },
+  {
+    name: 'Marijn van Dijk',
+    role: 'Kapteyn MSc Student',
+    url: 'https://github.com/MarijnJ0',
+    photo: '/assets/img/faces/MarijnVanDijk.jpg',
+    topics: ['Tidal heating', 'Orbital evolution', 'Satellites & moons'],
+  },
+  {
+    name: 'Karen Stuitje',
+    role: 'Kapteyn MSc Student',
+    url: 'https://github.com/stuitje',
+    photo: '/assets/img/faces/KarenStuitje.jpg',
+    topics: ['Stellar evolution', 'Software testing', 'Documentation'],
+  },
+  {
+    name: 'Robb Calder',
+    role: 'Cambridge PhD Student',
+    url: 'https://rdc49.github.io/',
+    photo: '/assets/img/faces/RobbCalder.jpg',
+    topics: ['Mantle dynamics', 'Atmospheric chemistry', 'Sub-Neptune evolution'],
+  },
+  {
+    name: 'Ben Riegler',
+    role: 'Helmholtz AI PhD Student',
+    url: 'https://fortuinlab.github.io/author/ben-riegler/',
+    photo: '/assets/img/faces/BenRiegler.jpg',
+    topics: ['Bayesian inference', 'Meta-learning algorithms', 'Statistical methods'],
+  },
+  {
+    name: 'Lorenzo Cesario',
+    role: 'Kapteyn MSc Student',
+    url: 'https://github.com/lorlo9999/',
+    photo: '/assets/img/faces/LorenzoCesario.jpg',
+    topics: ['Telescope simulation', 'Radiative transfer', 'Retrieval methods'],
+  },
+  {
+    name: 'Emeline Decocq',
+    role: 'Kapteyn PhD Student',
+    url: 'https://github.com/Emeline0110',
+    photo: '/assets/img/faces/EmelineDecocq.jpg',
+    topics: ['Hadean Earth', 'Prebiotic chemistry', 'Ocean formation'],
+  },
+  {
+    name: 'Imre Kisvárdai',
+    role: 'Kapteyn PhD Student',
+    url: 'https://github.com/IKisvardai',
+    photo: '/assets/img/faces/ImreKisv%C3%A1rdai.jpg',
+    topics: ['Sub-Neptune evolution', 'Volatile outgassing', 'Planetary geophysics'],
+  },
+  {
+    name: 'Oliver Shorttle',
+    role: 'Cambridge Staff',
+    url: 'https://www.shorttle.com/cv/',
+    photo: '/assets/img/faces/OliverShorttle.jpg',
+    topics: ['Planetary geology', 'Prebiotic chemistry', 'Planetary climate'],
+  },
+  {
+    name: 'Mara Attia',
+    role: 'Kapteyn Postdoc',
+    url: 'https://maraattia.github.io/',
+    photo: '/assets/img/faces/MaraAttia.jpg',
+    topics: ['Sub-Neptune evolution', 'Equations of state', 'Energy transport'],
+  },
+  {
+    name: 'Ioannis Panagiotou',
+    role: 'Kapteyn MSc Student',
+    url: 'https://github.com/ipanagiotou02',
+    photo: '/assets/img/faces/IoannisPanagiotou.jpg',
+    // Crop the star chart above his head so his face sits higher in the frame.
+    objectPosition: 'center 30%',
+    topics: ['Super-Earth evolution', 'Atmospheric chemistry', 'Ultra-hot planets'],
+  },
+  {
+    name: 'Patrick Bos',
+    role: 'Kapteyn Senior Research Software Engineer',
+    url: 'https://egpbos.nl/',
+    photo: '/assets/img/faces/PatrickBos.jpg',
+    topics: ['PROTEUS framework'],
+  },
+];
+
+const pastContributors = [
+  {
+    name: 'Dan Bower',
+    role: 'ETH Zurich Staff',
+    url: 'https://eaps.ethz.ch/en/people/profile.daniel-bower.html',
+    photo: '/assets/img/faces/DanBower.jpg',
+    // Crop a little more sky so his head sits higher in the square frame.
+    objectPosition: 'center 30%',
+    topics: ['Mantle evolution', 'Thermodynamics & EOS', 'Volatile partitioning'],
+  },
+  {
+    name: 'Hanno Spreeuw',
+    role: 'Research Software Engineer',
+    url: 'https://www.esciencecenter.nl/team/hanno-spreeuw/',
+    photo: '/assets/img/faces/HannoSpreeuw.jpg',
+    topics: ['Code testing', 'User experience', 'Lookup tables'],
+  },
+  {
+    name: 'Laurent Soucasse',
+    role: 'Research Software Engineer',
+    url: 'https://orcid.org/0000-0002-5422-8794',
+    photo: '/assets/img/faces/LaurentSoucasse.jpg',
+    topics: ['Mantle dynamics', 'Stellar evolution', 'Code testing'],
+  },
+  {
+    name: 'Stef Smeets',
+    role: 'Research Software Engineer',
+    url: 'https://www.stefsmeets.nl/',
+    photo: '/assets/img/faces/StefSmeets.jpg',
+    topics: ['Code tests', 'User experience', 'Documentation'],
+  },
+  {
+    name: 'Mark Hammond',
+    role: 'Oxford Research Fellow',
+    url: 'https://mark-hammond.github.io/about/',
+    photo: '/assets/img/faces/MarkHammond.jpg',
+    topics: ['Radiative transfer', 'Atmosphere dynamics', 'Surface reflectivity'],
+  },
+  {
+    name: 'Ray Pierrehumbert',
+    role: 'MIT Staff',
+    url: 'https://users.physics.ox.ac.uk/~pierrehumbert/',
+    photo: '/assets/img/faces/RayPierrehumbert.jpg',
+    topics: ['Planetary climates', 'Atmospheric dynamics', 'Thermodynamics'],
+  },
+  {
+    name: 'Flavia Pascal',
+    role: 'Cambridge MSc Student',
+    url: 'https://github.com/flaviacris03',
+    photo: '/assets/img/faces/FlaviaPascal.jpg',
+    topics: ['Planet structure', 'Equations of state', 'Numerical methods'],
+  },
+];
 ---
 <Base
   title="Meet the team"
@@ -7,1354 +174,118 @@ import Base from '../layouts/Base.astro';
   description="The PROTEUS development team: researchers and software engineers building open-source tools for rocky planet evolution."
   image="/assets/img/og-default.jpg"
 >
-      <div class="team-2">
-<div class="container" id="current-developers-section">
-
-  <!-- Start row -->
-  <div class="row">
-    <div class="col-md-8 mx-auto text-center mb-5">
-      <br /><br />
-      <h3 class="display-3">Current developers</h3>
-      <!-- <h4 class="lead">Actively continuing on the development of PROTEUS</h4> -->
-    </div>
+  <h2 class="team-heading">Current developers</h2>
+  <div class="team-grid" id="current-developers-section">
+    {currentDevelopers.map((person) => (
+      <div class="person-card">
+        <a href={person.url} target="_blank" rel="noopener noreferrer" class="person-photo">
+          <img src={person.photo} alt={person.name} loading="lazy" style={person.objectPosition ? `object-position: ${person.objectPosition}` : undefined} />
+        </a>
+        <div class="person-body">
+          <h3 class="person-name">{person.name}</h3>
+          <p class="person-role">{person.role}</p>
+          <ul class="person-topics">
+            {person.topics.map((topic) => <li>{topic}</li>)}
+          </ul>
+        </div>
+      </div>
+    ))}
   </div>
 
-  <!-- Start row -->
-  <div class="row">
-    <!-- Column -->
-    <div class="col-lg-4 col-md-4 col-sm-6">
-      <div class="card card-profile" data-image="profile-image">
-        <div class="card-header">
-          <div class="card-image">
-            <a target="_blank" rel="noopener noreferrer" href="https://www.formingworlds.space/team/tim-lichtenberg">
-              <img style="width: 100%; object-fit: cover" loading="lazy" src="/assets/img/faces/TimLichtenberg.jpg" />
-            </a>
-          </div>
-        </div>
-        <div class="card-body pt-0">
-          <h4 class="display-4 mb-0">Tim Lichtenberg</h4>
-          <p class="lead">Kapteyn Staff</p>
-          <div class="table-responsive">
-            <ul class="list-unstyled ">
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-info mr-3">
-                      <i class="ni ni-atom"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Planetary geoscience</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-success mr-3">
-                      <i class="ni ni-planet"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Origin of life</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-danger mr-3">
-                      <i class="ni ni-paper-diploma"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Project architecture</h6>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
+  <h2 class="team-heading">Past contributors</h2>
+  <div class="team-grid" id="past-contributors-section">
+    {pastContributors.map((person) => (
+      <div class="person-card">
+        <a href={person.url} target="_blank" rel="noopener noreferrer" class="person-photo">
+          <img src={person.photo} alt={person.name} loading="lazy" style={person.objectPosition ? `object-position: ${person.objectPosition}` : undefined} />
+        </a>
+        <div class="person-body">
+          <h3 class="person-name">{person.name}</h3>
+          <p class="person-role">{person.role}</p>
+          <ul class="person-topics">
+            {person.topics.map((topic) => <li>{topic}</li>)}
+          </ul>
         </div>
       </div>
-    </div>
-
-    <!-- Column -->
-    <div class="col-lg-4 col-md-4 col-sm-6">
-      <div class="card card-profile" data-image="profile-image">
-        <div class="card-header">
-          <div class="card-image">
-            <a target="_blank" rel="noopener noreferrer" href="https://www.h-nicholls.space/">
-              <img style="width: 100%; object-fit: cover" loading="lazy" src="/assets/img/faces/HarrisonNicholls.jpg" />
-            </a>
-          </div>
-        </div>
-        <div class="card-body pt-0">
-          <h4 class="display-4 mb-0">Harrison Nicholls</h4>
-          <p class="lead">Cambridge Postdoc</p>
-          <div class="table-responsive">
-            <ul class="list-unstyled ">
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-info mr-3">
-                      <i class="ni ni-atom"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Planetary climates</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-success mr-3">
-                      <i class="ni ni-planet"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Gas-phase chemistry</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-danger mr-3">
-                      <i class="ni ni-paper-diploma"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Numerical methods</h6>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Column -->
-    <div class="col-lg-4 col-md-4 col-sm-6">
-      <div class="card card-profile" data-image="profile-image">
-        <div class="card-header">
-          <div class="card-image">
-            <a target="_blank" rel="noopener noreferrer" href="https://planetmariana.github.io/">
-              <img style="width: 100%; object-fit: cover" loading="lazy" src="/assets/img/faces/MarianaSastre.jpg" />
-            </a>
-          </div>
-        </div>
-        <div class="card-body pt-0">
-          <h4 class="display-4 mb-0">Mariana Sastre</h4>
-          <p class="lead">Kapteyn PhD Student</p>
-          <div class="table-responsive">
-            <ul class="list-unstyled ">
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-info mr-3">
-                      <i class="ni ni-atom"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Exoplanet interior evolution</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-success mr-3">
-                      <i class="ni ni-planet"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Mantle dynamics</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-danger mr-3">
-                      <i class="ni ni-paper-diploma"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Volatile partitioning</h6>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+    ))}
   </div>
 
-  <!-- Start row -->
-  <div class="row">
-    <!-- Column -->
-    <div class="col-lg-4 col-md-4 col-sm-6">
-      <div class="card card-profile" data-image="profile-image">
-        <div class="card-header">
-          <div class="card-image">
-            <a target="_blank" rel="noopener noreferrer" href="https://www.formingworlds.space/team/emma-postolec">
-              <img style="width: 100%; object-fit: cover" loading="lazy" src="/assets/img/faces/EmmaPostolec.jpg" />
-            </a>
-          </div>
-        </div>
-        <div class="card-body pt-0">
-          <h4 class="display-4 mb-0">Emma Postolec</h4>
-          <p class="lead">Kapteyn PhD Student</p>
-          <div class="table-responsive">
-            <ul class="list-unstyled ">
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-info mr-3">
-                      <i class="ni ni-atom"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Atmospheric escape</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-success mr-3">
-                      <i class="ni ni-planet"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Volatile fractionation</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-danger mr-3">
-                      <i class="ni ni-paper-diploma"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">JWST Observations</h6>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Column -->
-    <div class="col-lg-4 col-md-4 col-sm-6">
-      <div class="card card-profile" data-image="profile-image">
-        <div class="card-header">
-          <div class="card-image">
-            <a target="_blank" rel="noopener noreferrer" href="https://github.com/MarijnJ0">
-              <img style="width: 100%; object-fit: cover" loading="lazy" src="/assets/img/faces/MarijnVanDijk.jpg" />
-            </a>
-          </div>
-        </div>
-        <div class="card-body pt-0">
-          <h4 class="display-4 mb-0">Marijn van Dijk</h4>
-          <p class="lead">Kapteyn MSc Student</p>
-          <div class="table-responsive">
-            <ul class="list-unstyled ">
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-info mr-3">
-                      <i class="ni ni-atom"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Tidal heating</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-success mr-3">
-                      <i class="ni ni-planet"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Orbital evolution</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-danger mr-3">
-                      <i class="ni ni-paper-diploma"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Satellites &amp; moons</h6>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Column -->
-    <div class="col-lg-4 col-md-4 col-sm-6">
-      <div class="card card-profile" data-image="profile-image">
-        <div class="card-header">
-          <div class="card-image">
-            <a target="_blank" rel="noopener noreferrer" href="https://github.com/stuitje">
-              <img style="width: 100%; object-fit: cover" loading="lazy" src="/assets/img/faces/KarenStuitje.jpg" />
-            </a>
-          </div>
-        </div>
-        <div class="card-body pt-0">
-          <h4 class="display-4 mb-0">Karen Stuitje</h4>
-          <p class="lead">Kapteyn MSc Student</p>
-          <div class="table-responsive">
-            <ul class="list-unstyled ">
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-info mr-3">
-                      <i class="ni ni-atom"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Stellar evolution</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-success mr-3">
-                      <i class="ni ni-planet"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Software testing</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-danger mr-3">
-                      <i class="ni ni-paper-diploma"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Documentation</h6>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Start row -->
-  <div class="row">
-    <!-- Column -->
-    <div class="col-lg-4 col-md-4 col-sm-6">
-      <div class="card card-profile" data-image="profile-image">
-        <div class="card-header">
-          <div class="card-image">
-            <a target="_blank" rel="noopener noreferrer" href="https://rdc49.github.io/">
-              <img style="width: 100%; object-fit: cover" loading="lazy" src="/assets/img/faces/RobbCalder.jpg" />
-            </a>
-          </div>
-        </div>
-        <div class="card-body pt-0">
-          <h4 class="display-4 mb-0">Robb Calder</h4>
-          <p class="lead">Cambridge PhD Student</p>
-          <div class="table-responsive">
-            <ul class="list-unstyled ">
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-info mr-3">
-                      <i class="ni ni-atom"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Mantle dynamics</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-success mr-3">
-                      <i class="ni ni-planet"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Atmospheric chemistry</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-danger mr-3">
-                      <i class="ni ni-paper-diploma"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Sub-Neptune evolution</h6>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Column -->
-    <div class="col-lg-4 col-md-4 col-sm-6">
-      <div class="card card-profile" data-image="profile-image">
-        <div class="card-header">
-          <div class="card-image">
-            <a target="_blank" rel="noopener noreferrer" href="https://fortuinlab.github.io/author/ben-riegler/">
-              <img style="width: 100%; object-fit: cover" loading="lazy" src="/assets/img/faces/BenRiegler.jpg" />
-            </a>
-          </div>
-        </div>
-        <div class="card-body pt-0">
-          <h4 class="display-4 mb-0">Ben Riegler</h4>
-          <p class="lead">Helmholtz AI PhD Student</p>
-          <div class="table-responsive">
-            <ul class="list-unstyled ">
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-info mr-3">
-                      <i class="ni ni-atom"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Bayesian inference</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-success mr-3">
-                      <i class="ni ni-planet"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Meta-learning algorithms</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-danger mr-3">
-                      <i class="ni ni-paper-diploma"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Statistical methods</h6>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-   <!-- Start row -->
-  <div class="row">
-
-
-
-
-    <!-- Column -->
-    <div class="col-lg-4 col-md-4 col-sm-6">
-      <div class="card card-profile" data-image="profile-image">
-        <div class="card-header">
-          <div class="card-image">
-            <a target="_blank" rel="noopener noreferrer" href="https://github.com/lorlo9999/">
-              <img style="width: 100%; object-fit: cover" loading="lazy" src="/assets/img/faces/LorenzoCesario.jpg" />
-            </a>
-          </div>
-        </div>
-        <div class="card-body pt-0">
-          <h4 class="display-4 mb-0">Lorenzo Cesario</h4>
-          <p class="lead">Kapteyn MSc Student</p>
-          <div class="table-responsive">
-            <ul class="list-unstyled ">
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-info mr-3">
-                      <i class="ni ni-atom"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Telescope simulation</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-success mr-3">
-                      <i class="ni ni-planet"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Radiative transfer</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-danger mr-3">
-                      <i class="ni ni-paper-diploma"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Retrieval methods</h6>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Column -->
-    <div class="col-lg-4 col-md-4 col-sm-6">
-      <div class="card card-profile" data-image="profile-image">
-        <div class="card-header">
-          <div class="card-image">
-            <a target="_blank" rel="noopener noreferrer" href="https://github.com/Emeline0110">
-              <img style="width: 100%; object-fit: cover" loading="lazy" src="/assets/img/faces/EmelineDecocq.jpg" />
-            </a>
-          </div>
-        </div>
-        <div class="card-body pt-0">
-          <h4 class="display-4 mb-0">Emeline Decocq</h4>
-          <p class="lead">Kapteyn PhD Student</p>
-          <div class="table-responsive">
-            <ul class="list-unstyled ">
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-info mr-3">
-                      <i class="ni ni-atom"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Hadean Earth</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-success mr-3">
-                      <i class="ni ni-planet"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Prebiotic chemistry</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-danger mr-3">
-                      <i class="ni ni-paper-diploma"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Ocean formation</h6>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Column -->
-    <div class="col-lg-4 col-md-4 col-sm-6">
-      <div class="card card-profile" data-image="profile-image">
-        <div class="card-header">
-          <div class="card-image">
-            <a target="_blank" rel="noopener noreferrer" href="https://github.com/IKisvardai">
-              <img style="width: 100%; object-fit: cover" loading="lazy" src="/assets/img/faces/ImreKisv%C3%A1rdai.jpg" />
-            </a>
-          </div>
-        </div>
-        <div class="card-body pt-0">
-          <h4 class="display-4 mb-0">Imre Kisvárdai</h4>
-          <p class="lead">Kapteyn PhD Student</p>
-          <div class="table-responsive">
-            <ul class="list-unstyled ">
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-info mr-3">
-                      <i class="ni ni-atom"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Sub-Neptune evolution</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-success mr-3">
-                      <i class="ni ni-planet"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Volatile outgassing</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-danger mr-3">
-                      <i class="ni ni-paper-diploma"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Planetary geophysics</h6>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  <!-- End row -->
-  </div>
-
-   <!-- Start row -->
-  <div class="row">
-
-
-
-
-    <!-- Column -->
-    <div class="col-lg-4 col-md-4 col-sm-6">
-      <div class="card card-profile" data-image="profile-image">
-        <div class="card-header">
-          <div class="card-image">
-            <a target="_blank" rel="noopener noreferrer" href="https://www.shorttle.com/cv/">
-              <img style="width: 100%; object-fit: cover" loading="lazy" src="/assets/img/faces/OliverShorttle.jpg" />
-            </a>
-          </div>
-        </div>
-        <div class="card-body pt-0">
-          <h4 class="display-4 mb-0">Oliver Shorttle</h4>
-          <p class="lead">Cambridge Staff</p>
-          <div class="table-responsive">
-            <ul class="list-unstyled ">
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-info mr-3">
-                      <i class="ni ni-atom"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Planetary geology</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-success mr-3">
-                      <i class="ni ni-planet"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Prebiotic chemistry</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-danger mr-3">
-                      <i class="ni ni-paper-diploma"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Planetary climate</h6>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Column -->
-    <div class="col-lg-4 col-md-4 col-sm-6">
-      <div class="card card-profile" data-image="profile-image">
-        <div class="card-header">
-          <div class="card-image">
-            <a target="_blank" rel="noopener noreferrer" href="https://maraattia.github.io/">
-              <img style="width: 100%; object-fit: cover" loading="lazy" src="/assets/img/faces/MaraAttia.jpg" />
-            </a>
-          </div>
-        </div>
-        <div class="card-body pt-0">
-          <h4 class="display-4 mb-0">Mara Attia</h4>
-          <p class="lead">Kapteyn Postdoc</p>
-          <div class="table-responsive">
-            <ul class="list-unstyled ">
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-info mr-3">
-                      <i class="ni ni-atom"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Sub-Neptune evolution</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-success mr-3">
-                      <i class="ni ni-planet"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Equations of state</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-danger mr-3">
-                      <i class="ni ni-paper-diploma"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Energy transport</h6>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Column -->
-    <div class="col-lg-4 col-md-4 col-sm-6">
-      <div class="card card-profile" data-image="profile-image">
-        <div class="card-header">
-          <div class="card-image">
-            <a target="_blank" rel="noopener noreferrer" href="https://github.com/ipanagiotou02">
-              <img style="width: 100%; object-fit: cover" loading="lazy" src="/assets/img/faces/IoannisPanagiotou.jpg" />
-            </a>
-          </div>
-        </div>
-        <div class="card-body pt-0">
-          <h4 class="display-4 mb-0">Ioannis Panagiotou</h4>
-          <p class="lead">Kapteyn MSc Student</p>
-          <div class="table-responsive">
-            <ul class="list-unstyled ">
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-info mr-3">
-                      <i class="ni ni-atom"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Super-Earth evolution</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-success mr-3">
-                      <i class="ni ni-planet"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Atmospheric chemistry</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-danger mr-3">
-                      <i class="ni ni-paper-diploma"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Ultra-hot planets</h6>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  <!-- End row -->
-  </div>
-
-   <!-- Start row -->
-  <div class="row">
-
-    <!-- Column -->
-    <div class="col-lg-4 col-md-4 col-sm-6">
-      <div class="card card-profile" data-image="profile-image">
-        <div class="card-header">
-          <div class="card-image">
-            <a target="_blank" rel="noopener noreferrer" href="https://egpbos.nl/">
-              <img style="width: 100%; object-fit: cover" loading="lazy" src="/assets/img/faces/PatrickBos.jpg" />
-            </a>
-          </div>
-        </div>
-        <div class="card-body pt-0">
-          <h4 class="display-4 mb-0">Patrick Bos</h4>
-          <p class="lead">Kapteyn Senior Research Software Engineer</p>
-          <div class="table-responsive">
-            <ul class="list-unstyled ">
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-info mr-3">
-                      <i class="ni ni-atom"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">PROTEUS framework</h6>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  <!-- End row -->
-  </div>
-
-</div>
-<div class="container" id="past-contributors-section">
-
-  <!-- Start row -->
-  <div class="row">
-    <div class="col-md-8 mx-auto text-center mb-5">
-      <br /><br />
-      <h3 class="display-3">Past contributors</h3>
-      <!-- <h4 class="lead">Previously contributed to PROTEUS but no longer involved.</h4> -->
-    </div>
-  </div>
-
-  <!-- Start row -->
-  <div class="row">
-
-    <!-- Column -->
-    <div class="col-lg-4 col-md-4 col-sm-6">
-      <div class="card card-profile" data-image="profile-image">
-        <div class="card-header">
-          <div class="card-image">
-            <a target="_blank" rel="noopener noreferrer" href="https://eaps.ethz.ch/en/people/profile.daniel-bower.html">
-              <img style="width: 100%; object-fit: cover" loading="lazy" src="/assets/img/faces/DanBower.jpg" />
-            </a>
-          </div>
-        </div>
-        <div class="card-body pt-0">
-          <h4 class="display-4 mb-0">Dan Bower</h4>
-          <p class="lead">ETH Zurich Staff</p>
-          <div class="table-responsive">
-            <ul class="list-unstyled ">
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-info mr-3">
-                      <i class="ni ni-atom"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Mantle evolution</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-success mr-3">
-                      <i class="ni ni-planet"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Thermodynamics &amp; EOS</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-danger mr-3">
-                      <i class="ni ni-paper-diploma"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Volatile partitioning</h6>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Column -->
-    <div class="col-lg-4 col-md-4 col-sm-6">
-      <div class="card card-profile" data-image="profile-image">
-        <div class="card-header">
-          <div class="card-image">
-            <a target="_blank" rel="noopener noreferrer" href="https://www.esciencecenter.nl/team/hanno-spreeuw/">
-              <img style="width: 100%; object-fit: cover" loading="lazy" src="/assets/img/faces/HannoSpreeuw.jpg" />
-            </a>
-          </div>
-        </div>
-        <div class="card-body pt-0">
-          <h4 class="display-4 mb-0">Hanno Spreeuw</h4>
-          <p class="lead">Research Software Engineer</p>
-          <div class="table-responsive">
-            <ul class="list-unstyled ">
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-info mr-3">
-                      <i class="ni ni-atom"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Code testing</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-success mr-3">
-                      <i class="ni ni-planet"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">User experience</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-danger mr-3">
-                      <i class="ni ni-paper-diploma"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Lookup tables</h6>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Column -->
-    <div class="col-lg-4 col-md-4 col-sm-6">
-      <div class="card card-profile" data-image="profile-image">
-        <div class="card-header">
-          <div class="card-image">
-            <a target="_blank" rel="noopener noreferrer" href="https://orcid.org/0000-0002-5422-8794">
-              <img style="width: 100%; object-fit: cover" loading="lazy" src="/assets/img/faces/LaurentSoucasse.jpg" />
-            </a>
-          </div>
-        </div>
-        <div class="card-body pt-0">
-          <h4 class="display-4 mb-0">Laurent Soucasse</h4>
-          <p class="lead">Research Software Engineer</p>
-          <div class="table-responsive">
-            <ul class="list-unstyled ">
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-info mr-3">
-                      <i class="ni ni-atom"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Mantle dynamics</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-success mr-3">
-                      <i class="ni ni-planet"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Stellar evolution</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-danger mr-3">
-                      <i class="ni ni-paper-diploma"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Code testing</h6>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-  <!-- End row   -->
-  </div>
-
-  <!-- Start row -->
-  <div class="row">
-
-    <!-- Column -->
-    <div class="col-lg-4 col-md-4 col-sm-6">
-      <div class="card card-profile" data-image="profile-image">
-        <div class="card-header">
-          <div class="card-image">
-            <a target="_blank" rel="noopener noreferrer" href="https://www.stefsmeets.nl/">
-              <img style="width: 100%; object-fit: cover" loading="lazy" src="/assets/img/faces/StefSmeets.jpg" />
-            </a>
-          </div>
-        </div>
-        <div class="card-body pt-0">
-          <h4 class="display-4 mb-0">Stef Smeets</h4>
-          <p class="lead">Research Software Engineer</p>
-          <div class="table-responsive">
-            <ul class="list-unstyled ">
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-info mr-3">
-                      <i class="ni ni-atom"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Code tests</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-success mr-3">
-                      <i class="ni ni-planet"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">User experience</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-danger mr-3">
-                      <i class="ni ni-paper-diploma"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Documentation</h6>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Column -->
-    <div class="col-lg-4 col-md-4 col-sm-6">
-      <div class="card card-profile" data-image="profile-image">
-        <div class="card-header">
-          <div class="card-image">
-            <a target="_blank" rel="noopener noreferrer" href="https://mark-hammond.github.io/about/">
-              <img style="width: 100%; object-fit: cover" loading="lazy" src="/assets/img/faces/MarkHammond.jpg" />
-            </a>
-          </div>
-        </div>
-        <div class="card-body pt-0">
-          <h4 class="display-4 mb-0">Mark Hammond</h4>
-          <p class="lead">Oxford Research Fellow</p>
-          <div class="table-responsive">
-            <ul class="list-unstyled ">
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-info mr-3">
-                      <i class="ni ni-atom"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Radiative transfer</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-success mr-3">
-                      <i class="ni ni-planet"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Atmosphere dynamics</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-danger mr-3">
-                      <i class="ni ni-paper-diploma"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Surface reflectivity</h6>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Column -->
-    <div class="col-lg-4 col-md-4 col-sm-6">
-      <div class="card card-profile" data-image="profile-image">
-        <div class="card-header">
-          <div class="card-image">
-            <a target="_blank" rel="noopener noreferrer" href="https://users.physics.ox.ac.uk/~pierrehumbert/">
-              <img style="width: 100%; object-fit: cover" loading="lazy" src="/assets/img/faces/RayPierrehumbert.jpg" />
-            </a>
-          </div>
-        </div>
-        <div class="card-body pt-0">
-          <h4 class="display-4 mb-0">Ray Pierrehumbert</h4>
-          <p class="lead">MIT Staff</p>
-          <div class="table-responsive">
-            <ul class="list-unstyled ">
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-info mr-3">
-                      <i class="ni ni-atom"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Planetary climates</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-success mr-3">
-                      <i class="ni ni-planet"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Atmospheric dynamics</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-danger mr-3">
-                      <i class="ni ni-paper-diploma"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Thermodynamics</h6>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Column -->
-    <div class="col-lg-4 col-md-4 col-sm-6">
-      <div class="card card-profile" data-image="profile-image">
-        <div class="card-header">
-          <div class="card-image">
-            <a target="_blank" rel="noopener noreferrer" href="https://github.com/flaviacris03">
-              <img style="width: 100%; object-fit: cover" loading="lazy" src="/assets/img/faces/FlaviaPascal.jpg" />
-            </a>
-          </div>
-        </div>
-        <div class="card-body pt-0">
-          <h4 class="display-4 mb-0">Flavia Pascal</h4>
-          <p class="lead">Cambridge MSc Student</p>
-          <div class="table-responsive">
-            <ul class="list-unstyled ">
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-info mr-3">
-                      <i class="ni ni-atom"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Planet structure</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-success mr-3">
-                      <i class="ni ni-planet"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Equations of state</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-1">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-danger mr-3">
-                      <i class="ni ni-paper-diploma"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-1">Numerical methods</h6>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Column -->
-  </div>
-
-
-
-</div>
-</div>
+<style is:global>
+  .team-heading {
+    font-family: var(--pt-font-display);
+    font-weight: 800;
+    font-size: 28px;
+    letter-spacing: -0.02em;
+    margin: 56px 0 var(--pt-5);
+  }
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 18px;
+  }
+  .person-card {
+    background: var(--pt-basalt);
+    border: 1px solid var(--pt-line-d);
+    border-radius: var(--pt-r-2);
+    overflow: hidden;
+  }
+  /* The photo is a link to the person's profile; the zoom-and-lift on hover or
+     keyboard focus signals that it is clickable. */
+  .person-photo { display: block; overflow: hidden; }
+  .person-photo img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: top;
+    transition: transform 0.45s ease, filter 0.3s ease;
+  }
+  .person-photo:hover img,
+  .person-photo:focus-visible img {
+    transform: scale(1.05);
+    filter: brightness(1.06);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .person-photo img { transition: filter 0.3s ease; }
+    .person-photo:hover img,
+    .person-photo:focus-visible img { transform: none; }
+  }
+  .person-body { padding: 14px var(--pt-4) var(--pt-4); }
+  .person-name {
+    font-family: var(--pt-font-display);
+    font-weight: 700;
+    font-size: var(--pt-fs-16);
+    letter-spacing: -0.01em;
+    color: var(--pt-text-d);
+    margin: 0;
+  }
+  .person-role {
+    font-family: var(--pt-font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--pt-azure);
+    margin: 6px 0 0;
+    line-height: 1.5;
+  }
+  /* Research topics ride along in the markup but are not part of the card
+     design. */
+  .person-topics { display: none; }
+</style>
 
 <script is:inline>
 document.addEventListener('DOMContentLoaded', function() {
+  // Shuffle each team section so the display order varies per visit.
   function shuffleSection(containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
-
-    const rows = container.querySelectorAll('.row');
-
-    // Collect all profile card columns (skip header rows)
-    let allCards = [];
-    let cardRows = [];
-    rows.forEach((row) => {
-      const cards = row.querySelectorAll('.col-lg-4.col-md-4');
-      if (cards.length > 0) {
-        cardRows.push(row);
-        cards.forEach(card => allCards.push(card));
-      }
-    });
-
-    if (allCards.length === 0) return;
-
+    const cards = Array.from(container.children);
     // Fisher-Yates shuffle
-    for (let i = allCards.length - 1; i > 0; i--) {
+    for (let i = cards.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [allCards[i], allCards[j]] = [allCards[j], allCards[i]];
+      [cards[i], cards[j]] = [cards[j], cards[i]];
     }
-
-    // Clear card rows
-    cardRows.forEach(row => {
-      while (row.firstChild) {
-        row.removeChild(row.firstChild);
-      }
-    });
-
-    // Put every shuffled card into the first card-row and let Bootstrap's
-    // flex-wrap form visual rows of 3 (col-lg-4/col-md-4) or 2 (col-sm-6).
-    // Remove the now-empty leftover rows so vertical spacing stays uniform
-    // regardless of how the source HTML happens to partition cards.
-    const targetRow = cardRows[0];
-    allCards.forEach(card => targetRow.appendChild(card));
-    for (let i = 1; i < cardRows.length; i++) {
-      cardRows[i].remove();
-    }
+    cards.forEach((card) => container.appendChild(card));
   }
 
   shuffleSection('current-developers-section');

@@ -11,46 +11,40 @@ import Base from '../layouts/Base.astro';
 
 <style is:global>
   .pub-section { margin-bottom: 2.5rem; }
-  .pub-section h4 {
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--muted-color);
-    border-bottom: 2px solid var(--border-color);
-    padding-bottom: 0.5rem;
-    margin-bottom: 1.25rem;
-  }
   .pub-entry {
     margin-bottom: 1.75rem;
     padding-left: 1rem;
-    border-left: 3px solid var(--border-color);
+    border-left: 3px solid var(--pt-line-d);
   }
   .pub-entry:hover {
-    border-left-color: var(--accent);
+    border-left-color: var(--pt-azure);
   }
   .pub-title {
+    font-family: var(--pt-font-display);
     font-weight: 700;
     font-size: 1.05rem;
-    color: var(--heading-color);
-    margin: 0 0 0.25rem;
+    letter-spacing: -0.01em;
+    color: var(--pt-text-d);
+    margin: 0 0 0.35rem;
     line-height: 1.4;
   }
   .pub-title a {
-    color: var(--heading-color);
+    color: var(--pt-text-d);
     text-decoration: none;
   }
   .pub-title a:hover {
-    color: var(--accent);
+    color: var(--pt-azure);
   }
   .pub-authors {
-    color: var(--body-color);
+    color: var(--pt-text-d2);
     font-size: 0.9rem;
-    margin: 0 0 0.25rem;
+    margin: 0 0 0.3rem;
   }
   .pub-venue {
-    color: var(--muted-color);
-    font-size: 0.85rem;
-    font-style: italic;
+    font-family: var(--pt-font-mono);
+    color: var(--pt-text-d2);
+    font-size: 0.78rem;
+    letter-spacing: 0.02em;
     margin: 0 0 0.35rem;
   }
   .pub-links {
@@ -59,20 +53,22 @@ import Base from '../layouts/Base.astro';
     flex-wrap: wrap;
   }
   .pub-links a {
-    font-size: 0.8rem;
-    color: var(--accent);
+    font-family: var(--pt-font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    color: var(--pt-azure);
     text-decoration: none;
-    padding: 0.15rem 0.5rem;
-    border: 1px solid var(--border-color);
+    padding: 0.2rem 0.55rem;
+    border: 1px solid var(--pt-line-d);
     border-radius: 3px;
     transition: background 0.15s, border-color 0.15s;
   }
   .pub-links a:hover {
-    background: var(--accent-light);
-    border-color: var(--accent);
+    background: var(--pt-basalt-2);
+    border-color: var(--pt-azure);
   }
   .pub-summary {
-    color: var(--body-color);
+    color: var(--pt-text-d2);
     font-size: 0.88rem;
     margin: 0.4rem 0 0.25rem;
     line-height: 1.55;
@@ -82,7 +78,7 @@ import Base from '../layouts/Base.astro';
   }
   .pub-abstract summary {
     font-size: 0.82rem;
-    color: var(--accent);
+    color: var(--pt-azure);
     cursor: pointer;
     user-select: none;
   }
@@ -91,11 +87,11 @@ import Base from '../layouts/Base.astro';
   }
   .pub-abstract p {
     font-size: 0.82rem;
-    color: var(--body-color);
+    color: var(--pt-text-d2);
     line-height: 1.55;
     margin: 0.4rem 0 0;
     padding-left: 0.5rem;
-    border-left: 2px solid var(--border-color);
+    border-left: 2px solid var(--pt-line-d);
   }
 </style>
 
@@ -109,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <div class="pub-section">
-  <h4>Preprints</h4>
+  <h2 class="section-label">Preprints</h2>
 
   <div class="pub-entry">
     <p class="pub-title">
@@ -130,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 
 <div class="pub-section">
-  <h4>Published</h4>
+  <h2 class="section-label">Published</h2>
 
   <div class="pub-entry">
     <p class="pub-title">

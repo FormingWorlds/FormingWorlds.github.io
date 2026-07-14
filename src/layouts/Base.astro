@@ -1,22 +1,22 @@
 ---
 // Base HTML shell shared by every page.
-// Builds the <head> (favicons, theme detection, fonts/icons, compiled CSS,
-// analytics, SEO meta) and the body chrome (Header, optional title block,
+// Builds the <head> (favicons, theme detection, fonts, tokens + chrome CSS,
+// analytics, SEO meta) and the body chrome (Header, optional page hero,
 // #main slot, Footer).
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { favicons, analyticsCode, siteTitle } from '../data/settings.js';
 
 interface Props {
-  /** Page title. Rendered as `${title} | PROTEUS Framework` and used for og/twitter titles and the auto title block heading. */
+  /** Page title. Rendered as `${title} | PROTEUS Framework` and used for og/twitter titles and the page-hero heading. */
   title?: string;
-  /** Optional subtitle for the auto title block. May contain raw HTML (e.g. a mailto link); rendered with set:html. */
+  /** Optional subtitle for the page hero. May contain raw HTML (e.g. a mailto link); rendered with set:html. */
   subtitle?: string;
   /** Meta description / og:description / twitter description. */
   description?: string;
   /** Social share image path (absolute-ized against the site origin). */
   image?: string;
-  /** When false, suppress the auto title block (the home page passes false). */
+  /** When false, suppress the page hero (the home page passes false). */
   titleBlock?: boolean;
   /** Open Graph type: 'website' for the home page, 'article' for content pages. */
   ogType?: string;
@@ -31,10 +31,13 @@ const {
   ogType = 'article',
 } = Astro.props;
 
-const fullTitle = `${title} | ${siteTitle}`;
+// The landing page is titled by the site name alone; "Home | ..." carries no
+// information in a tab or a search result.
+const fullTitle = title === 'Home' ? siteTitle : `${title} | ${siteTitle}`;
+const socialTitle = title === 'Home' ? siteTitle : title;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const imageUrl = new URL(image, Astro.site).href;
-const logoUrl = new URL('/assets/img/brand/PROTEUS_white_on_black.png', Astro.site).href;
+const logoUrl = new URL('/assets/img/brand/proteus-lockup-dark.png', Astro.site).href;
 const author = 'Tim Lichtenberg';
 
 const jsonLd = {
@@ -42,7 +45,7 @@ const jsonLd = {
   '@type': ogType === 'website' ? 'WebSite' : 'BlogPosting',
   author: { '@type': 'Person', name: author },
   description,
-  headline: title,
+  headline: socialTitle,
   image: imageUrl,
   name: siteTitle,
   publisher: {
@@ -125,45 +128,60 @@ const jsonLd = {
     })();
   </script>
 
-  <!-- Theme detection: set data-theme before first paint to prevent flash -->
+  <!-- Theme detection: set data-theme before first paint to prevent flash.
+       The stored key is shared with the module documentation sites on this
+       domain, so a theme chosen on any page carries across the whole origin. -->
   <script is:inline>
     (function () {
-      var stored = localStorage.getItem('theme');
+      var stored = localStorage.getItem('pt-theme');
       var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
       var theme = stored || (prefersDark ? 'dark' : 'light');
       document.documentElement.setAttribute('data-theme', theme);
 
       // Follow OS changes when user has no explicit preference
       window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
-        if (!localStorage.getItem('theme')) {
+        if (!localStorage.getItem('pt-theme')) {
           document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+          syncThemeToggle();
         }
       });
     })();
+
+    // Reflect the active theme on every toggle button so assistive tech
+    // announces its pressed state and the tooltip names the next action.
+    function syncThemeToggle() {
+      var light = document.documentElement.getAttribute('data-theme') === 'light';
+      document.querySelectorAll('.theme-toggle').forEach(function (b) {
+        b.setAttribute('aria-pressed', light ? 'true' : 'false');
+        b.setAttribute('title', light ? 'Switch to dark theme' : 'Switch to light theme');
+      });
+    }
 
     function toggleTheme() {
       var html = document.documentElement;
       var current = html.getAttribute('data-theme');
       var next = current === 'dark' ? 'light' : 'dark';
       html.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
+      localStorage.setItem('pt-theme', next);
+      syncThemeToggle();
     }
+
+    document.addEventListener('DOMContentLoaded', syncThemeToggle);
   </script>
 
-  <!--  Fonts and icons -->
-  <link rel="preload" href="/assets/fonts/opensans/opensans-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/css/open-sans.css">
-  <!-- Nucleo Icons -->
-  <link href="/assets/css/nucleo-icons.css" rel="stylesheet" />
-  <!-- CSS Files -->
-  <link rel="stylesheet" href="/assets/styles/styles.css">
+  <!-- Fonts (self-hosted), design tokens, and site chrome -->
+  <link rel="preload" href="/assets/fonts/instrument-sans/InstrumentSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/sora/Sora-ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/styles/fonts.css">
+  <link rel="stylesheet" href="/assets/styles/tokens.css">
+  <link rel="stylesheet" href="/assets/styles/site.css">
 
   <!-- Analytics Code -->
   <Fragment set:html={analyticsCode} />
 
   <!-- Search engine optimization -->
   <title>{fullTitle}</title>
-  <meta property="og:title" content={title} />
+  <meta property="og:title" content={socialTitle} />
   <meta name="author" content={author} />
   <meta property="og:locale" content="en" />
   <meta name="description" content={description} />
@@ -175,7 +193,7 @@ const jsonLd = {
   <meta property="og:type" content={ogType} />
   <meta name="twitter:card" content="summary_large_image" />
   <meta property="twitter:image" content={imageUrl} />
-  <meta property="twitter:title" content={title} />
+  <meta property="twitter:title" content={socialTitle} />
   <meta name="twitter:creator" content={`@${author}`} />
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
@@ -183,19 +201,18 @@ const jsonLd = {
 
 <body>
   <Header />
-  <div class="wrapper page">
-    {titleBlock && title && (
-      <div class="container contentWrapper pb-2">
-        <div class="text-left mt-5 mb-3">
-          <h3 class="display-2">{title}</h3>
-          {subtitle && <p class="lead" set:html={subtitle} />}
-        </div>
-      </div>
-    )}
 
-    <div id="main" class="container">
-      <slot />
+  {titleBlock && title && (
+    <div class="page-hero">
+      <div class="wrap narrow">
+        <h1>{title}</h1>
+        {subtitle && <p class="lede" set:html={subtitle} />}
+      </div>
     </div>
+  )}
+
+  <div id="main" class="wrap narrow">
+    <slot />
   </div>
 
   <Footer />

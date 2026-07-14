@@ -9,7 +9,7 @@ import Base from '../layouts/Base.astro';
   image="/assets/img/og-default.jpg"
 >
   <!-- Earth scenario -->
-<h4 class="demo-section-title">Early Earth</h4>
+<h2 class="section-label">Early Earth</h2>
 
 <div class="scenario-pane">
   <div class="scenario-top">
@@ -20,7 +20,7 @@ import Base from '../layouts/Base.astro';
     </div>
     <div class="scenario-info-col">
       <div class="at-a-glance">
-        <h5>At a glance</h5>
+        <h3>At a glance</h3>
         <table>
           <tr><td>Mass</td><td>1 M<sub>Earth</sub></td></tr>
           <tr><td>Orbit</td><td>1 AU (Sun)</td></tr>
@@ -61,7 +61,7 @@ import Base from '../layouts/Base.astro';
 
 <hr />
 
-<h2 id="beyond-earth">Beyond Earth</h2>
+<h2 id="beyond-earth" class="section-label">Beyond Earth</h2>
 
 <p>The same physics that governed early Earth applies across a wide range of exoplanets. PROTEUS is designed to model any rocky or volatile-rich world, from lava planets orbiting their stars in hours to sub-Neptunes with thick hydrogen envelopes.</p>
 
@@ -71,7 +71,7 @@ import Base from '../layouts/Base.astro';
 
 <hr />
 
-<h2 id="what-proteus-computes">What PROTEUS computes</h2>
+<h2 id="what-proteus-computes" class="section-label">What PROTEUS computes</h2>
 
 <p>Each simulation couples multiple physical processes in a single self-consistent calculation: radiative transfer through the atmosphere, convective heat transport in the mantle, thermochemical partitioning of volatiles between melt and gas, stellar evolution, and atmospheric escape. The modules responsible for each process can be swapped independently; see the <a href="/modules">modules page</a> for details.</p>
 
@@ -79,6 +79,131 @@ import Base from '../layouts/Base.astro';
 
 <div class="demo-cta">
   <a href="https://proteus-framework.org/PROTEUS/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Run PROTEUS yourself</a>
-  <a href="https://github.com/FormingWorlds/PROTEUS" class="btn btn-outline-primary" target="_blank" rel="noopener noreferrer">Explore the code</a>
+  <a href="https://github.com/FormingWorlds/PROTEUS" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">Explore the code</a>
 </div>
+
+<style is:global>
+  .scenario-pane { padding: 0.5rem 0 2rem; }
+  .scenario-top { display: flex; gap: 1.5rem; margin-bottom: 2rem; }
+  .scenario-video-col { flex: 7; min-width: 0; }
+  .scenario-video-col video {
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--pt-line-d);
+    border-radius: var(--pt-r-2);
+    display: block;
+  }
+  .scenario-info-col { flex: 5; min-width: 0; }
+  .at-a-glance {
+    background: var(--pt-basalt);
+    border: 1px solid var(--pt-line-d);
+    border-radius: var(--pt-r-2);
+    padding: 1.25rem;
+    height: 100%;
+  }
+  .at-a-glance h3 {
+    font-family: var(--pt-font-mono);
+    font-weight: 500;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: var(--pt-track-label);
+    color: var(--pt-azure);
+    margin: 0 0 0.75rem;
+  }
+  .at-a-glance table { width: 100%; font-size: 0.9rem; border-collapse: collapse; }
+  .at-a-glance td { padding: 0.3rem 0; border: none; vertical-align: top; }
+  .at-a-glance td:first-child {
+    font-family: var(--pt-font-mono);
+    font-size: 0.8rem;
+    color: var(--pt-text-d2);
+    padding-right: 0.75rem;
+    padding-top: 0.42rem;
+    white-space: nowrap;
+  }
+  .at-a-glance td:last-child { color: var(--pt-text-d); }
+  .at-a-glance .outcome {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--pt-line-d);
+    font-size: 0.9rem;
+    color: var(--pt-text-d2);
+  }
+  .at-a-glance .outcome strong { color: var(--pt-text-d); }
+
+  .result-gallery { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
+  .result-card {
+    flex: 1;
+    min-width: 0;
+    background: var(--pt-basalt);
+    border: 1px solid var(--pt-line-d);
+    border-radius: var(--pt-r-2);
+    overflow: hidden;
+  }
+  .result-card img { display: block; width: 100%; height: auto; }
+  .result-card .result-label {
+    font-family: var(--pt-font-mono);
+    padding: 0.55rem 0.75rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--pt-text-d2);
+    text-align: center;
+  }
+  /* Each plot ships in a dark and a light variant; show the one that matches
+     the active theme. */
+  .result-card .plot-light { display: none; }
+  [data-theme="light"] .result-card .plot-dark { display: none; }
+  [data-theme="light"] .result-card .plot-light { display: block; }
+
+  .demo-detail { margin-top: 0.5rem; margin-bottom: 1rem; }
+  .demo-detail summary {
+    color: var(--pt-azure);
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.95rem;
+    list-style: none;
+  }
+  .demo-detail summary::-webkit-details-marker { display: none; }
+  .demo-detail summary::before { content: "\25B8\00a0"; }
+  .demo-detail[open] summary::before { content: "\25BE\00a0"; }
+  .demo-detail .detail-body {
+    margin-top: 0.75rem;
+    padding-left: 0.75rem;
+    border-left: 2px solid var(--pt-line-d);
+  }
+  .demo-detail .detail-body p { font-size: 0.95rem; }
+
+  .demo-cta {
+    text-align: center;
+    padding: 2rem 0 1rem;
+    border-top: 1px solid var(--pt-line-d);
+    margin-top: 2rem;
+  }
+  .demo-cta .btn { margin: 0.5rem; }
+
+  @media (max-width: 991px) {
+    .scenario-top { flex-direction: column; }
+    .result-gallery { flex-wrap: wrap; }
+    .result-card { flex: 1 1 calc(50% - 0.5rem); }
+    .result-card:last-child:nth-child(odd) { flex: 1 1 100%; }
+  }
+  @media (max-width: 576px) {
+    .result-gallery { flex-direction: column; }
+    .result-card { flex: 1 1 100%; }
+  }
+</style>
+
+<script is:inline>
+  // Honour the OS reduced-motion preference: leave the demo videos paused
+  // with their controls instead of autoplaying on a loop.
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('video[autoplay]').forEach(function (v) {
+        v.removeAttribute('autoplay');
+        v.removeAttribute('loop');
+        v.pause();
+      });
+    });
+  }
+</script>
 </Base>

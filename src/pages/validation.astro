@@ -3,38 +3,31 @@ import Base from '../layouts/Base.astro';
 ---
 <Base
   title="How we test PROTEUS"
+  subtitle="Continuous integration, public coverage tracking, and cross-checks against independent codes and observations."
   description="Testing infrastructure, code coverage, and validation strategy for the PROTEUS framework and its modules."
   image="/assets/img/og-default.jpg"
 >
   <style is:global>
   .epistemic-callout {
-    border-left: 4px solid var(--bs-primary, #5e72e4);
-    background: var(--card-bg);
+    border: 1px solid var(--pt-line-d);
+    border-left: 4px solid var(--pt-ocean);
+    background: var(--pt-basalt);
     padding: 1.1rem 1.3rem;
     margin: 1.5rem 0 2rem;
-    border-radius: 0.4rem;
+    border-radius: var(--pt-r-2);
     font-size: 1.02rem;
-    line-height: 1.55;
+    line-height: var(--pt-lh-body);
   }
   .epistemic-callout p { margin-bottom: 0.6rem; }
   .epistemic-callout p:last-child { margin-bottom: 0; }
   .epistemic-callout .callout-label {
     display: inline-block;
-    font-size: 0.78rem;
+    font-family: var(--pt-font-mono);
+    font-size: 0.75rem;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--muted-color);
+    letter-spacing: var(--pt-track-label);
+    color: var(--pt-azure);
     margin-bottom: 0.4rem;
-  }
-
-  .testing-section h4 {
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--muted-color);
-    border-bottom: 2px solid var(--border-color);
-    padding-bottom: 0.5rem;
-    margin: 2rem 0 1rem;
   }
 
   .ci-table, .coverage-table {
@@ -47,21 +40,26 @@ import Base from '../layouts/Base.astro';
   .coverage-table th, .coverage-table td {
     text-align: left;
     padding: 0.55rem 0.65rem;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--pt-line-d);
     vertical-align: middle;
   }
   .ci-table th, .coverage-table th {
-    font-size: 0.78rem;
+    font-family: var(--pt-font-mono);
+    font-weight: 500;
+    font-size: 0.72rem;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: var(--muted-color);
+    letter-spacing: 0.1em;
+    color: var(--pt-text-d2);
+    border-bottom: 2px solid var(--pt-line-d);
     background: transparent;
   }
+  .ci-table td { color: var(--pt-text-d2); }
+  .ci-table td strong { color: var(--pt-text-d); }
   .coverage-table img { vertical-align: middle; height: 20px; }
   .coverage-table td.module-name { font-weight: 600; white-space: nowrap; }
   .coverage-table td.test-count { font-variant-numeric: tabular-nums; white-space: nowrap; }
   .coverage-table td.test-breakdown {
-    color: var(--muted-color);
+    color: var(--pt-text-d2);
     font-size: 0.85rem;
     line-height: 1.35;
   }
@@ -81,22 +79,23 @@ import Base from '../layouts/Base.astro';
 
   .test-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin: 1rem 0 1.5rem; }
   .test-card {
-    border: 1px solid var(--border-color);
-    border-radius: 0.5rem;
+    border: 1px solid var(--pt-line-d);
+    border-radius: var(--pt-r-2);
     padding: 1.1rem;
-    background: var(--card-bg);
+    background: var(--pt-basalt);
   }
-  .test-card h5 {
+  .test-card h3 {
+    font-family: var(--pt-font-display);
     margin: 0 0 0.4rem;
     font-size: 1rem;
     font-weight: 700;
-    color: var(--heading-color);
+    color: var(--pt-text-d);
   }
   .test-card p {
     margin: 0;
     font-size: 0.92rem;
     line-height: 1.5;
-    color: var(--text-color);
+    color: var(--pt-text-d2);
   }
   .test-card .accent {
     display: block;
@@ -105,61 +104,68 @@ import Base from '../layouts/Base.astro';
     border-radius: 2px;
     margin-bottom: 0.6rem;
   }
-  .accent-unit { background: #5e72e4; }
-  .accent-integ { background: #11cdef; }
-  .accent-physical { background: #f5365c; }
+  .accent-unit { background: var(--pt-ocean); }
+  .accent-integ { background: var(--pt-azure); }
+  .accent-physical { background: var(--pt-magma); }
 
   .quality-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0 1.2rem; }
   @media (max-width: 640px) { .quality-cols { grid-template-columns: 1fr; } }
   .quality-col {
-    border: 1px solid var(--border-color);
-    border-top: 3px solid var(--border-color);
-    border-radius: 0.5rem;
+    border: 1px solid var(--pt-line-d);
+    border-top: 3px solid var(--pt-line-d);
+    border-radius: var(--pt-r-2);
     padding: 1rem 1.1rem;
-    background: var(--card-bg);
+    background: var(--pt-basalt);
   }
-  .quality-req { border-top-color: #2dce89; }
-  .quality-rej { border-top-color: #f5365c; }
-  .quality-col h5 {
+  .quality-req { border-top-color: var(--pt-positive); }
+  .quality-rej { border-top-color: var(--pt-danger); }
+  .quality-col h3 {
+    font-family: var(--pt-font-mono);
     margin: 0 0 0.6rem;
-    font-size: 0.82rem;
-    font-weight: 700;
+    font-size: 0.78rem;
+    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.08em;
   }
-  .quality-req h5 { color: #2dce89; }
-  .quality-rej h5 { color: #f5365c; }
+  /* The green/red top border of each column carries the required/rejected
+     signal; the heading text stays at full-contrast primary so the small
+     uppercase mono label clears the AA ratio in both themes. */
+  .quality-req h3, .quality-rej h3 { color: var(--pt-text-d); }
   .quality-col ul { margin: 0; padding-left: 1.1rem; }
-  .quality-col li { margin: 0 0 0.5rem; font-size: 0.9rem; line-height: 1.45; color: var(--text-color); }
+  .quality-col li { margin: 0 0 0.5rem; font-size: 0.9rem; line-height: 1.45; color: var(--pt-text-d2); }
   .quality-col li:last-child { margin-bottom: 0; }
 
   .vignette { margin-bottom: 1.4rem; }
   .testing-section p + .vignette { margin-top: 2.2rem; }
   .testing-section .subsection-lead { margin: 0 0 0.2rem; }
-  .vignette h6 {
+  .vignette h4 {
+    font-family: var(--pt-font-display);
     font-size: 1rem;
     font-weight: 600;
     margin: 0 0 0.4rem;
-    color: var(--heading-color);
+    color: var(--pt-text-d);
   }
   .testing-section .subsection {
+    font-family: var(--pt-font-display);
     font-size: 1.2rem;
     font-weight: 700;
-    color: var(--heading-color);
+    letter-spacing: -0.01em;
+    color: var(--pt-text-d);
     line-height: 1.3;
     margin: 2.3rem 0 0.9rem;
     padding-left: 0.7rem;
-    border-left: 4px solid var(--bs-primary, #5e72e4);
+    border-left: 4px solid var(--pt-ocean);
   }
-  .vignette p { margin: 0 0 0.4rem; font-size: 0.95rem; line-height: 1.55; }
+  .vignette p { margin: 0 0 0.4rem; font-size: 0.95rem; line-height: var(--pt-lh-body); }
   .vignette .ref {
-    font-size: 0.85rem;
-    color: var(--muted-color);
+    font-family: var(--pt-font-mono);
+    font-size: 0.78rem;
+    color: var(--pt-text-d2);
   }
 
   .footnote {
     font-size: 0.82rem;
-    color: var(--muted-color);
+    color: var(--pt-text-d2);
     margin-top: 0.4rem;
   }
 
@@ -181,8 +187,9 @@ import Base from '../layouts/Base.astro';
     }
     .coverage-table tr,
     .ci-table tr {
-      border: 1px solid var(--border-color);
-      border-radius: 0.5rem;
+      border: 1px solid var(--pt-line-d);
+      border-radius: var(--pt-r-2);
+      background: var(--pt-basalt);
       padding: 0.85rem 1rem;
       margin-bottom: 0.85rem;
     }
@@ -204,7 +211,7 @@ import Base from '../layouts/Base.astro';
       font-size: 1.05rem;
       white-space: normal;
       padding-bottom: 0.5rem;
-      border-bottom: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--pt-line-d);
     }
     .coverage-table td.test-breakdown {
       flex: 0 0 100%;
@@ -223,16 +230,17 @@ import Base from '../layouts/Base.astro';
     .ci-table td::before {
       content: attr(data-label);
       display: block;
-      font-size: 0.72rem;
+      font-family: var(--pt-font-mono);
+      font-size: 0.68rem;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
-      color: var(--muted-color);
+      letter-spacing: 0.08em;
+      color: var(--pt-text-d2);
       margin-bottom: 0.1rem;
     }
   }
 </style>
 
-<p class="lead">Every change to code within the PROTEUS ecosystem must pass test 'gates' before it can be merged into the main versions of our models. In addition, the modelled physics is cross-checked against independent codes and against peer-reviewed papers. The 'coverage' of these tests (i.e. the fraction of the code which is probed) is tracked publicly. Validating workflows ensure that the coverage is only allowed only to increase as development progresses. We now have thousands of tests across all of our open-source repositories.</p>
+<p>Every change to code within the PROTEUS ecosystem must pass test 'gates' before it can be merged into the main versions of our models. In addition, the modelled physics is cross-checked against independent codes and against peer-reviewed papers. The 'coverage' of these tests (i.e. the fraction of the code which is probed) is tracked publicly. Validating workflows ensure that the coverage is only allowed to increase as development progresses. We now have thousands of tests across all of our open-source repositories.</p>
 
 <div class="epistemic-callout">
   <span class="callout-label">On what testing can and cannot show</span>
@@ -242,7 +250,7 @@ import Base from '../layouts/Base.astro';
 
 <div class="testing-section">
 
-<h4>Continuous integration</h4>
+<h2 class="section-label">Continuous integration</h2>
 
 Every change to PROTEUS or its modules runs through automated tests on GitHub Actions before it reaches the main branch. Two pipelines serve different purposes:
 
@@ -268,33 +276,33 @@ Pull requests must additionally clear an 80% bar on changed lines: meaning that 
 
 The full developer-facing detail is on the PROTEUS <a href="https://proteus-framework.org/PROTEUS/How-to/testing.html" target="_blank" rel="noopener noreferrer">testing how-to</a> and <a href="https://proteus-framework.org/PROTEUS/Explanations/test_framework.html" target="_blank" rel="noopener noreferrer">test-framework pages</a>.
 
-<h4>Three categories of test, three things they catch</h4>
+<h2 class="section-label">Test Categories: From Numerics to Physics</h2>
 
 <div class="test-cards">
   <div class="test-card">
     <span class="accent accent-unit"></span>
-    <h5>Unit tests</h5>
+    <h3>Unit tests</h3>
     <p>Isolate one function with mocked physics. Catch algebra errors, input-output regressions, and broken assumptions about types and units. They run in milliseconds, so the suite stays cheap to invoke on every commit.</p>
   </div>
   <div class="test-card">
     <span class="accent accent-integ"></span>
-    <h5>Integration and smoke tests</h5>
+    <h3>Integration and smoke tests</h3>
     <p>Run the real models under a minimal-configuration scenario. Often, using a single simulation time step at spatial low resolution. These catch bugs that could arise due to model coupling, which specific unit tests cannot see. For example, when two correct modules disagree on a boundary condition, on a sign convention, or on which way time runs.</p>
   </div>
   <div class="test-card">
     <span class="accent accent-physical"></span>
-    <h5>Physically-motivated validation</h5>
+    <h3>Physically-motivated validation</h3>
     <p>Cross-check against analytic limits, independent implementations (SPIDER versus Aragog for the magma-ocean energy budget), and published reference runs. This is the hardest category: pass and fail are not always binary, and a "passing" run that disagrees with a known limit is a stronger signal than a green check.</p>
   </div>
 </div>
 
-<h4>What counts as a test</h4>
+<h2 class="section-label">What counts as a test</h2>
 
 <p>Coverage measures how much of the code runs under test; it does not say whether a test would notice when the code is wrong. A test that passes for the wrong reason is worse than none, because it manufactures confidence. Every test in the suite is held to a standard a happy-path test cannot meet.</p>
 
 <div class="quality-cols">
   <div class="quality-col quality-req">
-    <h5>Required in every test</h5>
+    <h3>Required in every test</h3>
     <ul>
       <li>A boundary or edge case: a temperature at the solidus, an empty inventory of volatiles, or an extreme physical parameter.</li>
       <li>The failure path. Where the code validates its input, the error must fire and leave no side effect behind; for closed-form physics, the limiting case must hold exactly.</li>
@@ -303,7 +311,7 @@ The full developer-facing detail is on the PROTEUS <a href="https://proteus-fram
     </ul>
   </div>
   <div class="quality-col quality-rej">
-    <h5>Rejected automatically</h5>
+    <h3>Rejected automatically</h3>
     <ul>
       <li>Single-assertion tests, and weak checks such as "the result is not empty" or "the result is positive" left to stand alone.</li>
       <li>Floating-point equality against a literal value.</li>
@@ -315,11 +323,11 @@ The full developer-facing detail is on the PROTEUS <a href="https://proteus-fram
 
 <p>These rules are enforced mechanically: an automated check runs on every pull request and rejects new tests that break them. The strongest requirement, a value pinned to a refereed result or to an independent implementation, is documented under <a href="#tests-and-papers">Tests and papers</a> below.</p>
 
-<h4>Code coverage and test counts</h4>
+<h2 class="section-label">Code coverage and test counts</h2>
 
 The PROTEUS framework and its mature submodules expose passing-tests badges and, where wired, line-coverage badges from <a href="https://app.codecov.io/gh/FormingWorlds" target="_blank" rel="noopener noreferrer">Codecov</a>. Test counts marked with a live badge refresh automatically from each repository's CI. Each row links to the public repository behind it, and every live badge to the workflow or coverage report that generated it, so the figures can be checked at source.
 
-<p style="font-size: 0.95rem; margin-bottom: 0.4rem;"><strong>Mature suites</strong></p>
+<p style="font-size: 0.95rem; margin: 2rem 0 0.4rem;"><strong>Mature suites</strong></p>
 
 <table class="coverage-table">
   <colgroup>
@@ -398,9 +406,16 @@ The PROTEUS framework and its mature submodules expose passing-tests badges and,
     <tr>
       <td class="module-name"><a href="https://github.com/FormingWorlds/SPIDER">SPIDER</a></td>
       <td class="test-count"><a href="https://github.com/FormingWorlds/SPIDER/blob/badges/tests-total.json"><img src="/assets/badges/tests-total-spider.svg" alt="tests" /></a></td>
-      <td class="test-breakdown"><a href="https://github.com/FormingWorlds/SPIDER/blob/badges/tests-fast.json"><img src="/assets/badges/tests-unit-spider.svg" alt="unit" /></a><a href="https://github.com/FormingWorlds/SPIDER/blob/badges/tests-nightly.json"><img src="/assets/badges/tests-integration-spider.svg" alt="integration" /></a></td>
+      <td class="test-breakdown"><a href="https://github.com/FormingWorlds/SPIDER/blob/badges/tests-unit.json"><img src="/assets/badges/tests-unit-spider.svg" alt="unit" /></a><a href="https://github.com/FormingWorlds/SPIDER/tree/badges"><img src="/assets/badges/tests-integration-spider.svg" alt="integration" /></a></td>
       <td><a href="https://github.com/FormingWorlds/SPIDER/actions/workflows/ci.yml"><img src="/assets/badges/ci-spider.svg" alt="CI" /></a></td>
       <td><a href="https://app.codecov.io/gh/FormingWorlds/SPIDER"><img src="/assets/badges/coverage-spider.svg" alt="coverage" /></a></td>
+    </tr>
+    <tr>
+      <td class="module-name"><a href="https://github.com/FormingWorlds/JANUS">JANUS</a></td>
+      <td class="test-count"><a href="https://github.com/FormingWorlds/JANUS/blob/badges/tests-total.json"><img src="/assets/badges/tests-total-janus.svg" alt="tests" /></a></td>
+      <td class="test-breakdown"><a href="https://github.com/FormingWorlds/JANUS/blob/badges/tests-unit.json"><img src="/assets/badges/tests-unit-janus.svg" alt="unit" /></a><a href="https://github.com/FormingWorlds/JANUS/blob/badges/tests-integration.json"><img src="/assets/badges/tests-integration-janus.svg" alt="integration" /></a></td>
+      <td><a href="https://github.com/FormingWorlds/JANUS/actions/workflows/tests.yaml"><img src="/assets/badges/ci-janus.svg" alt="CI" /></a></td>
+      <td><a href="https://app.codecov.io/gh/FormingWorlds/JANUS"><img src="/assets/badges/coverage-janus.svg" alt="coverage" /></a></td>
     </tr>
 
   </tbody>
@@ -426,12 +441,6 @@ The PROTEUS framework and its mature submodules expose passing-tests badges and,
   </thead>
   <tbody>
     <tr>
-      <td class="module-name"><a href="https://github.com/FormingWorlds/JANUS">JANUS</a></td>
-      <td class="test-count"><a href="https://github.com/FormingWorlds/JANUS/blob/badges/tests-total.json"><img src="/assets/badges/tests-total-janus.svg" alt="tests" /></a></td>
-      <td class="test-breakdown">Total count; tests parametrized, not tier-marked</td>
-      <td><a href="https://github.com/FormingWorlds/JANUS/actions/workflows/tests.yaml"><img src="/assets/badges/ci-janus.svg" alt="CI" /></a></td>
-    </tr>
-    <tr>
       <td class="module-name"><a href="https://github.com/FormingWorlds/VULCAN">VULCAN</a></td>
       <td class="test-count"><a href="https://github.com/FormingWorlds/VULCAN/blob/badges/tests-total.json"><img src="/assets/badges/tests-total-vulcan.svg" alt="tests" /></a></td>
       <td class="test-breakdown"><a href="https://github.com/FormingWorlds/VULCAN/blob/badges/tests-unit.json"><img src="/assets/badges/tests-unit-vulcan.svg" alt="unit" /></a><a href="https://github.com/FormingWorlds/VULCAN/blob/badges/tests-integration.json"><img src="/assets/badges/tests-integration-vulcan.svg" alt="integration" /></a></td>
@@ -447,7 +456,7 @@ The PROTEUS framework and its mature submodules expose passing-tests badges and,
       <td class="module-name"><a href="https://github.com/nichollsh/lovepy">LovePy</a></td>
       <td class="test-count">none yet</td>
       <td class="test-breakdown">Cross-validated against analytic Love number solutions in published applications</td>
-      <td><span style="color: var(--muted-color); font-size: 0.85rem;">No CI yet</span></td>
+      <td><span style="color: var(--pt-text-d2); font-size: 0.85rem;">No CI yet</span></td>
     </tr>
 
   </tbody>
@@ -455,49 +464,47 @@ The PROTEUS framework and its mature submodules expose passing-tests badges and,
 
 <p class="footnote">Rows displaying a numeric badge are live. The count is fetched from each repository's automated workflows, and republished whenever the repository's tests change. Ecosystem-wide adoption of the PROTEUS marker convention (unit, smoke, integration, slow) is a point of active development.</p>
 
-<h4 id="tests-and-papers">Tests and papers</h4>
+<h2 id="tests-and-papers" class="section-label">Tests and papers</h2>
 
 Testing extends far beyond software workflows. We also probe whether each code within the PROTEUS ecosystem matches real world observations, and whether independent codes (models) agree with one another in the expected regimes. These other testing modes are both on the public record. The papers highlighted below are part of the complete <a href="/publications">PROTEUS publications list</a>.
 
-<h5 class="subsection">Tested against data: published applications</h5>
+<h3 class="subsection">Tested against data: published applications</h3>
 
 <p class="subsection-lead">A simulation that reaches a refereed journal has been argued for in writing, exposed to independent review, and tied to physical predictions that observation can falsify. Two recent results close that loop.</p>
 
 <div class="vignette">
-  <h6>Early Earth: the magma ocean lifetime</h6>
+  <h4>Early Earth: the magma ocean lifetime</h4>
   <p>Coupled PROTEUS simulations of post-impact Earth resolve the interplay between tidal heating from the early Moon and greenhouse forcing from the outgassed atmosphere. The magma ocean lifetime ranges from roughly 30 to 500 Myr depending on mantle redox and volatile inventory, a prediction tied to specific geochemical observables.</p>
   <p class="ref">van Dijk, Nicholls &amp; Lichtenberg, <em>Planetary Science Journal</em> 7, 94 (2026). <a href="https://doi.org/10.3847/PSJ/ae5928">doi:10.3847/PSJ/ae5928</a></p>
 </div>
 
 <div class="vignette">
-  <h6>L 98-59 d: a JWST detection meets a model prediction</h6>
+  <h4>L 98-59 d: a JWST detection meets a model prediction</h4>
   <p>JWST detected sulphur dioxide in the atmosphere of L 98-59 d, the first sulphur detection on a planet of this size. PROTEUS explains it with a permanent, sulphur- and hydrogen-rich magma ocean whose outgassed SO<sub>2</sub> is produced photochemically, ruling out both the standard "gas dwarf" and "water world" categories. The falsification loop closes: data constrains the model, the model returns a testable interior-composition claim, and the next observation can break it.</p>
   <p class="ref">Nicholls, Lichtenberg, Chatterjee, Guimond, Postolec &amp; Pierrehumbert, <em>Nature Astronomy</em> 10, 809 (2026). <a href="https://doi.org/10.1038/s41550-026-02815-8">doi:10.1038/s41550-026-02815-8</a></p>
 </div>
 
-<h5 class="subsection">Tested against independent codes: the CHILI intercomparison</h5>
+<h3 class="subsection">Tested against independent codes: the CHILI intercomparison</h3>
 
 <p class="subsection-lead">Publication tests one code against data. A harder test is whether independent codes, built by different groups with different numerical choices, agree on the same problem. We initiated the Coupled atmospHere Interior modeL Intercomparison (CHILI), the first shared benchmark suite for coupled interior-atmosphere models, to make that test rigorous.</p>
 
 <div class="vignette">
-  <h6>CHILI: a shared benchmark for coupled codes</h6>
+  <h4>CHILI: a shared benchmark for coupled codes</h4>
   <p><a href="https://nexss.info/cuisines/chili-mip/">CHILI defines a common protocol of standardized cases</a>, early Earth, Venus, and rocky exoplanets around M-dwarfs, that any coupled interior-atmosphere code can run. Fixing the inputs turns model disagreement into a measured quantity: differences in energy transport, geochemistry, and volatile cycling become numbers to explain rather than buried assumptions. It is the community-scale counterpart of the cross-code checks PROTEUS runs internally, such as SPIDER against Aragog for the magma-ocean energy budget.</p>
   <p class="ref">Lichtenberg et al., <em>Planetary Science Journal</em> 7, 108 (2026). <a href="https://doi.org/10.3847/PSJ/ae593b">doi:10.3847/PSJ/ae593b</a></p>
 </div>
 
 <div class="vignette">
-  <h6>CHILI I: primordial magma oceans of Earth and Venus</h6>
+  <h4>CHILI I: primordial magma oceans of Earth and Venus</h4>
   <p>The model intercomparison results benchmark planetary evolution codes against the scenarios of Earth and Venus. Earth models agree on solidification timescale to within 4 Myr. Simulated Venus scenarios diverge more, between the participating models. The intercomparison highlights that divergence arise through variant treatments of volatile partitioning, vertical energy transport, mantle rheology, and melting. Locating those sensitivities is what separates a code that runs from one that agrees with independent implementations.</p>
   <p class="ref">Nicholls et al. (2026). <a href="https://arxiv.org/abs/2606.24757">arXiv:2606.24757</a></p>
 </div>
 
-<h4>Further reading</h4>
+<h2 class="section-label">Further reading</h2>
 
 <ul>
   <li><a href="https://proteus-framework.org/PROTEUS/How-to/testing.html" target="_blank" rel="noopener noreferrer">PROTEUS test-infrastructure guide</a></li>
   <li><a href="https://proteus-framework.org/PROTEUS/Explanations/test_framework.html" target="_blank" rel="noopener noreferrer">Test categorization (markers, fixtures, conventions)</a></li>
-  <li><a href="https://github.com/FormingWorlds/PROTEUS/tree/main/.github/workflows" target="_blank" rel="noopener noreferrer">CI workflow definitions on GitHub</a></li>
-  <li><a href="https://app.codecov.io/gh/FormingWorlds" target="_blank" rel="noopener noreferrer">Codecov dashboards (FormingWorlds organisation)</a></li>
   <li><a href="/publications">All PROTEUS publications</a></li>
 </ul>
 

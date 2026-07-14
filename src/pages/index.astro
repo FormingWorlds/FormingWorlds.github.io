@@ -1,5 +1,28 @@
 ---
 import Base from '../layouts/Base.astro';
+import Lockup from '../components/Lockup.astro';
+
+// Homepage module overview: name, one-line brief, and the module's physical
+// domain, which sets the swatch colour via the shared .dom-* classes in
+// site.css.
+const overviewModules = [
+  { name: 'AGNI / JANUS', brief: 'Radiative-convective atmosphere models', domain: 'atmos' },
+  { name: 'SPIDER / Aragog', brief: 'Magma ocean and mantle evolution', domain: 'interior' },
+  { name: 'CALLIOPE / Atmodeller', brief: 'Volatile partitioning and outgassing', domain: 'outgassing' },
+  { name: 'VULCAN', brief: 'Atmospheric photochemistry', domain: 'chem' },
+  { name: 'ZEPHYRUS', brief: 'Hydrodynamic atmospheric escape', domain: 'chem' },
+  { name: 'MORS', brief: 'Stellar evolution tracks', domain: 'stellar' },
+  { name: 'LovePy / Obliqua', brief: 'Tidal dissipation and heating', domain: 'tidal' },
+  { name: 'Zalmoxis', brief: 'Planetary interior structure', domain: 'interior' },
+];
+
+// A typo'd domain would render an invisible swatch; fail the build instead.
+const knownDomains = ['interior', 'outgassing', 'tidal', 'chem', 'atmos', 'stellar'];
+for (const m of overviewModules) {
+  if (!knownDomains.includes(m.domain)) {
+    throw new Error(`Unknown module domain "${m.domain}" for ${m.name}`);
+  }
+}
 ---
 <Base
   title="Home"
@@ -8,240 +31,171 @@ import Base from '../layouts/Base.astro';
   description="PROTEUS is an open-source framework for simulating the coupled interior-atmosphere evolution of rocky planets, from magma oceans to habitable worlds."
   image="/assets/img/og-default.jpg"
 >
-  <header class="header-1 fullWidth">
-  <div class="page-header">
-    <div class="page-header-image" data-bg="/assets/img/illustrations/two_face_planet.jpg" style="opacity: 0.9; width: 100vw; margin-left: calc(50% - 50vw); background-size: cover; background-position: center; background-repeat: no-repeat;">
-    </div>
-    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.35); pointer-events: none;"></div>
-    <div class="container-fluid">
-      <div class="row justify-content-center">
-        <div class="col-12 col-md-8 col-lg-6 d-flex justify-content-center flex-column hero-text-position text-center">
-          <br><br><br><br>
-          <img src="/assets/img/brand/PROTEUS_transparent.svg" alt="PROTEUS" class="hero-logo" width="90%" fetchpriority="high">
-          <p class="lead mt-4">
-            <span class="hero-tagline">
-              Simulate the coupled interior-atmosphere evolution of rocky planets over deep time.
-            </span>
-            <span class="hero-subtitle">
-              <br><br>
-              Named after the Greek god of sea change, PROTEUS is flexible and adaptable; it can foretell the future, but answers only to those who ask the right questions.
-            </span>
-          </p>
-          <div class="mt-4">
-            <a href="https://proteus-framework.org/PROTEUS/" class="btn btn-primary btn-lg mr-2" target="_blank" rel="noopener noreferrer">
-              <i class="ni ni-books mr-1"></i> Documentation
-            </a>
-            <a href="/demos" class="btn btn-outline-secondary btn-lg hero-btn-outline">
-              <i class="ni ni-spaceship mr-1"></i> See demos
-            </a>
-          </div>
-          <br>
-        </div>
+  <!-- The hero stays dark in both themes (tokens.css restores the dark text
+       tokens under [data-theme="light"] .hero), so the lockup uses the dark
+       glyph directly rather than the only-dark/only-light swap. -->
+  <section class="hero fullbleed">
+    <div class="wrap narrow hero-inner">
+      <Lockup tag="h1" class="hero-lockup" ariaLabel="PROTEUS framework" />
+      <p class="hero-tagline">Simulate the coupled interior-atmosphere evolution of rocky planets over deep time.</p>
+      <div class="hero-actions">
+        <a href="https://proteus-framework.org/PROTEUS/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Documentation</a>
+        <a href="/demos" class="btn btn-ghost">See demos</a>
       </div>
     </div>
-  </div>
-</header>
+    <p class="hero-credit">Artwork &copy; Mark A. Garlick</p>
+    <div class="hero-band" aria-hidden="true"></div>
+  </section>
 
-<script is:inline>
-  (function() {
-    var el = document.querySelector('.page-header-image[data-bg]');
-    if (el && el.dataset.bg) {
-      el.style.backgroundImage = 'url(' + el.dataset.bg + ')';
-    }
-  })();
-</script>
+  <section class="home-overview">
+    <p class="overview-lead">
+      PROTEUS is an open-source framework that couples models of planetary interiors, atmospheres, chemistry, and orbital dynamics to simulate how rocky planets evolve from molten beginnings to potentially habitable worlds.
+    </p>
 
-<section class="home-overview">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-10">
-        <p class="overview-lead">
-          PROTEUS is an open-source framework that couples models of planetary interiors, atmospheres, chemistry, and orbital dynamics to simulate how rocky planets evolve from molten beginnings to potentially habitable worlds.
-        </p>
-      </div>
+    <h2 class="section-label">Modules</h2>
+    <div class="overview-modules">
+      {overviewModules.map((m) => (
+        <a href="/modules" class="overview-module">
+          <span class={`module-swatch dom-${m.domain}`}></span>
+          <div>
+            <strong>{m.name}</strong>
+            <span class="module-brief">{m.brief}</span>
+          </div>
+        </a>
+      ))}
     </div>
-
-    <div class="row mt-5">
-      <div class="col-lg-10 mx-auto">
-        <h5 class="overview-section-title">Modules</h5>
-        <div class="overview-modules">
-          <div class="overview-module">
-            <span class="module-dot" style="background:#5e72e4"></span>
-            <div>
-              <strong>AGNI / JANUS</strong>
-              <span class="module-brief">Radiative-convective atmosphere models</span>
-            </div>
-          </div>
-          <div class="overview-module">
-            <span class="module-dot" style="background:#8b572a"></span>
-            <div>
-              <strong>SPIDER / Aragog</strong>
-              <span class="module-brief">Magma ocean and mantle evolution</span>
-            </div>
-          </div>
-          <div class="overview-module">
-            <span class="module-dot" style="background:#fb6340"></span>
-            <div>
-              <strong>CALLIOPE / Atmodeller</strong>
-              <span class="module-brief">Volatile partitioning and outgassing</span>
-            </div>
-          </div>
-          <div class="overview-module">
-            <span class="module-dot" style="background:#2dce89"></span>
-            <div>
-              <strong>VULCAN</strong>
-              <span class="module-brief">Atmospheric photochemistry</span>
-            </div>
-          </div>
-          <div class="overview-module">
-            <span class="module-dot" style="background:#11cdef"></span>
-            <div>
-              <strong>ZEPHYRUS</strong>
-              <span class="module-brief">Hydrodynamic atmospheric escape</span>
-            </div>
-          </div>
-          <div class="overview-module">
-            <span class="module-dot" style="background:#f5365c"></span>
-            <div>
-              <strong>MORS</strong>
-              <span class="module-brief">Stellar evolution tracks</span>
-            </div>
-          </div>
-          <div class="overview-module">
-            <span class="module-dot" style="background:#8965e0"></span>
-            <div>
-              <strong>LovePy / Obliqua</strong>
-              <span class="module-brief">Tidal dissipation and heating</span>
-            </div>
-          </div>
-          <div class="overview-module">
-            <span class="module-dot" style="background:#8b572a"></span>
-            <div>
-              <strong>Zalmoxis</strong>
-              <span class="module-brief">Planetary interior structure</span>
-            </div>
-          </div>
-        </div>
-        <div class="mt-3 text-right">
-          <a href="/modules" class="overview-link">Full module details <i class="ni ni-bold-right" style="font-size:0.75rem"></i></a>
-        </div>
-      </div>
+    <div class="overview-more">
+      <a href="/modules" class="overview-link">Full module details</a>
     </div>
-  </div>
-</section>
+  </section>
 
 <style is:global>
+  /* ---------- hero ---------- */
+  /* Planetary-system artwork behind a dark scrim that keeps the lockup and
+     text legible; the token gradient sits underneath as the pre-load and
+     fallback background. */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    background:
+      linear-gradient(rgba(5, 7, 11, 0.55), rgba(5, 7, 11, 0.3) 45%, rgba(5, 7, 11, 0.65)),
+      url('/assets/img/illustrations/two_face_planet.jpg') center / cover no-repeat,
+      var(--pt-grad-hero);
+    border-bottom: 1px solid var(--pt-line-d);
+  }
+  /* Where CSS image-set with type() is available (every current browser),
+     serve the higher-resolution AVIF, then WebP, with the JPEG layer above as
+     the fallback. The dark scene compresses small, so the crisper 3200px art
+     still loads lighter than the old 2000px JPEG. */
+  @supports (background-image: image-set(url("i.webp") type("image/webp"))) {
+    .hero {
+      background:
+        linear-gradient(rgba(5, 7, 11, 0.55), rgba(5, 7, 11, 0.3) 45%, rgba(5, 7, 11, 0.65)),
+        image-set(
+          url('/assets/img/illustrations/two_face_planet.avif') type('image/avif'),
+          url('/assets/img/illustrations/two_face_planet.webp') type('image/webp')
+        ) center / cover no-repeat,
+        var(--pt-grad-hero);
+    }
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    padding-top: 110px;
+    padding-bottom: var(--pt-9);
+  }
+  .hero-credit {
+    position: absolute;
+    right: 14px;
+    bottom: calc(var(--pt-2) + 10px);
+    z-index: 1;
+    margin: 0;
+    font-family: var(--pt-font-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--pt-text-d2);
+    opacity: 0.6;
+    text-shadow: 0 1px 2px rgba(5, 7, 11, 0.6);
+  }
+  /* Hero variant of the brand lockup: the shared .brand-lockup rules carry
+     the structure and glyph alignment; this scales it up for the banner. */
+  .hero-lockup {
+    --lockup-size: clamp(56px, 10vw, var(--pt-fs-120));
+    --lockup-tag-size: clamp(10px, 1.6vw, var(--pt-fs-20));
+  }
   .hero-tagline {
+    font-size: clamp(19px, 2.4vw, 26px);
     font-weight: 600;
-    color: #ffffff;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.7), 0 0 30px rgba(0,0,0,0.4);
+    line-height: 1.45;
+    color: var(--pt-text-d);
+    max-width: 34ch;
+    margin-top: 56px;
   }
-  .hero-subtitle {
-    font-weight: 300;
-    color: rgba(255,255,255,0.85);
-    text-shadow: 0 2px 8px rgba(0,0,0,0.7), 0 0 30px rgba(0,0,0,0.4);
-    font-size: 85% !important;
-  }
-  .hero-text-position p,
-  .hero-text-position span {
-    font-size: 120% !important;
-    line-height: 1.5;
-  }
-  .hero-btn-outline {
-    color: #fff !important;
-    border-color: rgba(255,255,255,0.6) !important;
-  }
-  .hero-btn-outline:hover {
-    background-color: rgba(255,255,255,0.15) !important;
-    border-color: #fff !important;
-  }
-  .hero-logo {
-    max-width: 550px;
-    width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-  }
-  @media (max-width: 768px) {
-    .hero-logo {
-      max-width: 300px;
-    }
-  }
-  @media (max-width: 576px) {
-    .hero-logo {
-      max-width: 250px;
-    }
-  }
-  @media (min-width: 992px) {
-    .hero-text-position {
-      margin-right: 0 !important;
-    }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 40px; }
+  .hero-band {
+    position: relative;
+    z-index: 1;
+    height: var(--pt-2);
+    background: var(--pt-grad-phase);
   }
 
-  /* Homepage overview section */
-  .home-overview {
-    padding: 4rem 0 3rem;
-    background: var(--page-bg);
-  }
+  /* ---------- overview ---------- */
+  .home-overview { padding: 72px 0 0; }
   .overview-lead {
-    font-size: 1.2rem;
-    line-height: 1.8;
-    color: var(--body-color);
-    text-align: center;
+    font-size: 19px;
+    line-height: 1.7;
+    color: var(--pt-text-d2);
+    max-width: 76ch;
   }
-  .overview-section-title {
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-size: 0.85rem;
-    color: var(--muted-color);
-    border-bottom: 2px solid var(--border-color);
-    padding-bottom: 0.5rem;
-    margin-bottom: 1rem;
-  }
+  .home-overview .section-label { margin-top: var(--pt-8); }
   .overview-modules {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem 2rem;
+    gap: 14px var(--pt-7);
   }
-  .overview-module {
+  /* Each entry links to the module details page; the hover surface signals
+     that the rows are clickable. The selector outweighs the chrome's generic
+     content-link underline rule. */
+  .home-overview .overview-module {
     display: flex;
     align-items: flex-start;
-    gap: 0.75rem;
-    padding: 0.5rem 0;
-  }
-  .module-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
-    margin-top: 0.45rem;
-  }
-  .overview-module strong {
-    color: var(--heading-color);
-    font-size: 0.95rem;
-  }
-  .module-brief {
-    display: block;
-    color: var(--muted-color);
-    font-size: 0.85rem;
-    margin-top: 0.1rem;
-  }
-  .overview-link {
-    font-size: 0.9rem;
-    color: var(--accent);
+    gap: 14px;
+    padding: 6px 10px;
+    margin: 0 -10px;
+    border-radius: var(--pt-r-2);
     text-decoration: none;
   }
-  .overview-link:hover {
-    color: var(--accent-hover);
-    text-decoration: underline;
+  .home-overview .overview-module:hover {
+    background: var(--pt-basalt-2);
+  }
+  /* Swatch colour comes from the shared .dom-* classes in site.css. */
+  .module-swatch {
+    width: 22px;
+    height: 14px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    margin-top: 5px;
+  }
+  .overview-module strong { color: var(--pt-text-d); font-size: var(--pt-fs-16); }
+  .module-brief {
+    display: block;
+    color: var(--pt-text-d2);
+    font-size: 14.5px;
+    margin-top: 2px;
+  }
+  .overview-more { margin-top: 20px; text-align: right; }
+  .overview-link {
+    font-family: var(--pt-font-mono);
+    font-size: var(--pt-fs-13);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
   }
   @media (max-width: 576px) {
-    .overview-modules {
-      grid-template-columns: 1fr;
-    }
-    .overview-lead {
-      font-size: 1.05rem;
-    }
+    .overview-modules { grid-template-columns: 1fr; }
+    .overview-lead { font-size: 17px; }
+    .hero-actions .btn { width: 100%; justify-content: center; }
   }
+
 </style>
 </Base>

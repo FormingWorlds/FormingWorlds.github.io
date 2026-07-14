@@ -1,0 +1,25 @@
+---
+// Brand lockup: the PROTEUS wordmark with the phase glyph as the O, plus the
+// "framework" tag. Structure and glyph alignment are shared via the
+// .brand-lockup rules in site.css; callers size their variant through the
+// --lockup-* custom properties on the extra class they pass in.
+interface Props {
+  /** Element to render, e.g. 'a' for the footer link or 'h1' for the home hero. */
+  tag?: string;
+  /** Variant class carrying the sizing properties (and any theme hooks). */
+  class?: string;
+  /** Accessible name; without it the glyph img reads as a bare "O". */
+  ariaLabel?: string;
+  /** Swap the glyph between its dark and light variants with the theme.
+      Leave off in regions that stay dark in both themes (the home hero). */
+  themeSwap?: boolean;
+  /** Link target when tag is 'a'. */
+  href?: string;
+}
+const { tag = 'div', class: className = '', ariaLabel, themeSwap = false, href } = Astro.props;
+const Element = tag;
+---
+<Element class={`brand-lockup ${className}`.trim()} aria-label={ariaLabel} href={href}>
+  <span class="word">PR{themeSwap ? <><img class="only-dark" src="/assets/img/brand/glyph_phase_dark.png" alt="O" /><img class="only-light" src="/assets/img/brand/glyph_phase_light.png" alt="O" /></> : <img src="/assets/img/brand/glyph_phase_dark.png" alt="O" />}TEUS</span>
+  <span class="tag">framework</span>
+</Element>

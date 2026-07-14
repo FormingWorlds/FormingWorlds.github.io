@@ -1,90 +1,110 @@
 ---
-// Top navigation bar with the primary menu, dropdowns, and theme toggle.
-// The navbar always renders the dark bg-default variant.
-import { header, menuItems, siteTitle } from '../data/settings.js';
+// Sticky top navigation: glyph + wordmark, primary menu with dropdown,
+// magma tick on the active item, theme toggle, and a collapsible panel on
+// small screens.
+import { menuItems, siteTitle } from '../data/settings.js';
 
-const { logoImage, mobileLogoImage } = header;
+// Normalized current path ('/demos/' and '/demos' compare equal).
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isActive = (url) => (url.replace(/\/$/, '') || '/') === currentPath;
+// A dropdown is active when one of its internal entries is the current page.
+const isDropdownActive = (item) =>
+  item.submenuItems.some((sub) => !sub.url.includes('http') && isActive(sub.url));
 ---
-<nav id="navbar-main" class="navbar navbar-main navbar-expand-lg bg-default navbar-dark headroom">
+<header class="site">
+  <div class="wrap nav">
+    <a href="/" class="nav-logo" aria-label={siteTitle}>
+      <img class="only-dark" src="/assets/img/brand/glyph_phase_dark.png" alt="" />
+      <img class="only-light" src="/assets/img/brand/glyph_phase_light.png" alt="" />
+      <b>PROTEUS</b>
+    </a>
 
-  <div class="container-fluid">
-    {logoImage ? (
-      <a href="/" class="navbar-brand mr-lg-5">
-        <img src={logoImage} />
-      </a>
-    ) : (
-      <a href="/" class="navbar-brand mr-lg-5">
-        {siteTitle}
-      </a>
-    )}
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global"
-      aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <button class="nav-burger" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="17" x2="20" y2="17"></line></svg>
     </button>
-    <div class="navbar-collapse collapse" id="navbar_global">
-      <div class="navbar-collapse-header">
-        <div class="row">
-          <div class="col-6 collapse-brand">
-            {mobileLogoImage ? (
-              <a href="/">
-                <img src={mobileLogoImage} />
-              </a>
-            ) : logoImage ? (
-              <a href="/">
-                <img src={logoImage} />
-              </a>
-            ) : (
-              <a class="navbar-brand" href="/">
-                {siteTitle}
-              </a>
-            )}
-          </div>
-          <div class="col-6 collapse-close">
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar_global"
-              aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
-              <span></span>
-              <span></span>
-            </button>
-          </div>
-        </div>
-      </div>
-      <ul class="navbar-nav navbar-nav-hover align-items-lg-center ml-auto">
-        {menuItems.map((item) =>
-          item.submenuItems ? (
-            <li class="nav-item dropdown">
-              <a href="javascript:;" class="nav-link" data-toggle="dropdown" role="button">
-                <span class="nav-link-inner--text">{item.title}</span>
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                {item.submenuItems.map((subitem) => (
-                  <a class="dropdown-item" href={subitem.url}>
-                    <i class={`ni ${subitem.icon}`}></i>
-                    {subitem.title}
-                  </a>
-                ))}
-              </div>
-            </li>
-          ) : (
-            <li class="nav-item">
-              {item.url.includes('http') ? (
-                <a href={item.url} class="nav-link" target="_blank" rel="noopener noreferrer">
-                  <span class="nav-link-inner--text">{item.title}</span>
-                </a>
-              ) : (
-                <a href={item.url} class="nav-link">
-                  <span class="nav-link-inner--text">{item.title}</span>
-                </a>
-              )}
-            </li>
-          )
-        )}
 
-      </ul>
-      <button class="theme-toggle ml-3" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
-        <svg class="theme-icon-moon" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-        <svg class="theme-icon-sun" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+    <nav class="nav-links" id="nav-links" aria-label="Primary">
+      {menuItems.map((item) =>
+        item.submenuItems ? (
+          <div class="dd">
+            <a role="button" tabindex="0" aria-haspopup="true" aria-expanded="false" class={isDropdownActive(item) ? 'active' : ''}>{item.title}</a>
+            <div class="dd-menu">
+              {item.submenuItems.map((subitem) =>
+                subitem.url.includes('http') ? (
+                  <a href={subitem.url} target="_blank" rel="noopener noreferrer">{subitem.title}</a>
+                ) : (
+                  <a href={subitem.url}>{subitem.title}</a>
+                )
+              )}
+            </div>
+          </div>
+        ) : item.url.includes('http') ? (
+          <a href={item.url} target="_blank" rel="noopener noreferrer">{item.title}</a>
+        ) : (
+          <a href={item.url} class={isActive(item.url) ? 'active' : ''} aria-current={isActive(item.url) ? 'page' : undefined}>{item.title}</a>
+        )
+      )}
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light and dark theme" aria-pressed="false" title="Switch to light theme">
+        <svg class="tt-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        <svg class="tt-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
       </button>
-    </div>
+    </nav>
   </div>
-</nav>
+</header>
+
+<!-- Mobile navigation: the burger toggles the panel; a click outside or
+     Escape closes it. Desktop dropdowns are pure CSS (hover/focus-within). -->
+<script is:inline>
+  (function () {
+    document.addEventListener('click', function (e) {
+      var burger = document.querySelector('.nav-burger');
+      var links = document.getElementById('nav-links');
+      if (!burger || !links) return;
+
+      if (burger.contains(e.target)) {
+        var open = links.classList.toggle('open');
+        burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+        return;
+      }
+      // Tapping a link inside the panel, or anywhere outside it, closes it.
+      if (links.classList.contains('open') && (!links.contains(e.target) || e.target.closest('a[href]'))) {
+        links.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        var links = document.getElementById('nav-links');
+        var burger = document.querySelector('.nav-burger');
+        if (links) links.classList.remove('open');
+        if (burger) burger.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Desktop dropdowns open on hover or focus (CSS); on small screens the
+    // submenus render permanently inline. Keep aria-expanded truthful by
+    // reading the menu's actual rendered state on every hover/focus change
+    // rather than assuming a single trigger, and let the keyboard drop focus
+    // from the trigger into the menu.
+    document.querySelectorAll('.dd').forEach(function (dd) {
+      var trigger = dd.querySelector('[aria-haspopup]');
+      var menu = dd.querySelector('.dd-menu');
+      if (!trigger || !menu) return;
+      function syncExpanded() {
+        var open = getComputedStyle(menu).display !== 'none';
+        trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      }
+      syncExpanded();
+      ['mouseenter', 'mouseleave', 'focusin', 'focusout'].forEach(function (evt) {
+        dd.addEventListener(evt, syncExpanded);
+      });
+      trigger.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown') {
+          var first = menu.querySelector('a');
+          if (first) { e.preventDefault(); first.focus(); }
+        }
+      });
+    });
+  })();
+</script>

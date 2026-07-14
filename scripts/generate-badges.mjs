@@ -46,13 +46,42 @@ function logoDataUri(icon) {
 const LOGO_GITHUB = logoDataUri(simpleIcons.siGithub);
 const LOGO_CODECOV = logoDataUri(simpleIcons.siCodecov);
 
+// Badge colors come from the site's design tokens (tokens.css): Ocean for
+// neutral counts, the semantic green/amber/red for pass-fail and coverage.
+// Endpoints publish shields.io color names; this maps each name onto the
+// token value so every badge matches the palette without touching the
+// endpoints themselves.
+const OCEAN = '#1B6FA8';
+const POSITIVE = '#2E8B57';
+// Lighter tint of the positive green for the 80-90% coverage band, so those
+// figures still read as a pass rather than an amber warning. The token file is
+// vendored, so this lives here alongside the other palette constants.
+const POSITIVE_LIGHT = '#3CB371';
+const WARNING = '#C77726';
+const DANGER = '#C2362B';
+const MUTED = '#5A6B7A';
+const TOKEN_COLORS = {
+  brightgreen: POSITIVE,
+  green: POSITIVE,
+  yellowgreen: POSITIVE_LIGHT,
+  yellow: WARNING,
+  orange: WARNING,
+  red: DANGER,
+  blue: OCEAN,
+  lightgrey: MUTED,
+  lightgray: MUTED,
+  grey: MUTED,
+  gray: MUTED,
+};
+const tokenColor = (color) => TOKEN_COLORS[color] ?? color;
+
 // House style for test-count and marker badges. Their color carries no
 // pass/fail meaning, so every module renders in the same blue. The label is
 // fixed by the badge's role (the total badge reads "tests", a marker badge
 // reads its marker name), not taken from the endpoint, so the row reads
 // identically no matter what wording a module's own endpoint emits. Only the
 // count itself comes from the endpoint.
-const COUNT_COLOR = 'blue';
+const COUNT_COLOR = OCEAN;
 const houseCount = (d, label) => ({ label, message: d.message, color: COUNT_COLOR });
 
 /** Lower-cased repo name used as the file-name slug for a module. */
@@ -127,7 +156,7 @@ async function fetchCiStatus(mod) {
 
 /** Render an SVG string for a {label, message, color} triple. */
 function render({ label, message, color }, logoBase64) {
-  const spec = { label, message, color, style: 'flat' };
+  const spec = { label, message, color: tokenColor(color), style: 'flat' };
   if (logoBase64) spec.logoBase64 = logoBase64;
   return makeBadge(spec);
 }
@@ -149,44 +178,78 @@ async function main() {
   const doc = parseYaml(readFileSync(DATA_FILE, 'utf8'));
   const modules = [...(doc.mature ?? []), ...(doc.in_development ?? [])];
 
+  // A broken entry in test_counts.yml costs that module its badges, never the
+  // whole run: since the output directory is rebuilt from scratch on every
+  // build, one throw escaping this loop would blank every badge on the page.
   const jobs = [];
   for (const mod of modules) {
-    const slug = slugOf(mod);
-    const branch = mod.badge_branch || 'main';
+    try {
+      const missing = ['owner', 'repo'].filter((f) => typeof mod?.[f] !== 'string' || !mod[f]);
+      if (missing.length) {
+        console.warn(`Skipping module entry missing ${missing.join(', ')}: ${JSON.stringify(mod)}`);
+        continue;
+      }
+      const slug = slugOf(mod);
+      const branch = mod.badge_branch || 'main';
 
-    if (mod.workflow && mod.ci_label) {
-      jobs.push(
-        fetchCiStatus(mod).then((conclusion) => {
-          const data =
-            conclusion === 'success'
-              ? { label: mod.ci_label, message: 'passing', color: 'brightgreen' }
-              : conclusion
-                ? { label: mod.ci_label, message: 'failing', color: 'red' }
-                : null;
-          return writeBadge(`ci-${slug}`, data && render(data, LOGO_GITHUB), mod.ci_label);
-        }),
-      );
-    }
+      if (mod.workflow && mod.ci_label) {
+        jobs.push(
+          fetchCiStatus(mod).then((conclusion) => {
+            const data =
+              conclusion === 'success'
+                ? { label: mod.ci_label, message: 'passing', color: POSITIVE }
+                : conclusion
+                  ? { label: mod.ci_label, message: 'failing', color: DANGER }
+                  : null;
+            return writeBadge(`ci-${slug}`, data && render(data, LOGO_GITHUB), mod.ci_label);
+          }),
+        );
+      }
 
-    if (mod.total_endpoint) {
-      const url = endpointUrl(mod, mod.total_endpoint, branch);
-      jobs.push(
-        fetchEndpoint(url).then((d) => writeBadge(`tests-total-${slug}`, d && render(houseCount(d, 'tests')), 'tests')),
-      );
-    }
+      if (mod.total_endpoint) {
+        const url = endpointUrl(mod, mod.total_endpoint, branch);
+        jobs.push(
+          fetchEndpoint(url).then((d) => writeBadge(`tests-total-${slug}`, d && render(houseCount(d, 'tests')), 'tests')),
+        );
+      }
 
-    for (const [marker, file] of Object.entries(mod.markers ?? {})) {
-      const url = endpointUrl(mod, file, branch);
-      jobs.push(
-        fetchEndpoint(url).then((d) => writeBadge(`tests-${marker}-${slug}`, d && render(houseCount(d, marker)), marker)),
-      );
-    }
+      for (const [marker, value] of Object.entries(mod.markers ?? {})) {
+        // A marker named "total" would write tests-total-<slug>.svg over the
+        // total-count badge.
+        if (marker === 'total') {
+          console.warn(`Skipping marker "total" for ${mod.repo}: the name is reserved for the total badge`);
+          continue;
+        }
+        // A marker may map to a list of endpoint files; the badge then shows
+        // the sum of their counts. This folds a module's extra tiers into the
+        // two public categories (the PROTEUS badge convention: everything
+        // beyond unit reads as integration).
+        const files = Array.isArray(value) ? value : [value];
+        const urls = files.map((file) => endpointUrl(mod, file, branch));
+        jobs.push(
+          Promise.all(urls.map(fetchEndpoint)).then((parts) => {
+            let d = null;
+            if (parts.every(Boolean)) {
+              if (parts.length === 1) {
+                d = parts[0];
+              } else {
+                const sum = parts.reduce((acc, p) => acc + Number(p.message), 0);
+                d = Number.isFinite(sum) ? { ...parts[0], message: String(sum) } : null;
+              }
+            }
+            return writeBadge(`tests-${marker}-${slug}`, d && render(houseCount(d, marker)), marker);
+          }),
+        );
+      }
 
-    if (mod.has_codecov) {
-      const url = `${RAW}/${SITE_REPO}/badges/coverage-${slug}.json`;
-      jobs.push(
-        fetchEndpoint(url).then((d) => writeBadge(`coverage-${slug}`, d && render(d, LOGO_CODECOV), 'coverage')),
-      );
+      if (mod.has_codecov) {
+        const url = `${RAW}/${SITE_REPO}/badges/coverage-${slug}.json`;
+        jobs.push(
+          fetchEndpoint(url).then((d) => writeBadge(`coverage-${slug}`, d && render(d, LOGO_CODECOV), 'coverage')),
+        );
+      }
+    } catch (err) {
+      console.warn(`Skipping badges for ${mod?.repo ?? 'a module entry'}:`, err?.message ?? err);
     }
   }
 

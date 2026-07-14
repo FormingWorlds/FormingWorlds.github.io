@@ -7,7 +7,7 @@ import Base from '../layouts/Base.astro';
   description="The licensing philosophy of the PROTEUS framework: fully open source, modular and independently licensed components, why we use Apache 2.0, how it works alongside GPL-3 modules, and our commitment to crediting the developers of the code we build on."
   image="/assets/img/og-default.jpg"
 >
-  <h2 id="in-brief-our-core-values">In brief: our core values</h2>
+  <h2 class="section-label" id="in-brief-our-core-values">In brief: our core values</h2>
 
 <p>Licensing is a legal subject, and rarely the most exciting part of research.
 We set it out carefully because the right licensing is what lets the law support how we want to do science, rather than stand in its way.
@@ -45,7 +45,7 @@ Keeping the code open is what allows that community to form and <a href="https:/
   <li><a href="#credit">Scientific credit is a separate obligation, and we take it seriously.</a></li>
 </ul>
 
-<h2 id="open-development">Open source, developed in the open</h2>
+<h2 class="section-label" id="open-development">Open source, developed in the open</h2>
 
 <p>PROTEUS will only ever support and include <a href="https://opensource.org/osd" target="_blank" rel="noopener noreferrer">fully open source</a> code.
 We do not build on closed, proprietary, or source-unavailable components, and we do not plan to.
@@ -56,7 +56,7 @@ This keeps the entire pipeline, from input data to published figure, open to ins
 Issues, code review, and design discussions are public, and anyone can follow the work, report problems, or propose changes.
 Releases are versioned and published, so a published result can state the exact code that produced it, in line with the <a href="https://www.nature.com/articles/s41597-022-01710-x" target="_blank" rel="noopener noreferrer">FAIR principles for research software</a>.</p>
 
-<h2 id="modules">A framework of independent modules</h2>
+<h2 class="section-label" id="modules">A framework of independent modules</h2>
 
 <p>PROTEUS is a coupling framework rather than a single monolithic program.
 The physics is divided across a set of modules, each of which handles one domain: the atmosphere, the mantle, outgassing, photochemistry, escape, stellar evolution, tides, or interior structure.
@@ -73,7 +73,7 @@ The PROTEUS coupler orchestrates the exchange of boundary conditions between whi
 
 <p>Much of the value of PROTEUS lies in this integration work: bringing established codes together, extending them, and in many cases contributing improvements back to the projects they came from.</p>
 
-<h2 id="licenses">Licenses across the framework</h2>
+<h2 class="section-label" id="licenses">Licenses across the framework</h2>
 
 <p>Different components carry different licenses, reflecting the choices of their authors.
 The authoritative license for any component is always the one stated in its repository.
@@ -93,7 +93,7 @@ Representative examples across the ecosystem:</p>
 
 <p>PROTEUS itself, the coupling framework, is released under the <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener noreferrer">Apache 2.0 license</a>.</p>
 
-<h2 id="apache">Why PROTEUS uses Apache 2.0</h2>
+<h2 class="section-label" id="apache">Why PROTEUS uses Apache 2.0</h2>
 
 <p>Apache 2.0 is a permissive license.
 It lets anyone use, modify, and redistribute the code, including as part of a larger work under a different license, as long as attribution and the license notice are preserved.</p>
@@ -114,7 +114,7 @@ The license also includes a patent retaliation clause: if a user starts patent l
 For scientific software this certainty is worth having, because contributors come from many universities, research institutes, and companies, each with different intellectual property policies and patent portfolios.
 This is why we license the framework, and the modules we maintain, permissively, with Apache 2.0 as our default.</p>
 
-<h2 id="permissive-norm">Permissive licenses are widely used in scientific software</h2>
+<h2 class="section-label" id="permissive-norm">Permissive licenses are widely used in scientific software</h2>
 
 <p>Permissive licensing is the established choice for the general-purpose scientific software the research community relies on every day.
 Much of the foundational scientific Python stack, including <a href="https://numpy.org" target="_blank" rel="noopener noreferrer">NumPy</a>, <a href="https://scipy.org" target="_blank" rel="noopener noreferrer">SciPy</a>, <a href="https://pandas.pydata.org" target="_blank" rel="noopener noreferrer">pandas</a>, <a href="https://scikit-learn.org" target="_blank" rel="noopener noreferrer">scikit-learn</a>, and <a href="https://www.astropy.org" target="_blank" rel="noopener noreferrer">Astropy</a>, is released under the permissive BSD 3-Clause license, and <a href="https://matplotlib.org" target="_blank" rel="noopener noreferrer">Matplotlib</a> under its own, equally permissive license.
@@ -123,7 +123,7 @@ Many of these tools, including Matplotlib, NumPy, and Astropy, grew out of resea
 PROTEUS sits at the framework level, and we license the coupling framework permissively for the same reason.
 Several of the domain-specific solver codes PROTEUS uses are released under copyleft licenses; the next section describes how the framework respects their terms.</p>
 
-<h2 id="gpl">How Apache 2.0 works alongside GPL-3 modules</h2>
+<h2 class="section-label" id="gpl">How Apache 2.0 works alongside GPL-3 modules</h2>
 
 <p>Some modules used by PROTEUS are released under the <a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank" rel="noopener noreferrer">GPL-3.0 license</a>.
 The question that matters here is redistribution: the GPL’s strong copyleft obligations attach when a combined work that includes GPL code is distributed, not when programs are run.
@@ -145,7 +145,7 @@ On that basis we treat the PROTEUS package as not distributing a combined work t
 If you redistribute the combination, or modify and redistribute a module, that distribution is governed by the GPL.
 Because the modules are optional and swappable, a simulation can be configured to meet the licensing requirements of a project or institution, provided a suitable alternative module exists for each role.</p>
 
-<h2 id="assets">Documentation, data, and other non-software assets</h2>
+<h2 class="section-label" id="assets">Documentation, data, and other non-software assets</h2>
 
 <p>The framework produces more than code.
 Documentation, website text, figures, lookup tables, reference data, and the deposits we publish to archives such as <a href="https://zenodo.org" target="_blank" rel="noopener noreferrer">Zenodo</a> all carry their own licenses, chosen on the same open principle as the software but matched to the kind of material.</p>
@@ -172,7 +172,7 @@ A <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="no
 <p>An archive deposit that mixes content and data carries CC BY as a whole, with any public-domain data files inside it marked <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener noreferrer">CC0</a> in the README.
 Where adaptations must stay open under share-alike, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a> is the fallback: it is one-way compatible with GPL-3.0, but it cannot be republished under the plain CC BY terms that many journals use, so figures stay under CC BY to remain publishable there.</p>
 
-<h2 id="credit">Credit where it is due</h2>
+<h2 class="section-label" id="credit">Credit where it is due</h2>
 
 <p>A permissive license requires little beyond preserving copyright and license notices; it says nothing about the scientific credit owed to the people who wrote the code.
 We treat that credit as a separate and serious obligation, fully independent of licensing.
@@ -188,7 +188,7 @@ PROTEUS exists because of the work of the wider community, and many of its modul
 
 <p>Our full guidance on citation, authorship, and acknowledgement is set out in the <a href="https://proteus-framework.org/PROTEUS/Community/CONTRIBUTING" target="_blank" rel="noopener noreferrer">contributing guidelines</a>.</p>
 
-<h2 id="questions-and-discussion">Questions and discussion</h2>
+<h2 class="section-label" id="questions-and-discussion">Questions and discussion</h2>
 
 <p>Licensing in open source is nuanced, and reasonable people read parts of it differently.
 We have set out our position here, and we welcome questions, corrections, and discussion.
@@ -207,17 +207,24 @@ If you maintain a code we depend on, are considering using PROTEUS in your own w
   .lic-table td {
     text-align: left;
     padding: 0.6rem 0.9rem;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--pt-line-d);
     vertical-align: top;
+    color: var(--pt-text-d2);
+    line-height: var(--pt-lh-body);
   }
   .lic-table thead th {
+    font-family: var(--pt-font-mono);
+    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-size: 0.8rem;
-    color: var(--muted-color);
-    border-bottom: 2px solid var(--border-color);
+    letter-spacing: 0.1em;
+    font-size: 0.72rem;
+    color: var(--pt-text-d2);
+    border-bottom: 2px solid var(--pt-line-d);
   }
-  .lic-table tbody tr:hover { background: var(--card-bg); }
-  .lic-table td:first-child { font-weight: 700; color: var(--heading-color); white-space: nowrap; }
+  .lic-table tbody tr:hover { background: var(--pt-basalt); }
+  /* First-column phrases can run long ("Documentation, website text,
+     figures"), so they wrap rather than forcing the table wider than a phone
+     viewport. */
+  .lic-table td:first-child { font-weight: 700; color: var(--pt-text-d); }
 </style>
 </Base>
