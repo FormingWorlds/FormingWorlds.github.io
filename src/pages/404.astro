@@ -6,8 +6,8 @@ import Base from '../layouts/Base.astro';
     <img class="error-glyph only-dark" src="/assets/img/brand/glyph_phase_dark.png" alt="" aria-hidden="true" />
     <img class="error-glyph only-light" src="/assets/img/brand/glyph_phase_light.png" alt="" aria-hidden="true" />
     <h1 class="title">404</h1>
-    <p class="lead">Page not found :(</p>
-    <p class="description">Ooooups! Looks like you got lost.</p>
+    <p class="error-lead">We could not find that page.</p>
+    <p class="description">The address may be mistyped, or the page may have moved.</p>
   </div>
 
 <style>
@@ -27,7 +27,7 @@ import Base from '../layouts/Base.astro';
     line-height: 1;
     margin: 0;
   }
-  .error-page .lead {
+  .error-page .error-lead {
     font-size: 19px;
     color: var(--pt-text-d2);
     margin: 18px 0 6px;

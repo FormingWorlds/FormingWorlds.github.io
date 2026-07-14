@@ -27,7 +27,7 @@ const isDropdownActive = (item) =>
       {menuItems.map((item) =>
         item.submenuItems ? (
           <div class="dd">
-            <a role="button" tabindex="0" aria-haspopup="true" class={isDropdownActive(item) ? 'active' : ''}>{item.title}</a>
+            <a role="button" tabindex="0" aria-haspopup="true" aria-expanded="false" class={isDropdownActive(item) ? 'active' : ''}>{item.title}</a>
             <div class="dd-menu">
               {item.submenuItems.map((subitem) =>
                 subitem.url.includes('http') ? (
@@ -44,7 +44,7 @@ const isDropdownActive = (item) =>
           <a href={item.url} class={isActive(item.url) ? 'active' : ''} aria-current={isActive(item.url) ? 'page' : undefined}>{item.title}</a>
         )
       )}
-      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light and dark theme" aria-pressed="false" title="Switch to light theme">
         <svg class="tt-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
         <svg class="tt-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
       </button>
@@ -80,6 +80,31 @@ const isDropdownActive = (item) =>
         if (links) links.classList.remove('open');
         if (burger) burger.setAttribute('aria-expanded', 'false');
       }
+    });
+
+    // Desktop dropdowns open on hover or focus (CSS); on small screens the
+    // submenus render permanently inline. Keep aria-expanded truthful by
+    // reading the menu's actual rendered state on every hover/focus change
+    // rather than assuming a single trigger, and let the keyboard drop focus
+    // from the trigger into the menu.
+    document.querySelectorAll('.dd').forEach(function (dd) {
+      var trigger = dd.querySelector('[aria-haspopup]');
+      var menu = dd.querySelector('.dd-menu');
+      if (!trigger || !menu) return;
+      function syncExpanded() {
+        var open = getComputedStyle(menu).display !== 'none';
+        trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      }
+      syncExpanded();
+      ['mouseenter', 'mouseleave', 'focusin', 'focusout'].forEach(function (evt) {
+        dd.addEventListener(evt, syncExpanded);
+      });
+      trigger.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown') {
+          var first = menu.querySelector('a');
+          if (first) { e.preventDefault(); first.focus(); }
+        }
+      });
     });
   })();
 </script>

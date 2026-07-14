@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 ---
 <Base
   title="How we test PROTEUS"
+  subtitle="Continuous integration, public coverage tracking, and cross-checks against independent codes and observations."
   description="Testing infrastructure, code coverage, and validation strategy for the PROTEUS framework and its modules."
   image="/assets/img/og-default.jpg"
 >
@@ -27,18 +28,6 @@ import Base from '../layouts/Base.astro';
     letter-spacing: var(--pt-track-label);
     color: var(--pt-azure);
     margin-bottom: 0.4rem;
-  }
-
-  .testing-section h2 {
-    font-family: var(--pt-font-mono);
-    font-weight: 500;
-    font-size: 0.82rem;
-    text-transform: uppercase;
-    letter-spacing: var(--pt-track-label);
-    color: var(--pt-azure);
-    border-bottom: 1px solid var(--pt-line-d);
-    padding-bottom: 0.6rem;
-    margin: 3rem 0 1.2rem;
   }
 
   .ci-table, .coverage-table {
@@ -138,8 +127,10 @@ import Base from '../layouts/Base.astro';
     text-transform: uppercase;
     letter-spacing: 0.08em;
   }
-  .quality-req h3 { color: var(--pt-positive); }
-  .quality-rej h3 { color: var(--pt-danger); }
+  /* The green/red top border of each column carries the required/rejected
+     signal; the heading text stays at full-contrast primary so the small
+     uppercase mono label clears the AA ratio in both themes. */
+  .quality-req h3, .quality-rej h3 { color: var(--pt-text-d); }
   .quality-col ul { margin: 0; padding-left: 1.1rem; }
   .quality-col li { margin: 0 0 0.5rem; font-size: 0.9rem; line-height: 1.45; color: var(--pt-text-d2); }
   .quality-col li:last-child { margin-bottom: 0; }
@@ -249,7 +240,7 @@ import Base from '../layouts/Base.astro';
   }
 </style>
 
-<p class="lead">Every change to code within the PROTEUS ecosystem must pass test 'gates' before it can be merged into the main versions of our models. In addition, the modelled physics is cross-checked against independent codes and against peer-reviewed papers. The 'coverage' of these tests (i.e. the fraction of the code which is probed) is tracked publicly. Validating workflows ensure that the coverage is only allowed only to increase as development progresses. We now have thousands of tests across all of our open-source repositories.</p>
+<p>Every change to code within the PROTEUS ecosystem must pass test 'gates' before it can be merged into the main versions of our models. In addition, the modelled physics is cross-checked against independent codes and against peer-reviewed papers. The 'coverage' of these tests (i.e. the fraction of the code which is probed) is tracked publicly. Validating workflows ensure that the coverage is only allowed to increase as development progresses. We now have thousands of tests across all of our open-source repositories.</p>
 
 <div class="epistemic-callout">
   <span class="callout-label">On what testing can and cannot show</span>
@@ -259,7 +250,7 @@ import Base from '../layouts/Base.astro';
 
 <div class="testing-section">
 
-<h2>Continuous integration</h2>
+<h2 class="section-label">Continuous integration</h2>
 
 Every change to PROTEUS or its modules runs through automated tests on GitHub Actions before it reaches the main branch. Two pipelines serve different purposes:
 
@@ -285,7 +276,7 @@ Pull requests must additionally clear an 80% bar on changed lines: meaning that 
 
 The full developer-facing detail is on the PROTEUS <a href="https://proteus-framework.org/PROTEUS/How-to/testing.html" target="_blank" rel="noopener noreferrer">testing how-to</a> and <a href="https://proteus-framework.org/PROTEUS/Explanations/test_framework.html" target="_blank" rel="noopener noreferrer">test-framework pages</a>.
 
-<h2>Test Categories: From Numerics to Physics</h2>
+<h2 class="section-label">Test Categories: From Numerics to Physics</h2>
 
 <div class="test-cards">
   <div class="test-card">
@@ -305,7 +296,7 @@ The full developer-facing detail is on the PROTEUS <a href="https://proteus-fram
   </div>
 </div>
 
-<h2>What counts as a test</h2>
+<h2 class="section-label">What counts as a test</h2>
 
 <p>Coverage measures how much of the code runs under test; it does not say whether a test would notice when the code is wrong. A test that passes for the wrong reason is worse than none, because it manufactures confidence. Every test in the suite is held to a standard a happy-path test cannot meet.</p>
 
@@ -332,7 +323,7 @@ The full developer-facing detail is on the PROTEUS <a href="https://proteus-fram
 
 <p>These rules are enforced mechanically: an automated check runs on every pull request and rejects new tests that break them. The strongest requirement, a value pinned to a refereed result or to an independent implementation, is documented under <a href="#tests-and-papers">Tests and papers</a> below.</p>
 
-<h2>Code coverage and test counts</h2>
+<h2 class="section-label">Code coverage and test counts</h2>
 
 The PROTEUS framework and its mature submodules expose passing-tests badges and, where wired, line-coverage badges from <a href="https://app.codecov.io/gh/FormingWorlds" target="_blank" rel="noopener noreferrer">Codecov</a>. Test counts marked with a live badge refresh automatically from each repository's CI. Each row links to the public repository behind it, and every live badge to the workflow or coverage report that generated it, so the figures can be checked at source.
 
@@ -473,7 +464,7 @@ The PROTEUS framework and its mature submodules expose passing-tests badges and,
 
 <p class="footnote">Rows displaying a numeric badge are live. The count is fetched from each repository's automated workflows, and republished whenever the repository's tests change. Ecosystem-wide adoption of the PROTEUS marker convention (unit, smoke, integration, slow) is a point of active development.</p>
 
-<h2 id="tests-and-papers">Tests and papers</h2>
+<h2 id="tests-and-papers" class="section-label">Tests and papers</h2>
 
 Testing extends far beyond software workflows. We also probe whether each code within the PROTEUS ecosystem matches real world observations, and whether independent codes (models) agree with one another in the expected regimes. These other testing modes are both on the public record. The papers highlighted below are part of the complete <a href="/publications">PROTEUS publications list</a>.
 
@@ -509,7 +500,7 @@ Testing extends far beyond software workflows. We also probe whether each code w
   <p class="ref">Nicholls et al. (2026). <a href="https://arxiv.org/abs/2606.24757">arXiv:2606.24757</a></p>
 </div>
 
-<h2>Further reading</h2>
+<h2 class="section-label">Further reading</h2>
 
 <ul>
   <li><a href="https://proteus-framework.org/PROTEUS/How-to/testing.html" target="_blank" rel="noopener noreferrer">PROTEUS test-infrastructure guide</a></li>

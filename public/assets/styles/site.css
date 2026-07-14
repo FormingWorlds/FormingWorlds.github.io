@@ -136,7 +136,6 @@ html { overflow-x: hidden; overflow-x: clip; }
 :where(#main) a:not(.btn) { text-decoration: underline; text-decoration-color: color-mix(in srgb, currentColor 40%, transparent); text-underline-offset: 3px; }
 :where(#main) a:not(.btn):hover { text-decoration-color: currentColor; }
 :where(#main) hr { border: none; border-top: 1px solid var(--pt-line-d); margin: var(--pt-7) 0; }
-:where(#main) .lead { font-size: 19px; line-height: 1.65; color: var(--pt-text-d2); }
 
 /* Mono uppercase section label (the eyebrow as a section heading). The class
    carries the look only; apply it to whatever heading level the page's

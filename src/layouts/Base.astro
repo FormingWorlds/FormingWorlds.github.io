@@ -128,29 +128,45 @@ const jsonLd = {
     })();
   </script>
 
-  <!-- Theme detection: set data-theme before first paint to prevent flash -->
+  <!-- Theme detection: set data-theme before first paint to prevent flash.
+       The stored key is shared with the module documentation sites on this
+       domain, so a theme chosen on any page carries across the whole origin. -->
   <script is:inline>
     (function () {
-      var stored = localStorage.getItem('theme');
+      var stored = localStorage.getItem('pt-theme');
       var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
       var theme = stored || (prefersDark ? 'dark' : 'light');
       document.documentElement.setAttribute('data-theme', theme);
 
       // Follow OS changes when user has no explicit preference
       window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
-        if (!localStorage.getItem('theme')) {
+        if (!localStorage.getItem('pt-theme')) {
           document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+          syncThemeToggle();
         }
       });
     })();
+
+    // Reflect the active theme on every toggle button so assistive tech
+    // announces its pressed state and the tooltip names the next action.
+    function syncThemeToggle() {
+      var light = document.documentElement.getAttribute('data-theme') === 'light';
+      document.querySelectorAll('.theme-toggle').forEach(function (b) {
+        b.setAttribute('aria-pressed', light ? 'true' : 'false');
+        b.setAttribute('title', light ? 'Switch to dark theme' : 'Switch to light theme');
+      });
+    }
 
     function toggleTheme() {
       var html = document.documentElement;
       var current = html.getAttribute('data-theme');
       var next = current === 'dark' ? 'light' : 'dark';
       html.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
+      localStorage.setItem('pt-theme', next);
+      syncThemeToggle();
     }
+
+    document.addEventListener('DOMContentLoaded', syncThemeToggle);
   </script>
 
   <!-- Fonts (self-hosted), design tokens, and site chrome -->

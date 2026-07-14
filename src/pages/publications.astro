@@ -11,17 +11,6 @@ import Base from '../layouts/Base.astro';
 
 <style is:global>
   .pub-section { margin-bottom: 2.5rem; }
-  .pub-section h2 {
-    font-family: var(--pt-font-mono);
-    font-weight: 500;
-    font-size: 0.82rem;
-    text-transform: uppercase;
-    letter-spacing: var(--pt-track-label);
-    color: var(--pt-azure);
-    border-bottom: 1px solid var(--pt-line-d);
-    padding-bottom: 0.6rem;
-    margin: 3rem 0 1.25rem;
-  }
   .pub-entry {
     margin-bottom: 1.75rem;
     padding-left: 1rem;
@@ -116,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <div class="pub-section">
-  <h2>Preprints</h2>
+  <h2 class="section-label">Preprints</h2>
 
   <div class="pub-entry">
     <p class="pub-title">
@@ -137,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 
 <div class="pub-section">
-  <h2>Published</h2>
+  <h2 class="section-label">Published</h2>
 
   <div class="pub-entry">
     <p class="pub-title">
