@@ -60,8 +60,10 @@ Conventions:
 - Venue is the full journal name, then volume, page, and year, for example `The Planetary Science Journal, 7, 94 (2026)`.
 - The link row is always ordered SciX, arXiv, DOI. Omit a link only when it genuinely does not exist.
 - Use HTML entities or `<sub>`/`<sup>` for formulae, for example `SO<sub>2</sub>` and `H₂O`.
+- Write the `pub-summary` in an accessible, plain-language voice for a non-specialist reader: say what the paper found in everyday terms, and do not copy the technical register of the abstract. The Reflation (Cesario et al.) entry is the reference for this voice.
+- The `pub-summary` must be no longer than the Reflation (Cesario et al.) summary, which sets the absolute maximum (roughly 100 words in three sentences) and should not itself be lengthened. Shorter is better; longer is never acceptable.
 
-Before committing, confirm the entry renders (`npm run dev`), the three links resolve, and the ordering and author formatting match the surrounding entries.
+Before committing, confirm the entry renders (`npm run dev`), the three links resolve, the ordering and author formatting match the surrounding entries, and the summary is within the length limit above.
 
 ## Adding or updating a team member
 
