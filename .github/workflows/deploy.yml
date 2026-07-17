@@ -21,6 +21,11 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # The build puts a token in the environment of the whole npm build, where any
+    # build-time dependency can read it, so this job holds only the scope the
+    # checkout needs. The deploy scopes stay with the deploy job.
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
@@ -28,7 +33,18 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
+      # The badge generator reads each module's CI status from the GitHub Actions
+      # API. That data is public and needs no permission; the token is only for
+      # the rate limit. Unauthenticated calls draw on 60 per hour tied to the
+      # runner's outbound IP, which is shared with other Actions traffic and is
+      # sometimes spent before this build starts, leaving the CI badges at "n/a".
+      #
+      # The generator runs as the prebuild hook in package.json, so the token
+      # belongs on the build step: giving the generator a step of its own would
+      # leave prebuild running it a second time, unauthenticated, every build.
       - run: npm run build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/upload-pages-artifact@v5
         with:
           path: ./dist
