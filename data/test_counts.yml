@@ -16,8 +16,10 @@
 #                    must be on Codecov for the figure to populate. After adding a
 #                    module, run the "Refresh coverage badges" workflow once so
 #                    the endpoint exists before the badge renders.
-#   total          Static total test count (text or number). Shown when no
-#                    `total_endpoint` is provided.
+#   total          Static total test count (text or number), recorded here and
+#                    written as plain text into the module's row on the
+#                    validation page. Used when the module publishes no
+#                    `total_endpoint`; the badge script does not read it.
 #   total_endpoint Optional. Path of the shields.io-compatible JSON file,
 #                    relative to `badge_branch` (e.g. "tests-total.json" at the
 #                    root of a badges branch, or ".github/badges/tests-total.json"
@@ -32,8 +34,12 @@
 #                    `total_endpoint` and `markers` only. The CI badge always
 #                    tracks main; the coverage badge is read from this site's own
 #                    `badges` branch (see `has_codecov`).
-#   breakdown      Optional. Plain-text marker breakdown ("816 unit, ...").
-#                    Used until per-marker endpoint files are published.
+#   breakdown      Optional. Plain-text marker breakdown ("816 unit, ..."),
+#                    recorded here and written into the row beside `total`.
+#                    Used when the module publishes no `markers`. Keep it to
+#                    the two public categories, unit and integration, folding
+#                    any extra tier into integration, so the text agrees with
+#                    what the marker badges show once they go live.
 #   markers        Optional. Map of marker name to JSON path (relative to
 #                    `badge_branch`) or full https URL; when set, each marker
 #                    renders as a live shields.io badge in place of `breakdown`.
@@ -173,6 +179,14 @@ in_development:
     markers:
       unit: tests-unit.json
       integration: tests-integration.json
+
+  - name: Morrigan
+    owner: FormingWorlds
+    repo: Morrigan
+    workflow: tests.yaml
+    ci_label: CI
+    total: 44
+    breakdown: "31 unit, 13 integration"
 
   - name: Obliqua
     owner: FormingWorlds
