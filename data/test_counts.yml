@@ -168,6 +168,18 @@ mature:
       unit: tests-unit.json
       integration: tests-integration.json
 
+  - name: Morrigan
+    owner: FormingWorlds
+    repo: Morrigan
+    workflow: tests.yaml
+    ci_label: CI
+    has_codecov: true
+    total_endpoint: tests-total.json
+    badge_branch: badges
+    markers:
+      unit: tests-unit.json
+      integration: tests-integration.json
+
 in_development:
   - name: VULCAN
     owner: FormingWorlds
@@ -179,14 +191,6 @@ in_development:
     markers:
       unit: tests-unit.json
       integration: tests-integration.json
-
-  - name: Morrigan
-    owner: FormingWorlds
-    repo: Morrigan
-    workflow: tests.yaml
-    ci_label: CI
-    total: 39
-    breakdown: "26 unit, 13 integration"
 
   - name: Obliqua
     owner: FormingWorlds
