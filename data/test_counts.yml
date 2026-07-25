@@ -185,8 +185,8 @@ in_development:
     repo: Morrigan
     workflow: tests.yaml
     ci_label: CI
-    total: 44
-    breakdown: "31 unit, 13 integration"
+    total: 39
+    breakdown: "26 unit, 13 integration"
 
   - name: Obliqua
     owner: FormingWorlds
