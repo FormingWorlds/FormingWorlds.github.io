@@ -14,10 +14,11 @@ const overviewModules = [
   { name: 'MORS', brief: 'Stellar evolution tracks', domain: 'stellar' },
   { name: 'LovePy / Obliqua', brief: 'Tidal dissipation and heating', domain: 'tidal' },
   { name: 'Zalmoxis', brief: 'Planetary interior structure', domain: 'interior' },
+  { name: 'Morrigan', brief: 'Giant impacts and protoplanet accretion', domain: 'accretion' },
 ];
 
 // A typo'd domain would render an invisible swatch; fail the build instead.
-const knownDomains = ['interior', 'outgassing', 'tidal', 'chem', 'atmos', 'stellar'];
+const knownDomains = ['interior', 'outgassing', 'tidal', 'chem', 'atmos', 'stellar', 'accretion'];
 for (const m of overviewModules) {
   if (!knownDomains.includes(m.domain)) {
     throw new Error(`Unknown module domain "${m.domain}" for ${m.name}`);

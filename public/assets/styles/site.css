@@ -1,4 +1,4 @@
-/* PROTEUS website — shared chrome (Thermocline v1.1). Pairs with tokens.css.
+/* PROTEUS website — shared chrome (Thermocline v1.2). Pairs with tokens.css.
    The chrome section mirrors templates/web/site.css in
    FormingWorlds/proteus-visual-language; site-specific extensions follow the
    marked divider below. */
@@ -164,6 +164,7 @@ html { overflow-x: hidden; overflow-x: clip; }
 .dom-chem { background: var(--pt-dom-chem); }
 .dom-atmos { background: var(--pt-dom-atmos); }
 .dom-stellar { background: var(--pt-dom-stellar); }
+.dom-accretion { background: var(--pt-dom-accretion); }
 
 /* ---------- brand lockup (Lockup.astro) ---------- */
 /* The wordmark with the phase glyph as the O plus the "framework" tag. The

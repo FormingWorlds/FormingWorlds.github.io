@@ -5,10 +5,10 @@ import Base from '../layouts/Base.astro';
 <Base
   title="Modules within PROTEUS"
   subtitle="Explore the modular components of the PROTEUS framework"
-  description="Modular components of the PROTEUS framework: atmosphere, mantle, outgassing, photochemistry, escape, stellar evolution, tides, and interior structure models."
+  description="Modular components of the PROTEUS framework: atmosphere, mantle, outgassing, photochemistry, escape, stellar evolution, tides, interior structure, and accretion models."
   image="/assets/img/og-default.jpg"
 >
-      <p>Planetary evolution involves tightly coupled physical processes: radiative transfer in the atmosphere, convection and solidification in the mantle, volatile exchange between interior and surface reservoirs, chemical reactions, atmospheric escape, stellar irradiation, and tidal dissipation. No single code can treat all of these from first principles at once.</p>
+      <p>Planetary evolution involves tightly coupled physical processes: giant impacts during accretion, radiative transfer in the atmosphere, convection and solidification in the mantle, volatile exchange between interior and surface reservoirs, chemical reactions, atmospheric escape, stellar irradiation, and tidal dissipation. No single code can treat all of these from first principles at once.</p>
 
 <p>PROTEUS addresses this by adopting a modular architecture. Each physical domain is handled by a dedicated module that can be developed, tested, and validated independently. The PROTEUS coupler orchestrates the exchange of boundary conditions between modules at each time step, so that the full system evolves self-consistently. This design makes it straightforward to swap one atmosphere model for another, to enable or disable tidal heating, or to plug in a new outgassing parameterisation without rewriting the rest of the framework.</p>
 
@@ -187,6 +187,18 @@ import Base from '../layouts/Base.astro';
       <p class="module-desc">Extends tidal modelling to bodies with both solid and liquid layers, computing dissipation across multiple rheological phases and coupling tidal heat to the interior energy budget.</p>
     </div>
     <div class="module-link"><a href="https://proteus-framework.org/Obliqua/" target="_blank" rel="noopener noreferrer">Docs ↗</a></div>
+  </div>
+</div>
+
+<div class="module-group">
+  <h2 class="section-label">Accretion</h2>
+  <div class="module-card">
+    <div class="module-accent dom-accretion"></div>
+    <div class="module-info">
+      <p class="module-name">Morrigan</p>
+      <p class="module-desc">Follows a system of protoplanets through the giant impacts and scattering by which they accrete, recording the masses, collision speed, and orbit of each merger, which set the starting state for a coupled PROTEUS run.</p>
+    </div>
+    <div class="module-link"><a href="https://proteus-framework.org/Morrigan/" target="_blank" rel="noopener noreferrer">Docs ↗</a></div>
   </div>
 </div>
 </Base>
