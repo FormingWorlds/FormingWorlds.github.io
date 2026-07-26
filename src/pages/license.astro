@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import { contactEmail } from '../data/settings.js';
 ---
 <Base
   title="Licensing and open development"
@@ -194,7 +195,7 @@ PROTEUS exists because of the work of the wider community, and many of its modul
 We have set out our position here, and we welcome questions, corrections, and discussion.
 If you maintain a code we depend on, are considering using PROTEUS in your own work, or simply want to understand our approach better, please get in touch.</p>
 
-<p>You can reach us through <a href="https://github.com/orgs/FormingWorlds/discussions" target="_blank" rel="noopener noreferrer">GitHub Discussions</a>, open an issue on the relevant repository, or email <a href="mailto:proteus_dev@formingworlds.space">proteus_dev@formingworlds.space</a>.</p>
+<p>You can reach us through <a href="https://github.com/orgs/FormingWorlds/discussions" target="_blank" rel="noopener noreferrer">GitHub Discussions</a>, open an issue on the relevant repository, or email <a href={`mailto:${contactEmail}`}>{contactEmail}</a>.</p>
 
 <style is:global>
   table.lic-table {

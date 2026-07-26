@@ -10,7 +10,7 @@ export const favicons = {
   dark: '/assets/img/brand/favicon.png',
 };
 
-export const contactEmail = 'proteus_dev@formingworlds.space';
+export const contactEmail = 'dev@proteus-framework.org';
 
 // Ordered top navigation. Items with `submenuItems` render as a dropdown.
 export const menuItems = [
