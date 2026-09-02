@@ -5,7 +5,7 @@ import { contactEmail } from '../data/settings.js';
 // One entry per person: display name, role, external profile link, photo in
 // public/assets/img/faces/, and three research-topic labels. The topic lists
 // ship in the markup but stay visually hidden, matching the card design.
-const currentDevelopers = [
+const maintainers = [
   {
     name: 'Tim Lichtenberg',
     role: 'Kapteyn Staff',
@@ -20,6 +20,23 @@ const currentDevelopers = [
     photo: '/assets/img/faces/HarrisonNicholls.jpg',
     topics: ['Planetary climates', 'Gas-phase chemistry', 'Numerical methods'],
   },
+  {
+    name: 'Mara Attia',
+    role: 'Kapteyn Postdoc',
+    url: 'https://maraattia.github.io/',
+    photo: '/assets/img/faces/MaraAttia.jpg',
+    topics: ['Sub-Neptune evolution', 'Equations of state', 'Energy transport'],
+  },
+  {
+    name: 'Patrick Bos',
+    role: 'Kapteyn Senior Research Software Engineer',
+    url: 'https://egpbos.nl/',
+    photo: '/assets/img/faces/PatrickBos.jpg',
+    topics: ['PROTEUS framework'],
+  },
+];
+
+const developers = [
   {
     name: 'Mariana Sastre',
     role: 'Kapteyn PhD Student',
@@ -56,20 +73,6 @@ const currentDevelopers = [
     topics: ['Mantle dynamics', 'Atmospheric chemistry', 'Sub-Neptune evolution'],
   },
   {
-    name: 'Ben Riegler',
-    role: 'Helmholtz AI PhD Student',
-    url: 'https://fortuinlab.github.io/author/ben-riegler/',
-    photo: '/assets/img/faces/BenRiegler.jpg',
-    topics: ['Bayesian inference', 'Meta-learning algorithms', 'Statistical methods'],
-  },
-  {
-    name: 'Lorenzo Cesario',
-    role: 'Kapteyn MSc Student',
-    url: 'https://github.com/lorlo9999/',
-    photo: '/assets/img/faces/LorenzoCesario.jpg',
-    topics: ['Telescope simulation', 'Radiative transfer', 'Retrieval methods'],
-  },
-  {
     name: 'Emeline Decocq',
     role: 'Kapteyn PhD Student',
     url: 'https://github.com/Emeline0110',
@@ -91,34 +94,18 @@ const currentDevelopers = [
     topics: ['Planetary geology', 'Prebiotic chemistry', 'Planetary climate'],
   },
   {
-    name: 'Mara Attia',
-    role: 'Kapteyn Postdoc',
-    url: 'https://maraattia.github.io/',
-    photo: '/assets/img/faces/MaraAttia.jpg',
-    topics: ['Sub-Neptune evolution', 'Equations of state', 'Energy transport'],
-  },
-  {
-    name: 'Ioannis Panagiotou',
-    role: 'Kapteyn MSc Student',
-    url: 'https://github.com/ipanagiotou02',
-    photo: '/assets/img/faces/IoannisPanagiotou.jpg',
-    // Crop the star chart above his head so his face sits higher in the frame.
-    objectPosition: 'center 30%',
-    topics: ['Super-Earth evolution', 'Atmospheric chemistry', 'Ultra-hot planets'],
-  },
-  {
-    name: 'Patrick Bos',
-    role: 'Kapteyn Senior Research Software Engineer',
-    url: 'https://egpbos.nl/',
-    photo: '/assets/img/faces/PatrickBos.jpg',
-    topics: ['PROTEUS framework'],
+    name: 'Anna Grace Ulses',
+    role: 'U Washington PhD Student',
+    url: 'https://ess.uw.edu/people/anna-grace-ulses/',
+    photo: '/assets/img/faces/AnnaGraceUlses.jpg',
+    objectPosition: 'center 25%',
+    topics: ['Protoplanet accretion', 'Impact processing', 'Magma oceans'],
   },
 ];
 
 const pastContributors = [
   {
     name: 'Dan Bower',
-    role: 'ETH Zurich Staff',
     url: 'https://eaps.ethz.ch/en/people/profile.daniel-bower.html',
     photo: '/assets/img/faces/DanBower.jpg',
     // Crop a little more sky so his head sits higher in the square frame.
@@ -127,45 +114,59 @@ const pastContributors = [
   },
   {
     name: 'Hanno Spreeuw',
-    role: 'Research Software Engineer',
     url: 'https://www.esciencecenter.nl/team/hanno-spreeuw/',
     photo: '/assets/img/faces/HannoSpreeuw.jpg',
     topics: ['Code testing', 'User experience', 'Lookup tables'],
   },
   {
     name: 'Laurent Soucasse',
-    role: 'Research Software Engineer',
     url: 'https://orcid.org/0000-0002-5422-8794',
     photo: '/assets/img/faces/LaurentSoucasse.jpg',
     topics: ['Mantle dynamics', 'Stellar evolution', 'Code testing'],
   },
   {
     name: 'Stef Smeets',
-    role: 'Research Software Engineer',
     url: 'https://www.stefsmeets.nl/',
     photo: '/assets/img/faces/StefSmeets.jpg',
     topics: ['Code tests', 'User experience', 'Documentation'],
   },
   {
     name: 'Mark Hammond',
-    role: 'Oxford Research Fellow',
     url: 'https://mark-hammond.github.io/about/',
     photo: '/assets/img/faces/MarkHammond.jpg',
     topics: ['Radiative transfer', 'Atmosphere dynamics', 'Surface reflectivity'],
   },
   {
     name: 'Ray Pierrehumbert',
-    role: 'MIT Staff',
     url: 'https://users.physics.ox.ac.uk/~pierrehumbert/',
     photo: '/assets/img/faces/RayPierrehumbert.jpg',
     topics: ['Planetary climates', 'Atmospheric dynamics', 'Thermodynamics'],
   },
   {
     name: 'Flavia Pascal',
-    role: 'Cambridge MSc Student',
     url: 'https://github.com/flaviacris03',
     photo: '/assets/img/faces/FlaviaPascal.jpg',
     topics: ['Planet structure', 'Equations of state', 'Numerical methods'],
+  },
+  {
+    name: 'Ioannis Panagiotou',
+    url: 'https://github.com/ipanagiotou02',
+    photo: '/assets/img/faces/IoannisPanagiotou.jpg',
+    // Crop the star chart above his head so his face sits higher in the frame.
+    objectPosition: 'center 30%',
+    topics: ['Super-Earth evolution', 'Atmospheric chemistry', 'Ultra-hot planets'],
+  },
+  {
+    name: 'Ben Riegler',
+    url: 'https://fortuinlab.github.io/author/ben-riegler/',
+    photo: '/assets/img/faces/BenRiegler.jpg',
+    topics: ['Bayesian inference', 'Meta-learning algorithms', 'Statistical methods'],
+  },
+  {
+    name: 'Lorenzo Cesario',
+    url: 'https://github.com/lorlo9999/',
+    photo: '/assets/img/faces/LorenzoCesario.jpg',
+    topics: ['Telescope simulation', 'Radiative transfer', 'Retrieval methods'],
   },
 ];
 ---
@@ -175,16 +176,34 @@ const pastContributors = [
   description="The PROTEUS development team: researchers and software engineers building open-source tools for rocky planet evolution."
   image="/assets/img/og-default.jpg"
 >
-  <h2 class="team-heading">Current developers</h2>
-  <div class="team-grid" id="current-developers-section">
-    {currentDevelopers.map((person) => (
+  <h2 class="team-heading">Maintainers</h2>
+  <div class="team-grid" id="maintainers-section">
+    {maintainers.map((person) => (
       <div class="person-card">
         <a href={person.url} target="_blank" rel="noopener noreferrer" class="person-photo">
           <img src={person.photo} alt={person.name} loading="lazy" style={person.objectPosition ? `object-position: ${person.objectPosition}` : undefined} />
         </a>
         <div class="person-body">
           <h3 class="person-name">{person.name}</h3>
-          <p class="person-role">{person.role}</p>
+          {person.role && <p class="person-role">{person.role}</p>}
+          <ul class="person-topics">
+            {person.topics.map((topic) => <li>{topic}</li>)}
+          </ul>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="team-heading">Developers</h2>
+  <div class="team-grid" id="developers-section">
+    {developers.map((person) => (
+      <div class="person-card">
+        <a href={person.url} target="_blank" rel="noopener noreferrer" class="person-photo">
+          <img src={person.photo} alt={person.name} loading="lazy" style={person.objectPosition ? `object-position: ${person.objectPosition}` : undefined} />
+        </a>
+        <div class="person-body">
+          <h3 class="person-name">{person.name}</h3>
+          {person.role && <p class="person-role">{person.role}</p>}
           <ul class="person-topics">
             {person.topics.map((topic) => <li>{topic}</li>)}
           </ul>
@@ -202,7 +221,7 @@ const pastContributors = [
         </a>
         <div class="person-body">
           <h3 class="person-name">{person.name}</h3>
-          <p class="person-role">{person.role}</p>
+          {person.role && <p class="person-role">{person.role}</p>}
           <ul class="person-topics">
             {person.topics.map((topic) => <li>{topic}</li>)}
           </ul>
@@ -276,7 +295,7 @@ const pastContributors = [
 
 <script is:inline>
 document.addEventListener('DOMContentLoaded', function() {
-  // Shuffle each team section so the display order varies per visit.
+  // Shuffle team sections so the display order varies per visit.
   function shuffleSection(containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
@@ -289,7 +308,8 @@ document.addEventListener('DOMContentLoaded', function() {
     cards.forEach((card) => container.appendChild(card));
   }
 
-  shuffleSection('current-developers-section');
+  // Note: Maintainers section stays in fixed priority order.
+  shuffleSection('developers-section');
   shuffleSection('past-contributors-section');
 });
 </script>
