@@ -132,7 +132,7 @@ import Base from '../layouts/Base.astro';
     <div class="module-accent dom-outgassing"></div>
     <div class="module-info">
       <p class="module-name">Atmodeller</p>
-      <p class="module-desc">Computes volatile speciation at equilibrium using a different thermodynamic implementation. Adopted to supersede CALLIOPE.</p>
+      <p class="module-desc">Calculates volatile partitioning and equilibrium speciation with a JAX-based numerical formulation. Expands the chemical system to C–H–O–N–S–Cl, and adds real-gas non-ideality, atmospheric condensation, and interior dissolution across updated solubility models.</p>
     </div>
     <div class="module-link"><a href="https://atmodeller.readthedocs.io/en/latest/" target="_blank" rel="noopener noreferrer">Docs ↗</a></div>
   </div>
@@ -152,7 +152,7 @@ import Base from '../layouts/Base.astro';
     <div class="module-accent dom-interior"></div>
     <div class="module-info">
       <p class="module-name">Aragog</p>
-      <p class="module-desc">An alternative mantle dynamics solver that operates in temperature-pressure (T-P) space. Simulates the thermal evolution of the magma ocean and solid mantle using a 1-D parameterised convection model.</p>
+      <p class="module-desc">The primary mantle energy transport solver. Simulates the thermal evolution of the magma ocean and solid mantle in temperature-pressure (T-P) space using a 1-D parameterised convection model.</p>
     </div>
     <div class="module-link"><a href="https://proteus-framework.org/aragog/" target="_blank" rel="noopener noreferrer">Docs ↗</a></div>
   </div>
@@ -160,7 +160,7 @@ import Base from '../layouts/Base.astro';
     <div class="module-accent dom-interior"></div>
     <div class="module-info">
       <p class="module-name">SPIDER</p>
-      <p class="module-desc">The primary mantle energy transport module. Solves the mixed-phase magma ocean evolution in entropy-pressure (S-P) space using a finite-volume approach on a staggered grid, tracking melt fraction, heat fluxes, and solidification fronts.</p>
+      <p class="module-desc">A detailed mantle dynamics solver that operates in entropy-pressure (S-P) space. Solves mixed-phase magma ocean evolution with a finite-volume method on a staggered grid, tracking melt fractions, heat fluxes, and solidification fronts.</p>
     </div>
     <div class="module-link"><a href="https://proteus-framework.org/SPIDER" target="_blank" rel="noopener noreferrer">Docs ↗</a></div>
   </div>
@@ -183,23 +183,23 @@ import Base from '../layouts/Base.astro';
   <div class="module-card">
     <div class="module-accent dom-tidal"></div>
     <div class="module-info">
-      <p class="module-name">LovePy</p>
-      <p class="module-desc">Computes tidal Love numbers and dissipation rates for a solid (or partially molten) planet, translating orbital forcing into internal heat production that can delay or prevent mantle solidification.</p>
-    </div>
-    <div class="module-link"><a href="https://github.com/nichollsh/lovepy" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
-  </div>
-  <div class="module-card">
-    <div class="module-accent dom-tidal"></div>
-    <div class="module-info">
       <p class="module-name">Obliqua</p>
       <p class="module-desc">Extends tidal modelling to bodies with both solid and liquid layers, computing dissipation across multiple rheological phases and coupling tidal heat to the interior energy budget.</p>
     </div>
     <div class="module-link"><a href="https://proteus-framework.org/Obliqua/" target="_blank" rel="noopener noreferrer">Docs ↗</a></div>
   </div>
+  <div class="module-card">
+    <div class="module-accent dom-tidal"></div>
+    <div class="module-info">
+      <p class="module-name">LovePy</p>
+      <p class="module-desc">Computes tidal Love numbers and dissipation rates for a solid (or partially molten) planet, translating orbital forcing into internal heat production that can delay or prevent mantle solidification.</p>
+    </div>
+    <div class="module-link"><a href="https://github.com/nichollsh/lovepy" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
+  </div>
 </div>
 
 <div class="module-group">
-  <h2 class="section-label">Accretion</h2>
+  <h2 class="section-label">Accretion &amp; Dynamics</h2>
   <div class="module-card">
     <div class="module-accent dom-accretion"></div>
     <div class="module-info">
