@@ -192,6 +192,14 @@ in_development:
       unit: tests-unit.json
       integration: tests-integration.json
 
+  - name: FastChem
+    owner: FormingWorlds
+    repo: FastChem
+    workflow: ""  # upstream suite
+    ci_label: ""
+    total: "upstream suite"
+    breakdown: "C++ verification and benchmark suites via upstream NewStrangeWorlds/FastChem"
+
   - name: Obliqua
     owner: FormingWorlds
     repo: Obliqua
