@@ -48,7 +48,7 @@ Editing guidance for contributors and coding assistants lives in [`.github/copil
 
 ## Local development
 
-Requires [Node](https://nodejs.org/) 20 or newer.
+Requires [Node](https://nodejs.org/) 22.23.4 or newer.
 
 ```sh
 npm install        # first time only

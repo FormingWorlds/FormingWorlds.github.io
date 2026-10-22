@@ -18,7 +18,7 @@ Static site built with [Astro](https://astro.build/) and published to GitHub Pag
 
 ## Local development
 
-Requires Node 20 or newer.
+Requires Node 22.23.4 or newer.
 
 ```bash
 npm install     # first time only
