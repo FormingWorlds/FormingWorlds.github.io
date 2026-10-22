@@ -18,10 +18,10 @@
   },
   "devDependencies": {
     "@astrojs/sitemap": "^3.7.4",
-    "@playwright/test": "^1.61.1",
+    "@playwright/test": "^1.64.1",
     "astro": "^7.4.2",
     "badge-maker": "^6.0.0",
-    "simple-icons": "^16.25.0",
+    "simple-icons": "^16.35.0",
     "yaml": "^2.9.0"
   },
   "engines": {
