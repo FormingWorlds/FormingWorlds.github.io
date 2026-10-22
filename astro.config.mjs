@@ -23,6 +23,10 @@ const licenseRouteGuard = {
   },
 };
 
+// CSS for Safari 14+ as well: Vite 8 targets Safari 16.4+ by default and rewrites
+// max-width media queries into range syntax, which older Safari ignores.
+const cssTarget = ['chrome87', 'edge88', 'firefox78', 'safari14'];
+
 // Public site served at the apex domain (CNAME -> proteus-framework.org).
 // No base path: the site lives at the domain root.
 export default defineConfig({
@@ -38,5 +42,6 @@ export default defineConfig({
   },
   vite: {
     plugins: [licenseRouteGuard],
+    build: { cssTarget },
   },
 });
