@@ -44,8 +44,19 @@ export const menuItems = [
     url: '/publications',
   },
   {
-    title: 'License',
-    url: '/license',
+    title: 'Policies',
+    // Entries of this dropdown also appear in the footer's Navigate column.
+    inFooter: true,
+    submenuItems: [
+      {
+        title: 'License',
+        url: '/license',
+      },
+      {
+        title: 'AI use',
+        url: '/ai',
+      },
+    ],
   },
   {
     title: 'People & Contact',
