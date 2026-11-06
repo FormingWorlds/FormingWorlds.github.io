@@ -1,0 +1,130 @@
+---
+import Base from '../layouts/Base.astro';
+import { contactEmail } from '../data/settings.js';
+---
+<Base
+  title="AI use and responsibility"
+  subtitle="How we use AI tools to develop PROTEUS, who answers for the result, and how we disclose it"
+  description="The position of the PROTEUS developers on AI-assisted development: what the tools are used for, why a named person is responsible for every change, how results are verified, how AI use is disclosed, and how AI-assisted code fits our open source licensing."
+  image="/assets/img/og-default.jpg"
+>
+  <h2 class="section-label" id="in-brief-our-core-values">In brief: our core values</h2>
+
+<p>Since early 2026, AI coding tools have been part of how PROTEUS and its modules are developed.
+They change how code, tests, and documentation get written, and they raise a fair question for anyone who runs the code or reads a paper built on it: can the results still be trusted?
+Three values decide how we use these tools:</p>
+
+<ol>
+  <li>
+    <p><strong>People are responsible for the code and the science.</strong></p>
+
+    <p>Every commit, pull request, review, and merge has a named person behind it, who answers for every line, whether they typed it or a tool drafted it.
+An AI tool cannot take that responsibility, so it is never an author.</p>
+  </li>
+  <li>
+    <p><strong>A result is trusted because it was checked.</strong></p>
+
+    <p>Fluent output is not evidence.
+Code earns trust through tests, validation against independent results, and review by a maintainer, the same standard we apply to code written by hand.</p>
+  </li>
+  <li>
+    <p><strong>We are open about how the work is done.</strong></p>
+
+    <p>Our commitment to <a href="/license#open-development">open development</a> covers our tools too.
+This page is our disclosure, and the instructions the agents work under are committed to the public repositories, where anyone can read them.</p>
+  </li>
+</ol>
+
+<p>The sections below explain how each choice follows from these values:</p>
+
+<ul>
+  <li><a href="#how-we-use-ai-tools">We use AI tools to draft and refactor code, tests, and documentation, under a developer's direction.</a></li>
+  <li><a href="#responsibility">A named person is responsible for every change, and AI tools are never authors.</a></li>
+  <li><a href="#verification">Every change is checked against something independent of the tool that produced it.</a></li>
+  <li><a href="#disclosure">We disclose AI use once for the whole project, and in each paper as its journal requires.</a></li>
+  <li><a href="#open-source">AI tools are not part of PROTEUS, and AI-assisted code is licensed like any other contribution.</a></li>
+</ul>
+
+<h2 class="section-label" id="how-we-use-ai-tools">How we use AI tools</h2>
+
+<p>We mainly use <a href="https://claude.com/product/claude-code" target="_blank" rel="noopener noreferrer">Claude Code</a>, Anthropic's coding agent, with models from the Fable, Opus, and Sonnet families.
+It works in a developer's local copy of a repository: it reads the code, proposes and makes changes, runs the tests, and drafts commit messages and documentation, all at the developer's request.</p>
+
+<p>Typical tasks are drafting and refactoring code, writing tests, searching a large code base, and revising and extending documentation.
+The developer decides what to build, which physics to implement and from which papers, and what is submitted for review.</p>
+
+<p>The instructions the agents follow are public.
+The PROTEUS repository carries them in <a href="https://github.com/FormingWorlds/PROTEUS/blob/main/AGENTS.md" target="_blank" rel="noopener noreferrer"><code>AGENTS.md</code></a> files next to the code they apply to.
+They hold the same coding, testing, and physics rules that apply to every contributor, such as the requirement that every element mass, oxygen included, is conserved across the coupled model.</p>
+
+<h2 class="section-label" id="responsibility">Responsibility stays with people</h2>
+
+<p>All users and developers take full responsibility for the contributions they commit, whether they wrote them by hand or with an AI tool.
+The name on a commit, a pull request, or a review is the name of the person who answers for it.
+Nothing is merged unread: a maintainer reviews every pull request to PROTEUS before it is merged, as set out in the <a href="https://proteus-framework.org/PROTEUS/Community/CONTRIBUTING" target="_blank" rel="noopener noreferrer">contributing guidelines</a>.</p>
+
+<p>Much of the work can be handed to a tool: boilerplate, searches across the code, first drafts, and mechanical refactors.
+Some of it cannot.
+The developer has to understand the code they submit, judge whether the result is scientifically correct, and make the decision to merge.</p>
+
+<p>AI tools are not authors of our code, papers, or reviews.
+Publishing ethics bodies take the same view: the Committee on Publication Ethics <a href="https://publicationethics.org/guidance/cope-position/authorship-and-ai-tools" target="_blank" rel="noopener noreferrer">states</a> that AI tools cannot be listed as authors, because they cannot take responsibility for the work.
+The <a href="https://joss.readthedocs.io/en/latest/policies.html" target="_blank" rel="noopener noreferrer">Journal of Open Source Software</a>, where the PROTEUS software paper is under review, asks authors to affirm that human team members reviewed, modified, and validated all AI-generated content.</p>
+
+<h2 class="section-label" id="verification">Verification before trust</h2>
+
+<p>Language models are trained to produce plausible text, and in our experience they tend to agree with the framing they are given.
+Confident output can feel like verification when nothing has been checked.
+For a scientific code the danger is confirmation bias: a developer's hypothesis shapes the request, the tool confirms it fluently, and the error sits in the part nobody checked.</p>
+
+<p>We therefore treat what an AI tool produces as a claim until something independent of the tool confirms it.
+We ask every contributor for these checks:</p>
+
+<ul>
+  <li><strong>Tests that can fail.</strong> A test uses values for which the most likely wrong formula gives a different answer, and it is trusted only once it has been seen to fail on a deliberately broken version of the code.</li>
+  <li><strong>Independent references.</strong> New or changed physics is compared with analytic solutions, published values, or conservation laws. These comparisons are published on the <a href="/validation">Validation</a> pages.</li>
+  <li><strong>Real runs.</strong> A change to the physics is tested in a coupled PROTEUS run and compared with the same run on the main branch.</li>
+  <li><strong>Human review.</strong> A maintainer reviews each pull request. An AI-assisted review can support that review, but the decision to merge is a person's.</li>
+</ul>
+
+<p>None of this is specific to AI.
+It is the standard we apply to code written by hand, and it matters more now that writing code has become cheap.</p>
+
+<h2 class="section-label" id="disclosure">Disclosure</h2>
+
+<p>This page is our disclosure for the project as a whole.
+AI tools are part of the everyday workflow of PROTEUS development, so we state their use here, once.
+Commit messages and pull request descriptions then describe the change itself, what changed and why, and do not name the tool or the model that helped write it.
+Responsibility for each change is carried by the person named on it, and a tool label on most commits would tell a reader little about how carefully a change was checked.</p>
+
+<p>Others draw this line differently.
+The Software Freedom Conservancy <a href="https://sfconservancy.org/llm-gen-ai/llm-backed-generative-ai-recommendations.html" target="_blank" rel="noopener noreferrer">recommends</a> recording AI assistance for each contribution in machine-readable form in the commit log, and the Apache Software Foundation <a href="https://www.apache.org/legal/generative-tooling.html" target="_blank" rel="noopener noreferrer">suggests</a> a <code>Generated-by</code> token in commit messages.
+We have weighed these recommendations and chose disclosure at the level of the project, and we will revisit that choice if the expectations of our users or of the journals change.</p>
+
+<p>Papers follow the rules of their journal.
+Our own papers disclose AI use as each journal requires, and the PROTEUS software paper submitted to the Journal of Open Source Software includes the AI usage disclosure section that journal asks of every submission.</p>
+
+<h2 class="section-label" id="open-source">AI tools and open source</h2>
+
+<p>Our <a href="/license#open-development">license page</a> commits PROTEUS to building only on fully open source code.
+The AI tools we use are proprietary services, and they are development tools in the same category as an editor or a code-hosting platform.
+Nothing in PROTEUS calls them, depends on them, or ships with them, and running PROTEUS needs no AI service.</p>
+
+<p>Code drafted with an AI tool enters our repositories the way any other contribution does: through a pull request, under the license of that repository.
+The contributor is responsible for making sure it can.
+That includes the case where a tool reproduces code from another project.
+Such code has to be credited and released under a compatible license, as it would if it had been copied by hand.</p>
+
+<p>Whether AI-generated code is protected by copyright is not settled.
+In its <a href="https://www.copyright.gov/ai/" target="_blank" rel="noopener noreferrer">January 2025 report on copyrightability</a>, the US Copyright Office concluded that copyright protects original human expression in a work that also contains AI-generated material, that it does not extend to purely AI-generated material, that prompts alone do not give sufficient human control, and that each case has to be judged on its own facts.
+Other jurisdictions may reach different conclusions.
+In our development a person directs, reviews, selects, and modifies every change, which is the kind of human contribution that report describes, but we do not claim that this settles the question for every line.
+As we read it, users lose nothing either way: code that turns out not to be protected by copyright carries no conditions at all, and everything else is available under the license of its repository.</p>
+
+<h2 class="section-label" id="questions-and-discussion">Questions and discussion</h2>
+
+<p>AI tools, journal requirements, and the law on AI output are all changing quickly, and we will update this page when our practice changes.
+We welcome questions, corrections, and disagreement on any part of it.</p>
+
+<p>You can reach us through <a href="https://github.com/orgs/FormingWorlds/discussions" target="_blank" rel="noopener noreferrer">GitHub Discussions</a>, open an issue on the relevant repository, or email <a href={`mailto:${contactEmail}`}>{contactEmail}</a>.</p>
+</Base>
