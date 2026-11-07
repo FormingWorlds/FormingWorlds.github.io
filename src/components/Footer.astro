@@ -5,7 +5,10 @@ import { menuItems, contactEmail } from '../data/settings.js';
 import Lockup from './Lockup.astro';
 import Socials from './Socials.astro';
 
-const navItems = menuItems.filter((item) => !item.submenuItems);
+// Top-level pages, plus the entries of dropdowns marked `inFooter`.
+const navItems = menuItems.flatMap((item) =>
+  item.submenuItems ? (item.inFooter ? item.submenuItems : []) : [item]
+);
 const year = new Date().getFullYear();
 ---
 <div class="phase-rule"></div>
